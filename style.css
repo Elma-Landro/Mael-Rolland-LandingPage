@@ -241,8 +241,8 @@ header, section, footer {
 .description {
     font-family: 'VT323', monospace; /* Retro monospace font - needs import or alternative */
     /* Or stick to 'Press Start 2P' if VT323 is not desired */
-    font-size: 1.5em;
-    color: #ffaa33; /* Matte orange/yellow */
+    font-size: 1.1em;
+    color: #ffaa31; /* Matte orange/yellow */
     line-height: 1.6;
     max-width: 600px;
     margin: 0 auto 30px auto;
@@ -251,8 +251,8 @@ header, section, footer {
 /* Fourth Level (Green Text) */
 .research-focus {
     font-family: 'VT323', monospace; /* Retro terminal font */
-    color: #ffaa00; /* jaune-orangé mat cohérent */
-    font-size: 1.1em;
+    color: #33ff33; /* Retro terminal green */
+    font-size: 1.2em;
     margin-bottom: 40px;
 }
 
