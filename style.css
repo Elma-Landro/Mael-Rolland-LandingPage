@@ -212,14 +212,14 @@ header, section, footer {
 
 /* Top Section */
 .main-title {
-    font-size: 2.5em; /* Large pixel font */
+    font-size: 3.5em; /* Large pixel font */
     color: #ffcc66; /* Matte yellow-orange */
     margin-bottom: 5px;
     /* Add text-shadow for pixel effect if needed */
 }
 
 .subtitle {
-    font-size: 1em; /* Smaller pixel font */
+    font-size: 1.1em; /* Smaller pixel font */
     color: #ffcc66; /* Matte yellow-orange */
     margin-bottom: 30px;
 }
@@ -233,7 +233,7 @@ header, section, footer {
 }
 
 .ens-id {
-    font-size: 1.1em; /* Slightly smaller pixel text */
+    font-size: 2.1em; /* Slightly smaller pixel text */
     color: #ffcc66; /* Yellow text */
 }
 
