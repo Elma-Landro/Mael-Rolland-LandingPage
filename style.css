@@ -424,13 +424,14 @@ footer {
 body::after {
     content: "";
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: url('assets/icons/builtonethereum.png') no-repeat;
-    background-size: 100px auto;
-    opacity: 0.06;
-    width: 100px;
-    height: 100px;
-    pointer-events: none; /* pour ne pas bloquer les clics */
-    z-index: 0; /* reste sous le contenu */
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: url('assets/icons/builtonethereum.png') no-repeat center center;
+    background-size: 120px auto;
+    opacity: 0.08;
+    width: 120px;
+    height: 120px;
+    pointer-events: none;
+    z-index: 0;
 }
