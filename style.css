@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+/* CSS for Maël Rolland Landing Page */
 /*
  * Copyright (C) 2024 Maël Rolland
  * This file is part of the Mael-Rolland-LandingPage project.
@@ -16,11 +19,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
-
-/* CSS for Maël Rolland Landing Page */
-
 /* General Styles */
+
 body {
     background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), /* Subtle noise/texture overlay */
                 linear-gradient(to bottom, #6a0000, #4d0000); /* Dark red gradient */
