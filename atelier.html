@@ -5,29 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Atelier d’initiation – Maël Rolland</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    table.tarifs {
-      width: 100%;
-      max-width: 600px;
-      margin: 30px auto;
-      border-collapse: collapse;
-      font-family: 'VT323', monospace;
-      color: #ffaa33;
-      font-size: 1.1em;
-      background-color: rgba(0, 0, 0, 0.1);
-      border: 2px solid #ffaa33;
-    }
-    table.tarifs th,
-    table.tarifs td {
-      border: 1px solid #ffaa33;
-      padding: 8px 12px;
-      text-align: center;
-    }
-    table.tarifs th {
-      background-color: #4d0000;
-      color: #ffcc66;
-    }
-  </style>
 </head>
 <body>
   <div class="container">
@@ -51,46 +28,51 @@
       </div>
 
       <div style="text-align: center; margin-bottom: 20px;">
-        <a href="assets/pdf/Plaquette_initiation_crypto.pdf" class="pixel-button large" download>
-          📄 Télécharger la plaquette PDF
+        <a href="assets/pdf/Plaquette_initiation_crypto.pdf" class="pixel-button" download>
+          📄 Télécharger la plaquette (PDF)
         </a>
       </div>
 
-      <table class="tarifs" aria-label="Tarifs de l'atelier">
+      <h2 style="text-align: center; color: #33ff33;">Tarifs (hors frais de déplacement éventuels)</h2>
+      <table style="margin: 0 auto; border-collapse: collapse; text-align: left; font-family: monospace; color: #ffaa33;">
         <thead>
-          <tr>
-            <th>Nombre de personnes</th>
-            <th>Tarif TTC (groupe)</th>
-            <th>Tarif par personne</th>
+          <tr style="border-bottom: 1px solid #ffaa33;">
+            <th style="padding: 8px;">Type d’intervention</th>
+            <th style="padding: 8px;">Durée</th>
+            <th style="padding: 8px;">Tarif</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>1 à 2 personnes</td>
-            <td>200 €</td>
-            <td>100 €</td>
+            <td style="padding: 8px;">Atelier individuel</td>
+            <td style="padding: 8px;">2h</td>
+            <td style="padding: 8px;">80 €</td>
           </tr>
           <tr>
-            <td>3 à 5 personnes</td>
-            <td>425 €</td>
-            <td>≈ 85 €</td>
+            <td style="padding: 8px;">Atelier collectif (3 à 6 personnes)</td>
+            <td style="padding: 8px;">2h</td>
+            <td style="padding: 8px;">50 € / personne</td>
           </tr>
           <tr>
-            <td>6 à 8 personnes</td>
-            <td>480 €</td>
-            <td>≈ 65 €</td>
-          </tr>
-          <tr>
-            <td>9 à 10 personnes</td>
-            <td>550 €</td>
-            <td>≈ 55 €</td>
+            <td style="padding: 8px;">Intervention associative ou institutionnelle</td>
+            <td style="padding: 8px;">Adaptée</td>
+            <td style="padding: 8px;">Sur devis</td>
           </tr>
         </tbody>
       </table>
 
+      <div style="text-align: center; margin: 30px 0;">
+        <a href="https://docs.google.com/forms/d/1isSARZP77_TKdNXPvgw-3z9uhOijh8JFH-86rjaJty8/viewform?edit_requested=true" 
+           class="pixel-button large" 
+           target="_blank" 
+           rel="noopener noreferrer">
+          ✉️ Contact / inscription à l'atelier
+        </a>
+      </div>
+
       <div class="json-notice">
-        <p>Tarifs et contenu détaillés également disponibles dans le flyer.</p>
-        <p style="font-size: 0.8em;">Pour toute question ou demande spécifique : utilisez le formulaire de contact.</p>
+        <p>Tarifs et contenu détaillés également disponibles dans la plaquette.</p>
+        <p style="font-size: 0.8em;">Pour toute demande spécifique : utilisez le formulaire de contact.</p>
       </div>
 
       <div class="back-link">
@@ -100,29 +82,13 @@
 
     <footer>
       <div class="social-icons">
-        <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <img src="assets/icons/LinkedIn.png" alt="LinkedIn Icon" class="pixel-icon">
-        </a>
-        <a href="https://x.com/elmalandr0" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-          <img src="assets/icons/X.png" alt="X Icon" class="pixel-icon">
-        </a>
-        <a href="https://warpcast.com/maelrolland" target="_blank" rel="noopener noreferrer" aria-label="Farcaster">
-          <img src="assets/icons/Farcaster.png" alt="Farcaster Icon" class="pixel-icon">
-        </a>
-        <a href="https://bsky.app/profile/mael-rolland.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Bluesky">
-          <img src="assets/icons/Bluesky.png" alt="Bluesky Icon" class="pixel-icon">
-        </a>
-        <a href="https://github.com/Elma-Landro" target="_blank" rel="noopener noreferrer" aria-label="Github">
-          <img src="assets/icons/Github.png" alt="Github Icon" class="pixel-icon">
-        </a>
-        <a href="https://hey.xyz/u/mael-rolland" target="_blank" rel="noopener noreferrer" aria-label="Lens Protocol">
-          <img src="assets/icons/Lens.png" alt="Lens Icon" class="pixel-icon">
+        <a href="https://github.com/Elma-Landro" target="_blank">
+          <img src="assets/icons/Github.png" alt="GitHub" class="pixel-icon" />
         </a>
       </div>
-
       <div class="ethereum-badge-centered">
-        <a href="https://docs.ethswarm.org/" target="_blank" rel="noopener noreferrer" aria-label="Built on Ethereum (Swarm)">
-          <img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge">
+        <a href="https://docs.ethswarm.org/" target="_blank">
+          <img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge" />
         </a>
       </div>
     </footer>
