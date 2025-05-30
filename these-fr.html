@@ -1,90 +1,225 @@
-<!DOCTYPE html><html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thèse - Maël Rolland</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .language-switcher {
-            text-align: center;
-            margin-top: 10px;
-            font-family: 'VT323', monospace;
-            font-size: 0.9em;
-            color: #33ff33;
-        }
-        .language-switcher a {
-            color: #33ff33;
-            text-decoration: none;
-            margin: 0 5px;
-        }
-        .language-switcher a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thèse - Maël Rolland</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .these-section {
+      margin: 30px auto;
+      max-width: 700px;
+    }
+    .these-intro {
+      font-family: 'VT323', monospace;
+      font-size: 1.2em;
+      color: #ffaa33;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .download-complete {
+      margin: 30px auto;
+      text-align: center;
+    }
+    .download-complete .pixel-button {
+      font-size: 1.2em;
+      padding: 15px 25px;
+      background-color: #8b0000;
+      display: inline-block;
+      margin: 0 auto;
+    }
+    .chapters-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 25px auto;
+    }
+    .chapter-button {
+      flex-basis: calc(50% - 20px);
+      min-width: 200px;
+      text-align: left;
+      padding: 12px 15px;
+    }
+    .json-notice {
+      margin-top: 40px;
+      padding: 15px;
+      border: 2px dashed #33ff33;
+      background-color: rgba(51, 255, 51, 0.1);
+      color: #33ff33;
+      font-family: 'VT323', monospace;
+      font-size: 1em;
+      text-align: center;
+      border-radius: 4px;
+    }
+    .back-link {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .back-link a {
+      color: #ffcc66;
+      text-decoration: none;
+      font-size: 0.8em;
+      display: inline-block;
+      padding: 8px 15px;
+      border: 1px solid #ffcc66;
+    }
+    .back-link a:hover {
+      background-color: rgba(255, 204, 102, 0.2);
+    }
+    .checksum-container {
+      margin-top: 1px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+    .checksum-toggle {
+      background: none;
+      border: none;
+      color: #33ff33;
+      font-family: 'VT323', monospace;
+      font-size: 0.8em;
+      cursor: pointer;
+      padding: 2px 5px;
+      text-align: left;
+      display: inline-flex;
+      align-items: center;
+    }
+    .checksum-toggle:hover {
+      text-decoration: underline;
+    }
+    .checksum-toggle::before {
+      content: '▶';
+      margin-right: 5px;
+      transition: transform 0.2s;
+    }
+    .checksum-toggle.active::before {
+      transform: rotate(90deg);
+    }
+    .checksum-content {
+      display: none;
+      background-color: rgba(0, 0, 0, 0.3);
+      border: 1px solid #33ff33;
+      padding: 8px;
+      font-family: 'VT323', monospace;
+      color: #33ff33;
+      font-size: 0.8em;
+      white-space: nowrap;
+      overflow-x: auto;
+    }
+    .download-item {
+      margin-bottom: 15px;
+    }
+    @media (max-width: 768px) {
+      .chapter-button {
+        flex-basis: calc(100% - 20px);
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="language-switcher">
-        <a href="these.html">🇬🇧 English</a> | 
-        <a href="these-fr.html">🇫🇷 Français</a>
-    </div>
   <div class="container">
     <header>
-        <h1 class="main-title">Thèse</h1>
-        <p class="subtitle">
+      <h1 class="main-title">Thèse</h1>
+      <p class="subtitle">Au-delà des codes : infrastructures discrètes et gouvernance polycentrique des cryptomonnaies Bitcoin et Ethereum dévoilées par leurs crises</p>
+    </header>
 
-Au-delà des codes : les infrastructures discrètes et la gouvernance polycentrique des cryptomonnaies Bitcoin et Ethereum révélées par leurs crises</p> </header>
+    <!-- 🌍 Sélecteur de langue -->
+    <div class="language-switcher" style="text-align: center; margin-top: 10px;">
+      <a href="these.html" class="lang-link">🇬🇧 English</a> |
+      <a href="these-fr.html" class="lang-link">🇫🇷 Français</a>
+    </div>
 
-<section class="these-section">
-        <div class="these-intro">
-            <p>Cette thèse analyse les cryptomonnaies Bitcoin et Ethereum ainsi que leur gouvernance, en interrogeant les prétentions libérales et technicistes qui les présentent comme des monnaies acéphales, décentralisées, autonomes, neutres et apolitiques. Vous pouvez télécharger le manuscrit complet ou chapitre par chapitre.</p>
+    <section class="these-section">
+      <div class="these-intro">
+        <p>Cette thèse analyse les cryptomonnaies Bitcoin et Ethereum ainsi que leurs formes de gouvernance. Elle remet en question les récits libéraux-technicistes qui les décrivent comme acéphales, décentralisées, autonomes, neutres et apolitiques. Téléchargez le manuscrit complet ou chapitre par chapitre.</p>
+      </div>
+
+      <div class="download-complete download-item">
+        <a href="assets/pdf/ROLLAND_Mael_These_Complete.pdf" class="pixel-button large" download>Télécharger la thèse complète</a>
+        <div class="checksum-container">
+          <button class="checksum-toggle" onclick="toggleChecksum('checksum-complete')">Empreinte SHA-256</button>
+          <div id="checksum-complete" class="checksum-content">563f2c58aec4980983279ab7d37ab2f427c5d3e4abc0d156466a9365a0e46652</div>
         </div>
+      </div>
 
-        <div class="download-complete download-item">
-            <a href="assets/pdf/ROLLAND_Mael_These_Complete.pdf" class="pixel-button large" download>Télécharger la thèse complète</a>
-            <div class="checksum-container">
-                <button class="checksum-toggle" onclick="toggleChecksum('checksum-complete')">Empreinte (SHA-256)</button>
-                <div id="checksum-complete" class="checksum-content">
-                    563f2c58aec4980983279ab7d37ab2f427c5d3e4abc0d156466a9365a0e46652
-                </div>
-            </div>
+      <h2 style="color: #33ff33; font-size: 1em; margin-top: 40px; text-align: center;">Téléchargement par chapitre</h2>
+
+      <div class="chapters-grid">
+        <div class="download-item">
+          <a href="assets/pdf/1_Premieres_pages.pdf" class="pixel-button chapter-button" download>1. Premières pages</a>
         </div>
-
-        <h2 style="color: #33ff33; font-size: 1em; margin-top: 40px; text-align: center;">Téléchargement par chapitres</h2>
-
-        <!-- ici insérer les blocs de chapitres traduits avec leurs titres en français -->
-        <!-- Je peux aussi traduire chaque bouton si tu le souhaites, comme "Chapitre 1", "Introduction", etc. -->
-
-        <div class="json-notice">
-            <p>Version JSON structurée en cours de réalisation</p>
-            <p style="font-size: 0.8em; margin-top: 10px;">Une version lisible par machine pour chercheurs et développeurs sera bientôt disponible</p>
+        <div class="download-item">
+          <a href="assets/pdf/2_Tables_des_matieres.pdf" class="pixel-button chapter-button" download>2. Table des matières</a>
         </div>
-
-        <div class="back-link">
-            <a href="index-fr.html">← Retour à l'accueil</a>
+        <div class="download-item">
+          <a href="assets/pdf/3_Precautions_ecriture.pdf" class="pixel-button chapter-button" download>3.&nbsp;Précautions&nbsp;d'écriture</a>
         </div>
+        <div class="download-item">
+          <a href="assets/pdf/4_Introduction_generale.pdf" class="pixel-button chapter-button" download>4. Introduction&nbsp;générale</a>
+        </div>
+        <div class="download-item">
+          <a href="assets/pdf/5_Chapitre_1.pdf" class="pixel-button chapter-button" download>5. Chapitre I</a>
+        </div>
+        <div class="download-item">
+          <a href="assets/pdf/6_Chapitre_2.pdf" class="pixel-button chapter-button" download>6. Chapitre II</a>
+        </div>
+        <div class="download-item">
+          <a href="assets/pdf/7_Chapitre_3.pdf" class="pixel-button chapter-button" download>7. Chapitre III</a>
+        </div>
+        <div class="download-item">
+          <a href="assets/pdf/8_Conclusion_Generale.pdf" class="pixel-button chapter-button" download>8. Conclusion&nbsp;générale</a>
+        </div>
+        <div class="download-item">
+          <a href="assets/pdf/9_Bibliographie.pdf" class="pixel-button chapter-button" download>9. Bibliographie</a>
+        </div>
+        <div class="download-item">
+          <a href="assets/pdf/10_Annexes.pdf" class="pixel-button chapter-button" download>10. Annexes</a>
+        </div>
+      </div>
+
+      <div class="json-notice">
+        <p>Une version JSON structurée est en cours de préparation</p>
+        <p style="font-size: 0.8em; margin-top: 10px;">Une version lisible par machine pour chercheurs et développeurs sera bientôt disponible</p>
+      </div>
+
+      <div class="back-link">
+        <a href="index-fr.html">← Retour à la page d’accueil</a>
+      </div>
     </section>
 
     <footer>
-        <!-- icônes réseaux + badge Ethereum conservés -->
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank"><img src="assets/icons/LinkedIn.png" alt="LinkedIn" class="pixel-icon"></a>
+        <a href="https://x.com/elmalandr0" target="_blank"><img src="assets/icons/X.png" alt="X" class="pixel-icon"></a>
+        <a href="https://warpcast.com/maelrolland" target="_blank"><img src="assets/icons/Farcaster.png" alt="Farcaster" class="pixel-icon"></a>
+        <a href="https://bsky.app/profile/mael-rolland.bsky.social" target="_blank"><img src="assets/icons/Bluesky.png" alt="Bluesky" class="pixel-icon"></a>
+        <a href="https://github.com/Elma-Landro" target="_blank"><img src="assets/icons/Github.png" alt="Github" class="pixel-icon"></a>
+        <a href="https://hey.xyz/u/mael-rolland" target="_blank"><img src="assets/icons/Lens.png" alt="Lens" class="pixel-icon"></a>
+      </div>
+      <div class="ethereum-badge-centered">
+        <a href="https://docs.ethswarm.org/" target="_blank">
+          <img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge" />
+        </a>
+      </div>
     </footer>
-</div>
+  </div>
 
-<script>
+  <script>
     function toggleChecksum(id) {
-        const content = document.getElementById(id);
-        const button = content.previousElementSibling;
-        if (content.style.display === "block") {
-            content.style.display = "none";
-            button.classList.remove("active");
-        } else {
-            content.style.display = "block";
-            button.classList.add("active");
-        }
+      const content = document.getElementById(id);
+      const button = content.previousElementSibling;
+      if (content.style.display === "block") {
+        content.style.display = "none";
+        button.classList.remove("active");
+      } else {
+        content.style.display = "block";
+        button.classList.add("active");
+      }
     }
-</script>
-
+  </script>
 </body>
 </html>
