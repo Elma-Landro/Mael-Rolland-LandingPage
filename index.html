@@ -14,26 +14,6 @@
         }
     </style>
 
-    <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const userLang = navigator.language || navigator.userLanguage;
-    const storedLang = localStorage.getItem("langChoice");
-
-    if (!storedLang) {
-      if (userLang.startsWith("fr")) {
-        // Si aucune préférence enregistrée ET que langue navigateur est FR
-        window.location.href = "index-fr.html";
-      }
-    } else if (storedLang === "fr" && window.location.pathname.endsWith("index.html")) {
-      // Si préférence FR enregistrée mais utilisateur est sur index EN
-      window.location.href = "index-fr.html";
-    } else if (storedLang === "en" && window.location.pathname.endsWith("index-fr.html")) {
-      // Si préférence EN enregistrée mais utilisateur est sur la version FR
-      window.location.href = "index.html";
-    }
-  });
-    </script>
-    
 </head>
 <body>
     <div class="container">
