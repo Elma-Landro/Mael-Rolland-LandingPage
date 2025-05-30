@@ -214,6 +214,10 @@ body {
     /* Use background images or CSS shapes for icons */
 }
 
+.language-switcher {
+  text-align: center;
+  margin-top: 5px;
+}
 .language-switcher .lang-link {
   font-family: 'VT323', monospace;
   font-size: 1.1em;
