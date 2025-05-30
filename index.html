@@ -14,12 +14,14 @@
         }
     </style>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const userLang = navigator.language || navigator.userLanguage;
-            if (userLang.startsWith("fr")) {
-                window.location.href = "index-fr.html";
-            }
-        });
+  document.addEventListener("DOMContentLoaded", function () {
+    const userLang = navigator.language || navigator.userLanguage;
+
+    // Ne pas rediriger si l'utilisateur a choisi manuellement English
+    if (!localStorage.getItem("langChoice") && userLang.startsWith("fr")) {
+      window.location.href = "index-fr.html";
+    }
+  });
     </script>
 </head>
 <body>
