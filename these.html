@@ -242,31 +242,6 @@ Beyond the Codes : Discreet and Polycentric Infrastructure and Governance of Cry
                     <a href="assets/pdf/3_Precautions_ecriture.pdf" class="pixel-button chapter-button" download>3.&nbsp;Writing&nbsp;precautions</a>
                     <div class="checksum-container">
                         <button class="checksum-toggle" onclick="toggleChecksum('checksum-3')">Checksum (SHA-256)</button>
-                        <div id="checksum-3" class="checksum-content">
-                            0d2004f1a7aa44d0c7b2dce7125a09286976d45213711e97c566b3aab163b693
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="download-item">
-                    <a href="assets/pdf/4_Introduction_generale.pdf" class="pixel-button chapter-button" download>4. Introduction</a>
-                    <div class="checksum-container">
-                        <button class="checksum-toggle" onclick="toggleChecksum('checksum-4')">Checksum (SHA-256)</button>
-                        <div id="checksum-4" class="checksum-content">
-                            46f8ebfb571619cb9bee1a9a72186b3f7ba213da5cb58426ad85ef6ae10eddce
-                        </div>
-                    </div>
-                </div>
-
-                <div class="download-item">
-                    <a href="assets/pdf/5_Chapitre_1.pdf" class="pixel-button chapter-button" download>5. Chapter 1</a>
-                    <div class="checksum-container">
-                        <button class="checksum-toggle" onclick="toggleChecksum('checksum-5')">Checksum (SHA-256)</button>
-                        <div id="checksum-5" class="checksum-content">
-                            4b6f6c5da8520298214736bba046dbf43f1e0d652cf2620760a31153d286568d
-                        </div>
-                    </div>
-                </div>
                 
                 <div class="download-item">
                     <a href="assets/pdf/6_Chapitre_2.pdf" class="pixel-button chapter-button" download>6. Chapter 2</a>
@@ -330,36 +305,41 @@ Beyond the Codes : Discreet and Polycentric Infrastructure and Governance of Cry
         </section>
         
         <footer>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                    <img src="assets/icons/LinkedIn.png" alt="LinkedIn" class="pixel-icon">
-                </a>
-                <a href="https://x.com/elmalandr0" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-                    <img src="assets/icons/X.png" alt="X (Twitter)" class="pixel-icon">
-                </a>
-                <a href="https://warpcast.com/maelrolland" target="_blank" rel="noopener noreferrer" aria-label="Farcaster">
-                    <img src="assets/icons/Farcaster.png" alt="Farcaster" class="pixel-icon">
-                </a>
-                <a href="https://bsky.app/profile/mael-rolland.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Bluesky">
-                    <img src="assets/icons/Bluesky.png" alt="Bluesky" class="pixel-icon">
-                </a>
-                <a href="https://github.com/Elma-Landro" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <img src="assets/icons/Github.png" alt="GitHub" class="pixel-icon">
-                </a>
-                <a href="https://hey.xyz/u/mael-rolland" target="_blank" rel="noopener noreferrer" aria-label="Lens Protocol">
-                    <img src="assets/icons/Lens.png" alt="Lens Protocol" class="pixel-icon">
-                </a>
-            </div>
-            <div class="ethereum-badge-centered">
-                <a href="https://docs.ethswarm.org/" target="_blank" rel="noopener noreferrer" aria-label="Built on Ethereum (Swarm)">
-                    <img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge">
-                </a>
-            </div>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank"><img src="assets/icons/LinkedIn.png" alt="LinkedIn" class="pixel-icon"></a>
+        <a href="https://x.com/elmalandr0" target="_blank"><img src="assets/icons/X.png" alt="X" class="pixel-icon"></a>
+        <a href="https://warpcast.com/maelrolland" target="_blank"><img src="assets/icons/Farcaster.png" alt="Farcaster" class="pixel-icon"></a>
+        <a href="https://bsky.app/profile/mael-rolland.bsky.social" target="_blank"><img src="assets/icons/Bluesky.png" alt="Bluesky" class="pixel-icon"></a>
+        <a href="https://github.com/Elma-Landro" target="_blank"><img src="assets/icons/Github.png" alt="Github" class="pixel-icon"></a>
+        <a href="https://hey.xyz/u/mael-rolland" target="_blank"><img src="assets/icons/Lens.png" alt="Lens" class="pixel-icon"></a>
+      </div>
+      <div class="ethereum-badge-centered">
+        <a href="https://docs.ethswarm.org/" target="_blank">
+          <img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge" />
+        </a>
+      </div>
         </footer>
     </div>
     
     <!-- Script pour les checksums -->
     <script>
+        function toggleChecksum(id) {
+            const content = document.getElementById(id);
+            const button = content.previousElementSibling;
+            
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                button.classList.remove("active");
+            } else {
+                content.style.display = "block";
+                button.classList.add("active");
+            }
+        }
+    </script>
+</body>
+</html>
+
+  <script>
         function toggleChecksum(id) {
             const content = document.getElementById(id);
             const button = content.previousElementSibling;
