@@ -1,108 +1,101 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Contact <br> Maël&nbsp;Rolland | TheDyorLab.eth</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        form {
-            max-width: 600px;
-            margin: 30px auto;
-            font-family: 'VT323', monospace;
-            font-size: 1em;
-            color: #ffcc66;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }input, textarea, select {
-        background-color: #300000;
-        border: 1px solid #ffcc66;
-        padding: 8px 12px;
-        font-family: 'VT323', monospace;
-        color: #ffaa33;
+  <meta charset="UTF-8" />
+  <title>Contact – Maël Rolland | TheDyorLab.eth</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    form input,
+    form textarea,
+    form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      font-family: 'VT323', monospace;
+      font-size: 1em;
+      background-color: #330000;
+      color: #ffcc66;
+      border: 1px solid #ffcc66;
     }
 
-    input::placeholder, textarea::placeholder {
-        color: #ffaa33;
+    form textarea {
+      height: 120px;
     }
 
-    button[type="submit"] {
-        background-color: #8b0000;
-        color: #ffcc66;
-        border: 1px solid #ffcc66;
-        font-size: 1.1em;
-        padding: 10px 18px;
-        cursor: pointer;
-        font-family: 'Press Start 2P', monospace;
+    form label {
+      display: block;
+      color: #ffcc66;
+      font-family: 'VT323', monospace;
+      font-size: 1.1em;
+      margin-bottom: 5px;
     }
-
-    button[type="submit"]:hover {
-        background-color: #a80000;
-        border-color: #ffee99;
-    }
-</style>
-
+  </style>
 </head>
 <body>
-    <!-- Language Switcher -->
-    <div class="language-switcher" style="text-align: center; margin-top: 10px;">
-        <a href="contact.html" class="lang-link">🇬🇧 English</a> | 
-        <a href="contact-fr.html" class="lang-link">🇫🇷 Français</a>
-    </div>
-    <div class="container">
-        <header>
-            <h1 class="main-title">Contact – Maël Rolland | TheDyorLab.eth</h1>
-            <p class="subtitle">For any inquiry, collaboration project, or invitation, please fill out this form. I will get back to you as soon as possible.</p>
-        </header>
-        <form action="https://formsubmit.co/mael.rolland@protonmail.com" method="POST">
-            <label>Full Name*<br>
-                <input type="text" name="name" required>
-            </label>
-            <label>Contact Email Address*<br>
-                <input type="email" name="email" required>
-            </label>
-            <label>Organization / Affiliation (optional)<br>
-                <input type="text" name="organisation">
-            </label>
-            <label>Subject of Your Request<br>
-                <select name="subject" required>
-                    <option value="Collaboration">Collaboration / project</option>
-                    <option value="Présentation">Request for presentation / seminar</option>
-                    <option value="Journaliste">Journalist / media</option>
-                    <option value="Exploratoire">Exploratory conversation</option>
-                    <option value="Autres">Other</option>
-                </select>
-            </label>
-            <label>Message / Details<br>
-                <textarea name="message" rows="5" required></textarea>
-            </label>
-            <label>Would you like to be contacted by email or call?*<br>
-                <select name="contact_type" required>
-                    <option value="30min">Yes, preferably 30 minutes call</option>
-                    <option value="1h">Yes, preferably 1 hour call</option>
-                    <option value="mail">Not necessary, email reply only</option>
-                </select>
-            </label>
-            <label>
-                <input type="checkbox" name="consent" required>
-                I agree that my data will be used to contact me as part of this inquiry.*
-            </label>
-            <button type="submit" class="pixel-button large">Send</button>
-        </form>
-        <footer>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="assets/icons/LinkedIn.png" alt="LinkedIn Icon" class="pixel-icon"></a>
-                <a href="https://x.com/elmalandr0" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><img src="assets/icons/X.png" alt="X Icon" class="pixel-icon"></a>
-                <a href="https://warpcast.com/maelrolland" target="_blank" rel="noopener noreferrer" aria-label="Farcaster"><img src="assets/icons/Farcaster.png" alt="Farcaster Icon" class="pixel-icon"></a>
-                <a href="https://bsky.app/profile/mael-rolland.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Bluesky"><img src="assets/icons/Bluesky.png" alt="Bluesky Icon" class="pixel-icon"></a>
-                <a href="https://github.com/Elma-Landro" target="_blank" rel="noopener noreferrer" aria-label="Github"><img src="assets/icons/Github.png" alt="Github Icon" class="pixel-icon"></a>
-                <a href="https://hey.xyz/u/mael-rolland" target="_blank" rel="noopener noreferrer" aria-label="Lens Protocol"><img src="assets/icons/Lens.png" alt="Lens Icon" class="pixel-icon"></a>
-            </div>
-            <div class="ethereum-badge-centered">
-                <a href="https://docs.ethswarm.org/" target="_blank" rel="noopener noreferrer" aria-label="Built on Ethereum (Swarm)">
-                    <img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge">
-                </a>
-            </div>
-        </footer>
-    </div>
+  <!-- Language Switcher -->
+  <div class="language-switcher" style="text-align: center; margin-top: 10px;">
+    <a href="contact.html" class="lang-link">🇬🇧 English</a> | 
+    <a href="contact-fr.html" class="lang-link">🇫🇷 Français</a>
+  </div>
+  <div class="container">
+    <header>
+      <h1 class="main-title">Contact – Maël Rolland | TheDyorLab.eth</h1>
+      <p class="subtitle">
+        For any inquiry, collaboration project, or invitation, please fill out this form. I will get back to you as soon as possible.
+      </p>
+    </header>
+
+    <form action="https://formsubmit.co/mael.rolland@protonmail.com" method="POST" style="max-width:500px;margin:auto;">
+      <label for="name">Full Name*</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Contact Email Address*</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="organisation">Organization / Affiliation (optional)</label>
+      <input type="text" id="organisation" name="organisation" />
+
+      <label for="subject">Subject of Your Request</label>
+      <select id="subject" name="subject" required>
+        <option value="Collaboration">Collaboration / project</option>
+        <option value="Présentation">Request for presentation / seminar</option>
+        <option value="Journaliste">Journalist / media</option>
+        <option value="Exploratoire">Exploratory conversation</option>
+        <option value="Autres">Other</option>
+      </select>
+
+      <label for="message">Message / Details</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <label for="contact_type">Would you like to be contacted by email or call?*</label>
+      <select id="contact_type" name="contact_type" required>
+        <option value="30min">Yes, preferably 30 minutes call</option>
+        <option value="1h">Yes, preferably 1 hour call</option>
+        <option value="mail">Not necessary, email reply only</option>
+      </select>
+
+      <label>
+        <input type="checkbox" name="consent" required />
+        I agree that my data will be used to contact me as part of this inquiry.*
+      </label>
+
+      <button type="submit" class="pixel-button large">Send</button>
+    </form>
+
+    <footer>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank" rel="noopener noreferrer"><img src="assets/icons/LinkedIn.png" alt="LinkedIn Icon" class="pixel-icon" /></a>
+        <a href="https://x.com/elmalandr0" target="_blank" rel="noopener noreferrer"><img src="assets/icons/X.png" alt="X Icon" class="pixel-icon" /></a>
+        <a href="https://warpcast.com/maelrolland" target="_blank" rel="noopener noreferrer"><img src="assets/icons/Farcaster.png" alt="Farcaster Icon" class="pixel-icon" /></a>
+        <a href="https://bsky.app/profile/mael-rolland.bsky.social" target="_blank" rel="noopener noreferrer"><img src="assets/icons/Bluesky.png" alt="Bluesky Icon" class="pixel-icon" /></a>
+        <a href="https://github.com/Elma-Landro" target="_blank" rel="noopener noreferrer"><img src="assets/icons/Github.png" alt="Github Icon" class="pixel-icon" /></a>
+        <a href="https://hey.xyz/u/mael-rolland" target="_blank" rel="noopener noreferrer"><img src="assets/icons/Lens.png" alt="Lens Icon" class="pixel-icon" /></a>
+      </div>
+      <div class="ethereum-badge-centered">
+        <a href="https://docs.ethswarm.org/" target="_blank" rel="noopener noreferrer"><img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge" /></a>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
