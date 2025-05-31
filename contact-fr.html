@@ -1,71 +1,124 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Contact – Maël Rolland | TheDyorLab.eth</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Contact – Maël Rolland | TheDyorLab.eth</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    form {
+      font-family: 'VT323', monospace;
+      font-size: 1.1em;
+      color: #ffaa33;
+      max-width: 500px;
+      margin: 40px auto;
+      line-height: 1.6;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 6px 8px;
+      margin-top: 4px;
+      background-color: #1a0000;
+      border: 1px solid #ffcc66;
+      color: #ffaa33;
+      font-family: 'VT323', monospace;
+    }
+
+    textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    input[type="checkbox"] {
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    .pixel-button {
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-    <!-- Sélecteur de langue -->
-    <div class="language-switcher" style="text-align: center; margin-top: 10px;">
-        <a href="contact.html" class="lang-link">🇬🇧 English</a> | 
-        <a href="contact-fr.html" class="lang-link">🇫🇷 Français</a>
-    </div>
-    <div class="container">
-        <header>
-            <h1 class="main-title">Contact – Maël Rolland | TheDyorLab.eth</h1>
-            <p class="subtitle">Pour tout échange, projet de collaboration ou invitation, merci de remplir ce formulaire. Je vous répondrai dans les plus brefs délais.</p>
-        </header>
-        <form action="https://formsubmit.co/mael.rolland@protonmail.com" method="POST" style="max-width:500px;margin:auto;">
-            <label>Nom & Prénom*<br>
-                <input type="text" name="name" required>
-            </label><br>
-            <label>Adresse e-mail de contact*<br>
-                <input type="email" name="email" required>
-            </label><br>
-            <label>Organisation / affiliation (facultatif)<br>
-                <input type="text" name="organisation">
-            </label><br>
-            <label>Sujet de votre demande<br>
-                <select name="subject" required>
-                    <option value="Collaboration">Collaboration / projet</option>
-                    <option value="Présentation">Demande de présentation / séminaire</option>
-                    <option value="Journaliste">Journaliste / média</option>
-                    <option value="Exploratoire">Échange exploratoire</option>
-                    <option value="Autres">Autres</option>
-                </select>
-            </label><br>
-            <label>Message libre / détails<br>
-                <textarea name="message" required></textarea>
-            </label><br>
-            <label>Souhaitez-vous être recontacté par mail ou appel ?*<br>
-                <select name="contact_type" required>
-                    <option value="30min">Oui, plutôt 30 minutes</option>
-                    <option value="1h">Oui, plutôt 1 heure</option>
-                    <option value="mail">Pas nécessaire, réponse mail seulement</option>
-                </select>
-            </label><br>
-            <label>
-                <input type="checkbox" name="consent" required>
-                J’accepte que mes données soient utilisées pour être recontacté(e) dans le cadre de cette prise de contact.*
-            </label><br>
-            <button type="submit" class="pixel-button large">Envoyer</button>
-        </form>
-        <footer>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="assets/icons/LinkedIn.png" alt="LinkedIn Icon" class="pixel-icon"></a>
-                <a href="https://x.com/elmalandr0" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><img src="assets/icons/X.png" alt="X Icon" class="pixel-icon"></a>
-                <a href="https://warpcast.com/maelrolland" target="_blank" rel="noopener noreferrer" aria-label="Farcaster"><img src="assets/icons/Farcaster.png" alt="Farcaster Icon" class="pixel-icon"></a>
-                <a href="https://bsky.app/profile/mael-rolland.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Bluesky"><img src="assets/icons/Bluesky.png" alt="Bluesky Icon" class="pixel-icon"></a>
-                <a href="https://github.com/Elma-Landro" target="_blank" rel="noopener noreferrer" aria-label="Github"><img src="assets/icons/Github.png" alt="Github Icon" class="pixel-icon"></a>
-                <a href="https://hey.xyz/u/mael-rolland" target="_blank" rel="noopener noreferrer" aria-label="Lens Protocol"><img src="assets/icons/Lens.png" alt="Lens Icon" class="pixel-icon"></a>
-            </div>
-            <div class="ethereum-badge-centered">
-                <a href="https://docs.ethswarm.org/" target="_blank" rel="noopener noreferrer" aria-label="Built on Ethereum (Swarm)">
-                    <img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge">
-                </a>
-            </div>
-        </footer>
-    </div>
+  <div class="language-switcher" style="text-align: center; margin-top: 10px;">
+    <a href="contact.html">🇬🇧 English</a> |
+    <a href="contact-fr.html">🇫🇷 Français</a>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1 class="main-title">Contact – Maël Rolland | TheDyorLab.eth</h1>
+      <p class="subtitle">
+        Pour tout échange, projet de collaboration ou invitation, merci de remplir ce formulaire. Je vous répondrai dans les plus brefs délais.
+      </p>
+    </header>
+
+    <form action="https://formsubmit.co/mael.rolland@protonmail.com" method="POST">
+      <label>Nom & Prénom*
+        <input type="text" name="name" required>
+      </label>
+
+      <label>Adresse e-mail de contact*
+        <input type="email" name="email" required>
+      </label>
+
+      <label>Organisation / affiliation (facultatif)
+        <input type="text" name="organisation">
+      </label>
+
+      <label>Sujet de votre demande
+        <select name="subject" required>
+          <option value="Collaboration">Collaboration / projet</option>
+          <option value="Présentation">Demande de présentation / séminaire</option>
+          <option value="Journaliste">Journaliste / média</option>
+          <option value="Exploratoire">Échange exploratoire</option>
+          <option value="Autres">Autres</option>
+        </select>
+      </label>
+
+      <label>Message libre / détails
+        <textarea name="message" required></textarea>
+      </label>
+
+      <label>Souhaitez-vous être recontacté par mail ou appel ?*
+        <select name="contact_type" required>
+          <option value="30min">Oui, plutôt 30 minutes</option>
+          <option value="1h">Oui, plutôt 1 heure</option>
+          <option value="mail">Pas nécessaire, réponse mail seulement</option>
+        </select>
+      </label>
+
+      <label>
+        <input type="checkbox" name="consent" required>
+        J’accepte que mes données soient utilisées pour être recontacté(e) dans le cadre de cette prise de contact.*
+      </label>
+
+      <button type="submit" class="pixel-button large">Envoyer</button>
+    </form>
+
+    <footer>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank"><img src="assets/icons/LinkedIn.png" alt="LinkedIn" class="pixel-icon"></a>
+        <a href="https://x.com/elmalandr0" target="_blank"><img src="assets/icons/X.png" alt="Twitter" class="pixel-icon"></a>
+        <a href="https://warpcast.com/maelrolland" target="_blank"><img src="assets/icons/Farcaster.png" alt="Farcaster" class="pixel-icon"></a>
+        <a href="https://bsky.app/profile/mael-rolland.bsky.social" target="_blank"><img src="assets/icons/Bluesky.png" alt="Bluesky" class="pixel-icon"></a>
+        <a href="https://github.com/Elma-Landro" target="_blank"><img src="assets/icons/Github.png" alt="GitHub" class="pixel-icon"></a>
+        <a href="https://hey.xyz/u/mael-rolland" target="_blank"><img src="assets/icons/Lens.png" alt="Lens Protocol" class="pixel-icon"></a>
+      </div>
+      <div class="ethereum-badge-centered">
+        <a href="https://docs.ethswarm.org/" target="_blank">
+          <img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge">
+        </a>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
