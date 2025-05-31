@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact – Maël Rolland | TheDyorLab.eth</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sélecteur de langue -->
+    <div class="language-switcher" style="text-align: center; margin-top: 10px;">
+        <a href="contact.html" class="lang-link">🇬🇧 English</a> | 
+        <a href="contact-fr.html" class="lang-link">🇫🇷 Français</a>
+    </div>
+    <div class="container">
+        <header>
+            <h1 class="main-title">Contact – Maël Rolland | TheDyorLab.eth</h1>
+            <p class="subtitle">Pour tout échange, projet de collaboration ou invitation, merci de remplir ce formulaire. Je vous répondrai dans les plus brefs délais.</p>
+        </header>
+        <form action="https://formsubmit.co/mael.rolland@protonmail.com" method="POST" style="max-width:500px;margin:auto;">
+            <label>Nom & Prénom*<br>
+                <input type="text" name="name" required>
+            </label><br>
+            <label>Adresse e-mail de contact*<br>
+                <input type="email" name="email" required>
+            </label><br>
+            <label>Organisation / affiliation (facultatif)<br>
+                <input type="text" name="organisation">
+            </label><br>
+            <label>Sujet de votre demande<br>
+                <select name="subject" required>
+                    <option value="Collaboration">Collaboration / projet</option>
+                    <option value="Présentation">Demande de présentation / séminaire</option>
+                    <option value="Journaliste">Journaliste / média</option>
+                    <option value="Exploratoire">Échange exploratoire</option>
+                    <option value="Autres">Autres</option>
+                </select>
+            </label><br>
+            <label>Message libre / détails<br>
+                <textarea name="message" required></textarea>
+            </label><br>
+            <label>Souhaitez-vous être recontacté par mail ou appel ?*<br>
+                <select name="contact_type" required>
+                    <option value="30min">Oui, plutôt 30 minutes</option>
+                    <option value="1h">Oui, plutôt 1 heure</option>
+                    <option value="mail">Pas nécessaire, réponse mail seulement</option>
+                </select>
+            </label><br>
+            <label>
+                <input type="checkbox" name="consent" required>
+                J’accepte que mes données soient utilisées pour être recontacté(e) dans le cadre de cette prise de contact.*
+            </label><br>
+            <button type="submit" class="pixel-button large">Envoyer</button>
+        </form>
+        <footer>
+            <!-- (Copie ton footer d'index.html ici pour la cohérence visuelle) -->
+        </footer>
+    </div>
+</body>
+</html>
