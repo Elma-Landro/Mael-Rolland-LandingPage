@@ -460,3 +460,26 @@ footer {
     margin-top: 10px;
     opacity: 1;
 }
+.media-icon {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
+.media-button {
+  font-family: 'VT323', monospace;
+  font-size: 0.95em;
+  padding: 4px 8px;
+  margin-top: 5px;
+  display: inline-block;
+  background-color: #8b0000;
+  color: #ffcc66;
+  border: 1px solid #ffcc66;
+  text-decoration: none;
+}
+
+.media-button:hover {
+  background-color: #a80000;
+  border-color: #ffee99;
+}
