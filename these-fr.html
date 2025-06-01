@@ -14,132 +14,106 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css" />
   <style>
+    /* 🌍 Sélecteur de langue */
+.language-switcher {
+  text-align: center;
+  margin-top: 10px;
+  font-family: 'VT323', monospace;
+  font-size: 0.9em;
+  color: #33ff33;
+}
+.language-switcher a {
+  color: #33ff33;
+  text-decoration: none;
+  margin: 0 5px;
+}
+.language-switcher a:hover {
+  text-decoration: underline;
+}
 
-    .language-switcher {
-            text-align: center;
-            margin-top: 10px;
-            font-family: 'VT323', monospace;
-            font-size: 0.9em;
-            color: #33ff33;
-        }
-        .language-switcher a {
-            color: #33ff33;
-            text-decoration: none;
-            margin: 0 5px;
-        }
-        .language-switcher a:hover {
-            text-decoration: underline;
-        }
-    
-    .these-section {
-      margin: 30px auto;
-      max-width: 700px;
-    }
-    .these-intro {
-      font-family: 'VT323', monospace;
-      font-size: 1.2em;
-      color: #ffaa33;
-      line-height: 1.6;
-      margin-bottom: 30px;
-      text-align: center;
-    }
-    .download-complete {
-      margin: 30px auto;
-      text-align: center;
-    }
-    .download-complete .pixel-button {
-      font-size: 1.2em;
-      padding: 15px 25px;
-      background-color: #8b0000;
-      display: inline-block;
-      margin: 0 auto;
-    }
-    .chapters-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin: 25px auto;
-    }
-    .chapter-button {
-      flex-basis: calc(50% - 20px);
-      min-width: 200px;
-      text-align: left;
-      padding: 12px 15px;
-    }
-    .json-notice {
-      margin-top: 40px;
-      padding: 15px;
-      border: 2px dashed #33ff33;
-      background-color: rgba(51, 255, 51, 0.1);
-      color: #33ff33;
-      font-family: 'VT323', monospace;
-      font-size: 1em;
-      text-align: center;
-      border-radius: 4px;
-    }
-    .back-link {
-      margin-top: 30px;
-      text-align: center;
-    }
-    .back-link a {
-      color: #ffcc66;
-      text-decoration: none;
-      font-size: 0.8em;
-      display: inline-block;
-      padding: 8px 15px;
-      border: 1px solid #ffcc66;
-    }
-    .back-link a:hover {
-      background-color: rgba(255, 204, 102, 0.2);
-    }
-    .checksum-container {
-      margin-top: 1px;
-      margin-bottom: 10px;
-      text-align: left;
-    }
-    .checksum-toggle {
-      background: none;
-      border: none;
-      color: #33ff33;
-      font-family: 'VT323', monospace;
-      font-size: 0.8em;
-      cursor: pointer;
-      padding: 2px 5px;
-      text-align: left;
-      display: inline-flex;
-      align-items: center;
-    }
-    .checksum-toggle:hover {
-      text-decoration: underline;
-    }
-    .checksum-toggle::before {
-      content: '▶';
-      margin-right: 5px;
-      transition: transform 0.2s;
-    }
-    .checksum-toggle.active::before {
-      transform: rotate(90deg);
-    }
-    .checksum-content {
-      display: none;
-      background-color: rgba(0, 0, 0, 0.3);
-      border: 1px solid #33ff33;
-      padding: 8px;
-      font-family: 'VT323', monospace;
-      color: #33ff33;
-      font-size: 0.8em;
-      white-space: nowrap;
-      overflow-x: auto;
-    }
-    .download-item {
-      margin-bottom: 15px;
-    }
-    @media (max-width: 768px) {
-      .chapter-button {
-        flex-basis: calc(100% - 20px);
-      }
-    }
+/* 📜 Section générique (comme .these-section) */
+.curriculum-section {
+  margin: 30px auto;
+  max-width: 700px;
+  font-family: 'VT323', monospace;
+}
+
+/* 🧾 Boutons de téléchargement (PDF diplômes, CV, etc.) */
+.download-item {
+  margin-bottom: 15px;
+}
+
+.pixel-button.chapter-button {
+  font-size: 1em;
+  padding: 12px 15px;
+  background-color: #8b0000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #ffcc66;
+  text-decoration: none;
+  border: 1px solid #ffcc66;
+  width: 100%;
+  max-width: 700px;
+}
+.pixel-button.chapter-button:hover {
+  background-color: #a30000;
+  color: #ffffff;
+}
+.pixel-button.chapter-button img.pixel-icon {
+  height: 20px;
+  margin-left: 10px;
+}
+
+/* 🔐 Checksum display */
+.checksum-container {
+  margin-top: 4px;
+  text-align: left;
+  max-width: 700px;
+}
+.checksum-toggle {
+  background: none;
+  border: none;
+  color: #33ff33;
+  font-family: 'VT323', monospace;
+  font-size: 0.8em;
+  cursor: pointer;
+  padding: 2px 5px;
+  text-align: left;
+  display: inline-flex;
+  align-items: center;
+}
+.checksum-toggle:hover {
+  text-decoration: underline;
+}
+.checksum-toggle::before {
+  content: '▶';
+  margin-right: 5px;
+  transition: transform 0.2s;
+}
+.checksum-toggle.active::before {
+  transform: rotate(90deg);
+}
+.checksum-content {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid #33ff33;
+  padding: 8px;
+  font-family: 'VT323', monospace;
+  color: #33ff33;
+  font-size: 0.8em;
+  white-space: nowrap;
+  overflow-x: auto;
+  max-width: 700px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pixel-button.chapter-button {
+    flex-basis: 100%;
+    font-size: 0.9em;
+  }
+}
   </style>
 </head>
 <body>
