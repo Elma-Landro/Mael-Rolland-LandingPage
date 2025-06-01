@@ -422,7 +422,60 @@ footer {
     }
 }
 
+.cv-section {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #ffaa33;
+    font-family: 'VT323', monospace;
+    font-size: 1em;
+    color: #ffcc66;
+}
 
+.cv-section h2 {
+    font-size: 1.4em;
+    color: #33ff33;
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.cv-section p,
+.cv-section ul {
+    font-size: 1em;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.cv-section ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+
+.cv-section a {
+    color: #33ff33;
+    text-decoration: underline;
+}
+
+.cv-section a:hover {
+    text-decoration: none;
+}
+
+.cv-button {
+    display: inline-block;
+    margin-top: 15px;
+    font-family: 'VT323', monospace;
+    font-size: 1em;
+    color: #ffcc66;
+    background-color: transparent;
+    border: 1px solid #ffaa33;
+    padding: 8px 14px;
+    text-decoration: none;
+}
+
+.cv-button:hover {
+    background-color: rgba(255, 204, 102, 0.2);
+}
 
 
 /* Coming Soon Button Style */
