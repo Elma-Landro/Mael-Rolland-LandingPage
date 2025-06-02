@@ -2,12 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Contact<br>Maël&nbsp;Rolland | TheDyorLab.eth</title>
+  <title>Contact – Maël Rolland | TheDyorLab.eth</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    form input,
-    form textarea,
-    form select {
+    body {
+      font-family: 'VT323', monospace;
+      background-color: #330000;
+      color: #ffcc66;
+      margin: 0;
+      padding: 0;
+    }
+
+    form input, form textarea, form select {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
@@ -30,14 +36,88 @@
       font-size: 1.1em;
       margin-bottom: 5px;
     }
+
+    .container {
+      max-width: 700px;
+      margin: 50px auto 30px auto;
+      padding: 0 15px;
+    }
+
+    h1.main-title {
+      font-size: 2.2em;
+      color: #ffaa33;
+      text-align: center;
+      text-shadow: 1px 1px #000;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: #ffcc66;
+    }
+
+    .pixel-button {
+      background-color: #8b0000;
+      color: #ffcc66;
+      border: 1px solid #ffcc66;
+      font-family: 'VT323', monospace;
+      font-size: 1.1em;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .pixel-button:hover {
+      background-color: #a30000;
+      color: white;
+    }
+
+    .social-icons {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .pixel-icon {
+      height: 28px;
+      margin: 0 6px;
+      vertical-align: middle;
+    }
+
+    .ethereum-badge-centered {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .pixel-ethereum-badge {
+      height: 50px;
+    }
+
+    .back-link {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .back-link a {
+      color: #ffcc66;
+      text-decoration: none;
+      font-size: 0.9em;
+      padding: 8px 15px;
+      border: 1px solid #ffcc66;
+      display: inline-block;
+    }
+
+    .back-link a:hover {
+      background-color: rgba(255, 204, 102, 0.2);
+    }
   </style>
 </head>
 <body>
-  <!-- Language Switcher -->
   <div class="language-switcher" style="text-align: center; margin-top: 10px;">
-    <a href="contact.html" class="lang-link">🇬🇧 English</a> | 
+    <a href="contact.html" class="lang-link">🇬🇧 English</a> |
     <a href="contact-fr.html" class="lang-link">🇫🇷 Français</a>
   </div>
+
   <div class="container">
     <header>
       <h1 class="main-title">Contact – Maël Rolland | TheDyorLab.eth</h1>
@@ -46,7 +126,7 @@
       </p>
     </header>
 
-    <form action="https://formsubmit.co/mael.rolland@protonmail.com" method="POST" style="max-width:500px;margin:auto;">
+    <form action="https://formsubmit.co/mael.rolland@protonmail.com" method="POST">
       <label for="name">Full Name*</label>
       <input type="text" id="name" name="name" required />
 
@@ -80,22 +160,15 @@
         I agree that my data will be used to contact me as part of this inquiry.*
       </label>
 
-      <button type="submit" class="pixel-button large">Send</button>
+      <button type="submit" class="pixel-button">Send</button>
     </form>
+
+    <!-- 🔙 Bouton retour -->
+    <div class="back-link">
+      <a href="index.html">← Go to Homepage</a>
+    </div>
 
     <footer>
       <div class="social-icons">
-        <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank" rel="noopener noreferrer"><img src="assets/icons/LinkedIn.png" alt="LinkedIn Icon" class="pixel-icon" /></a>
-        <a href="https://x.com/elmalandr0" target="_blank" rel="noopener noreferrer"><img src="assets/icons/X.png" alt="X Icon" class="pixel-icon" /></a>
-        <a href="https://warpcast.com/maelrolland" target="_blank" rel="noopener noreferrer"><img src="assets/icons/Farcaster.png" alt="Farcaster Icon" class="pixel-icon" /></a>
-        <a href="https://bsky.app/profile/mael-rolland.bsky.social" target="_blank" rel="noopener noreferrer"><img src="assets/icons/Bluesky.png" alt="Bluesky Icon" class="pixel-icon" /></a>
-        <a href="https://github.com/Elma-Landro" target="_blank" rel="noopener noreferrer"><img src="assets/icons/Github.png" alt="Github Icon" class="pixel-icon" /></a>
-        <a href="https://hey.xyz/u/mael-rolland" target="_blank" rel="noopener noreferrer"><img src="assets/icons/Lens.png" alt="Lens Icon" class="pixel-icon" /></a>
-      </div>
-      <div class="ethereum-badge-centered">
-        <a href="https://docs.ethswarm.org/" target="_blank" rel="noopener noreferrer"><img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge" /></a>
-      </div>
-    </footer>
-  </div>
-</body>
-</html>
+        <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank"><img src="assets/icons/LinkedIn.png" alt="LinkedIn" class="pixel-icon" /></a>
+        <a href="https://x.com/elmalandr0" target="_blank"><img src="assets/icons/X.png
