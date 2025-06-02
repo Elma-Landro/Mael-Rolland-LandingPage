@@ -11,57 +11,248 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .language-switcher {
+      text-align: center;
+      margin-top: 10px;
+      font-family: 'VT323', monospace;
+      font-size: 0.9em;
+      color: #33ff33;
+    }
+    .language-switcher a {
+      color: #33ff33;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+    .language-switcher a:hover {
+      text-decoration: underline;
+    }
+    .curriculum-section {
+      margin: 30px auto;
+      max-width: 700px;
+      font-family: 'VT323', monospace;
+    }
+    .subtitle {
+      font-family: 'VT323', monospace;
+      font-size: 1.2em;
+      color: #ffaa33;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .download-item {
+      margin-bottom: 15px;
+    }
+    .pixel-button.chapter-button {
+      font-size: 1em;
+      padding: 12px 15px;
+      background-color: #8b0000;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #ffcc66;
+      text-decoration: none;
+      border: 1px solid #ffcc66;
+      width: 100%;
+      max-width: 700px;
+      box-sizing: border-box;
+    }
+    .pixel-button.chapter-button:hover {
+      background-color: #a30000;
+      color: #ffffff;
+    }
+    .pixel-button.chapter-button img.pixel-icon {
+      height: 20px;
+      margin-left: 10px;
+    }
+    .checksum-container {
+      margin-top: 4px;
+      text-align: left;
+      max-width: 700px;
+    }
+    .checksum-toggle {
+      background: none;
+      border: none;
+      color: #33ff33;
+      font-family: 'VT323', monospace;
+      font-size: 0.8em;
+      cursor: pointer;
+      padding: 2px 5px;
+      text-align: left;
+      display: inline-flex;
+      align-items: center;
+    }
+    .checksum-toggle:hover {
+      text-decoration: underline;
+    }
+    .checksum-toggle::before {
+      content: '▶';
+      margin-right: 5px;
+      transition: transform 0.2s;
+    }
+    .checksum-toggle.active::before {
+      transform: rotate(90deg);
+    }
+    .checksum-content {
+      display: none;
+      background-color: rgba(0, 0, 0, 0.3);
+      border: 1px solid #33ff33;
+      padding: 8px;
+      font-family: 'VT323', monospace;
+      color: #33ff33;
+      font-size: 0.8em;
+      white-space: nowrap;
+      overflow-x: auto;
+      max-width: 700px;
+    }
+    .back-link {
+      margin: 30px auto 0 auto;
+      max-width: 700px;
+      text-align: center;
+      font-family: 'VT323', monospace;
+    }
+    .back-link a {
+      color: #ffaa33;
+      text-decoration: none;
+      font-size: 1em;
+    }
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+    .social-icons {
+      text-align: center;
+      margin-top: 25px;
+    }
+    .pixel-icon {
+      height: 28px;
+      margin: 0 6px;
+      vertical-align: middle;
+    }
+    .ethereum-badge-centered {
+      text-align: center;
+      margin-top: 18px;
+    }
+    .pixel-ethereum-badge {
+      height: 28px;
+      vertical-align: middle;
+    }
+  </style>
 </head>
 <body>
   <div class="language-switcher">
     <a href="curriculum.html">🇬🇧 English</a> | <a href="curriculum-fr.html">🇫🇷 Français</a>
   </div>
-
   <div class="container">
     <header>
       <h1 class="main-title">Curriculum</h1>
       <p class="subtitle">Academic background & Web3 credentials</p>
     </header>
-
-    <section class="these-section">
-      <h2 style="color:#ffaa33; font-size:1.3em;">🎓 Academic Background</h2>
-      <ul style="font-family: 'VT323', monospace; font-size: 1em; color: #ffcc66; list-style: none; padding-left: 0;">
-        <li>2018–2024: PhD in Economics and Social Sciences – EHESS <a href="assets/pdf/PhD_EHESS.pdf" target="_blank"><img src="assets/icons/pdf-icon.png" class="media-icon"></a></li>
-        <li>2008–2009: Master 2 (Research) "Economics of Institutions", Paris X Nanterre – Merit <a href="assets/pdf/Master2_Nanterre.pdf" target="_blank"><img src="assets/icons/pdf-icon.png" class="media-icon"></a></li>
-        <li>2007–2008: Master 1 "Economics of Institutions and Organizations", Paris X – Merit <a href="assets/pdf/Master1_Nanterre.pdf" target="_blank"><img src="assets/icons/pdf-icon.png" class="media-icon"></a></li>
-        <li>2006–2007: Bachelor's degree (Year 3) in Economics – Society & History, Paris X Nanterre <a href="assets/pdf/Licence_Eco.pdf" target="_blank"><img src="assets/icons/pdf-icon.png" class="media-icon"></a></li>
-        <li>2002–2006: Bachelor's degree (Year 3), Law & Economics (AES) – Université de Savoie <a href="assets/pdf/Licence_Droit.pdf" target="_blank"><img src="assets/icons/pdf-icon.png" class="media-icon"></a></li>
-      </ul>
-
-      <div class="download-complete download-item">
-        <a href="assets/pdf/Mael_Rolland_CV_2025.pdf" class="pixel-button large" download>Download complete CV</a>
+    <section class="curriculum-section">
+      <h2 style="color: #ffaa33;">🎓 Academic Background</h2>
+      <div class="download-item">
+        <a href="assets/pdf/PhD_EHESS.pdf" class="pixel-button chapter-button" download>
+          2018–2024: PhD in Economics and Social Sciences – EHESS
+          <img src="assets/icons/pdf-icon.png" class="pixel-icon" alt="PDF icon">
+        </a>
+        <div class="checksum-container">
+          <button class="checksum-toggle" onclick="toggleChecksum('checksum-phd')">Checksum (SHA-256)</button>
+          <div id="checksum-phd" class="checksum-content">[to be filled]</div>
+        </div>
       </div>
-
-      <h2 style="color:#ffaa33; font-size:1.3em; margin-top: 40px;">🧪 Web3 Credentials</h2>
+      <div class="download-item">
+        <a href="assets/pdf/Master2_Nanterre.pdf" class="pixel-button chapter-button" download>
+          2008–2009: Master 2 (Research) “Economics of Institutions”, Paris X Nanterre – Merit
+          <img src="assets/icons/pdf-icon.png" class="pixel-icon" alt="PDF icon">
+        </a>
+        <div class="checksum-container">
+          <button class="checksum-toggle" onclick="toggleChecksum('checksum-master2')">Checksum (SHA-256)</button>
+          <div id="checksum-master2" class="checksum-content">[to be filled]</div>
+        </div>
+      </div>
+      <div class="download-item">
+        <a href="assets/pdf/Master1_Nanterre.pdf" class="pixel-button chapter-button" download>
+          2007–2008: Master 1 “Economics of Institutions and Organizations”, Paris X – Merit
+          <img src="assets/icons/pdf-icon.png" class="pixel-icon" alt="PDF icon">
+        </a>
+        <div class="checksum-container">
+          <button class="checksum-toggle" onclick="toggleChecksum('checksum-master1')">Checksum (SHA-256)</button>
+          <div id="checksum-master1" class="checksum-content">[to be filled]</div>
+        </div>
+      </div>
+      <div class="download-item">
+        <a href="assets/pdf/Licence_Eco.pdf" class="pixel-button chapter-button" download>
+          2006–2007: Bachelor's degree (Year 3) in Economics – Society & History, Paris X Nanterre
+          <img src="assets/icons/pdf-icon.png" class="pixel-icon" alt="PDF icon">
+        </a>
+        <div class="checksum-container">
+          <button class="checksum-toggle" onclick="toggleChecksum('checksum-eco')">Checksum (SHA-256)</button>
+          <div id="checksum-eco" class="checksum-content">[to be filled]</div>
+        </div>
+      </div>
+      <div class="download-item">
+        <a href="assets/pdf/Licence_Droit.pdf" class="pixel-button chapter-button" download>
+          2002–2006: Bachelor's degree (Year 3), Law & Economics (AES) – Université de Savoie
+          <img src="assets/icons/pdf-icon.png" class="pixel-icon" alt="PDF icon">
+        </a>
+        <div class="checksum-container">
+          <button class="checksum-toggle" onclick="toggleChecksum('checksum-droit')">Checksum (SHA-256)</button>
+          <div id="checksum-droit" class="checksum-content">[to be filled]</div>
+        </div>
+      </div>
+      <div class="download-item">
+        <a href="assets/pdf/Mael_Rolland_CV_2025.pdf" class="pixel-button chapter-button" download>
+          Download complete CV
+          <img src="assets/icons/pdf-icon.png" class="pixel-icon" alt="PDF icon">
+        </a>
+        <div class="checksum-container">
+          <button class="checksum-toggle" onclick="toggleChecksum('checksum-cv')">Checksum (SHA-256)</button>
+          <div id="checksum-cv" class="checksum-content">[to be filled]</div>
+        </div>
+      </div>
+    </section>
+    <section class="curriculum-section">
+      <h2 style="color: #ffaa33;">🧪 Web3 Credentials</h2>
       <div style="text-align:center;">
         <img src="assets/images/meme-academic-vs-crypto.jpg" alt="Web3 meme" style="max-width:100%; border: 2px solid #ffaa33; margin: 15px auto;">
       </div>
+      <div class="download-item" style="text-align:center;">
+        <a href="assets/images/meme-academic-vs-crypto.jpg" class="pixel-button chapter-button" download>
+          Download Web3 Meme
+          <img src="assets/icons/pdf-icon.png" class="pixel-icon" alt="Web3 meme">
+        </a>
+      </div>
     </section>
-
     <div class="back-link">
       <a href="index.html">← Back to Homepage</a>
     </div>
-
     <footer>
       <div class="social-icons">
-        <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank"><img src="assets/icons/LinkedIn.png" class="pixel-icon"></a>
-        <a href="https://x.com/elmalandr0" target="_blank"><img src="assets/icons/X.png" class="pixel-icon"></a>
-        <a href="https://warpcast.com/maelrolland" target="_blank"><img src="assets/icons/Farcaster.png" class="pixel-icon"></a>
-        <a href="https://bsky.app/profile/mael-rolland.bsky.social" target="_blank"><img src="assets/icons/Bluesky.png" class="pixel-icon"></a>
-        <a href="https://github.com/Elma-Landro" target="_blank"><img src="assets/icons/Github.png" class="pixel-icon"></a>
-        <a href="https://hey.xyz/u/mael-rolland" target="_blank"><img src="assets/icons/Lens.png" class="pixel-icon"></a>
+        <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank"><img src="assets/icons/LinkedIn.png" class="pixel-icon" alt="LinkedIn"></a>
+        <a href="https://x.com/elmalandr0" target="_blank"><img src="assets/icons/X.png" class="pixel-icon" alt="X"></a>
+        <a href="https://warpcast.com/maelrolland" target="_blank"><img src="assets/icons/Farcaster.png" class="pixel-icon" alt="Farcaster"></a>
+        <a href="https://bsky.app/profile/mael-rolland.bsky.social" target="_blank"><img src="assets/icons/Bluesky.png" class="pixel-icon" alt="Bluesky"></a>
+        <a href="https://github.com/Elma-Landro" target="_blank"><img src="assets/icons/Github.png" class="pixel-icon" alt="Github"></a>
+        <a href="https://hey.xyz/u/mael-rolland" target="_blank"><img src="assets/icons/Lens.png" class="pixel-icon" alt="Lens"></a>
       </div>
       <div class="ethereum-badge-centered">
         <a href="https://docs.ethswarm.org/" target="_blank">
-          <img src="assets/icons/builtonethereum.png" class="pixel-ethereum-badge">
+          <img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge" />
         </a>
       </div>
     </footer>
   </div>
+  <script>
+    function toggleChecksum(id) {
+      const content = document.getElementById(id);
+      const button = content.previousElementSibling;
+      if (content.style.display === "block") {
+        content.style.display = "none";
+        button.classList.remove("active");
+      } else {
+        content.style.display = "block";
+        button.classList.add("active");
+      }
+    }
+  </script>
 </body>
 </html>
