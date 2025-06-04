@@ -49,6 +49,46 @@
         .back-link a:hover {
             background-color: rgba(255, 204, 102, 0.2);
         }
+  }
+        .checksum-container {
+            margin-top: 1px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .checksum-toggle {
+            background: none;
+            border: none;
+            color: #33ff33;
+            font-family: 'VT323', monospace;
+            font-size: 0.8em;
+            cursor: pointer;
+            padding: 2px 5px;
+            text-align: left;
+            display: inline-flex;
+            align-items: center;
+        }
+        .checksum-toggle:hover {
+            text-decoration: underline;
+        }
+        .checksum-toggle::before {
+            content: '▶';
+            margin-right: 5px;
+            transition: transform 0.2s;
+        }
+        .checksum-toggle.active::before {
+            transform: rotate(90deg);
+        }
+        .checksum-content {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid #33ff33;
+            padding: 8px;
+            font-family: 'VT323', monospace;
+            color: #33ff33;
+            font-size: 0.8em;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
 </style>
 </head>
 <body>
@@ -78,10 +118,16 @@
       </div>
 
       <div style="text-align: center; margin-bottom: 20px;">
-        <a href="assets/pdf/Plaquette_initiation_crypto.pdf" class="pixel-button" download>
+        <a href="assets/pdf/Plaquette_initiation_cryptoV1.pdf" class="pixel-button" download>
           📄 Download the info sheet (PDF)
         </a>
-      </div>
+      <div class="checksum-container" style="margin-top:8px;">
+    <button class="checksum-toggle" onclick="toggleChecksum('checksum-atelier')">Checksum (SHA-256)</button>
+    <div id="checksum-atelier" class="checksum-content" style="display:none;">
+      be4487ba833db5e18e17c28c087d7d53559f8b0f7fbf75efda81ef6bd2b8638e
+    </div>
+  </div>
+</div>
 
       <h2 style="text-align: center; color: #33ff33;">Pricing (travel expenses not included)</h2>
       <table style="margin: 0 auto; border-collapse: collapse; text-align: left; font-family: monospace; color: #ffaa33;">
@@ -147,5 +193,18 @@
             </div>
     </footer>
   </div>
+  <script>
+function toggleChecksum(id) {
+    const content = document.getElementById(id);
+    const button = content.previousElementSibling;
+    if (content.style.display === "block") {
+        content.style.display = "none";
+        button.classList.remove("active");
+    } else {
+        content.style.display = "block";
+        button.classList.add("active");
+    }
+}
+</script>
 </body>
 </html>
