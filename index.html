@@ -33,6 +33,40 @@
         .language-switcher a:hover {
             text-decoration: underline;
         }
+        .ens-identities {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.ens-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'VT323', monospace;
+  font-size: 1.2em;
+  color: #ffaa33;
+  margin-bottom: 10px;
+}
+
+.ens-block img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 2px solid #ffaa33;
+  border-radius: 50%;
+  margin-top: 8px;
+}
+
+@media (max-width: 600px) {
+  .ens-identities {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
     </style>
 
 </head>
@@ -51,11 +85,18 @@
         </header>
 
         <section class="ens-section">
-            <div class="ens-identities">
-                <span class="ens-id">mael-rolland.eth</span>
-                <span class="ens-id">TheDyorLab.eth</span>
-            </div>
-        </section>
+  <div class="ens-identities">
+    <div class="ens-block">
+      <span>mael-rolland.eth</span>
+      <img src="assets/img/avatar-closky-mael-rolland.eth.jpg" alt="Maël Avatar">
+    </div>
+    <div class="ens-block">
+      <span>TheDyorLab.eth</span>
+      <img src="assets/img/avatar-raredesigner-thedyorlab.eth.jpg" alt="TheDyorLab Avatar">
+    </div>
+  </div>
+</section>
+
 
         <section class="description-section">
             <p class="description">
