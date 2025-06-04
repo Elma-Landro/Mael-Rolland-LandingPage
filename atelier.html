@@ -50,6 +50,46 @@
         .back-link a:hover {
             background-color: rgba(255, 204, 102, 0.2);
         }
+    }
+        .checksum-container {
+            margin-top: 1px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .checksum-toggle {
+            background: none;
+            border: none;
+            color: #33ff33;
+            font-family: 'VT323', monospace;
+            font-size: 0.8em;
+            cursor: pointer;
+            padding: 2px 5px;
+            text-align: left;
+            display: inline-flex;
+            align-items: center;
+        }
+        .checksum-toggle:hover {
+            text-decoration: underline;
+        }
+        .checksum-toggle::before {
+            content: '▶';
+            margin-right: 5px;
+            transition: transform 0.2s;
+        }
+        .checksum-toggle.active::before {
+            transform: rotate(90deg);
+        }
+        .checksum-content {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid #33ff33;
+            padding: 8px;
+            font-family: 'VT323', monospace;
+            color: #33ff33;
+            font-size: 0.8em;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
 
     </style>
 </head>
