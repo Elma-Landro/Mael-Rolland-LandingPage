@@ -12,10 +12,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css" />
   <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #330000;
+      color: #ffaa33;
+      font-family: 'VT323', monospace;
+    }
+
     .language-switcher {
       text-align: center;
       margin-top: 10px;
-      font-family: 'VT323', monospace;
       font-size: 0.9em;
       color: #33ff33;
     }
@@ -28,20 +35,27 @@
       text-decoration: underline;
     }
 
-    .curriculum-section {
-      margin: 30px auto;
-      max-width: 700px;
-      font-family: 'VT323', monospace;
-    }
-    
-    .subtitle {
-      font-family: 'VT323', monospace;
-      font-size: 4em;
-      color: #ffaa33;
-      line-height: 0.7;
-      margin-bottom: 20px;
+    .main-title {
       text-align: center;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 2.5em;
+      color: #ffaa33;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 1.4em;
+      color: #ffaa33;
+      text-align: center;
+      margin: 40px auto 20px;
       text-shadow: 1px 1px #000;
+    }
+
+    .curriculum-section {
+      margin: 10px auto;
+      max-width: 700px;
     }
 
     .download-item {
@@ -71,8 +85,8 @@
     .pixel-button.chapter-button img.pixel-icon {
       height: 36px;
       width: auto;
-      margin-left: 24px;      /* éloigne bien du texte */
-      margin-right: 4px;      /* colle presque au bord droit */
+      margin-left: 24px;
+      margin-right: 4px;
       image-rendering: pixelated;
     }
 
@@ -86,11 +100,9 @@
       background: none;
       border: none;
       color: #33ff33;
-      font-family: 'VT323', monospace;
       font-size: 0.8em;
       cursor: pointer;
       padding: 2px 5px;
-      text-align: left;
       display: inline-flex;
       align-items: center;
     }
@@ -114,8 +126,6 @@
       background-color: rgba(0, 0, 0, 0.3);
       border: 1px solid #33ff33;
       padding: 8px;
-      font-family: 'VT323', monospace;
-      color: #33ff33;
       font-size: 0.8em;
       white-space: nowrap;
       overflow-x: auto;
@@ -150,12 +160,13 @@
       margin: 0 6px;
       vertical-align: middle;
     }
+
     @media (max-width: 480px) {
-  .pixel-button.chapter-button img.pixel-icon {
-    margin-left: 12px;
-    margin-right: 2px;
-    height: 32px;
-  }
+      .pixel-button.chapter-button img.pixel-icon {
+        margin-left: 12px;
+        margin-right: 2px;
+        height: 32px;
+      }
     }
   </style>
 </head>
@@ -167,10 +178,20 @@
   <div class="container">
     <header>
       <h1 class="main-title">Curriculum</h1>
+      <div class="download-item" style="text-align: center;">
+        <a href="assets/pdf/CV_Mael_Rolland.pdf" class="pixel-button chapter-button" download>
+          Download CV
+          <img src="assets/icons/pdf-icon.png" class="pixel-icon" alt="PDF">
+        </a>
+        <div class="checksum-container">
+          <button class="checksum-toggle" onclick="toggleChecksum('checksum-cv-fr')">Checksum (SHA-256)</button>
+          <div id="checksum-cv-fr" class="checksum-content">[à remplir]</div>
+        </div>
       </div>
     </header>
+
     <section class="curriculum-section">
-      <h2 style="color: #ffaa33;">🎓&nbsp;Academic&nbsp;Background</h2>
+      <h2>🎓 Academic Background</h2>
       <div class="download-item">
         <a href="assets/pdf/PhD_EHESS.pdf" class="pixel-button chapter-button" download>
           2018–2024: PhD in Economics and Social Sciences – EHESS
@@ -221,33 +242,24 @@
           <div id="checksum-droit" class="checksum-content">[to be filled]</div>
         </div>
       </div>
-      <!-- BOUTON CORRIGÉ -->
-      <div class="download-item">
-        <a href="assets/pdf/CV_Mael_Rolland.pdf" class="pixel-button chapter-button" download>
-          Download CV
-          <img src="assets/icons/pdf-icon.png" class="pixel-icon" alt="PDF">
-        </a>
-        <div class="checksum-container">
-          <button class="checksum-toggle" onclick="toggleChecksum('checksum-cv-fr')">Checksum (SHA-256)</button>
-          <div id="checksum-cv-fr" class="checksum-content">[à remplir]</div>
-        </div>
-        
       <div style="text-align: center; margin-top: 30px;">
         <img src="assets/img/academic-vs-crypto-meme.png" alt="Curriculum Illustration" style="max-width: 300px; height: auto; margin-bottom: 30px;">
       </div>
-    <section class="curriculum-section">
-      <h2 style="color: #ffaa33;">🧪 Expériences Web3</h2>
+
+      <h2>🧪 Expériences Web3</h2>
       <ul class="description" style="font-size: 1.1em; line-height: 1.8em; color: #ffcc66;">
         <li>Détenteur de BTC, ETH, shitcoins et NFTs depuis 2015</li>
-        <li>Plus de 20 ETH de frais de transactions on chain </li>
+        <li>Plus de 20 ETH de frais de transactions on chain</li>
         <li>DegenSCORE : leaderboard ~600 / 29917)</li>
       </ul>
- <div class="back-link">
-                <a href="index.html">← Go to Homepage</a>
-            </div>
-        </section>
-        <footer>
-            <div class="social-icons">
+
+      <div class="back-link">
+        <a href="index.html">← Go to Homepage</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="social-icons">
                 <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank"><img src="assets/icons/LinkedIn.png" alt="LinkedIn" class="pixel-icon"></a>
                 <a href="https://x.com/elmalandr0" target="_blank"><img src="assets/icons/X.png" alt="X" class="pixel-icon"></a>
                 <a href="https://warpcast.com/maelrolland" target="_blank"><img src="assets/icons/Farcaster.png" alt="Farcaster" class="pixel-icon"></a>
