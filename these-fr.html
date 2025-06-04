@@ -106,6 +106,17 @@
   overflow-x: auto;
   max-width: 700px;
 }
+    .avatar-icon {
+      width: 90px; /* ajuste à 120px ou 80px selon les pages */
+      height: 90px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #ffaa33; /* Encadrement doré rétro */
+      background-color: #330000;
+      image-rendering: pixelated;
+      display: block;
+      margin: 0 auto 10px auto;
+    }
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -125,6 +136,8 @@
   <div class="container">
     <header>
       <h1 class="main-title">Thèse</h1>
+        <img src="assets/img/avatar-closky-mael-rolland.eth.jpg" alt="Maël Rolland Avatar" class="avatar-icon">
+
       <p class="subtitle">Au-delà des codes : infrastructures discrètes et gouvernance polycentrique des cryptomonnaies Bitcoin et Ethereum dévoilées par leurs crises</p>
     </header>
 
