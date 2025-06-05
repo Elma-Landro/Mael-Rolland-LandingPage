@@ -157,6 +157,28 @@
       display: block;
       margin: 0 auto 10px auto;
     }
+        .video-container {
+  margin: 20px auto;
+  max-width: 720px;
+  border: 2px solid #ffaa33;
+  padding: 5px;
+  background-color: #000;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: none;
+}
+
+.caption {
+  text-align: center;
+  font-family: 'VT323', monospace;
+  font-size: 1.1em;
+  color: #ffaa33;
+  margin-top: 8px;
+}
         
         @media (max-width: 768px) {
             .chapter-button {
@@ -180,14 +202,11 @@
             <p class="subtitle">
                 Beyond the Codes : Discreet and Polycentric Infrastructure and Governance of Cryptocurrencies Bitcoin and Ethereum Unveiled by Their Crises
             </p>
-            <div class="video-tokenized">
-                <video controls playsinline preload="metadata"
-                 style="max-width: 1000%; height: auto; border: 2px solid #ffaa33; background-color: #000; image-rendering: pixelated;">
-            <source src="assets/video/5j1tzd_video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-           </p>
-            </div>
+            <div class="video-container">
+  <video controls preload="metadata" poster="assets/img/poster-thesis.jpg">
+    <source src="https://arweave.net/YD_YPW7_V_fcQ14oGXomohG4cMroz3ponWmc21zj-bQ/5j1tzd_video.mp4" type="video/mp4">
+    Votre navigateur ne prend pas en charge les vidéos HTML5.
+  </video>
         </header>
         <section class="these-section">
             <div class="these-intro">
