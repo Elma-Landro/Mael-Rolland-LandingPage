@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thesis - Maël Rolland</title>
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .language-switcher {
+            text-align: center;
+            margin-top: 10px;
+            font-family: 'VT323', monospace;
+            font-size: 0.9em;
+            color: #33ff33;
+        }
+        .language-switcher a {
+            color: #33ff33;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .language-switcher a:hover {
+            text-decoration: underline;
+        }
+        .these-section {
+            margin: 30px auto;
+            max-width: 700px;
+        }
+        .these-intro {
+            font-family: 'VT323', monospace;
+            font-size: 1.2em;
+            color: #ffaa33;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .download-complete {
+            margin: 30px auto;
+            text-align: center;
+        }
+        .download-complete .pixel-button {
+            font-size: 1.2em;
+            padding: 15px 25px;
+            background-color: #8b0000;
+            display: inline-block;
+            margin: 0 auto;
+        }
+        .chapters-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 25px auto;
+        }
+        .chapter-button {
+            flex-basis: calc(50% - 20px);
+            min-width: 200px;
+            text-align: left;
+            padding: 12px 15px;
+        }
+        .json-notice {
+            margin-top: 40px;
+            padding: 15px;
+            border: 2px dashed #33ff33;
+            background-color: rgba(51, 255, 51, 0.1);
+            color: #33ff33;
+            font-family: 'VT323', monospace;
+            font-size: 1em;
+            text-align: center;
+            border-radius: 4px;
+        }
+        .back-link {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .back-link a {
+            color: #ffcc66;
+            text-decoration: none;
+            font-size: 0.8em;
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid #ffcc66;
+        }
+        .back-link a:hover {
+            background-color: rgba(255, 204, 102, 0.2);
+        }
+        .checksum-container {
+            margin-top: 1px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .checksum-toggle {
+            background: none;
+            border: none;
+            color: #33ff33;
+            font-family: 'VT323', monospace;
+            font-size: 0.8em;
+            cursor: pointer;
+            padding: 2px 5px;
+            text-align: left;
+            display: inline-flex;
+            align-items: center;
+        }
+        .checksum-toggle:hover {
+            text-decoration: underline;
+        }
+        .checksum-toggle::before {
+            content: '▶';
+            margin-right: 5px;
+            transition: transform 0.2s;
+        }
+        .checksum-toggle.active::before {
+            transform: rotate(90deg);
+        }
+        .checksum-content {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid #33ff33;
+            padding: 8px;
+            font-family: 'VT323', monospace;
+            color: #33ff33;
+            font-size: 0.8em;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+        .download-item {
+            margin-bottom: 15px;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
+            margin-bottom: 10px;
+        }
+        .pixel-icon {
+            width: 32px;
+            height: 32px;
+            image-rendering: pixelated;
+            vertical-align: middle;
+        }
+        .avatar-icon {
+      width: 90px; /* ajuste à 120px ou 80px selon les pages */
+      height: 90px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #ffaa33; /* Encadrement doré rétro */
+      background-color: #330000;
+      image-rendering: pixelated;
+      display: block;
+      margin: 0 auto 10px auto;
+    }
+        
+        @media (max-width: 768px) {
+            .chapter-button {
+                flex-basis: calc(100% - 20px);
+            }
+            .checksum-content {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <a href="these.html">🇬🇧 English</a> | 
+        <a href="these-fr.html">🇫🇷 Français</a>
+    </div>
+    <div class="container">
+        <header>
+            <h1 class="main-title">Thesis</h1>
+                <img src="assets/img/avatar-closky-mael-rolland.eth.jpg" alt="Maël Rolland Avatar" class="avatar-icon">
+            <p class="subtitle">
+                Beyond the Codes : Discreet and Polycentric Infrastructure and Governance of Cryptocurrencies Bitcoin and Ethereum Unveiled by Their Crises
+            </p>
+        </header>
+        <section class="these-section">
+            <div class="these-intro">
+                <p>This thesis studies the Bitcoin and Ethereum CMs and their governance, questioning the liberal-technicist claims that portray them as acephalous, decentralized, autonomous, neutral [...]</p>
+            </div>
+
+            <div class="download-complete download-item">
+                <a href="assets/pdf/ROLLAND_Mael_These_Complete.pdf" class="pixel-button large" download>Download complete thesis</a>
+                <div class="checksum-container">
+                    <button class="checksum-toggle" onclick="toggleChecksum('checksum-complete')">Checksum (SHA-256)</button>
+                    <div id="checksum-complete" class="checksum-content">
+                        563f2c58aec4980983279ab7d37ab2f427c5d3e4abc0d156466a9365a0e46652
+                    </div>
+                </div>
+            </div>
+
+            <h2 style="color: #33ff33; font-size: 1em; margin-top: 40px; text-align: center;">Download by chapters</h2>
+            <div class="chapters-grid">
+                <div class="download-item">
+                    <a href="assets/pdf/1_Premieres_pages.pdf" class="pixel-button chapter-button" download>1. First pages</a>
+                    <div class="checksum-container">
+                        <button class="checksum-toggle" onclick="toggleChecksum('checksum-1')">Checksum (SHA-256)</button>
+                        <div id="checksum-1" class="checksum-content">
+                            3c1cb7a16a29f7a4114e0f11493e11c2bf2cfbc2b058b759e301f01a6cf15b43
+                        </div>
+                    </div>
+                </div>
+                <div class="download-item">
+                    <a href="assets/pdf/2_Tables_des_matieres.pdf" class="pixel-button chapter-button" download>2. Tables of content</a>
+                    <div class="checksum-container">
+                        <button class="checksum-toggle" onclick="toggleChecksum('checksum-2')">Checksum (SHA-256)</button>
+                        <div id="checksum-2" class="checksum-content">
+                            2795a0e1c261d33a6dd52c52e696b244a2c6888844143ea8c6d4bb49f7b10f52
+                        </div>
+                    </div>
+                </div>
+                <div class="download-item">
+                    <a href="assets/pdf/3_Precautions_ecriture.pdf" class="pixel-button chapter-button" download>3.&nbsp;Writing&nbsp;precautions</a>
+                    <div class="checksum-container">
+                        <button class="checksum-toggle" onclick="toggleChecksum('checksum-3')">Checksum (SHA-256)</button>
+                        <div id="checksum-3" class="checksum-content">
+                            0d2004f1a7aa44d0c7b2dce7125a09286976d45213711e97c566b3aab163b693
+                        </div>
+                    </div>
+                </div>
+                <div class="download-item">
+                    <a href="assets/pdf/4_Introduction_generale.pdf" class="pixel-button chapter-button" download>4.&nbsp;General&nbsp;introduction</a>
+                    <div class="checksum-container">
+                        <button class="checksum-toggle" onclick="toggleChecksum('checksum-4')">Checksum (SHA-256)</button>
+                        <div id="checksum-4" class="checksum-content">
+                            46f8ebfb571619cb9bee1a9a72186b3f7ba213da5cb58426ad85ef6ae10eddce
+                        </div>
+                    </div>
+                </div>
+                <div class="download-item">
+                    <a href="assets/pdf/5_Chapitre_1.pdf" class="pixel-button chapter-button" download>5. Chapter 1</a>
+                    <div class="checksum-container">
+                        <button class="checksum-toggle" onclick="toggleChecksum('checksum-5')">Checksum (SHA-256)</button>
+                        <div id="checksum-5" class="checksum-content">
+                            4b6f6c5da8520298214736bba046dbf43f1e0d652cf2620760a31153d286568d
+                        </div>
+                    </div>
+                </div>
+                <div class="download-item">
+                    <a href="assets/pdf/6_Chapitre_2.pdf" class="pixel-button chapter-button" download>6. Chapter 2</a>
+                    <div class="checksum-container">
+                        <button class="checksum-toggle" onclick="toggleChecksum('checksum-6')">Checksum (SHA-256)</button>
+                        <div id="checksum-6" class="checksum-content">
+                            00548301c4332b0e1cdb0b1c056b7e530e3626761c63cd131a02969bee97ab54
+                        </div>
+                    </div>
+                </div>
+                <div class="download-item">
+                    <a href="assets/pdf/7_Chapitre_3.pdf" class="pixel-button chapter-button" download>7. Chapter 3</a>
+                    <div class="checksum-container">
+                        <button class="checksum-toggle" onclick="toggleChecksum('checksum-7')">Checksum (SHA-256)</button>
+                        <div id="checksum-7" class="checksum-content">
+                            bc5b44ace50d76df88d559069670151473aacd641d90d1ec8c0973e24fe3c31a
+                        </div>
+                    </div>
+                </div>
+                <div class="download-item">
+                    <a href="assets/pdf/8_Conclusion_Generale.pdf" class="pixel-button chapter-button" download>8. Conclusion</a>
+                    <div class="checksum-container">
+                        <button class="checksum-toggle" onclick="toggleChecksum('checksum-8')">Checksum (SHA-256)</button>
+                        <div id="checksum-8" class="checksum-content">
+                            d2e7cf26861c2ab707332ed5e46e10d1da6077238d33abbf361562a7b3952da9
+                        </div>
+                    </div>
+                </div>
+                <div class="download-item">
+                    <a href="assets/pdf/9_Bibliographie.pdf" class="pixel-button chapter-button" download>9. Bibliography</a>
+                    <div class="checksum-container">
+                        <button class="checksum-toggle" onclick="toggleChecksum('checksum-9')">Checksum (SHA-256)</button>
+                        <div id="checksum-9" class="checksum-content">
+                            f9270dfd22ec56a39e669995161c70fc3d79fad7bd6468d331d2428d45834785
+                        </div>
+                    </div>
+                </div>
+                <div class="download-item">
+                    <a href="assets/pdf/10_Annexes.pdf" class="pixel-button chapter-button" download>10. Annexes</a>
+                    <div class="checksum-container">
+                        <button class="checksum-toggle" onclick="toggleChecksum('checksum-10')">Checksum (SHA-256)</button>
+                        <div id="checksum-10" class="checksum-content">
+                            6ea1db51d15938008c452f0162b7f6e2d39adb2ae2a209cdba137a87676983e3
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="json-notice">
+                <p>Structured JSON version still in progress</p>
+                <p style="font-size: 0.8em; margin-top: 10px;">A machine-readable version for researchers and developers will soon be available</p>
+            </div>
+            <div class="back-link">
+                <a href="index.html">← Go to Homepage</a>
+            </div>
+        </section>
+        <footer>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank"><img src="assets/icons/LinkedIn.png" alt="LinkedIn" class="pixel-icon"></a>
+                <a href="https://x.com/elmalandr0" target="_blank"><img src="assets/icons/X.png" alt="X" class="pixel-icon"></a>
+                <a href="https://warpcast.com/maelrolland" target="_blank"><img src="assets/icons/Farcaster.png" alt="Farcaster" class="pixel-icon"></a>
+                <a href="https://bsky.app/profile/mael-rolland.bsky.social" target="_blank"><img src="assets/icons/Bluesky.png" alt="Bluesky" class="pixel-icon"></a>
+                <a href="https://github.com/Elma-Landro" target="_blank"><img src="assets/icons/Github.png" alt="Github" class="pixel-icon"></a>
+                <a href="https://hey.xyz/u/mael-rolland" target="_blank"><img src="assets/icons/Lens.png" alt="Lens" class="pixel-icon"></a>
+            </div>
+            <div class="ethereum-badge-centered">
+                <a href="https://docs.ethswarm.org/" target="_blank">
+                    <img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge" />
+                </a>
+            </div>
+        </footer>
+    </div>
+    <script>
+        function toggleChecksum(id) {
+            const content = document.getElementById(id);
+            const button = content.previousElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                button.classList.remove("active");
+            } else {
+                content.style.display = "block";
+                button.classList.add("active");
+            }
+        }
+    </script>
+</body>
+</html>
