@@ -507,7 +507,7 @@ footer {
                 inset 0 0 0 4px #8b0000;
 }
 .pixel-ethereum-badge {
-    width: 72px; /* 4 x 24px (pixel-icon size) */
+    width: 48px; /* 4 x 24px (pixel-icon size) */
     height: auto;
     image-rendering: pixelated;
     margin-top: 10px;
