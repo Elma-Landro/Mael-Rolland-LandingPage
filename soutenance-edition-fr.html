@@ -196,18 +196,23 @@
   max-width: 800px;
 }
 
-.image-row img {
-  flex: 1 1 220px;
-}
-        .img-centered {
-  max-width: 220px;
-  width: 100%;
+.image-row .pixel-img {
+  flex: 1 1 45%;
+  max-width: 240px;
   height: auto;
-  margin: 10px;
   border: 1px solid #ffaa33;
   image-rendering: pixelated;
   background-color: #330000;
+}
+        .img-centered {
   display: block;
+  margin: 10px auto;
+  max-width: 240px;
+  width: 90%;
+  height: auto;
+  border: 1px solid #ffaa33;
+  image-rendering: pixelated;
+  background-color: #330000;
 }
 /* === ZOOM LIGHTBOX === */
 .pixel-img.zoomable {
