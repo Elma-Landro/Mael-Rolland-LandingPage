@@ -355,21 +355,6 @@ footer {
     color: transparent;
 }
 
-
-a {
-  color: #33ff33; /* vert terminal */
-  text-decoration: underline;
-}
-
-a:visited {
-  color: #33ff33;
-}
-
-a:hover {
-  color: #ffaa33; /* orange rétro au survol */
-}
-
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
