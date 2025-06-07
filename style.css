@@ -221,12 +221,12 @@ body {
             font-size: 0.9em;
             color: #33ff33;
         }
-        .language-switcher a {
+ .language-switcher a {
             color: #33ff33;
             text-decoration: none;
             margin: 0 5px;
         }
-        .language-switcher a:hover {
+  .language-switcher a:hover {
             text-decoration: underline;
         }
 
@@ -286,6 +286,21 @@ header, section, footer {
     color: #33ff33; /* Retro terminal green */
     font-size: 1.1em;
     margin-bottom: 40px;
+}
+ .back-link {
+     margin-top: 30px;
+     text-align: center;
+}
+  .back-link a {
+     color: #ffcc66;
+     text-decoration: none;
+     font-size: 0.8em;
+     display: inline-block;
+     padding: 8px 15px;
+     border: 1px solid #ffcc66;
+}
+  .back-link a:hover {
+     background-color: rgba(255, 204, 102, 0.2);
 }
 
 /* Footer */
