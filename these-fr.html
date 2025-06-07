@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -119,16 +119,75 @@
             vertical-align: middle;
         }
         .avatar-icon {
-      width: 90px; /* ajuste à 120px ou 80px selon les pages */
-      height: 90px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 2px solid #ffaa33; /* Encadrement doré rétro */
-      background-color: #330000;
-      image-rendering: pixelated;
-      display: block;
-      margin: 0 auto 10px auto;
-    }
+            width: 90px; /* ajuste à 120px ou 80px selon les pages */
+            height: 90px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #ffaa33; /* Encadrement doré rétro */
+            background-color: #330000;
+            image-rendering: pixelated;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+        .video-container {
+           margin: 20px auto;
+           max-width: 180px;
+           border: 2px solid #ffaa33;
+           padding: 5px;
+           background-color: #000;
+        }
+
+        .video-container video {
+           width: 100%;
+           height: auto;
+           display: block;
+           border: none;
+         }
+
+         .caption {
+           text-align: center;
+           font-family: 'VT323', monospace;
+           font-size: 0.3em;
+           color: #ffaa33;
+           margin-top: 1px;
+         }
+        .pixel-button.small {
+           font-size: 0.4em;
+           padding: 1px 2px;
+           background-color: #330000;
+           color: #ffcc66;
+           border: 1px #ffaa33;
+           text-decoration: none;
+           font-family: 'Press Start 2P', monospace;
+          }
+
+         .pixel-button.small:hover {
+           background-color: #552200;
+           color: #ffffff;
+          }
+        .soutenance-button {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.soutenance-button a {
+  display: inline-block;
+  padding: 10px 18px;
+  font-size: 1em;
+  font-family: 'Press Start 2P', monospace;
+  background-color: #330000;
+  color: #ffcc66;
+  border: 2px solid #ffaa33;
+  text-decoration: none;
+  text-shadow: 1px 1px #000;
+  margin-bottom: 20px;
+}
+
+.soutenance-button a:hover {
+  background-color: #552200;
+  color: #ffffff;
+}
+
         
         @media (max-width: 768px) {
             .chapter-button {
@@ -137,7 +196,11 @@
             .checksum-content {
                 font-size: 0.8em;
             }
-        }
+            @media screen and (min-width: 768px) {
+            .thesis-video {
+                max-width: 480px;
+             height: auto;
+            }
     </style>
 </head>
 <body>
@@ -188,7 +251,7 @@
                     </div>
                 </div>
                 <div class="download-item">
-                    <a href="assets/pdf/2_Tables_des_matieres.pdf" class="pixel-button chapter-button" download>2. Tables des matières</a>
+                    <a href="assets/pdf/2_Tables_des_matieres.pdf" class="pixel-button chapter-button" download>2. Tables&nbsp;des&nbsp;matières</a>
                     <div class="checksum-container">
                         <button class="checksum-toggle" onclick="toggleChecksum('checksum-2')">Checksum (SHA-256)</button>
                         <div id="checksum-2" class="checksum-content">
@@ -197,7 +260,7 @@
                     </div>
                 </div>
                 <div class="download-item">
-                    <a href="assets/pdf/3_Precautions_ecriture.pdf" class="pixel-button chapter-button" download>3.&nbsp;précautions&nbsp;d'&nbsp;écriture</a>
+                    <a href="assets/pdf/3_Precautions_ecriture.pdf" class="pixel-button chapter-button" download>3.&nbsp;précautions&nbsp;d'écriture</a>
                     <div class="checksum-container">
                         <button class="checksum-toggle" onclick="toggleChecksum('checksum-3')">Checksum (SHA-256)</button>
                         <div id="checksum-3" class="checksum-content">
