@@ -76,21 +76,7 @@
             text-align: center;
             border-radius: 4px;
         }
-        .back-link {
-            margin-top: 30px;
-            text-align: center;
-        }
-        .back-link a {
-            color: #ffcc66;
-            text-decoration: none;
-            font-size: 0.8em;
-            display: inline-block;
-            padding: 8px 15px;
-            border: 1px solid #ffcc66;
-        }
-        .back-link a:hover {
-            background-color: rgba(255, 204, 102, 0.2);
-        }
+        
         .checksum-container {
             margin-top: 1px;
             margin-bottom: 10px;
@@ -205,19 +191,30 @@
         .image-row {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 16px;
   flex-wrap: wrap;
-  margin: 10px 0;
+  margin: 20px auto;
+  max-width: 800px;
 }
 
-.image-row .pixel-img {
-  width: 35%;
-  max-width: 150px;
+.image-row img {
+  flex: 1 1 45%;
+  max-width: 100%;
   height: auto;
   border: 1px solid #ffaa33;
   image-rendering: pixelated;
   background-color: #330000;
 }
+        .img-centered {
+  display: block;
+  margin: 20px auto;
+  max-width: 350px;
+  width: 90%;
+  height: auto;
+  border: 1px solid #ffaa33;
+  image-rendering: pixelated;
+  background-color: #330000;
+        }
       /* === ZOOM LIGHTBOX === */
 .pixel-img.zoomable {
   cursor: zoom-in;
@@ -289,12 +286,12 @@
                 </p>
                 <div class="image-row">
                   <img src="assets/img/soutenance-edition.jpeg" alt="Special edition box" class="pixel-img" />
-                  <img src="assets/img/soutenance-edition2.jpeg" alt="Inside view of special edition" class="pixel-img" />
+                  <img src="assets/img/soutenance-edition2.jpeg" alt="Inside view of special edition" class="img-centered" />
                 </div>
 
                 <p>
                   The paper edition consists of two booklets grouped in a cardboard box printed for the occasion. Each copy is numbered.</p>
-                   <img src="assets/img/soutenance-edition3.jpeg" alt="Special edition box" class="pixel-img" />
+                   <img src="assets/img/soutenance-edition3.jpeg" alt="Special edition box" class="img-centered" />
                 <p>
                   <em>Anecdote:</em> The first print was imperfect, so each box was reworked by hand, reinforced... and even finished with medical tape.
                 </p>
@@ -307,20 +304,20 @@
                   parodying the codes of Bitcoin maximalists, representing my research —
                   <a href="https://buff.ly/4giG59S" target="_blank">see the image</a>.
                 </p>
-                <img src="assets/img/soutenance-edition6.jpeg" alt="Back cover of the limited edition" class="pixel-img" />
+                <img src="assets/img/soutenance-edition6.jpeg" alt="Back cover of the limited edition" class="img-centered" />
 
                 <p>
                   The back cover ties together the material and immaterial. Each copy contains a <strong>paper wallet</strong> with a public address visible and a private key hidden.
                   This wallet guarantees ownership of a linked token issued on Counterparty.
-                  <img src="assets/img/soutenance-edition7.jpeg" alt="Back cover of the limited edition" class="pixel-img" />
+                  <img src="assets/img/soutenance-edition7.jpeg" alt="Back cover of the limited edition" class="img-centered" />
 
                   Each copy is linked to a unique token <code>ROLLANDTHESE.edition_soutenance</code>,
                   issued in 10 copies on Counterparty (<a href="https://buff.ly/4juw7VG" target="_blank">see the asset</a>).
-                     <img src="assets/img/soutenance-edition10.jpeg" alt="Special edition box" class="pixel-img" />
+                     <img src="assets/img/soutenance-edition10.jpeg" alt="Special edition box" class="img-centered" />
                   These tokens are sub-assets of a main asset, <code>ROLLANDTHESE</code>
                   (<a href="https://buff.ly/4hsrAB7" target="_blank">see the main asset</a>), created on the day of the official deposit.
                 </p>
-                <img src="assets/img/soutenance-edition8.jpeg" alt="Back cover of the limited edition" class="pixel-img" />
+                <img src="assets/img/soutenance-edition8.jpeg" alt="Back cover of the limited edition" class="img-centered" />
 
                 <p>
                   This echoes my first immersion in the Bitcoin ecosystem (2017), where I discovered Counterparty and the debates about <code>OP_RETURN</code>:
@@ -332,7 +329,7 @@
                   This limited edition is a <strong>theoretical-practical manifesto</strong>: the tokenization empirically reinforces my theoretical claims:
                   <em>recording, authentication and certification</em> required the use of BTC and XCP units via free and community tools.
                 </p>
-                <img src="assets/img/soutenance-edition9.jpeg" alt="Back cover of the limited edition" class="pixel-img" />
+                <img src="assets/img/soutenance-edition9.jpeg" alt="Back cover of the limited edition" class="img-centered" />
 
                 <p>
                   Distribution of the editions: my supervisor and the members of the jury — È. Chiapello, F. Musiani, J. Blanc, J. Couppey-Soubeyran, É. Monnet, A. Mallard.
