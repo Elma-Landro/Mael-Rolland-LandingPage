@@ -215,21 +215,20 @@ body {
 }
 
 .language-switcher {
-  text-align: center;
-  margin-top: 5px;
-}
-.language-switcher .lang-link {
-  font-family: 'VT323', monospace;
-  font-size: 1.1em;
-  color: #00ff66;
-  text-decoration: none;
-  margin: 0 5px;
-}
-
-.language-switcher .lang-link:hover {
-  text-decoration: underline;
-  color: #33ff33;
-}
+            text-align: center;
+            margin-top: 10px;
+            font-family: 'VT323', monospace;
+            font-size: 0.9em;
+            color: #33ff33;
+        }
+        .language-switcher a {
+            color: #33ff33;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .language-switcher a:hover {
+            text-decoration: underline;
+        }
 
 /* Page Structure & Layout */
 .container {
