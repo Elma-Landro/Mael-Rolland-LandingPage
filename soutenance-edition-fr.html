@@ -76,21 +76,6 @@
             text-align: center;
             border-radius: 4px;
         }
-        .back-link {
-            margin-top: 30px;
-            text-align: center;
-        }
-        .back-link a {
-            color: #ffcc66;
-            text-decoration: none;
-            font-size: 0.8em;
-            display: inline-block;
-            padding: 8px 15px;
-            border: 1px solid #ffcc66;
-        }
-        .back-link a:hover {
-            background-color: rgba(255, 204, 102, 0.2);
-        }
         .checksum-container {
             margin-top: 1px;
             margin-bottom: 10px;
@@ -205,20 +190,56 @@
         .image-row {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 16px;
   flex-wrap: wrap;
-  margin: 10px 0;
+  margin: 20px auto;
+  max-width: 800px;
 }
 
-.image-row .pixel-img {
-  width: 25%;
-  max-width: 150px;
+.image-row img {
+  flex: 1 1 45%;
+  max-width: 100%;
   height: auto;
   border: 1px solid #ffaa33;
   image-rendering: pixelated;
   background-color: #330000;
 }
+        .img-centered {
+  display: block;
+  margin: 20px auto;
+  max-width: 350px;
+  width: 90%;
+  height: auto;
+  border: 1px solid #ffaa33;
+  image-rendering: pixelated;
+  background-color: #330000;
+        }
+/* === ZOOM LIGHTBOX === */
+.pixel-img.zoomable {
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+}
 
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(10, 10, 10, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.lightbox-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  image-rendering: auto;
+  border: 2px solid #ffaa33;
+  background-color: #000;
+}
 
         
         @media (max-width: 768px) {
@@ -268,7 +289,7 @@
 
     <p>
       L’édition papier se compose de deux livrets regroupés dans un coffret en carton imprimé pour l’occasion. Chaque exemplaire est numéroté.</p>
-        <img src="assets/img/soutenance-edition3.jpeg" alt="Coffret édition spéciale" class="pixel-img" />
+        <img src="assets/img/soutenance-edition3.jpeg" alt="Coffret édition spéciale" class="img-centered" />
     <p>
       <em>Anecdote :</em> la première impression étant imparfaite, chaque coffret a été retravaillé à la main, consolidé… et même fini au sparadrap médical.
     </p>
@@ -281,20 +302,20 @@
       détournant les codes des bitcoiners maximalistes, pour représenter mes recherches —
       <a href="https://buff.ly/4giG59S" target="_blank">voir l’image</a>.
     </p>
-      <img src="assets/img/soutenance-edition6.jpeg" alt="4e de couverture de l'édition limitée" class="pixel-img" />
+      <img src="assets/img/soutenance-edition6.jpeg" alt="4e de couverture de l'édition limitée" class="img-centered" />
 
     <p>
       La 4<sup>e</sup> de couverture lie le matériel et l’immatériel. Chaque exemplaire contient un <strong>paper wallet</strong> avec une adresse publique visible et une clé privée cachée.
       Ce wallet garantit l’autorité sur un token associé émis sur Counterparty.
-        <img src="assets/img/soutenance-edition7.jpeg" alt="4e de couverture de l'édition limitée" class="pixel-img" />
+        <img src="assets/img/soutenance-edition7.jpeg" alt="4e de couverture de l'édition limitée" class="img-centered" />
 
       Chaque exemplaire est lié à un token unique <code>ROLLANDTHESE.edition_soutenance</code>,
       émis à 10 exemplaires sur Counterparty (<a href="https://buff.ly/4juw7VG" target="_blank">voir l’actif</a>).
-        <img src="assets/img/soutenance-edition10.jpeg" alt="Back cover of the limited edition" class="pixel-img" />
+        <img src="assets/img/soutenance-edition10.jpeg" alt="Back cover of the limited edition" class="img-centered" />
       Ces tokens sont des sous-actifs d’un actif principal, <code>ROLLANDTHESE</code>
       (<a href="https://buff.ly/4hsrAB7" target="_blank">voir l’actif principal</a>), créé le jour du dépôt officiel.
     </p>
-      <img src="assets/img/soutenance-edition8.jpeg" alt="4e de couverture de l'édition limitée" class="pixel-img" />
+      <img src="assets/img/soutenance-edition8.jpeg" alt="4e de couverture de l'édition limitée" class="img-centered" />
 
     <p>
       Écho à ma première immersion dans l’écosystème Bitcoin (2017), où j’ai découvert Counterparty et les débats sur l’<code>OP_RETURN</code> :
@@ -306,7 +327,7 @@
       Cette édition limitée est un <strong>manifeste théorico-pratique</strong> : la tokénisation redouble empiriquement mes affirmations théoriques :
       <em>consignation, authentification et certification</em> ont nécessité l’usage d’unités BTC et XCP via des outils libres et communautaires.
     </p>
-      <img src="assets/img/soutenance-edition9.jpeg" alt="4e de couverture de l'édition limitée" class="pixel-img" />
+      <img src="assets/img/soutenance-edition9.jpeg" alt="4e de couverture de l'édition limitée" class="img-centered" />
 
 
     <p>
