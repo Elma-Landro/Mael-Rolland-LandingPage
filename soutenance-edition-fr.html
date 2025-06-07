@@ -371,5 +371,21 @@
             }
         }
     </script>
+    <script>
+  document.querySelectorAll('.pixel-img, .img-centered').forEach(img => {
+    img.classList.add('zoomable');
+    img.addEventListener('click', () => {
+      const overlay = document.createElement('div');
+      overlay.className = 'lightbox-overlay';
+      const fullImg = document.createElement('img');
+      fullImg.src = img.src;
+      overlay.appendChild(fullImg);
+      document.body.appendChild(overlay);
+      overlay.addEventListener('click', () => {
+        overlay.remove();
+      });
+    });
+  });
+    </script>
 </body>
 </html>
