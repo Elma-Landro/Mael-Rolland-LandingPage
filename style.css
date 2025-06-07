@@ -526,6 +526,13 @@ footer {
     image-rendering: pixelated;
     margin-top: 10px;
     opacity: 1;
+ .ethereum-badge-centered {
+    text-align: center;
+    width: 100%;
+}
+ .ethereum-badge-centered .pixel-ethereum-badge {
+    display: inline-block;
+}
 }
 .media-icon {
   width: 18px;
