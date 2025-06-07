@@ -520,21 +520,18 @@ footer {
     box-shadow: inset 0 0 0 2px #ffcc66, /* Keep original shadow */
                 inset 0 0 0 4px #8b0000;
 }
-.pixel-ethereum-badge {
-    width: 48px; /* 4 x 24px (pixel-icon size) */
-    height: auto;
-    image-rendering: pixelated;
-    margin-top: 10px;
-    opacity: 1;
-}
 .ethereum-badge-centered {
-    text-align: center;
+    display: flex;
+    justify-content: center;
     width: 100%;
+    margin-top: 10px; /* si tu veux un peu d'espace au-dessus */
 }
 
-.ethereum-badge-centered img {
-    display: inline-block;
-    margin: 0 auto;
+.pixel-ethereum-badge {
+    width: 48px; /* taille conservée */
+    height: auto;
+    image-rendering: pixelated;
+    opacity: 1;
 }
 .media-icon {
   width: 18px;
