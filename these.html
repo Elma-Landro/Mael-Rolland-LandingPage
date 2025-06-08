@@ -220,26 +220,37 @@
         }
         .pixel-button.chapter-button {
   display: flex;
-  flex-wrap: wrap; /* permet le retour à la ligne */
   justify-content: space-between;
   align-items: center;
-  padding: 12px 15px;
-  font-size: 1.3em;
+  flex-wrap: wrap; /* autorise le retour à la ligne */
+  font-size: 1.1em; /* inchangé */
+  padding: 12px 15px; /* inchangé */
   background-color: #8b0000;
   color: #ffcc66;
   text-decoration: none;
-  border: 2px solid #ffaa33;
-  box-sizing: border-box;
+  border: 1px solid #ffcc66;
   width: 100%;
   max-width: 700px;
+  box-sizing: border-box;
 }
 
 .pixel-button.chapter-button img.pixel-icon {
-  height: 32px;
+  height: 28px; /* valeur plus discrète */
   width: auto;
   margin-left: auto;
-  margin-right: 0;
   image-rendering: pixelated;
+}
+
+/* ✅ Mobile : icône centrée en dessous */
+@media (max-width: 480px) {
+  .pixel-button.chapter-button {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pixel-button.chapter-button img.pixel-icon {
+    margin: 10px auto 0 auto;
+  }
 }
 
 @media (max-width: 480px) {
