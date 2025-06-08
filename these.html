@@ -187,37 +187,37 @@
   background-color: #552200;
   color: #ffffff;
 }
-        .pixel-icon {
-      height: 20px;
-      margin: 3px;
-      vertical-align: middle;
-    }
-.pixel-button.chapter-button {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap; /* Pour forcer le passage à la ligne si besoin */
-  gap: 2px;
-  font-size: 1.4em;
-  padding: 12px 15px;
-  background-color: #8b0000;
-  color: #ffcc66;
-  text-decoration: none;
-  border: 2px solid #ffaa33;
-  width: 100%;
-  max-width: 300px;
-  box-sizing: border-box;
-}
-.pixel-button.chapter-button img.pixel-icon {
-  height: 15px;
-  width: auto;
-  image-rendering: pixelated;
-  margin-left: auto;
-  margin-right: 0;
+        .pixel-img {
+  max-width: 40%;
+  height: auto;
   display: block;
-  align-self: center;
+  margin: 10px auto;
+  border: 1px solid #ffaa33; /* cadre doré rétro */
+  image-rendering: pixelated;
+  background-color: #330000;
 }
+        .image-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.image-row img {
+  flex: 1 1 220px;
+}
+        .img-centered {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+  margin: 10px auto; /* 👈 centrage horizontal */
+  border: 1px solid #ffaa33;
+  image-rendering: pixelated;
+  background-color: #330000;
+  display: block;
+        }
 
         
         @media (max-width: 768px) {
