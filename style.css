@@ -303,14 +303,6 @@ header, section, footer {
      background-color: rgba(255, 204, 102, 0.2);
 }
 
-a, a:visited, a:active {
-  color: #33ff33 !important;
-  text-decoration: underline;
-}
-
-a:hover {
-  color: #ffaa33 !important;
-}
 /* Footer */
 footer {
     margin-top: 50px;
