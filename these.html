@@ -222,34 +222,34 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.1em; /* Respect de la hiérarchie visuelle */
-  padding: 12px 15px;
+  font-size: 1em; /* Respect de la hiérarchie visuelle */
+  padding: 6px 7px;
   background-color: #8b0000;
   color: #ffcc66;
   text-decoration: none;
   border: 1px solid #ffcc66;
   width: 100%;
-  max-width: 700px;
+  max-width: 500px;
   box-sizing: border-box;
   white-space: normal; /* Évite l'effet "trop long = retour à la ligne" */
 }
 
 .pixel-button.chapter-button img.pixel-icon {
-  height: 18px;
+  height: 10px;
   width: auto;
-  margin-left: 4px;
+  margin-left: 2px;
   image-rendering: pixelated;
 }
 
 /* ✅ Mobile : icône centrée en dessous */
-@media (max-width: 480px) {
+@media (max-width: 280px) {
   .pixel-button.chapter-button {
     flex-direction: column;
     text-align: center;
   }
 
   .pixel-button.chapter-button img.pixel-icon {
-    margin: 3px auto 0 auto;
+    margin: 2px auto 0 auto;
   }
 
         
