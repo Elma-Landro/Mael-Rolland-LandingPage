@@ -1,110 +1,97 @@
-<!DOCTYPE html><html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soutenance de Thèse - Maël Rolland</title>
-    <link rel="icon" href="favicon.ico">
+    <title>Soutenance – Maël Rolland</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            background-color: black;
-            color: #ffaa33;
-            font-family: 'VT323', monospace;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .video-container {
-            margin: 20px auto;
-            max-width: 100%;
-            aspect-ratio: 16 / 9;
-        }
-        .video-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        .download-item {
-            margin: 20px auto;
-            text-align: center;
-        }
-        .pixel-button {
-            background-color: #330000;
-            color: #ffcc66;
-            font-family: 'Press Start 2P', monospace;
-            font-size: 0.9em;
-            padding: 10px 20px;
-            text-decoration: none;
-            border: 2px solid #ffaa33;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            image-rendering: pixelated;
-        }
-        .pixel-button:hover {
-            background-color: #552200;
-            color: #ffffff;
-        }
-        .pixel-icon {
-            width: 24px;
-            height: 24px;
-        }
-        .metadata {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 1em;
-        }
-        .back-link {
-            text-align: center;
-            margin-top: 40px;
-        }
-        .back-link a {
-            color: #33ff33;
-            text-decoration: none;
-        }
-        .back-link a:hover {
-            text-decoration: underline;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Soutenance de Thèse</h1>
+<div class="language-switcher">
+    <a href="soutenance-edition.html">🇬🇧 English</a> |
+    <a href="soutenance-edition-fr.html">🇫🇷 Français</a>
+</div>
+<div class="container">
+    <header>
+        <h1 class="main-title">Soutenance</h1>
+        <img src="assets/img/avatar-closky-mael-rolland.eth.jpg" alt="Maël Rolland Avatar" class="avatar-icon">
+        <p class="subtitle">Soutenance de thèse</p>
         <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/dVYihgujyXA" allowfullscreen></iframe>
-        </div><div class="download-item">
-        <a href="assets/pdf/soutenance_presentation.pdf" class="pixel-button" download>
-            Télécharger la présentation PowerPoint
-            <img src="assets/icons/pdf-icon.png" class="pixel-icon" alt="PDF">
-        </a>
-    </div>
+            <iframe width="100%" height="180" src="https://www.youtube.com/embed/dVYihgujyXA" title="Soutenance Maël Rolland" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </header>
 
-    <div class="download-item">
-        <a href="assets/pdf/rapport_soutenance.pdf" class="pixel-button" download>
-            Rapport de soutenance
-            <img src="assets/icons/pdf-icon.png" class="pixel-icon" alt="PDF">
-        </a>
-    </div>
+    <section class="these-section">
+        <h2 style="color: #ffaa33; font-family: 'VT323', monospace; text-align: center;">Documents à télécharger</h2>
 
-    <div class="metadata">
-        <p><strong>Date :</strong> 13 décembre 2024</p>
-        <p><strong>Durée :</strong> 4 heures</p>
-        <p><strong>Lieu :</strong> EHESS Paris, 54 boulevard Raspail</p>
-        <p><strong>Jury :</strong> J. Chasin, P. Mustar, R. Swartz, M. Akrich, A. Orlowski, B. Zimmermann</p>
-    </div>
+        <div class="download-item download-complete">
+            <a href="assets/pdf/ROLLAND_Mael_Presentation_Soutenance.pdf" class="pixel-button large" download>📄 Présentation PowerPoint (PDF)</a>
+            <div class="checksum-container">
+                <button class="checksum-toggle" onclick="toggleChecksum('checksum-pp')">Checksum (SHA-256)</button>
+                <div id="checksum-pp" class="checksum-content">
+                    [INSÈRE_ICI_SHA256_PRESENTATION]
+                </div>
+            </div>
+        </div>
 
-    <div class="back-link">
-        <a href="these-fr.html">&larr; Retour à la page Thèse</a>
-    </div>
+        <div class="download-item download-complete">
+            <a href="assets/pdf/ROLLAND_Mael_Rapport_Soutenance.pdf" class="pixel-button large" download>📄 Rapport de soutenance (PDF)</a>
+            <div class="checksum-container">
+                <button class="checksum-toggle" onclick="toggleChecksum('checksum-rapport')">Checksum (SHA-256)</button>
+                <div id="checksum-rapport" class="checksum-content">
+                    [INSÈRE_ICI_SHA256_RAPPORT]
+                </div>
+            </div>
+        </div>
+
+        <div class="json-notice">
+            <p><strong>Métadonnées</strong></p>
+            <p>Soutenance de thèse – 13 décembre 2024</p>
+            <p>Lieu : EHESS, 54 Boulevard Raspail, 75006 Paris</p>
+            <p>Durée : 4 heures</p>
+            <p>Jury : Dominique Cardon, Primavera De Filippi, Pierre-Carl Langlais, Pierre-Yves Gomez, Kevin Werbach, Jean-Yves Trépos, Lionel Maurel</p>
+        </div>
+
+        <div class="back-link">
+            <a href="these-fr.html">← Retour à la page Thèse</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank"><img src="assets/icons/LinkedIn.png" alt="LinkedIn" class="pixel-icon"></a>
+            <a href="https://x.com/elmalandr0" target="_blank"><img src="assets/icons/X.png" alt="X" class="pixel-icon"></a>
+            <a href="https://warpcast.com/maelrolland" target="_blank"><img src="assets/icons/Farcaster.png" alt="Farcaster" class="pixel-icon"></a>
+            <a href="https://bsky.app/profile/mael-rolland.bsky.social" target="_blank"><img src="assets/icons/Bluesky.png" alt="Bluesky" class="pixel-icon"></a>
+            <a href="https://github.com/Elma-Landro" target="_blank"><img src="assets/icons/Github.png" alt="Github" class="pixel-icon"></a>
+            <a href="https://hey.xyz/u/mael-rolland" target="_blank"><img src="assets/icons/Lens.png" alt="Lens" class="pixel-icon"></a>
+        </div>
+        <div class="ethereum-badge-centered">
+            <a href="https://docs.ethswarm.org/" target="_blank">
+                <img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge" />
+            </a>
+        </div>
+    </footer>
 </div>
 
+<script>
+    function toggleChecksum(id) {
+        const content = document.getElementById(id);
+        const button = content.previousElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+            button.classList.remove("active");
+        } else {
+            content.style.display = "block";
+            button.classList.add("active");
+        }
+    }
+</script>
 </body>
 </html>
