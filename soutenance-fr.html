@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soutenance de Thèse - Maël Rolland</title>
+    <link rel="icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: black;
+            color: #ffaa33;
+            font-family: 'VT323', monospace;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .video-container {
+            margin: 20px auto;
+            max-width: 100%;
+            aspect-ratio: 16 / 9;
+        }
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .download-item {
+            margin: 20px auto;
+            text-align: center;
+        }
+        .pixel-button {
+            background-color: #330000;
+            color: #ffcc66;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.9em;
+            padding: 10px 20px;
+            text-decoration: none;
+            border: 2px solid #ffaa33;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            image-rendering: pixelated;
+        }
+        .pixel-button:hover {
+            background-color: #552200;
+            color: #ffffff;
+        }
+        .pixel-icon {
+            width: 24px;
+            height: 24px;
+        }
+        .metadata {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1em;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .back-link a {
+            color: #33ff33;
+            text-decoration: none;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Soutenance de Thèse</h1>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/dVYihgujyXA" allowfullscreen></iframe>
+        </div><div class="download-item">
+        <a href="assets/pdf/soutenance_presentation.pdf" class="pixel-button" download>
+            Télécharger la présentation PowerPoint
+            <img src="assets/icons/pdf-icon.png" class="pixel-icon" alt="PDF">
+        </a>
+    </div>
+
+    <div class="download-item">
+        <a href="assets/pdf/rapport_soutenance.pdf" class="pixel-button" download>
+            Rapport de soutenance
+            <img src="assets/icons/pdf-icon.png" class="pixel-icon" alt="PDF">
+        </a>
+    </div>
+
+    <div class="metadata">
+        <p><strong>Date :</strong> 13 décembre 2024</p>
+        <p><strong>Durée :</strong> 4 heures</p>
+        <p><strong>Lieu :</strong> EHESS Paris, 54 boulevard Raspail</p>
+        <p><strong>Jury :</strong> J. Chasin, P. Mustar, R. Swartz, M. Akrich, A. Orlowski, B. Zimmermann</p>
+    </div>
+
+    <div class="back-link">
+        <a href="these-fr.html">&larr; Retour à la page Thèse</a>
+    </div>
+</div>
+
+</body>
+</html>
