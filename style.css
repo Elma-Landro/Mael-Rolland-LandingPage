@@ -546,14 +546,90 @@ footer {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 10px; /* si tu veux un peu d'espace au-dessus */
+    margin-top: 10px;
+    position: relative;
 }
 
 .pixel-ethereum-badge {
-    width: 48px; /* taille conservée */
+    width: 48px;
     height: auto;
     image-rendering: pixelated;
     opacity: 1;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.pixel-ethereum-badge:hover {
+    opacity: 0.8;
+}
+
+.ethereum-tooltip {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000000;
+    color: #33ff33;
+    font-family: 'VT323', monospace;
+    font-size: 0.9em;
+    padding: 12px 16px;
+    border: 2px solid #33ff33;
+    border-radius: 0;
+    box-shadow: 0 0 0 2px #000000;
+    white-space: nowrap;
+    max-width: 400px;
+    white-space: normal;
+    width: 350px;
+    text-align: left;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    line-height: 1.4;
+}
+
+.ethereum-tooltip::before {
+    content: ">> ";
+    color: #ffcc66;
+}
+
+.ethereum-tooltip::after {
+    content: " <<";
+    color: #ffcc66;
+}
+
+.ethereum-badge-centered:hover .ethereum-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ethereum-tooltip-arrow {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #33ff33;
+}
+
+/* Mobile touch support */
+@media (max-width: 768px) {
+    .ethereum-tooltip {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 320px;
+        font-size: 0.8em;
+    }
+    
+    .ethereum-badge-centered {
+        position: static;
+    }
 }
 .media-icon {
   width: 18px;
