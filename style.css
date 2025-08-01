@@ -269,6 +269,11 @@ header, section, footer {
     color: #ffcc66; /* Yellow text */
 }
 
+/* Asterisks styling */
+.asterisk {
+    color: #33ff33 !important; /* Terminal green for asterisks */
+}
+
 /* Third Level (Paragraph) */
 .description {
     font-family: 'VT323', monospace; /* Retro monospace font - needs import or alternative */
