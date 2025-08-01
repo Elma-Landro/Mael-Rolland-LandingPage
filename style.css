@@ -303,9 +303,30 @@ header, section, footer {
      background-color: rgba(255, 204, 102, 0.2);
 }
 
+/* Sources Section */
+.sources-section {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    padding: 20px 0;
+}
+
+.sources-text {
+    font-family: 'VT323', monospace;
+    font-size: 0.9em;
+    color: #33ff33; /* Terminal green */
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.sources-text p {
+    margin: 8px 0;
+}
+
 /* Footer */
 footer {
-    margin-top: 50px;
+    margin-top: 30px;
     border-top: 2px solid #ffcc66; /* Separator line */
     padding-top: 20px;
 }
