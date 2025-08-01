@@ -593,7 +593,8 @@ footer {
     color: #33ff33;
 }
 
-.ethereum-badge-centered:hover .ethereum-tooltip {
+.pixel-ethereum-badge:hover + .ethereum-tooltip,
+.ethereum-tooltip:hover {
     display: block;
 }
 
