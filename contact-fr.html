@@ -215,26 +215,41 @@ Adding theme toggle button functionality to the contact-fr.html page.
         const body = document.body;
         const themeIcon = document.getElementById('theme-icon');
         const themeText = document.getElementById('theme-text');
-        const currentTheme = body.classList.contains('dark-theme') ? 'dark' : 'light';
-
-        if (currentTheme === 'light') {
-            body.classList.add('dark-theme');
-            body.style.backgroundColor = '#121212';
-            body.style.color = '#bb86fc';
-            themeIcon.src = 'assets/icons/Sun.png';
+        
+        if (body.dataset.theme === 'dark') {
+            body.dataset.theme = 'light';
+            themeIcon.src = 'assets/icons/Moon.jpg';
+            themeIcon.alt = 'Lune';
+            themeText.textContent = 'Sombre';
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.dataset.theme = 'dark';
+            themeIcon.src = 'assets/icons/Sun.jpg';
             themeIcon.alt = 'Soleil';
             themeText.textContent = 'Clair';
-
-
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+    
+    // Load saved theme or default to dark
+    document.addEventListener('DOMContentLoaded', function() {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        const body = document.body;
+        const themeIcon = document.getElementById('theme-icon');
+        const themeText = document.getElementById('theme-text');
+        
+        if (savedTheme === 'dark') {
+            body.dataset.theme = 'dark';
+            themeIcon.src = 'assets/icons/Sun.jpg';
+            themeIcon.alt = 'Soleil';
+            themeText.textContent = 'Clair';
         } else {
-            body.classList.remove('dark-theme');
-            body.style.backgroundColor = '#330000';
-            body.style.color = '#ffcc66';
+            body.dataset.theme = 'light';
             themeIcon.src = 'assets/icons/Moon.jpg';
             themeIcon.alt = 'Lune';
             themeText.textContent = 'Sombre';
         }
-    }
+    });
 </script>
 </body>
 </html>
