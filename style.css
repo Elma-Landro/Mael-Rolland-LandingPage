@@ -359,7 +359,8 @@ header, section, footer {
         width: 0; 
     }
     to { 
-        width: 100%; 
+        width: fit-content;
+        max-width: 100%;
     }
 }
 
@@ -544,17 +545,24 @@ footer {
 @media (max-width: 768px) {
     .container {
         width: 95%;
+        margin: 10px auto;
     }
 
     .main-title {
-        font-size: 2em;
-        max-width: 95vw; /* Plus de place sur mobile */
-        letter-spacing: 0.05em; /* Réduire l'espacement des lettres */
+        font-size: 1.8em !important; /* Force la taille plus petite */
+        max-width: 100% !important;
+        letter-spacing: 0.02em !important;
+        padding: 0 10px;
+        box-sizing: border-box;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .typing-animation {
-        max-width: 95vw;
-        font-size: 0.9em; /* Réduire légèrement la taille si nécessaire */
+        max-width: 100%;
+        font-size: 0.85em;
+        padding: 0 10px;
+        box-sizing: border-box;
     }
 
     .subtitle {
@@ -607,14 +615,24 @@ footer {
 
 @media (max-width: 480px) {
     .main-title {
-        font-size: 1.8em;
-        max-width: 98vw; /* Maximum d'espace disponible */
-        letter-spacing: 0.02em; /* Espacement minimal */
+        font-size: 1.5em !important;
+        max-width: 100% !important;
+        letter-spacing: 0.01em !important;
+        padding: 0 15px !important;
+        line-height: 1.2 !important;
     }
 
     .typing-animation {
-        max-width: 98vw;
-        font-size: 0.85em; /* Plus petit sur très petits écrans */
+        max-width: 100%;
+        font-size: 0.8em;
+        padding: 0 15px;
+        line-height: 1.2;
+    }
+
+    .container {
+        width: 100%;
+        margin: 5px auto;
+        padding: 0 5px;
     }
 
     .pixel-button {

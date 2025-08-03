@@ -27,6 +27,25 @@
       color: #ffaa33;
       margin-top: 30px;
       margin-bottom: 20px;
+      max-width: 100%;
+      box-sizing: border-box;
+      padding: 0 10px;
+      word-wrap: break-word;
+    }
+
+    @media (max-width: 768px) {
+      .main-title {
+        font-size: 1.8em !important;
+        padding: 0 15px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-title {
+        font-size: 1.5em !important;
+        padding: 0 20px !important;
+        line-height: 1.2 !important;
+      }
     }
 
     h2 {
