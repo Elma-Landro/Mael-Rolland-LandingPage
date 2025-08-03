@@ -344,25 +344,32 @@ header, section, footer {
     color: var(--text-primary);
     margin-bottom: 5px;
     transition: color 0.3s ease;
-    animation: slideInFromLeft 0.8s ease-out 0.2s both, textGlow 3s ease-in-out infinite;
+    overflow: hidden;
+    border-right: 3px solid var(--text-accent);
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.1em;
+    animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
 }
 
-/* Animation du titre - apparition de la gauche */
-@keyframes slideInFromLeft {
+/* Animation de typing */
+@keyframes typing {
     from { 
-        opacity: 0; 
-        transform: translateX(-100px); 
+        width: 0; 
     }
     to { 
-        opacity: 1; 
-        transform: translateX(0); 
+        width: 100%; 
     }
 }
 
-/* Effet de lueur subtile sur le titre */
-@keyframes textGlow {
-    0%, 100% { text-shadow: 0 0 5px transparent; }
-    50% { text-shadow: 0 0 8px var(--text-accent); }
+/* Animation du curseur clignotant */
+@keyframes blink-caret {
+    from, to { 
+        border-color: transparent; 
+    }
+    50% { 
+        border-color: var(--text-accent); 
+    }
 }
 
 .subtitle {
