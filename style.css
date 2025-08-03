@@ -284,6 +284,10 @@ body {
     flex-basis: calc(33.333% - 20px); /* Aim for 3 per row, adjust for gap */
     min-width: 160px; /* Minimum width for buttons */
     box-sizing: border-box; /* Include padding/border in width calculation */
+    white-space: normal; /* Permet le retour à la ligne */
+    word-wrap: break-word; /* Coupe les mots longs */
+    line-height: 1.3; /* Meilleur espacement des lignes */
+    text-align: center; /* Centre le texte */
 }
 
 /* Specific button adjustments for layout */
@@ -293,13 +297,11 @@ body {
 }
 
 .button-contact {
-    flex-basis: calc(50% - 20px); /* Make contact button wider */
-    width: auto; /* Override potential width settings */
-    max-width: 300px; /* Limit width */
-    margin-top: 10px; /* Add space before contact button */
-    /* Center the contact button explicitly if flex doesn't handle it */
-    margin-left: auto;
-    margin-right: auto;
+    flex-basis: calc(33.333% - 20px); /* Même taille que les autres boutons */
+    min-width: 160px; /* Même largeur minimum */
+    max-width: none; /* Supprime la limitation de largeur */
+    margin-top: 10px;
+    box-sizing: border-box;
 }
 
 /* Placeholder for button icons (can use pseudo-elements or inline elements) */
@@ -615,7 +617,7 @@ footer {
     }
 
     .button-contact {
-         flex-basis: calc(80% - 10px); /* Ensure contact button is wider */
+         flex-basis: calc(50% - 10px); /* Même largeur que les autres boutons */
     }
 
     footer {
@@ -675,6 +677,13 @@ footer {
 
     .pixel-button.large {
          flex-basis: calc(100% - 10px);
+    }
+    
+    .pixel-button {
+        white-space: normal !important; /* Force le retour à la ligne */
+        word-break: break-word !important; /* Coupe les mots si nécessaire */
+        line-height: 1.4 !important; /* Meilleur espacement */
+        padding: 12px 8px !important; /* Ajuste le padding */
     }
 }
 
