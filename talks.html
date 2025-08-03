@@ -99,26 +99,32 @@
             position: fixed;
             top: 15px;
             right: 15px;
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid #33ff33;
-            color: #33ff33;
-            padding: 8px 12px;
+            background: #2a0000;
+            color: var(--text-primary);
+            border: 1px solid var(--button-border);
+            padding: 3px 6px;
             font-family: 'VT323', monospace;
-            font-size: 0.8em;
+            font-size: 0.7em;
             cursor: pointer;
             z-index: 1000;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 5px;
-        }
-        
-        .theme-toggle img {
-            width: 16px;
-            height: 16px;
+            gap: 2px;
         }
         
         .theme-toggle:hover {
-            background: rgba(51, 255, 51, 0.1);
+            background: #3a0000;
+            transform: scale(1.01);
+        }
+        
+        .theme-toggle img {
+            width: 10px;
+            height: 10px;
+            image-rendering: pixelated;
+            -ms-interpolation-mode: nearest-neighbor;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
         }
     
     </style>
