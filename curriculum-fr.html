@@ -137,7 +137,7 @@
       margin: 0 6px;
       vertical-align: middle;
     }
-    
+
       .avatar-icon {
       width: 140px; /* ajuste à 120px ou 80px selon les pages */
       height: 140px;
@@ -256,7 +256,7 @@
         <li><strong>Thèse de doctorat :</strong> Disponible sur <a href="https://www.researchgate.net/publication/387786227_ROLLAND_Mael_-_These_-_Au-dela_des_codes_infrastructure_et_gouvernance_polycentrique_des_cryptomonnaies_2024" target="_blank" style="color: #33ff33;">ResearchGate</a> et <a href="these-fr.html" style="color: #33ff33;">ce site</a></li>
         <li><strong>Communications :</strong> 5+ présentations internationales depuis 2016</li>
       </ul>
-      
+
       <div style="text-align: center; margin: 20px 0;">
         <a href="talks-fr.html" style="color: #33ff33; text-decoration: none; font-family: 'VT323', monospace; font-size: 1.1em; border: 1px dashed #33ff33; padding: 8px 15px; display: inline-block;">
           📋 Voir toutes les conférences détaillées →
@@ -311,7 +311,7 @@
         const body = document.body;
         const themeIcon = document.getElementById('theme-icon');
         const themeText = document.getElementById('theme-text');
-        
+
         if (body.dataset.theme === 'dark') {
             body.dataset.theme = 'light';
             themeIcon.src = 'assets/icons/Moon.jpg';
@@ -326,14 +326,14 @@
             localStorage.setItem('theme', 'dark');
         }
     }
-    
-    // Load saved theme or default to dark
+
+    // Load saved theme or default to light
     document.addEventListener('DOMContentLoaded', function() {
-        const savedTheme = localStorage.getItem('theme') || 'dark';
+        const savedTheme = localStorage.getItem('theme') || 'light';
         const body = document.body;
         const themeIcon = document.getElementById('theme-icon');
         const themeText = document.getElementById('theme-text');
-        
+
         if (savedTheme === 'dark') {
             body.dataset.theme = 'dark';
             themeIcon.src = 'assets/icons/Sun.jpg';

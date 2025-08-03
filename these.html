@@ -492,16 +492,16 @@
             const themeIcon = document.getElementById('theme-icon');
             const themeText = document.getElementById('theme-text');
             
-            if (savedTheme === 'dark') {
-                body.dataset.theme = 'dark';
-                themeIcon.src = 'assets/icons/Sun.jpg';
-                themeIcon.alt = 'Sun';
-                themeText.textContent = 'Light';
-            } else {
+            if (savedTheme === 'light') {
                 body.dataset.theme = 'light';
                 themeIcon.src = 'assets/icons/Moon.jpg';
                 themeIcon.alt = 'Moon';
                 themeText.textContent = 'Dark';
+            } else {
+                body.dataset.theme = 'dark';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Sun';
+                themeText.textContent = 'Light';
             }
         });
     </script>
