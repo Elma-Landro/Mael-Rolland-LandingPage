@@ -1,3 +1,7 @@
+Adding theme toggle button functionality to the contact-fr.html page.
+```
+
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -112,9 +116,30 @@
     .back-link a:hover {
       background-color: rgba(255, 204, 102, 0.2);
     }
+    /* Theme toggle button style */
+    .theme-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+    }
+
+    .theme-toggle img {
+      width: 30px; /* Adjust size as needed */
+      height: auto;
+    }
   </style>
 </head>
 <body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Basculer mode sombre/clair">
+        <img id="theme-icon" src="assets/icons/Moon.jpg" alt="Lune"> <span id="theme-text">Sombre</span>
+    </button>
+
   <div class="language-switcher" style="text-align: center; margin-top: 10px;">
     <a href="contact.html">🇬🇧 English</a> |
     <a href="contact-fr.html">🇫🇷 Français</a>
@@ -185,5 +210,32 @@
       </div>
     </footer>
   </div>
+  <script>
+    function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.getElementById('theme-icon');
+        const themeText = document.getElementById('theme-text');
+        const currentTheme = body.classList.contains('dark-theme') ? 'dark' : 'light';
+
+        if (currentTheme === 'light') {
+            body.classList.add('dark-theme');
+            body.style.backgroundColor = '#121212';
+            body.style.color = '#bb86fc';
+            themeIcon.src = 'assets/icons/Sun.png';
+            themeIcon.alt = 'Soleil';
+            themeText.textContent = 'Clair';
+
+
+        } else {
+            body.classList.remove('dark-theme');
+            body.style.backgroundColor = '#330000';
+            body.style.color = '#ffcc66';
+            themeIcon.src = 'assets/icons/Moon.jpg';
+            themeIcon.alt = 'Lune';
+            themeText.textContent = 'Sombre';
+        }
+    }
+</script>
 </body>
 </html>
+</replit_final_file>

@@ -28,7 +28,7 @@
         .language-switcher a:hover {
             text-decoration: underline;
         }
-        
+
         .these-section {
             margin: 30px auto;
             max-width: 700px;
@@ -37,7 +37,7 @@
             margin-top: 30px;
             text-align: center;
         }
-        
+
         .back-link a {
             color: #ffcc66;
             text-decoration: none;
@@ -46,7 +46,7 @@
             padding: 8px 15px;
             border: 1px solid #ffcc66;
         }
-        
+
         .back-link a:hover {
             background-color: rgba(255, 204, 102, 0.2);
         }
@@ -129,7 +129,7 @@
     </div>
   </div>
 </div>
-       
+
       <h2 style="text-align: center; color: #33ff33;">Tarifs (hors frais de déplacement éventuels)</h2>
       <table style="margin: 0 auto; border-collapse: collapse; text-align: left; font-family: monospace; color: #ffaa33;">
         <thead>
@@ -174,38 +174,51 @@
       </div>
 
       <div class="back-link">
-        <a href="collaborate.html">← Retour à la page Collaborate</a>
+        <a href="collaborate.html">← Retour à la collaboration</a>
       </div>
-    </section>
+    </div>
 
-    <footer>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="assets/icons/LinkedIn.png" alt="LinkedIn Icon" class="pixel-icon"></a>
-                <a href="https://x.com/elmalandr0" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><img src="assets/icons/X.png" alt="X Icon" class="pixel-icon"></a>
-                <a href="https://warpcast.com/maelrolland" target="_blank" rel="noopener noreferrer" aria-label="Farcaster"><img src="assets/icons/Farcaster.png" alt="Farcaster Icon" class="pixel-icon"></a>
-                <a href="https://bsky.app/profile/mael-rolland.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Bluesky"><img src="assets/icons/Bluesky.png" alt="Bluesky Icon" class="pixel-icon"></a>
-                <a href="https://github.com/Elma-Landro" target="_blank" rel="noopener noreferrer" aria-label="Github"><img src="assets/icons/Github.png" alt="Github Icon" class="pixel-icon"></a>
-                <a href="https://hey.xyz/u/mael-rolland" target="_blank" rel="noopener noreferrer" aria-label="Lens Protocol"><img src="assets/icons/Lens.png" alt="Lens Icon" class="pixel-icon"></a>
-            </div>
-            <div class="ethereum-badge-centered">
-                <a href="https://docs.ethswarm.org/" target="_blank" rel="noopener noreferrer" aria-label="Built on Ethereum (Swarm)">
-                    <img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge">
-                </a>
-            </div>
-    </footer>
-  </div>
-      <script>
-function toggleChecksum(id) {
-    const content = document.getElementById(id);
-    const button = content.previousElementSibling;
-    if (content.style.display === "block") {
-        content.style.display = "none";
-        button.classList.remove("active");
-    } else {
-        content.style.display = "block";
-        button.classList.add("active");
-    }
-}
-</script>
+    <!-- Theme Toggle JavaScript -->
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (body.dataset.theme === 'dark') {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Lune';
+                themeText.textContent = 'Sombre';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.dataset.theme = 'dark';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Soleil';
+                themeText.textContent = 'Clair';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Initialize theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            body.dataset.theme = savedTheme;
+
+            if (savedTheme === 'dark') {
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Soleil';
+                themeText.textContent = 'Clair';
+            } else {
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Lune';
+                themeText.textContent = 'Sombre';
+            }
+        });
+    </script>
 </body>
 </html>

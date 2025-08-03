@@ -94,9 +94,37 @@
             width: 120px;
             height: auto;
         }
+    /* Theme toggle button styles */
+    .theme-toggle {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        margin: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .theme-toggle img {
+        width: 24px; /* Adjust size as needed */
+        height: 24px;
+    }
+
+    #theme-text {
+        font-family: 'VT323', monospace;
+        font-size: 1em;
+        color: #33ff33;
+        margin-left: 5px;
+    }
     </style>
 </head>
 <body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+        <img id="theme-icon" src="assets/icons/Moon.jpg" alt="Moon"> <span id="theme-text">Dark</span>
+    </button>
+
     <!-- 🌍 Language Switcher -->
     <div class="language-switcher">
         <a href="talks.html">🇬🇧 English</a> | <a href="talks-fr.html">🇫🇷 Français</a>
@@ -269,7 +297,7 @@
                 🎓 See complete academic background →
             </a>
         </div>
-        
+
         <div class="back-link">
             <a href="index.html">← Back to home</a>
         </div>
@@ -289,5 +317,48 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+            const moonIcon = 'assets/icons/Moon.jpg';
+            const sunIcon = 'assets/icons/Sun.jpg';
+
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                themeIcon.src = moonIcon;
+                themeIcon.alt = 'Moon';
+                themeText.textContent = 'Dark';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.add('dark-mode');
+                themeIcon.src = sunIcon;
+                themeIcon.alt = 'Sun';
+                themeText.textContent = 'Light';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Function to apply the saved theme
+        function applySavedTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('theme-icon').src = 'assets/icons/Sun.jpg';
+                document.getElementById('theme-icon').alt = 'Sun';
+                document.getElementById('theme-text').textContent = 'Light';
+            } else {
+                document.body.classList.remove('dark-mode');
+                document.getElementById('theme-icon').src = 'assets/icons/Moon.jpg';
+                document.getElementById('theme-icon').alt = 'Moon';
+                document.getElementById('theme-text').textContent = 'Dark';
+            }
+        }
+
+        // Apply saved theme on page load
+        document.addEventListener('DOMContentLoaded', applySavedTheme);
+    </script>
 </body>
 </html>

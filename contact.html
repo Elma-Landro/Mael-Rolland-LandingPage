@@ -110,9 +110,31 @@
     .back-link a:hover {
       background-color: rgba(255, 204, 102, 0.2);
     }
+
+    /* Theme toggle button styles */
+    .theme-toggle {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    .theme-toggle img {
+        width: 30px; /* Adjust size as needed */
+        height: 30px;
+    }
   </style>
 </head>
 <body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+        <img id="theme-icon" src="assets/icons/Moon.jpg" alt="Moon"> <span id="theme-text">Dark</span>
+    </button>
+
   <div class="language-switcher" style="text-align: center; margin-top: 10px;">
     <a href="contact.html" class="lang-link">🇬🇧 English</a> |
     <a href="contact-fr.html" class="lang-link">🇫🇷 Français</a>
@@ -171,4 +193,40 @@
     <footer>
       <div class="social-icons">
         <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank"><img src="assets/icons/LinkedIn.png" alt="LinkedIn" class="pixel-icon" /></a>
-        <a href="https://x.com/elmalandr0" target="_blank"><img src="assets/icons/X.png
+        <a href="https://x.com/elmalandr0" target="_blank"><img src="assets/icons/X.png" alt="X" class="pixel-icon" /></a>
+        <a href="https://github.com/TheDyorLab" target="_blank"><img src="assets/icons/GitHub.png" alt="GitHub" class="pixel-icon" /></a>
+      </div>
+      <div class="ethereum-badge-centered">
+        <a href="https://etherscan.io/address/thedyorlab.eth" target="_blank">
+          <img src="assets/icons/ethereum-badge.svg" alt="Ethereum Badge" class="pixel-ethereum-badge" />
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Theme Toggle Script (Place before the closing </body> tag) -->
+  <script>
+      function toggleTheme() {
+          const body = document.body;
+          const themeIcon = document.getElementById('theme-icon');
+          const themeText = document.getElementById('theme-text');
+          const currentTheme = body.style.backgroundColor;
+
+          if (currentTheme === 'black') {
+              body.style.backgroundColor = '#330000';
+              body.style.color = '#ffcc66';
+              themeIcon.src = 'assets/icons/Moon.jpg';
+              themeText.textContent = 'Dark';
+          } else {
+              body.style.backgroundColor = 'black';
+              body.style.color = 'white';
+              themeIcon.src = 'assets/icons/Sun.jpg';
+              themeText.textContent = 'Light';
+          }
+      }
+
+      // Initialize theme based on user preference (optional)
+      // You can add logic here to check local storage for a saved theme preference
+  </script>
+</body>
+</html>
