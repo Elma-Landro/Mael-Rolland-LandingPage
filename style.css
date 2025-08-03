@@ -352,7 +352,7 @@ header, section, footer {
     animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
 }
 
-/* Animation de typing */
+/* Typing animation */
 @keyframes typing {
     from { 
         width: 0; 
@@ -360,6 +360,26 @@ header, section, footer {
     to { 
         width: 100%; 
     }
+}
+
+@keyframes blink {
+    from, to { 
+        border-color: transparent; 
+    }
+    50% { 
+        border-color: #ffcc66; 
+    }
+}
+
+.typing-animation {
+    overflow: hidden;
+    border-right: 2px solid #ffcc66;
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: typing 3.5s steps(60, end), blink 0.75s step-end infinite;
+    animation-delay: 0.5s;
+    animation-fill-mode: both;
+    max-width: fit-content;
 }
 
 /* Animation du curseur clignotant */
