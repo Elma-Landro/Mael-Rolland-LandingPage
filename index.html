@@ -85,7 +85,7 @@
 
     <!-- Theme Toggle -->
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
-        <span id="theme-icon">🌙</span> <span id="theme-text">Dark</span>
+        <img id="theme-icon" src="assets/icons/Moon.jpg" alt="Moon"> <span id="theme-text">Dark</span>
     </button>
 
     <!-- 🌍 Sélecteur de langue -->
@@ -176,12 +176,14 @@
             
             if (body.dataset.theme === 'dark') {
                 body.dataset.theme = 'light';
-                themeIcon.textContent = '🌙';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Moon';
                 themeText.textContent = 'Dark';
                 localStorage.setItem('theme', 'light');
             } else {
                 body.dataset.theme = 'dark';
-                themeIcon.textContent = '☀️';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Sun';
                 themeText.textContent = 'Light';
                 localStorage.setItem('theme', 'dark');
             }
@@ -196,8 +198,14 @@
             
             if (savedTheme === 'dark') {
                 body.dataset.theme = 'dark';
-                themeIcon.textContent = '☀️';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Sun';
                 themeText.textContent = 'Light';
+            } else {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Moon';
+                themeText.textContent = 'Dark';
             }
         });
     </script>

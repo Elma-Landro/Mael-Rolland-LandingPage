@@ -99,7 +99,7 @@
 <body>
     <!-- Theme Toggle -->
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Basculer mode sombre/clair">
-        <span id="theme-icon">🌙</span> <span id="theme-text">Sombre</span>
+        <img id="theme-icon" src="assets/icons/Moon.jpg" alt="Lune"> <span id="theme-text">Sombre</span>
     </button>
 
     <!-- 🌍 Sélecteur de langue -->
@@ -190,12 +190,14 @@
             
             if (body.dataset.theme === 'dark') {
                 body.dataset.theme = 'light';
-                themeIcon.textContent = '🌙';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Lune';
                 themeText.textContent = 'Sombre';
                 localStorage.setItem('theme', 'light');
             } else {
                 body.dataset.theme = 'dark';
-                themeIcon.textContent = '☀️';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Soleil';
                 themeText.textContent = 'Clair';
                 localStorage.setItem('theme', 'dark');
             }
@@ -210,8 +212,14 @@
             
             if (savedTheme === 'dark') {
                 body.dataset.theme = 'dark';
-                themeIcon.textContent = '☀️';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Soleil';
                 themeText.textContent = 'Clair';
+            } else {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Lune';
+                themeText.textContent = 'Sombre';
             }
         });
     </script>
