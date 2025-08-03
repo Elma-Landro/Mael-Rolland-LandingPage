@@ -94,6 +94,13 @@ body {
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
     transition: background 0.3s ease, color 0.3s ease;
+    animation: fadeIn 1s ease-in;
+}
+
+/* Animation au chargement de la page */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Pixelated Icons Base Style */
@@ -223,6 +230,14 @@ body {
     background-color: var(--button-hover);
     box-shadow: inset 0 0 0 2px var(--text-primary),
                 inset 0 0 0 4px var(--button-hover);
+    transform: translateY(-2px) scale(1.02);
+    animation: pixelGlow 0.8s ease-in-out infinite alternate;
+}
+
+/* Effet de lueur pixelisée sur hover */
+@keyframes pixelGlow {
+    from { box-shadow: inset 0 0 0 2px var(--text-primary), inset 0 0 0 4px var(--button-hover), 0 0 8px transparent; }
+    to { box-shadow: inset 0 0 0 2px var(--text-primary), inset 0 0 0 4px var(--button-hover), 0 0 12px var(--text-accent); }
 }
 
 .pixel-button.large {
@@ -239,6 +254,29 @@ body {
     width: 90%; /* Adjust width */
     max-width: 650px; /* Adjust max width */
     margin: 30px auto 0 auto;
+}
+
+.button-grid .tooltip-container {
+    animation: slideUp 0.6s ease-out both;
+}
+
+.button-grid .tooltip-container:nth-child(1) { animation-delay: 1.0s; }
+.button-grid .tooltip-container:nth-child(2) { animation-delay: 1.1s; }
+.button-grid .tooltip-container:nth-child(3) { animation-delay: 1.2s; }
+.button-grid .tooltip-container:nth-child(4) { animation-delay: 1.3s; }
+.button-grid .tooltip-container:nth-child(5) { animation-delay: 1.4s; }
+.button-grid .tooltip-container:nth-child(6) { animation-delay: 1.5s; }
+
+/* Animation des boutons - apparition du bas */
+@keyframes slideUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
 }
 
 .pixel-button {
@@ -306,6 +344,25 @@ header, section, footer {
     color: var(--text-primary);
     margin-bottom: 5px;
     transition: color 0.3s ease;
+    animation: slideInFromLeft 0.8s ease-out 0.2s both, textGlow 3s ease-in-out infinite;
+}
+
+/* Animation du titre - apparition de la gauche */
+@keyframes slideInFromLeft {
+    from { 
+        opacity: 0; 
+        transform: translateX(-100px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+}
+
+/* Effet de lueur subtile sur le titre */
+@keyframes textGlow {
+    0%, 100% { text-shadow: 0 0 5px transparent; }
+    50% { text-shadow: 0 0 8px var(--text-accent); }
 }
 
 .subtitle {
@@ -313,6 +370,19 @@ header, section, footer {
     color: var(--text-primary);
     margin-bottom: 30px;
     transition: color 0.3s ease;
+    animation: slideInFromRight 0.8s ease-out 0.4s both;
+}
+
+/* Animation du sous-titre - apparition de la droite */
+@keyframes slideInFromRight {
+    from { 
+        opacity: 0; 
+        transform: translateX(100px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
 }
 
 /* Second Level (ENS Identities) */
@@ -763,6 +833,27 @@ footer {
   color: #ffaa33;
   margin-bottom: 10px;
   position: relative;
+  animation: scaleIn 0.6s ease-out 0.6s both;
+}
+
+.ens-block:first-child {
+  animation-delay: 0.7s;
+}
+
+.ens-block:last-child {
+  animation-delay: 0.9s;
+}
+
+/* Animation d'apparition avec scale */
+@keyframes scaleIn {
+    from { 
+        opacity: 0; 
+        transform: scale(0.8); 
+    }
+    to { 
+        opacity: 1; 
+        transform: scale(1); 
+    }
 }
 
 .ens-block img {
@@ -772,6 +863,22 @@ footer {
   border: 2px solid #ffaa33;
   border-radius: 50%;
   margin-top: 6px;
+  animation: float 6s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.ens-block:nth-child(2) img {
+  animation-delay: -2s; /* Décalage pour effet asynchrone */
+}
+
+.ens-block img:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+/* Animation de flottement subtile */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
 }
 
 .ens-block .asterisk-badge {
