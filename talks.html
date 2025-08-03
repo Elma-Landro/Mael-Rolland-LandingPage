@@ -327,16 +327,16 @@
             const themeIcon = document.getElementById('theme-icon');
             const themeText = document.getElementById('theme-text');
             
-            if (savedTheme === 'light') {
-                body.dataset.theme = 'light';
-                themeIcon.src = 'assets/icons/Moon.jpg';
-                themeIcon.alt = 'Moon';
-                themeText.textContent = 'Dark';
-            } else {
+            if (savedTheme === 'dark') {
                 body.dataset.theme = 'dark';
                 themeIcon.src = 'assets/icons/Sun.jpg';
                 themeIcon.alt = 'Sun';
                 themeText.textContent = 'Light';
+            } else {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Moon';
+                themeText.textContent = 'Dark';
             }
         });
     </script>
