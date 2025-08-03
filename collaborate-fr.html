@@ -98,6 +98,41 @@
   image-rendering: pixelated;
 }
 
+/* Tooltip container */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer; /* Optional: style as a clickable element */
+}
+
+/* Tooltip text */
+.tooltip-text {
+  visibility: hidden;
+  width: 200px; /* Adjust as needed */
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -100px; /* Half of width */
+
+  /* Fade in effect */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
     </style>
 </head>
 <body data-theme="dark">
@@ -129,9 +164,12 @@
                 <li>Revue ou peer-review externe</li>
                 <li>Accompagnement Web3 / DeFi / research design
   <div style="margin-top: 10px;">
-  <a href="atelier.html" class="pixel-button">
-    🎓 Atelier d’initiation crypto/Web3
-  </a>
+  <div class="tooltip-container">
+    <a href="atelier.html" class="pixel-button">
+      🎓 Atelier d'initiation crypto/Web3
+    </a>
+    <div class="tooltip-text">Atelier pratique crypto de 2h pour débutants</div>
+  </div>
 </div>
                 </li>
                 <li>Participation à DAO, governance, research guilds</li>
