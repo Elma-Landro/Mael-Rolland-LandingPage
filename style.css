@@ -275,22 +275,22 @@ header, section, footer {
 }
 
 /* Third Level (Paragraph) */
+.research-focus {
+    font-family: 'VT323', monospace;
+    color: var(--text-accent);
+    font-size: 1.1em;
+    margin-bottom: 40px;
+    transition: color 0.3s ease;
+}
+
 .description {
-    font-family: 'VT323', monospace; /* Retro monospace font - needs import or alternative */
-    /* Or stick to 'Press Start 2P' if VT323 is not desired */
+    font-family: 'VT323', monospace;
     font-size: 1em;
-    color: #ffaa33; /* Matte orange/yellow */
+    color: var(--text-secondary);
     line-height: 1.6;
     max-width: 600px;
     margin: 0 auto 30px auto;
-}
-
-/* Fourth Level (Green Text) */
-.research-focus {
-    font-family: 'VT323', monospace; /* Retro terminal font */
-    color: #33ff33; /* Retro terminal green */
-    font-size: 1.1em;
-    margin-bottom: 40px;
+    transition: color 0.3s ease;
 }
  .back-link {
      margin-top: 30px;

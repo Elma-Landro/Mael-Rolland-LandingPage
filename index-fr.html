@@ -97,6 +97,11 @@
 
     
 <body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Basculer mode sombre/clair">
+        <span id="theme-icon">🌙</span> <span id="theme-text">Sombre</span>
+    </button>
+
     <!-- 🌍 Sélecteur de langue -->
         <div class="language-switcher" style="text-align: center; margin-top: 10px;">
   <a href="index.html" class="lang-link">🇬🇧 English</a> | 
@@ -176,5 +181,39 @@
             </div>
         </footer>
     </div>
+<script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+            
+            if (body.dataset.theme === 'dark') {
+                body.dataset.theme = 'light';
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'Sombre';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.dataset.theme = 'dark';
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Clair';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        
+        // Load saved theme or default to light
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+            
+            if (savedTheme === 'dark') {
+                body.dataset.theme = 'dark';
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Clair';
+            }
+        });
+    </script>
 </body>
 </html>
