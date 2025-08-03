@@ -94,6 +94,11 @@
     </style>
 </head>
 <body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Basculer mode sombre/clair">
+        <img id="theme-icon" src="assets/icons/Sun.jpg" alt="Soleil"> <span id="theme-text">Clair</span>
+    </button>
+
   <div class="language-switcher">
         <a href="workshop.html">🇬🇧 English</a> | 
         <a href="atelier.html">🇫🇷 Français</a>
@@ -200,20 +205,20 @@
             }
         }
 
-        // Initialize theme
+        // Load saved theme or default to dark
         document.addEventListener('DOMContentLoaded', function() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
+            const savedTheme = localStorage.getItem('theme') || 'dark';
             const body = document.body;
             const themeIcon = document.getElementById('theme-icon');
             const themeText = document.getElementById('theme-text');
-
-            body.dataset.theme = savedTheme;
-
+            
             if (savedTheme === 'dark') {
+                body.dataset.theme = 'dark';
                 themeIcon.src = 'assets/icons/Sun.jpg';
                 themeIcon.alt = 'Soleil';
                 themeText.textContent = 'Clair';
             } else {
+                body.dataset.theme = 'light';
                 themeIcon.src = 'assets/icons/Moon.jpg';
                 themeIcon.alt = 'Lune';
                 themeText.textContent = 'Sombre';

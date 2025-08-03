@@ -180,6 +180,11 @@
   </style>
 </head>
 <body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+        <img id="theme-icon" src="assets/icons/Sun.jpg" alt="Sun"> <span id="theme-text">Light</span>
+    </button>
+
   <div class="language-switcher">
     <a href="curriculum.html">🇬🇧 English</a> | <a href="curriculum-fr.html">🇫🇷 Français</a>
   </div>
@@ -318,6 +323,46 @@
         button.classList.add("active");
       }
     }
+
+    function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.getElementById('theme-icon');
+        const themeText = document.getElementById('theme-text');
+        
+        if (body.dataset.theme === 'dark') {
+            body.dataset.theme = 'light';
+            themeIcon.src = 'assets/icons/Moon.jpg';
+            themeIcon.alt = 'Moon';
+            themeText.textContent = 'Dark';
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.dataset.theme = 'dark';
+            themeIcon.src = 'assets/icons/Sun.jpg';
+            themeIcon.alt = 'Sun';
+            themeText.textContent = 'Light';
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+    
+    // Load saved theme or default to dark
+    document.addEventListener('DOMContentLoaded', function() {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        const body = document.body;
+        const themeIcon = document.getElementById('theme-icon');
+        const themeText = document.getElementById('theme-text');
+        
+        if (savedTheme === 'dark') {
+            body.dataset.theme = 'dark';
+            themeIcon.src = 'assets/icons/Sun.jpg';
+            themeIcon.alt = 'Sun';
+            themeText.textContent = 'Light';
+        } else {
+            body.dataset.theme = 'light';
+            themeIcon.src = 'assets/icons/Moon.jpg';
+            themeIcon.alt = 'Moon';
+            themeText.textContent = 'Dark';
+        }
+    });
   </script>
 </body>
 </html>
