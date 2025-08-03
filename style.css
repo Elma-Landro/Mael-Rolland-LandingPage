@@ -19,24 +19,72 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-/* General Styles */
+/* CSS Variables for Theme System */
+:root {
+    /* Light theme (default - current design) */
+    --bg-primary: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), linear-gradient(to bottom, #6a0000, #4d0000);
+    --bg-fallback: #4d0000;
+    --text-primary: #ffcc66;
+    --text-secondary: #ffaa33;
+    --text-accent: #33ff33;
+    --button-bg: #8b0000;
+    --button-border: #ffcc66;
+    --button-hover: #a52a2a;
+}
 
+/* Dark theme */
+body[data-theme="dark"] {
+    --bg-primary: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(to bottom, #0a0a0a, #000000);
+    --bg-fallback: #000000;
+    --text-primary: #ffdd77;
+    --text-secondary: #ffbb44;
+    --text-accent: #44ff44;
+    --button-bg: #1a1a1a;
+    --button-border: #ffdd77;
+    --button-hover: #2a2a2a;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--button-bg);
+    color: var(--text-primary);
+    border: 2px solid var(--button-border);
+    padding: 8px 12px;
+    font-family: 'VT323', monospace;
+    font-size: 0.9em;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.theme-toggle:hover {
+    background: var(--button-hover);
+    transform: scale(1.05);
+}
+
+/* General Styles */
 body {
-    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), /* Subtle noise/texture overlay */
-                linear-gradient(to bottom, #6a0000, #4d0000); /* Dark red gradient */
-    background-color: #4d0000; /* Fallback */
-    color: #ffcc66; /* Matte yellow-orange */
-    font-family: 'Press Start 2P', monospace; /* Pixel font - requires import */
+    background: var(--bg-primary);
+    background-color: var(--bg-fallback);
+    color: var(--text-primary);
+    font-family: 'Press Start 2P', monospace;
     margin: 0;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    image-rendering: pixelated; /* Ensure sharp pixels globally */
-    -ms-interpolation-mode: nearest-neighbor; /* IE */
-    image-rendering: -moz-crisp-edges; /* Firefox */
-    image-rendering: crisp-edges; /* Chrome, Safari */
+    image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Pixelated Icons Base Style */
@@ -142,15 +190,15 @@ body {
 /* Pixelated Buttons/Tiles */
 .pixel-button {
     display: inline-block;
-    background-color: #8b0000; /* Darker red for buttons, adjust based on reference */
-    color: #ffcc66; /* Matte yellow-orange text */
-    border: 2px solid #000000; /* Outer black border */
-    box-shadow: inset 0 0 0 2px #ffcc66, /* Inner yellow border */
-                inset 0 0 0 4px #8b0000; /* Inner red border matching background */
+    background-color: var(--button-bg);
+    color: var(--text-primary);
+    border: 2px solid #000000;
+    box-shadow: inset 0 0 0 2px var(--button-border),
+                inset 0 0 0 4px var(--button-bg);
     padding: 10px 15px;
     margin: 10px;
-    font-family: inherit; /* Use body's pixel font */
-    font-size: 1em; /* Adjust as needed */
+    font-family: inherit;
+    font-size: 1em;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
@@ -158,13 +206,14 @@ body {
     -ms-interpolation-mode: nearest-neighbor;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
-    position: relative; /* For potential icons */
+    position: relative;
+    transition: all 0.3s ease;
 }
 
 .pixel-button:hover {
-    background-color: #a52a2a; /* Slightly lighter red on hover */
-    box-shadow: inset 0 0 0 2px #ffff99, /* Brighter yellow inner border */
-                inset 0 0 0 4px #a52a2a;
+    background-color: var(--button-hover);
+    box-shadow: inset 0 0 0 2px var(--text-primary),
+                inset 0 0 0 4px var(--button-hover);
 }
 
 .pixel-button.large {
@@ -244,34 +293,36 @@ header, section, footer {
 
 /* Top Section */
 .main-title {
-    font-size: 2.5em; /* Large pixel font */
-    color: #ffcc66; /* Matte yellow-orange */
+    font-size: 2.5em;
+    color: var(--text-primary);
     margin-bottom: 5px;
-    /* Add text-shadow for pixel effect if needed */
+    transition: color 0.3s ease;
 }
 
 .subtitle {
-    font-size: 1em; /* Smaller pixel font */
-    color: #ffcc66; /* Matte yellow-orange */
+    font-size: 1em;
+    color: var(--text-primary);
     margin-bottom: 30px;
+    transition: color 0.3s ease;
 }
 
 /* Second Level (ENS Identities) */
 .ens-identities {
     display: flex;
     justify-content: center;
-    gap: 40px; /* Space between identities */
+    gap: 40px;
     margin-bottom: 30px;
 }
 
 .ens-id {
-    font-size: 1.1em; /* Slightly smaller pixel text */
-    color: #ffcc66; /* Yellow text */
+    font-size: 1.1em;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
 }
 
 /* Asterisks styling */
 .asterisk {
-    color: #33ff33 !important; /* Terminal green for asterisks */
+    color: var(--text-accent) !important;
 }
 
 /* Third Level (Paragraph) */
