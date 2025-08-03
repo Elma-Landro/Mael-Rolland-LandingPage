@@ -698,6 +698,62 @@ footer {
   border-color: #ffee99;
 }
 
+/* Enhanced Tooltips System */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-text {
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000000;
+  color: #33ff33;
+  font-family: 'VT323', monospace;
+  font-size: 0.8em;
+  padding: 8px 12px;
+  border: 1px solid #33ff33;
+  white-space: nowrap;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  box-shadow: 2px 2px 0 #33ff33;
+}
+
+.tooltip-text::before {
+  content: ">> ";
+  color: #ffcc66;
+}
+
+.tooltip-text::after {
+  content: " <<";
+  color: #ffcc66;
+}
+
+.tooltip-container:hover .tooltip-text {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Tooltip arrow */
+.tooltip-text::before {
+  content: ">> ";
+  position: static;
+}
+
+.tooltip-arrow {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #33ff33 transparent transparent transparent;
+}
+
 .ens-block {
   display: flex;
   flex-direction: column;
