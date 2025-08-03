@@ -350,9 +350,10 @@ header, section, footer {
     margin: 0 auto;
     letter-spacing: 0.1em;
     animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+    max-width: 90vw; /* S'adapte à la largeur de l'écran */
 }
 
-/* Typing animation */
+/* Typing animation responsive */
 @keyframes typing {
     from { 
         width: 0; 
@@ -379,7 +380,8 @@ header, section, footer {
     animation: typing 3.5s steps(60, end), blink 0.75s step-end infinite;
     animation-delay: 0.5s;
     animation-fill-mode: both;
-    max-width: fit-content;
+    max-width: 90vw; /* S'adapte à la largeur de l'écran */
+    width: fit-content;
 }
 
 /* Animation du curseur clignotant */
@@ -546,6 +548,13 @@ footer {
 
     .main-title {
         font-size: 2em;
+        max-width: 95vw; /* Plus de place sur mobile */
+        letter-spacing: 0.05em; /* Réduire l'espacement des lettres */
+    }
+
+    .typing-animation {
+        max-width: 95vw;
+        font-size: 0.9em; /* Réduire légèrement la taille si nécessaire */
     }
 
     .subtitle {
@@ -599,6 +608,13 @@ footer {
 @media (max-width: 480px) {
     .main-title {
         font-size: 1.8em;
+        max-width: 98vw; /* Maximum d'espace disponible */
+        letter-spacing: 0.02em; /* Espacement minimal */
+    }
+
+    .typing-animation {
+        max-width: 98vw;
+        font-size: 0.85em; /* Plus petit sur très petits écrans */
     }
 
     .pixel-button {
