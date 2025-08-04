@@ -1,0 +1,612 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin & Ethereum Crisis - Chronologie des Vulnérabilités | Maël Rolland</title>
+    <meta name="description" content="Chronologie interactive des vulnérabilités et crises de Bitcoin et Ethereum (2009-2018). Une histoire rythmée de crises à gérer par Maël Rolland.">
+    <meta name="keywords" content="Bitcoin vulnérabilités, Ethereum crises, chronologie crypto, sécurité blockchain, histoire Bitcoin">
+    <meta name="author" content="Maël Rolland">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Bitcoin & Ethereum Crisis - Chronologie des Vulnérabilités">
+    <meta property="og:description" content="Chronologie interactive des vulnérabilités et crises de Bitcoin et Ethereum (2009-2018).">
+    <meta property="og:image" content="https://elma-landro.github.io/Mael-Rolland-Landing/assets/img/avatar-closky-mael-rolland.eth.jpg">
+    <meta property="og:url" content="https://elma-landro.github.io/Mael-Rolland-Landing/crisis-fr.html">
+    
+    <!-- Twitter -->
+    <meta property="twitter:title" content="Bitcoin & Ethereum Crisis - Chronologie des Vulnérabilités">
+    <meta property="twitter:description" content="Chronologie interactive des vulnérabilités et crises de Bitcoin et Ethereum (2009-2018).">
+    <meta property="twitter:image" content="https://elma-landro.github.io/Mael-Rolland-Landing/assets/img/avatar-closky-mael-rolland.eth.jpg">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
+    
+    <style>
+        .crisis-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .crisis-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-blue) 100%);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .crisis-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-family: 'VT323', monospace;
+        }
+
+        .crisis-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .controls {
+            background: var(--bg-color);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: var(--text-color);
+            font-family: 'VT323', monospace;
+            font-size: 1.1rem;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--border-color);
+            background: var(--bg-color);
+            color: var(--text-color);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-family: 'VT323', monospace;
+        }
+
+        .filter-btn.active {
+            background: var(--accent-orange);
+            color: var(--bg-color);
+            border-color: var(--accent-orange);
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .timeline-container {
+            background: var(--bg-color);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .timeline {
+            position: relative;
+            min-height: 600px;
+            padding: 20px 0;
+        }
+
+        .timeline-axis {
+            position: absolute;
+            top: 50%;
+            left: 50px;
+            right: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-orange), var(--accent-blue));
+            border-radius: 2px;
+            transform: translateY(-50%);
+        }
+
+        .year-markers {
+            position: absolute;
+            top: 50%;
+            left: 50px;
+            right: 50px;
+            transform: translateY(-50%);
+        }
+
+        .year-marker {
+            position: absolute;
+            transform: translateX(-50%);
+        }
+
+        .year-label {
+            position: absolute;
+            top: 20px;
+            transform: translateX(-50%);
+            font-weight: bold;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-family: 'VT323', monospace;
+        }
+
+        .year-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            border: 3px solid var(--bg-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .vulnerability {
+            position: absolute;
+            background: var(--bg-color);
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-left: 4px solid;
+            max-width: 280px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+            border: 1px solid var(--border-color);
+        }
+
+        .vulnerability:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .vulnerability.top {
+            bottom: 60px;
+        }
+
+        .vulnerability.bottom {
+            top: 60px;
+        }
+
+        .vuln-header {
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: var(--text-color);
+            font-family: 'VT323', monospace;
+        }
+
+        .vuln-cve {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+            font-family: 'VT323', monospace;
+        }
+
+        .vuln-type {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-family: 'VT323', monospace;
+        }
+
+        .vuln-description {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Types de vulnérabilités avec thème du site */
+        .type-dos { border-left-color: #ff6b6b; }
+        .type-dos .vuln-type { background: rgba(255, 107, 107, 0.2); color: #ff6b6b; }
+
+        .type-theft { border-left-color: #ee5a24; }
+        .type-theft .vuln-type { background: rgba(238, 90, 36, 0.2); color: #ee5a24; }
+
+        .type-fake-conf { border-left-color: var(--accent-orange); }
+        .type-fake-conf .vuln-type { background: rgba(255, 170, 51, 0.2); color: var(--accent-orange); }
+
+        .type-netset { border-left-color: var(--accent-blue); }
+        .type-netset .vuln-type { background: rgba(33, 166, 236, 0.2); color: var(--accent-blue); }
+
+        .type-exposure { border-left-color: #ff9ff3; }
+        .type-exposure .vuln-type { background: rgba(255, 159, 243, 0.2); color: #ff9ff3; }
+
+        .type-unknown { border-left-color: var(--text-muted); }
+        .type-unknown .vuln-type { background: rgba(153, 153, 153, 0.2); color: var(--text-muted); }
+
+        .type-inflation { border-left-color: #00b894; }
+        .type-inflation .vuln-type { background: rgba(0, 184, 148, 0.2); color: #00b894; }
+
+        .stats {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--bg-color);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-orange);
+            font-family: 'VT323', monospace;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            margin-top: 5px;
+            font-family: 'VT323', monospace;
+        }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            font-family: 'VT323', monospace;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .crisis-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .filter-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .vulnerability {
+                max-width: 250px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Basculer mode sombre/clair">
+        <img id="theme-icon" src="assets/icons/Sun.jpg" alt="Soleil"> <span id="theme-text">Clair</span>
+    </button>
+
+    <div class="language-switcher">
+        <a href="crisis.html">🇬🇧 English</a> | 
+        <a href="crisis-fr.html">🇫🇷 Français</a>
+    </div>
+
+    <div class="container">
+        <nav class="pixel-nav">
+            <div class="nav-brand">
+                <a href="index-fr.html" class="brand-link">
+                    <img src="assets/img/avatar-closky-mael-rolland.eth.jpg" alt="Avatar Maël Rolland" class="brand-avatar">
+                    <span class="brand-text">Maël Rolland</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index-fr.html" class="nav-link">Accueil</a>
+                <a href="these-fr.html" class="nav-link">Thèse</a>
+                <a href="talks-fr.html" class="nav-link">Conférences</a>
+                <a href="crisis-fr.html" class="nav-link active">Crises</a>
+                <a href="contact-fr.html" class="nav-link">Contact</a>
+            </div>
+        </nav>
+
+        <div class="crisis-container">
+            <div class="crisis-header">
+                <h1>🪙 Bitcoin & Ethereum Crisis</h1>
+                <p>Une histoire rythmée de crises à gérer (2009-2018)</p>
+            </div>
+
+            <div class="controls">
+                <div class="filter-group">
+                    <label>Filtrer par type :</label>
+                    <button class="filter-btn active" data-type="all">Tous</button>
+                    <button class="filter-btn" data-type="dos">DOS</button>
+                    <button class="filter-btn" data-type="theft">Theft</button>
+                    <button class="filter-btn" data-type="fake-conf">Fake Conf</button>
+                    <button class="filter-btn" data-type="netset">Netset</button>
+                    <button class="filter-btn" data-type="exposure">Exposure</button>
+                    <button class="filter-btn" data-type="inflation">Inflation</button>
+                    <button class="filter-btn" data-type="unknown">Unknown</button>
+                </div>
+                
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #ff6b6b;"></div>
+                        <span>DOS (Déni de Service)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #ee5a24;"></div>
+                        <span>Theft (Vol)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: var(--accent-orange);"></div>
+                        <span>Fake Conf (Fausse Confirmation)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: var(--accent-blue);"></div>
+                        <span>Netset (Réseau)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #ff9ff3;"></div>
+                        <span>Exposure (Exposition)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #00b894;"></div>
+                        <span>Inflation Bug</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline" id="timeline">
+                    <div class="timeline-axis"></div>
+                    <div class="year-markers" id="year-markers"></div>
+                </div>
+
+                <div class="stats" id="stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="total-vulns">0</div>
+                        <div class="stat-label">Vulnérabilités totales</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="critical-vulns">0</div>
+                        <div class="stat-label">Vulnérabilités critiques</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="years-span">0</div>
+                        <div class="stat-label">Années couvertes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Maël Rolland</h3>
+                <p>Chercheur en économie politique des cryptomonnaies</p>
+            </div>
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <a href="index-fr.html">Accueil</a>
+                <a href="these-fr.html">Thèse</a>
+                <a href="talks-fr.html">Conférences</a>
+                <a href="crisis-fr.html">Crises</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <a href="contact-fr.html">Me contacter</a>
+                <a href="collaborate-fr.html">Collaborer</a>
+            </div>
+        </div>
+        <div class="ethereum-badge-centered">
+            <a href="https://ipfs.tech/" target="_blank" rel="noopener noreferrer" aria-label="Built on Ethereum (Swarm)">
+                <img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge">
+            </a>
+            <div class="ethereum-tooltip">
+                ALERTE FAUCILLE & MARTEAU ! Emprunté au troll épique de BTC Socialist contre l'élite Web3, un défi malicieux aux narratifs crypto libertariens. Consultez ma thèse pour le côté sérieux de cette plaisanterie pixelisée !
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Données des vulnérabilités extraites du document
+        const vulnerabilities = [
+            { year: 2009, month: 1, cve: "Genesis Block", type: "inflation", title: "Lancement du protocole Bitcoin", description: "03/01/2009" },
+            
+            { year: 2010, month: 7, cve: "CVE-2010-5137", type: "dos", title: "DOS via JSON-RPC", description: "Type de faille : DOS ; Attaque par buffer overflow", date: "28/07/2010" },
+            { year: 2010, month: 7, cve: "CVE-2010-5139", type: "dos", title: "DOS via SigOp", description: "Unlimited SigOp DoS via OP_CHECKMULTISIG opcodes", date: "29/07/2010" },
+            { year: 2010, month: 8, cve: "CVE-2010-5141", type: "theft", title: "GetBLOCK DoS", description: "Type de faille : Theft ; getBlockHash could be overloaded causing", date: "23/07/2010" },
+            
+            { year: 2011, month: 8, cve: "CVE-2011-4447", type: "exposure", title: "Wallet Exposure", description: "Type de faille : Exposure ; Wallet non encryption", date: "11/11/2011" },
+            
+            { year: 2012, month: 1, cve: "CVE-2012-1909", type: "netset", title: "Netset Corruption", description: "Type de faille : Netset ; connection corrupting", date: "17/03/2012" },
+            { year: 2012, month: 5, cve: "CVE-2012-3789", type: "dos", title: "DOS via Orphan", description: "Type de faille : DOS ; (Lack of) orphan tx resource limits", date: "12/05/2012" },
+            { year: 2012, month: 8, cve: "CVE-2012-2459", type: "netset", title: "Block Hash Collision", description: "Type de faille : Netset ; Block hash collision (via merkle root)", date: "14/08/2012" },
+            { year: 2012, month: 8, cve: "CVE-2012-4683", type: "dos", title: "Memory Exhaustion", description: "Type de faille : DOS ; Memory exhaustion using alerts", date: "23/08/2012" },
+            { year: 2012, month: 8, cve: "CVE-2012-4684", type: "dos", title: "DOS Network-wide", description: "Type de faille : DOS ; Network-wide DoS using hash signatures", date: "24/08/2012" },
+            { year: 2012, month: 9, cve: "CVE-2012-4692", type: "dos", title: "DOS Lack Info", description: "Type de faille : DOS ; (Lack of information)", date: "16/09/2012" },
+            
+            { year: 2013, month: 1, cve: "CVE-2013-2292", type: "dos", title: "DOS via Blockchain", description: "Type de faille : DOS ; DoS : Connection slot exhaustion at least 3 minutes to verify", date: "30/01/2013" },
+            { year: 2013, month: 2, cve: "CVE-2013-2273", type: "exposure", title: "Predictable Change Output", description: "Type de faille : Exposure ; Predictable change output", date: "20/02/2013" },
+            { year: 2013, month: 3, cve: "CVE-2013-2293", type: "netset", title: "Remote Disclosure", description: "Type de faille : Exposure ; Remote discovery of node's wallet addresses", date: "11/03/2013" },
+            { year: 2013, month: 5, cve: "CVE-2013-2292", type: "dos", title: "DOS via Large Fork", description: "Type de faille : DOS ; Connection handshake takes at least 3 minutes to verify", date: "05/01/2013" },
+            { year: 2013, month: 3, cve: "CVE-2013-3220", type: "netset", title: "Netset Inconsistent", description: "Type de faille : Netset ; Inconsistent BDB lock limit interactions", date: "11/03/2013" },
+            { year: 2013, month: 5, cve: "CVE-2013-3219", type: "fake-conf", title: "Fake Conf via Protocol", description: "Type de faille : Fake Conf ; Accept invalid protocol rule", date: "15/05/2013" },
+            { year: 2013, month: 8, cve: "CVE-2013-4627", type: "dos", title: "DOS Memory Exhaustion", description: "Type de faille : DOS ; Memory exhaustion with excess tx message data", date: "08/02/2013" },
+            { year: 2013, month: 11, cve: "CVE-2013-4165", type: "theft", title: "Theft Timing Leak", description: "Type de faille : Theft ; Timing leak in RPC", date: "20/07/2013" },
+            { year: 2013, month: 11, cve: "CVE-2013-5700", type: "dos", title: "DOS Remote p2p", description: "Type de faille : DOS ; Remote p2p crash via bloom filters", date: "05/09/2013" },
+            
+            { year: 2014, month: 2, cve: "BIP-0042", type: "inflation", title: "Satoshi codes imply a sideline behaviour", description: "Fixed monetary supply inflation bug - https://en.bitcoin.it/wiki/BIP_0042", date: "01/04/2014" },
+            { year: 2014, month: 4, cve: "CVE-2014-0160", type: "unknown", title: "Remote Memory Leak", description: "Type de faille : Unknown ; Remote memory leak via payment protocol", date: "11/04/2016" },
+            
+            { year: 2015, month: 7, cve: "CVE-2015-3641", type: "dos", title: "DOS via Unauthenticated", description: "Type de faille : DOS ; Unauthenticated yet...", date: "09/07/2015" },
+            
+            { year: 2016, month: 11, cve: "CVE-2016-10724", type: "fake-conf", title: "Vulnérabilité DDOS", description: "Type de faille : DDOS ; Vulnerability in system", date: "11/11/2015" },
+            { year: 2016, month: 11, cve: "CVE-2016-10725", type: "fake-conf", title: "DDOS Alert System", description: "Type de faille : DDOS ; Vulnerability in system Alert system misbehave cancellation", date: "02/07/2016" },
+            { year: 2016, month: 7, cve: "CVE-2016-8889", type: "exposure", title: "Bitcoin Knots Exposure", description: "Implementation [Bitcoin Knots 0.11.0 - 0.13.0]", date: "11/07/2016" },
+            
+            { year: 2017, month: 3, cve: "CVE-2017-12842", type: "fake-conf", title: "Fake SPV Proof", description: "Type de faille : Fake SPV proof ; No coinbase merkle tree depth", date: "06/02/2017" },
+            { year: 2017, month: 3, cve: "BIP 145", type: "fake-conf", title: "Fake Conf & Soft", description: "Type de faille : Fake Conf & Soft", date: "12/03/2017" },
+            { year: 2017, month: 7, cve: "CVE-2017-9230", type: "unknown", title: "Unknown Type", description: "Type de faille : Unknown ; infoleak", date: "26/11/2017" },
+            { year: 2017, month: 11, cve: "CVE-2017-18350", type: "unknown", title: "Buffer Overflow", description: "Type de faille : Unknown ; overflow from SOCKS proxy", date: "22/06/2015" },
+            
+            { year: 2018, month: 5, cve: "CVE-2018-20587", type: "theft", title: "Theft via RPC", description: "Type de faille : Theft ; Insufficient Access Control vulnerability", date: "05/02/2018" },
+            { year: 2018, month: 9, cve: "CVE-2018-17144", type: "inflation", title: "Inflation Bug", description: "Type de faille : Inflation ; Missing check for duplicate inputs", date: "17/09/2018" },
+            { year: 2018, month: 11, cve: "CVE-2018-20586", type: "fake-conf", title: "Fake Conf", description: "Type de faille : Fake Conf ; Unknown", date: "21/11/2018" }
+        ];
+
+        let currentFilter = 'all';
+        const timelineEl = document.getElementById('timeline');
+        const yearMarkersEl = document.getElementById('year-markers');
+
+        function getTypeClass(type) {
+            return `type-${type.replace(/[\s-]/g, '-').toLowerCase()}`;
+        }
+
+        function getTypeName(type) {
+            const typeNames = {
+                'dos': 'DOS',
+                'theft': 'Theft',
+                'fake-conf': 'Fake Conf',
+                'netset': 'Netset',
+                'exposure': 'Exposure',
+                'unknown': 'Unknown',
+                'inflation': 'Inflation'
+            };
+            return typeNames[type] || type;
+        }
+
+        function createTimeline() {
+            const minYear = Math.min(...vulnerabilities.map(v => v.year));
+            const maxYear = Math.max(...vulnerabilities.map(v => v.year));
+            const yearSpan = maxYear - minYear;
+
+            // Créer les marqueurs d'années
+            yearMarkersEl.innerHTML = '';
+            for (let year = minYear; year <= maxYear; year++) {
+                const marker = document.createElement('div');
+                marker.className = 'year-marker';
+                marker.style.left = `${((year - minYear) / yearSpan) * 100}%`;
+                
+                marker.innerHTML = `
+                    <div class="year-dot"></div>
+                    <div class="year-label">${year}</div>
+                `;
+                yearMarkersEl.appendChild(marker);
+            }
+
+            // Créer les vulnérabilités
+            timelineEl.querySelectorAll('.vulnerability').forEach(el => el.remove());
+            
+            vulnerabilities.forEach((vuln, index) => {
+                const vulnEl = document.createElement('div');
+                vulnEl.className = `vulnerability ${getTypeClass(vuln.type)} ${index % 2 === 0 ? 'top' : 'bottom'}`;
+                vulnEl.dataset.type = vuln.type;
+                
+                const position = ((vuln.year - minYear + (vuln.month || 6) / 12) / yearSpan) * 100;
+                vulnEl.style.left = `${Math.min(Math.max(position, 5), 85)}%`;
+                vulnEl.style.animationDelay = `${index * 0.1}s`;
+
+                vulnEl.innerHTML = `
+                    <div class="vuln-header">${vuln.title}</div>
+                    <div class="vuln-cve">${vuln.cve}</div>
+                    <div class="vuln-type">${getTypeName(vuln.type)}</div>
+                    <div class="vuln-description">${vuln.description}</div>
+                `;
+
+                vulnEl.addEventListener('click', () => {
+                    if (vuln.cve.startsWith('CVE-')) {
+                        window.open(`https://cve.mitre.org/cgi-bin/cvename.cgi?name=${vuln.cve}`, '_blank');
+                    }
+                });
+
+                timelineEl.appendChild(vulnEl);
+            });
+
+            updateStats();
+        }
+
+        function filterVulnerabilities(type) {
+            currentFilter = type;
+            const vulnElements = document.querySelectorAll('.vulnerability');
+            
+            vulnElements.forEach(el => {
+                if (type === 'all' || el.dataset.type === type) {
+                    el.style.display = 'block';
+                } else {
+                    el.style.display = 'none';
+                }
+            });
+
+            updateStats();
+        }
+
+        function updateStats() {
+            const visibleVulns = vulnerabilities.filter(v => 
+                currentFilter === 'all' || v.type === currentFilter
+            );
+
+            const criticalTypes = ['inflation', 'theft'];
+            const criticalCount = visibleVulns.filter(v => criticalTypes.includes(v.type)).length;
+            
+            const years = [...new Set(visibleVulns.map(v => v.year))];
+
+            document.getElementById('total-vulns').textContent = visibleVulns.length;
+            document.getElementById('critical-vulns').textContent = criticalCount;
+            document.getElementById('years-span').textContent = years.length;
+        }
+
+        // Event listeners pour les filtres
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                filterVulnerabilities(btn.dataset.type);
+            });
+        });
+
+        // Initialisation
+        createTimeline();
+    </script>
+</body>
+</html>
