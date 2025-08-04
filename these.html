@@ -258,6 +258,37 @@
             }
         }
 
+        /* Badge theses.fr en tampon */
+        .theses-fr-stamp {
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .theses-fr-stamp img {
+            width: 60px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+        }
+
+        .theses-fr-stamp img:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .theses-fr-stamp {
+                top: 50px;
+                right: 15px;
+            }
+            
+            .theses-fr-stamp img {
+                width: 45px;
+            }
+        }
+
     </style>
 
 </head>
@@ -271,6 +302,13 @@
         <a href="these.html">🇬🇧 English</a> | 
         <a href="these-fr.html">🇫🇷 Français</a>
     </div>
+    <!-- Badge theses.fr en haut à droite -->
+    <div class="theses-fr-stamp">
+        <a href="https://theses.fr/2024EHES0127" target="_blank" rel="noopener noreferrer">
+            <img src="assets/icons/thesesfr.png" alt="Official theses.fr page" title="View on theses.fr">
+        </a>
+    </div>
+
     <div class="container">
         <header>
             <h1 class="main-title">Thesis</h1>
@@ -315,15 +353,7 @@
                 </div>
             </div>
             
-            <div class="theses-fr-badge" style="text-align: center; margin: 15px 0;">
-                <div class="tooltip-container">
-                    <a href="https://theses.fr/2024EHES0127" target="_blank" rel="noopener noreferrer" class="pixel-button" style="background-color: #004080; color: #ffffff; font-size: 0.9em; padding: 8px 12px; border: 2px solid #0066cc;">
-                        <img src="assets/icons/thesesfr.png" alt="Theses.fr" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
-                        Official theses.fr page
-                    </a>
-                    <div class="tooltip-text">View the official thesis page on the theses.fr portal</div>
-                </div>
-            </div>
+            
 
             <h2 style="color: #33ff33; font-size: 1em; margin-top: 40px; text-align: center;">Download by chapters</h2>
             <div class="chapters-grid">
