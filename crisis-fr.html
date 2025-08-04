@@ -132,18 +132,6 @@
             color: var(--text-primary);
         }
 
-        .avatar-icon {
-            width: 90px;
-            height: 90px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 2px solid #ffaa33;
-            background-color: #330000;
-            image-rendering: pixelated;
-            display: block;
-            margin: 0 auto 10px auto;
-        }
-
         .filters {
             text-align: center;
             margin: 20px 0;
@@ -186,7 +174,7 @@
 <body>
     <!-- Theme Toggle -->
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Basculer mode sombre/clair">
-        <img id="theme-icon" src="assets/icons/Moon.jpg" alt="Lune"> <span id="theme-text">Sombre</span>
+        <img id="theme-icon" src="assets/icons/Sun.jpg" alt="Soleil"> <span id="theme-text">Clair</span>
     </button>
 
     <div class="language-switcher">
@@ -214,42 +202,6 @@
                 <div class="stat-box">
                     <span class="stat-number">10</span>
                     <span class="stat-label">Années couvertes</span>
-                </div>
-            </div>
-
-            <!-- Frise Chronologique Interactive -->
-            <div class="timeline-container">
-                <div class="timeline-header">
-                    <h2>Frise Chronologique Interactive (2009-2018)</h2>
-                    <div class="timeline-controls">
-                        <button class="filter-btn active" data-filter="all">Tous</button>
-                        <button class="filter-btn" data-filter="dos">DOS</button>
-                        <button class="filter-btn" data-filter="inflation">Inflation</button>
-                        <button class="filter-btn" data-filter="consensus">Consensus</button>
-                        <button class="filter-btn" data-filter="privacy">Vie privée</button>
-                    </div>
-                </div>
-                
-                <div class="timeline-track">
-                    <div class="timeline-line"></div>
-                    <div class="timeline-years">
-                        <div class="year-marker" data-year="2009">2009</div>
-                        <div class="year-marker" data-year="2010">2010</div>
-                        <div class="year-marker" data-year="2011">2011</div>
-                        <div class="year-marker" data-year="2012">2012</div>
-                        <div class="year-marker" data-year="2013">2013</div>
-                        <div class="year-marker" data-year="2014">2014</div>
-                        <div class="year-marker" data-year="2015">2015</div>
-                        <div class="year-marker" data-year="2016">2016</div>
-                        <div class="year-marker" data-year="2017">2017</div>
-                        <div class="year-marker" data-year="2018">2018</div>
-                    </div>
-                    
-                    <div class="timeline-events" id="timeline-events">
-                        <!-- Les événements seront générés dynamiquement -->
-                    </div>
-                </div>
-            </div>
                 </div>
             </div>
 
@@ -373,4 +325,44 @@
                     vulnItem.innerHTML = `
                         <div class="vuln-title">${vuln.title}</div>
                         <div class="vuln-cve">${vuln.cve}</div>
-                        <div class="vuln-type type-${vuln.type}">${vuln.type.toUppe
+                        <div class="vuln-type type-${vuln.type}">${vuln.type.toUpperCase()}</div>
+                        <div class="vuln-description">${vuln.description}</div>
+                    `;
+
+                    if (vuln.cve.startsWith('CVE-')) {
+                        vulnItem.style.cursor = 'pointer';
+                        vulnItem.addEventListener('click', () => {
+                            window.open(`https://cve.mitre.org/cgi-bin/cvename.cgi?name=${vuln.cve}`, '_blank');
+                        });
+                    }
+
+                    yearSection.appendChild(vulnItem);
+                });
+
+                grid.appendChild(yearSection);
+            });
+
+            updateStats(filtered);
+        }
+
+        function updateStats(filtered) {
+            const criticalTypes = ['inflation', 'theft'];
+            const criticalCount = filtered.filter(v => criticalTypes.includes(v.type)).length;
+
+            document.getElementById('total-vulns').textContent = filtered.length;
+            document.getElementById('critical-vulns').textContent = criticalCount;
+        }
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.dataset.type;
+                renderVulnerabilities();
+            });
+        });
+
+        renderVulnerabilities();
+    </script>
+</body>
+</html>
