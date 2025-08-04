@@ -1,0 +1,12 @@
+year,month,cve,type,title,description,date
+2010,9,CVE-2010-5140,dos,Never Confirming TX,Type de faille : DOS ; Never confirming transactions,01/09/2010
+2010,7,CVE-2010-5144,dos,OP_RETURN Crash,Type de faille : DOS ; OP_RETURN used to spend output,28/07/2010
+2010,7,CVE-2010-5138,dos,Unlimited SigOp,Type de faille : DOS ; Too many CHECKSIG commands,29/07/2010
+2010,8,CVE-2010-5145,inflation,Combined Output Overflow,Type de faille : Inflation ; Netsplit ; Combined output overflow,15/08/2010
+2010,8,CVE-2010-5143,dos,JSIF Crash,Type de faille : DOS ; JSIF crash,01/08/2010
+2010,8,CVE-2010-5142,dos,OP_NOP Bug,Type de faille : DOS ; OP_NOP overflow,01/08/2010
+2012,5,CVE-2012-1739,dos,Orphan Resource Leak,Type de faille : DOS ; Orphan tx resource exhaustion,12/05/2012
+2012,3,CVE-2012-3210,fake-conf,DER Signature Soft Fork,Type de faille : Fake Conf ; Soft fork via DER signature rules,01/03/2012
+2013,3,CVE-2013-3220,fake-conf,Soft Fork Race Condition,Type de faille : Fake Conf ; Race condition chain split,01/03/2013
+2013,5,CVE-2013-3219,fake-conf,Invalid Rule Accepted,Type de faille : Fake Conf ; Accept invalid protocol rule,15/05/2013
+2017,5,CVE-2017-7482,unknown,Proof-of-Work Bug,Type de faille : Unknown ; Violation of PoW assumptions,24/05/2017
