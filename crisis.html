@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,12 +8,12 @@
     <meta name="keywords" content="Bitcoin vulnerabilities, Ethereum crises, crypto timeline, blockchain security, Bitcoin history">
     <meta name="author" content="Maël Rolland">
     <meta name="robots" content="index, follow">
-    
+
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
-    
+
     <style>
         .crisis-grid {
             display: grid;
@@ -170,12 +169,29 @@
             transform: translateY(-2px) scale(1.02);
         }
 
+        .avatar-section {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+        .avatar-icon {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #ffaa33;
+            background-color: #330000;
+            image-rendering: pixelated;
+            display: block;
+            margin: 0 auto;
+        }
+
         @media (max-width: 768px) {
             .crisis-grid {
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
-            
+
             .stats-container {
                 flex-direction: column;
                 align-items: center;
@@ -279,7 +295,7 @@
             { year: 2012, month: 8, cve: "CVE-2012-4683", type: "dos", title: "Memory Exhaustion", description: "Vulnerability type: DOS; Memory exhaustion using alerts", date: "23/08/2012" },
             { year: 2012, month: 8, cve: "CVE-2012-4684", type: "dos", title: "DOS Network-wide", description: "Vulnerability type: DOS; Network-wide DoS using hash signatures", date: "24/08/2012" },
             { year: 2012, month: 9, cve: "CVE-2012-4692", type: "dos", title: "DOS Lack Info", description: "Vulnerability type: DOS; (Lack of information)", date: "16/09/2012" },
-            { year: 2013, month: 1, cve: "CVE-2013-2292", type: "dos", title: "DOS via Blockchain", description: "Vulnerability type: DOS; DoS: Connection slot exhaustion at least 3 minutes to verify", date: "30/01/2013" },
+            { year: 2013, month: 1, cve: "CVE-2013-2292", type: "dos", title: "DOS via Large Fork", description: "Vulnerability type: DOS; Connection handshake takes at least 3 minutes to verify", date: "30/01/2013" },
             { year: 2013, month: 2, cve: "CVE-2013-2273", type: "exposure", title: "Predictable Change Output", description: "Vulnerability type: Exposure; Predictable change output", date: "20/02/2013" },
             { year: 2013, month: 3, cve: "CVE-2013-2293", type: "netset", title: "Remote Disclosure", description: "Vulnerability type: Exposure; Remote discovery of node's wallet addresses", date: "11/03/2013" },
             { year: 2013, month: 3, cve: "CVE-2013-3220", type: "fake-conf", title: "Soft Fork Race Condition", description: "Vulnerability type: Fake Conf; Race condition chain split", date: "01/03/2013" },
@@ -330,11 +346,11 @@
             years.forEach(year => {
                 const yearSection = document.createElement('div');
                 yearSection.className = 'year-section';
-                
+
                 const yearHeader = document.createElement('div');
                 yearHeader.className = 'year-header';
                 yearHeader.textContent = year;
-                
+
                 yearSection.appendChild(yearHeader);
 
                 grouped[year].forEach(vuln => {
