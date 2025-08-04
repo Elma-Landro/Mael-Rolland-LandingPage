@@ -8,14 +8,14 @@
     <meta name="keywords" content="Maël Rolland, cryptocurrency research, political economy, Bitcoin, Web3, decentralized governance, blockchain economics, institutional analysis">
     <meta name="author" content="Maël Rolland">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://elma-landro.github.io/Mael-Rolland-Landing/">
     <meta property="og:title" content="Maël Rolland - Independent Researcher in Cryptocurrency Political Economy">
     <meta property="og:description" content="PhD researcher exploring polycentric governance, institutional plasticity, and monetary experimentation in cryptocurrencies and Web3.">
     <meta property="og:image" content="https://elma-landro.github.io/Mael-Rolland-Landing/assets/img/avatar-closky-mael-rolland.eth.jpg">
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://elma-landro.github.io/Mael-Rolland-Landing/">
@@ -24,7 +24,7 @@
     <meta property="twitter:image" content="https://elma-landro.github.io/Mael-Rolland-Landing/assets/img/avatar-closky-mael-rolland.eth.jpg">
     <meta property="twitter:site" content="@elmalandr0">
     <meta property="twitter:creator" content="@elmalandr0">
-    
+
     <!-- Additional SEO -->
     <link rel="canonical" href="https://elma-landro.github.io/Mael-Rolland-Landing/">
     <meta name="language" content="en">
@@ -33,7 +33,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
     <link rel="shortcut icon" href="favicon.ico">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
@@ -78,14 +78,63 @@
   }
 }
 
-    </style>
+        /* Easter egg styles */
+        #easter-egg {
+            display: none;
+            white-space: pre;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #ffff66;
+            background-color: #300000;
+            padding: 20px;
+            margin: 30px auto;
+            border: 2px dashed #ffcc00;
+            max-width: 90%;
+            overflow-x: auto;
+            text-shadow: 1px 1px 2px #000;
+            animation: flicker 1.2s infinite alternate;
+            cursor: pointer;
+            position: relative;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+            text-align: left;
+        }
 
+        #easter-egg.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #easter-egg::after {
+            content: "💀 Click to close";
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 10px;
+            color: #ffcc00;
+            opacity: 0.7;
+        }
+
+        @keyframes flicker {
+            from { opacity: 0.85; }
+            to { opacity: 1; }
+        }
+
+        /* Visual feedback for clicks */
+        .thesis-button-clicked {
+            background-color: #28a745 !important;
+            transform: scale(0.95) !important;
+            transition: all 0.1s ease !important;
+        }
+
+    </style>
 </head>
 <body>
 
     <!-- Theme Toggle -->
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
-        <img id="theme-icon" src="assets/icons/Sun.jpg" alt="Sun"> <span id="theme-text">Light</span>
+        <img id="theme-icon" src="assets/icons/Moon.jpg" alt="Moon"> <span id="theme-text">Dark</span>
     </button>
 
     <!-- 🌍 Sélecteur de langue -->
@@ -93,7 +142,7 @@
   <a href="index.html" class="lang-link">🇬🇧 English</a> | 
   <a href="index-fr.html" class="lang-link">🇫🇷 Français</a>
         </div>
-    
+
     <div class="container">
         <header>
             <h1 class="main-title">Maël Rolland</h1>
@@ -189,13 +238,19 @@
             </div>
         </footer>
     </div>
+    
+<div id="easter-egg">
+This is an easter egg! 
+Click me to close.
+</div>
+
 <script>
         // Theme toggle functionality
         function toggleTheme() {
             const body = document.body;
             const themeIcon = document.getElementById('theme-icon');
             const themeText = document.getElementById('theme-text');
-            
+
             if (body.dataset.theme === 'dark') {
                 body.dataset.theme = 'light';
                 themeIcon.src = 'assets/icons/Moon.jpg';
@@ -210,14 +265,14 @@
                 localStorage.setItem('theme', 'dark');
             }
         }
-        
+
         // Load saved theme or default to light
         document.addEventListener('DOMContentLoaded', function() {
             const savedTheme = localStorage.getItem('theme') || 'light';
             const body = document.body;
             const themeIcon = document.getElementById('theme-icon');
             const themeText = document.getElementById('theme-text');
-            
+
             if (savedTheme === 'light') {
                 body.dataset.theme = 'light';
                 themeIcon.src = 'assets/icons/Moon.jpg';
@@ -230,6 +285,54 @@
                 themeText.textContent = 'Light';
             }
         });
+
+        // Easter egg functionality
+        const easterEgg = document.getElementById('easter-egg');
+        let easterEggVisible = false;
+
+        function showEasterEgg() {
+            easterEgg.style.display = 'block';
+            setTimeout(() => {
+                easterEgg.classList.add('show');
+            }, 10); // Small delay to allow CSS transition
+        }
+
+        function hideEasterEgg() {
+            easterEgg.classList.remove('show');
+            easterEgg.addEventListener('transitionend', function() {
+                if (!easterEggVisible) { // Check if it was hidden intentionally
+                    easterEgg.style.display = 'none';
+                }
+            }, { once: true });
+        }
+
+        // Trigger easter egg by clicking the "Thesis & co." button
+        const thesisButton = document.querySelector('a[href="these.html"]');
+        if (thesisButton) {
+            thesisButton.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default link behavior
+                if (!easterEggVisible) {
+                    showEasterEgg();
+                    easterEggVisible = true;
+                    // Add visual feedback to the button
+                    thesisButton.classList.add('thesis-button-clicked');
+                    setTimeout(() => {
+                        thesisButton.classList.remove('thesis-button-clicked');
+                    }, 200); // Remove feedback after a short duration
+                }
+            });
+        }
+
+        // Close easter egg by clicking on it
+        if (easterEgg) {
+            easterEgg.addEventListener('click', function() {
+                if (easterEggVisible) {
+                    hideEasterEgg();
+                    easterEggVisible = false;
+                }
+            });
+        }
+
     </script>
 </body>
 </html>
