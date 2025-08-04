@@ -237,9 +237,8 @@
                 </div>
             </div>
         </footer>
-    </div>
-    
-<pre id="easter-egg">        ╔═════════════════════════════════════╗
+        
+        <pre id="easter-egg">        ╔═════════════════════════════════════╗
         ║     ⚠️  SYSTEM CRITICAL FAILURE    ⚠️     ║
         ╚═════════════════════════════════════╝
 
@@ -257,6 +256,7 @@
     >> access rights: PUBLIC
     >> 513 wallets frozen forever
         </pre>
+    </div>
 
 <script>
         // Theme toggle functionality
@@ -300,33 +300,24 @@
             }
         });
 
-        // Easter egg functionality - Version ultra simple
-        let clicks = 0;
+        // Easter egg - Version extrêmement basique
+        let clickCount = 0;
         
-        document.addEventListener('DOMContentLoaded', function() {
-            const btn = document.querySelector('a[href="these.html"]');
-            const egg = document.getElementById('easter-egg');
-            
-            btn.onclick = function(e) {
-                clicks++;
-                console.log('Clicks:', clicks);
-                
-                if (clicks >= 5) {
+        window.onload = function() {
+            document.querySelector('a[href="these.html"]').addEventListener('click', function(e) {
+                clickCount++;
+                if (clickCount === 5) {
                     e.preventDefault();
-                    egg.style.display = 'block';
-                    egg.classList.add('show');
-                    clicks = 0;
-                    return false;
+                    document.getElementById('easter-egg').style.display = 'block';
+                    clickCount = 0;
                 }
-                
-                setTimeout(() => clicks = 0, 1000);
-            };
+                setTimeout(() => clickCount = 0, 2000);
+            });
             
-            egg.onclick = function() {
-                egg.style.display = 'none';
-                egg.classList.remove('show');
-            };
-        });
+            document.getElementById('easter-egg').addEventListener('click', function() {
+                this.style.display = 'none';
+            });
+        };
 
     </script>
 </body>
