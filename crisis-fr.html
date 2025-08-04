@@ -93,6 +93,10 @@
             border-color: #00b894;
             color: #00b894;
         }
+        .type-genesis {
+            border-color: #f1c40f;
+            color: #f1c40f;
+        }
         .type-unknown {
             border-color: #999;
             color: #999;
@@ -221,6 +225,7 @@
 
             <div class="filters">
                 <button class="filter-btn active" data-type="all">Tous</button>
+                <button class="filter-btn" data-type="genesis">Genesis</button>
                 <button class="filter-btn" data-type="dos">DOS</button>
                 <button class="filter-btn" data-type="theft">Vol</button>
                 <button class="filter-btn" data-type="fake-conf">Fausse Conf</button>
@@ -254,7 +259,7 @@
     <script src="script.js"></script>
     <script>
         const vulnerabilities = [
-            { year: 2009, month: 1, cve: "Genesis Block", type: "inflation", title: "Lancement du protocole Bitcoin", description: "03/01/2009" },
+            { year: 2009, month: 1, cve: "Genesis Block", type: "genesis", title: "Lancement du protocole Bitcoin", description: "03/01/2009" },
             { year: 2010, month: 7, cve: "CVE-2010-5137", type: "dos", title: "DOS via JSON-RPC", description: "Type de faille : DOS ; Attaque par buffer overflow", date: "28/07/2010" },
             { year: 2010, month: 7, cve: "CVE-2010-5138", type: "dos", title: "Unlimited SigOp", description: "Type de faille : DOS ; Too many CHECKSIG commands", date: "29/07/2010" },
             { year: 2010, month: 7, cve: "CVE-2010-5139", type: "dos", title: "DOS via SigOp", description: "Unlimited SigOp DoS via OP_CHECKMULTISIG opcodes", date: "29/07/2010" },
