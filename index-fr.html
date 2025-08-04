@@ -314,47 +314,32 @@
             }
         });
 
-        // Easter egg functionality
-        let clickCount = 0;
-        let timer;
-
+        // Easter egg functionality - Version ultra simple
+        let clicks = 0;
+        
         document.addEventListener('DOMContentLoaded', function() {
-            const thesisButton = document.querySelector('a[href="these-fr.html"]');
-            const easterEgg = document.getElementById('easter-egg');
-
-            if (thesisButton && easterEgg) {
-                thesisButton.addEventListener('click', function(e) {
-                    clickCount++;
-                    
-                    // Feedback visuel
-                    thesisButton.classList.add('thesis-button-clicked');
-                    setTimeout(() => thesisButton.classList.remove('thesis-button-clicked'), 100);
-                    
-                    if (clickCount === 5) {
-                        e.preventDefault();
-                        
-                        // Montrer l'easter egg
-                        easterEgg.style.display = 'block';
-                        setTimeout(() => easterEgg.classList.add('show'), 10);
-                        
-                        clickCount = 0;
-                    }
-                    
-                    // Reset compteur après 600ms
-                    clearTimeout(timer);
-                    timer = setTimeout(() => {
-                        clickCount = 0;
-                    }, 600);
-                });
-
-                // Fermer easter egg
-                easterEgg.addEventListener('click', function() {
-                    easterEgg.classList.remove('show');
-                    setTimeout(() => {
-                        easterEgg.style.display = 'none';
-                    }, 300);
-                });
-            }
+            const btn = document.querySelector('a[href="these-fr.html"]');
+            const egg = document.getElementById('easter-egg');
+            
+            btn.onclick = function(e) {
+                clicks++;
+                console.log('Clicks:', clicks);
+                
+                if (clicks >= 5) {
+                    e.preventDefault();
+                    egg.style.display = 'block';
+                    egg.classList.add('show');
+                    clicks = 0;
+                    return false;
+                }
+                
+                setTimeout(() => clicks = 0, 1000);
+            };
+            
+            egg.onclick = function() {
+                egg.style.display = 'none';
+                egg.classList.remove('show');
+            };
         });
     </script>
 </body>
