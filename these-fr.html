@@ -242,16 +242,17 @@
             }
         }
 
-        /* Badge theses.fr en tampon */
+        /* Badge theses.fr en tampon incliné */
         .theses-fr-stamp {
-            position: fixed;
-            top: 60px;
-            right: 20px;
+            position: absolute;
+            top: 120px;
+            right: 30px;
             z-index: 1000;
+            transform: rotate(15deg);
         }
 
         .theses-fr-stamp img {
-            width: 60px;
+            width: 80px;
             height: auto;
             cursor: pointer;
             transition: transform 0.3s ease;
@@ -259,17 +260,18 @@
         }
 
         .theses-fr-stamp img:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(0deg);
         }
 
         @media (max-width: 768px) {
             .theses-fr-stamp {
-                top: 50px;
-                right: 15px;
+                top: 100px;
+                right: 20px;
+                transform: rotate(15deg);
             }
             
             .theses-fr-stamp img {
-                width: 45px;
+                width: 60px;
             }
         }
         
