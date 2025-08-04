@@ -241,11 +241,19 @@
 
         @media (max-width: 768px) {
             .timeline-arrow {
-                display: none;
+                width: 4px;
+                background: linear-gradient(to bottom, #f1c40f 0%, #ffcc66 50%, #f1c40f 100%);
+            }
+
+            .timeline-arrow::before,
+            .timeline-arrow::after {
+                font-size: 12px;
             }
 
             .year-section::before {
-                display: none;
+                width: 8px;
+                height: 8px;
+                left: -12px;
             }
 
             .crisis-grid {
