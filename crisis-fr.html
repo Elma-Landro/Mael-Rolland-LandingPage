@@ -203,7 +203,7 @@
 <body>
     <!-- Theme Toggle -->
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Basculer mode sombre/clair">
-        <img id="theme-icon" src="assets/icons/Sun.jpg" alt="Soleil"> <span id="theme-text">Clair</span>
+        <img id="theme-icon" src="assets/icons/Moon.jpg" alt="Lune"> <span id="theme-text">Sombre</span>
     </button>
 
     <div class="language-switcher">
@@ -216,8 +216,8 @@
             <h1 class="main-title typing-animation">Crises</h1>
             <div class="ens-identities">
                 <div class="ens-block">
-                    <div class="ens-id">closky-mael-rolland<span class="asterisk">*</span>eth</div>
-                    <img src="assets/img/avatar-closky-mael-rolland.eth.jpg" alt="Avatar closky-mael-rolland.eth">
+                    <div class="ens-id">mael-rolland<span class="asterisk">*</span>eth</div>
+                    <img src="assets/img/avatar-closky-mael-rolland.eth.jpg" alt="Avatar mael-rolland.eth">
                     <div class="asterisk-badge">*</div>
                 </div>
             </div>
@@ -399,6 +399,47 @@
         });
 
         renderVulnerabilities();
+
+        // Theme toggle functionality standardisée
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (body.dataset.theme === 'dark') {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Lune';
+                themeText.textContent = 'Sombre';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.dataset.theme = 'dark';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Soleil';
+                themeText.textContent = 'Clair';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme or default to light
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (savedTheme === 'light') {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Lune';
+                themeText.textContent = 'Sombre';
+            } else {
+                body.dataset.theme = 'dark';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Soleil';
+                themeText.textContent = 'Clair';
+            }
+        });
     </script>
 </body>
 </html>
