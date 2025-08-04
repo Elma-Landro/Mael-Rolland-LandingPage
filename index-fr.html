@@ -334,10 +334,16 @@
                     // Animation d'apparition
                     easterEgg.style.display = 'block';
                     setTimeout(() => easterEgg.classList.add('show'), 10);
+                    
+                    // Reset du compteur après avoir montré l'easter egg
+                    clickCount = 0;
                 }
                 
+                // Reset du compteur après 600ms d'inactivité
                 clearTimeout(timer);
-                timer = setTimeout(() => clickCount = 0, 600);
+                timer = setTimeout(() => {
+                    clickCount = 0;
+                }, 600);
             });
 
             // Fermeture de l'easter egg au clic
@@ -345,7 +351,6 @@
                 easterEgg.classList.remove('show');
                 setTimeout(() => {
                     easterEgg.style.display = 'none';
-                    clickCount = 0;
                 }, 300);
             });
         }
