@@ -15,6 +15,73 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
 
     <style>
+        :root {
+            --button-bg: #333;
+            --button-border: #ccc;
+            --text-accent: #ffaa33;
+            --text-primary: #eee;
+            --text-secondary: #aaa;
+            --button-hover: #555;
+            --background-light: #f0f0f0;
+            --text-light: #333;
+            --background-dark: #1a1a1a;
+            --text-dark: #eee;
+            --timeline-line-color: #ffaa33;
+            --timeline-year-color: #ccc;
+            --timeline-event-bg: rgba(0, 0, 0, 0.5);
+            --timeline-event-border: #ffaa33;
+            --timeline-event-text: #eee;
+            --timeline-event-type-bg: rgba(255, 170, 51, 0.2);
+            --timeline-event-type-color: #ffaa33;
+        }
+
+        body {
+            background-color: var(--background-dark);
+            color: var(--text-dark);
+            font-family: 'VT323', monospace;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 60px; /* Space for the fixed header */
+        }
+
+        .main-title {
+            font-size: 3.5em;
+            color: var(--text-accent);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .avatar-icon {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--text-accent);
+            background-color: #330000;
+            image-rendering: pixelated;
+            display: block;
+            margin: 10px auto;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
         .crisis-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -30,78 +97,68 @@
             border: 2px solid var(--button-border);
             padding: 20px;
             font-family: 'VT323', monospace;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
 
         .year-header {
-            font-size: 1.5em;
+            font-size: 1.8em;
             color: var(--text-accent);
             text-align: center;
-            margin-bottom: 15px;
-            border-bottom: 1px solid var(--text-accent);
-            padding-bottom: 5px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--text-accent);
+            padding-bottom: 8px;
+            position: sticky;
+            top: 70px; /* Adjust based on header height */
+            background-color: var(--background-dark);
+            z-index: 10;
         }
 
         .vulnerability-item {
-            background-color: rgba(0,0,0,0.3);
-            border: 1px solid var(--text-secondary);
-            padding: 10px;
-            margin-bottom: 10px;
-            font-size: 0.9em;
+            background-color: var(--timeline-event-bg); /* Reusing timeline event bg for consistency */
+            border: 2px solid var(--timeline-event-border);
+            padding: 15px;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            border-radius: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer; /* Make it clear it's clickable */
+        }
+        .vulnerability-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.5);
         }
 
         .vuln-title {
             color: var(--text-primary);
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-size: 1.1em;
         }
 
         .vuln-cve {
             color: var(--text-accent);
-            font-size: 0.8em;
-            margin-bottom: 5px;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            font-weight: bold;
         }
 
         .vuln-type {
             display: inline-block;
-            padding: 2px 6px;
-            border: 1px solid;
-            font-size: 0.7em;
-            margin-bottom: 5px;
-        }
-
-        .type-dos {
-            border-color: #ff6b6b;
-            color: #ff6b6b;
-        }
-        .type-theft {
-            border-color: #ee5a24;
-            color: #ee5a24;
-        }
-        .type-fake-conf {
-            border-color: var(--text-secondary);
-            color: var(--text-secondary);
-        }
-        .type-netset {
-            border-color: #4a90e2;
-            color: #4a90e2;
-        }
-        .type-exposure {
-            border-color: #ff9ff3;
-            color: #ff9ff3;
-        }
-        .type-inflation {
-            border-color: #00b894;
-            color: #00b894;
-        }
-        .type-unknown {
-            border-color: #999;
-            color: #999;
+            padding: 3px 8px;
+            border: 2px solid;
+            font-size: 0.75em;
+            margin-bottom: 8px;
+            font-weight: bold;
+            border-radius: 3px;
+            background-color: var(--timeline-event-type-bg);
+            color: var(--timeline-event-type-color);
         }
 
         .vuln-description {
-            color: var(--text-primary);
-            font-size: 0.8em;
-            line-height: 1.3;
+            color: var(--text-secondary);
+            font-size: 0.85em;
+            line-height: 1.4;
         }
 
         .stats-container {
@@ -119,29 +176,20 @@
             text-align: center;
             font-family: 'VT323', monospace;
             min-width: 120px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
 
         .stat-number {
-            font-size: 2em;
+            font-size: 2.5em;
             color: var(--text-accent);
             display: block;
+            line-height: 1;
         }
 
         .stat-label {
-            font-size: 0.9em;
+            font-size: 1em;
             color: var(--text-primary);
-        }
-
-        .avatar-icon {
-            width: 90px;
-            height: 90px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 2px solid #ffaa33;
-            background-color: #330000;
-            image-rendering: pixelated;
-            display: block;
-            margin: 0 auto 10px auto;
         }
 
         .filters {
@@ -153,32 +201,296 @@
             background-color: var(--button-bg);
             color: var(--text-primary);
             border: 1px solid var(--button-border);
-            padding: 5px 10px;
-            margin: 3px;
+            padding: 6px 12px;
+            margin: 4px;
             font-family: 'VT323', monospace;
-            font-size: 0.8em;
+            font-size: 0.9em;
             cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .filter-btn.active {
             background-color: var(--text-accent);
             color: var(--button-bg);
+            border-color: var(--text-accent);
         }
 
         .filter-btn:hover {
             background-color: var(--button-hover);
+            border-color: var(--button-hover);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--button-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--button-border);
+            padding: 8px 15px;
+            font-family: 'VT323', monospace;
+            font-size: 0.9em;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .theme-toggle img {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            background-color: var(--button-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--button-border);
+            padding: 8px 15px;
+            font-family: 'VT323', monospace;
+            font-size: 0.9em;
+            border-radius: 5px;
+            z-index: 100;
+        }
+
+        .language-switcher a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .language-switcher a:hover {
+            color: var(--text-accent);
+        }
+
+        /* Timeline Styles */
+        .timeline-container {
+            width: 100%;
+            padding: 40px 0;
+            position: relative;
+            margin-top: 50px; /* Adjust spacing */
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .timeline-header h2 {
+            font-size: 2.2em;
+            color: var(--text-accent);
+            margin-bottom: 15px;
+        }
+
+        .timeline-controls {
+            margin-bottom: 30px;
+        }
+
+        .timeline-track {
+            position: relative;
+            width: 90%; /* Make it slightly narrower */
+            max-width: 1000px; /* Max width for the track */
+            height: 10px; /* Thickness of the line */
+            background-color: var(--timeline-line-color);
+            margin: 0 auto;
+            border-radius: 5px;
+            box-shadow: 0 0 15px var(--timeline-line-color);
+        }
+
+        .timeline-years {
+            display: flex;
+            justify-content: space-between;
+            width: 90%; /* Match timeline-track width */
+            margin: 0 auto;
+            position: relative;
+            top: 20px; /* Position years below the line */
+        }
+
+        .year-marker {
+            color: var(--timeline-year-color);
+            font-size: 1.1em;
+            position: absolute; /* Position each year */
+            transform: translateX(-50%); /* Center the year text */
+        }
+
+        /* Dynamic year positioning will be handled by JS */
+
+        .timeline-events {
+            position: relative;
+            width: 100%;
+            height: 300px; /* Increased height to accommodate events */
+            margin: 0 auto;
+        }
+
+        .timeline-event {
+            position: absolute;
+            background-color: var(--timeline-event-bg);
+            border: 2px solid var(--timeline-event-border);
+            padding: 8px 12px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.85em;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            min-width: 120px; /* Ensure minimum width */
+            z-index: 5; /* Ensure events are above the line */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+        }
+
+        .timeline-event:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.5);
+        }
+
+        .timeline-event .event-title {
+            font-weight: bold;
+            color: var(--timeline-event-text);
+            margin-bottom: 3px;
+            font-size: 1em;
+        }
+
+        .timeline-event .event-date {
+            color: var(--text-accent);
+            font-size: 0.8em;
+            margin-bottom: 3px;
+        }
+
+        .timeline-event .event-type {
+            display: inline-block;
+            padding: 2px 6px;
+            border: 1px solid var(--timeline-event-type-color);
+            color: var(--timeline-event-type-color);
+            font-size: 0.7em;
+            border-radius: 3px;
+            background-color: var(--timeline-event-type-bg);
+        }
+
+        /* Event Types for filtering and styling */
+        .timeline-event.milestone { border-color: #4a90e2; }
+        .timeline-event.dos { border-color: #ff6b6b; }
+        .timeline-event.inflation { border-color: #00b894; }
+        .timeline-event.consensus { border-color: #ffd32a; }
+        .timeline-event.theft { border-color: #ee5a24; } /* Assuming theft events might be in timeline too */
+
+
+        .back-link {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .back-link a {
+            color: var(--text-accent);
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid var(--button-border);
+            margin-top: 50px;
+            position: relative;
+        }
+
+        .ethereum-badge-centered {
+            display: inline-block;
+            position: relative;
+        }
+
+        .pixel-ethereum-badge {
+            width: 120px;
+            height: auto;
+            cursor: pointer;
+        }
+
+        .ethereum-tooltip {
+            visibility: hidden;
+            width: 250px;
+            background-color: rgba(0,0,0,0.8);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -125px;
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+            font-size: 0.8em;
+            font-family: 'Arial', sans-serif; /* Different font for tooltip */
+            line-height: 1.3;
+        }
+
+        .ethereum-badge-centered:hover .ethereum-tooltip {
+            visibility: visible;
+            opacity: 1;
         }
 
         @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5em;
+            }
+            .subtitle {
+                font-size: 1.1em;
+            }
+            .avatar-icon {
+                width: 70px;
+                height: 70px;
+            }
             .crisis-grid {
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
-
+            .year-header {
+                font-size: 1.5em;
+            }
+            .vulnerability-item {
+                font-size: 0.9em;
+            }
             .stats-container {
                 flex-direction: column;
                 align-items: center;
                 gap: 15px;
+            }
+            .stat-number {
+                font-size: 2em;
+            }
+            .stat-label {
+                font-size: 0.9em;
+            }
+            .theme-toggle, .language-switcher {
+                position: static;
+                margin: 10px auto;
+                display: block;
+                width: fit-content;
+            }
+            .timeline-header h2 {
+                font-size: 1.8em;
+            }
+            .timeline-track {
+                height: 8px;
+            }
+            .timeline-event {
+                font-size: 0.75em;
+                min-width: 100px;
+            }
+            .timeline-years {
+                top: 15px;
+            }
+            .year-marker {
+                font-size: 1em;
             }
         }
     </style>
@@ -226,35 +538,23 @@
                         <button class="filter-btn" data-filter="dos">DOS</button>
                         <button class="filter-btn" data-filter="inflation">Inflation</button>
                         <button class="filter-btn" data-filter="consensus">Consensus</button>
-                        <button class="filter-btn" data-filter="privacy">Vie privée</button>
+                        <button class="filter-btn" data-filter="theft">Vol</button>
+                        <button class="filter-btn" data-filter="milestone">Jalon</button>
                     </div>
                 </div>
-                
-                <div class="timeline-track">
-                    <div class="timeline-line"></div>
-                    <div class="timeline-years">
-                        <div class="year-marker" data-year="2009">2009</div>
-                        <div class="year-marker" data-year="2010">2010</div>
-                        <div class="year-marker" data-year="2011">2011</div>
-                        <div class="year-marker" data-year="2012">2012</div>
-                        <div class="year-marker" data-year="2013">2013</div>
-                        <div class="year-marker" data-year="2014">2014</div>
-                        <div class="year-marker" data-year="2015">2015</div>
-                        <div class="year-marker" data-year="2016">2016</div>
-                        <div class="year-marker" data-year="2017">2017</div>
-                        <div class="year-marker" data-year="2018">2018</div>
-                    </div>
-                    
-                    <div class="timeline-events" id="timeline-events">
-                        <!-- Les événements seront générés dynamiquement -->
-                    </div>
+
+                <div class="timeline-track"></div>
+                <div class="timeline-years">
+                    <!-- Years will be dynamically positioned by JS -->
                 </div>
-            </div>
+
+                <div class="timeline-events" id="timeline-events">
+                    <!-- Les événements seront générés dynamiquement -->
                 </div>
             </div>
 
             <div class="filters">
-                <button class="filter-btn active" data-type="all">Tous</button>
+                <button class="filter-btn" data-type="all">Tous</button>
                 <button class="filter-btn" data-type="dos">DOS</button>
                 <button class="filter-btn" data-type="theft">Vol</button>
                 <button class="filter-btn" data-type="fake-conf">Fausse Conf</button>
@@ -288,7 +588,7 @@
     <script src="script.js"></script>
     <script>
         const vulnerabilities = [
-            { year: 2009, month: 1, cve: "Genesis Block", type: "inflation", title: "Lancement du protocole Bitcoin", description: "Lancement du protocole Bitcoin", date: "03/01/2009" },
+            { year: 2009, month: 1, cve: "Genesis Block", type: "milestone", title: "Lancement du protocole Bitcoin", description: "Lancement du protocole Bitcoin", date: "03/01/2009" },
             { year: 2010, month: 7, cve: "CVE-2010-5144", type: "dos", title: "OP_RETURN Crash", description: "Type de faille : DOS ; OP_RETURN used to spend output", date: "28/07/2010" },
             { year: 2010, month: 7, cve: "CVE-2010-5138", type: "dos", title: "Unlimited SigOp", description: "Type de faille : DOS ; Too many CHECKSIG commands", date: "29/07/2010" },
             { year: 2010, month: 8, cve: "CVE-2010-5143", type: "dos", title: "JSIF Crash", description: "Type de faille : DOS ; JSIF crash", date: "01/08/2010" },
@@ -409,7 +709,100 @@
             });
         });
 
+        // Theme Toggle Functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            body.classList.toggle('light-theme');
+
+            if (body.classList.contains('light-theme')) {
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeText.textContent = 'Clair';
+            } else {
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeText.textContent = 'Sombre';
+            }
+        }
+
+        function renderFrenchTimeline() {
+            const eventsContainer = document.getElementById('timeline-events');
+            eventsContainer.innerHTML = '';
+
+            const minYear = 2009;
+            const maxYear = 2018;
+            const totalYears = maxYear - minYear;
+
+            // Sélection d'événements clés pour la timeline
+            const timelineEvents = [
+                { year: 2009, title: "Genesis Block", type: "milestone", date: "03/01" },
+                { year: 2010, title: "OP_RETURN Crash", type: "dos", date: "28/07" },
+                { year: 2010, title: "Combined Output", type: "inflation", date: "15/08" },
+                { year: 2012, title: "Orphan Resource", type: "dos", date: "12/05" },
+                { year: 2013, title: "BDB Lock Limit", type: "consensus", date: "11/03" },
+                { year: 2014, title: "Supply Inflation", type: "inflation", date: "01/04" },
+                { year: 2016, title: "The DAO Attack", type: "inflation", date: "17/06" },
+                { year: 2017, title: "Parity Freeze", type: "consensus", date: "06/11" },
+                { year: 2018, title: "ERC-20 Overflow", type: "inflation", date: "22/04" }
+            ];
+
+            // Dynamically position year markers
+            const yearsContainer = document.querySelector('.timeline-years');
+            yearsContainer.innerHTML = ''; // Clear existing if any
+            for (let year = minYear; year <= maxYear; year++) {
+                const yearMarker = document.createElement('div');
+                yearMarker.className = 'year-marker';
+                yearMarker.textContent = year;
+                const leftPercent = ((year - minYear) / totalYears) * 90 + 5; // Adjust multiplier for 90% width
+                yearMarker.style.left = `${leftPercent}%`;
+                yearsContainer.appendChild(yearMarker);
+            }
+
+
+            timelineEvents.forEach((event, index) => {
+                const eventElement = document.createElement('div');
+                eventElement.className = `timeline-event ${event.type}`;
+
+                // Calculate position based on year
+                const leftPercent = ((event.year - minYear) / totalYears) * 90 + 5;
+                eventElement.style.left = `${leftPercent}%`;
+
+                // Stagger vertical positions to avoid overlaps
+                const layers = 4;
+                const verticalOffset = (index % layers) * 35;
+                eventElement.style.bottom = `${80 + verticalOffset}px`;
+
+                eventElement.innerHTML = `
+                    <div class="event-title">${event.title}</div>
+                    <div class="event-date">${event.date}</div>
+                    <div class="event-type">${event.type.toUpperCase()}</div>
+                `;
+
+                eventsContainer.appendChild(eventElement);
+            });
+        }
+
+        // Filter functionality for timeline
+        document.querySelectorAll('[data-filter]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const filter = this.dataset.filter;
+                document.querySelectorAll('.timeline-event').forEach(event => {
+                    if (filter === 'all' || event.classList.contains(filter)) {
+                        event.style.display = 'block';
+                    } else {
+                        event.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Initial rendering
         renderVulnerabilities();
+        renderFrenchTimeline();
     </script>
 </body>
 </html>
