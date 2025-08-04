@@ -92,6 +92,56 @@
   }
 }
 
+        /* Easter egg styles */
+        #easter-egg {
+            display: none;
+            white-space: pre;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #ffff66;
+            background-color: #300000;
+            padding: 20px;
+            margin: 30px auto;
+            border: 2px dashed #ffcc00;
+            max-width: 90%;
+            overflow-x: auto;
+            text-shadow: 1px 1px 2px #000;
+            animation: flicker 1.2s infinite alternate;
+            cursor: pointer;
+            position: relative;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+        
+        #easter-egg.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        #easter-egg::after {
+            content: "💀 Clique pour fermer";
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 10px;
+            color: #ffcc00;
+            opacity: 0.7;
+        }
+
+        @keyframes flicker {
+            from { opacity: 0.85; }
+            to { opacity: 1; }
+        }
+
+        /* Feedback visuel lors des clics */
+        .thesis-button-clicked {
+            background-color: #28a745 !important;
+            transform: scale(0.95) !important;
+            transition: all 0.1s ease !important;
+        }
+
     </style>
 </head>
 
@@ -173,6 +223,25 @@
             </div>
         </section>
 
+        <pre id="easter-egg">        ╔═════════════════════════════════════╗
+        ║     ⚠️  SYSTEM CRITICAL FAILURE    ⚠️     ║
+        ╚═════════════════════════════════════╝
+
+             "I'm sorry."
+             "I accidentally killed it."
+             — devops199, 6 Nov 2017
+
+           ⠀⠀⠀⠀⠀⢀⣤⣾⣷⣦⣤⣀⠀⠀⠀⠀⠀
+           ⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀
+           ⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀
+           ⠀⠘⠿⠿⠟⠋⠙⠛⠿⠿⠛⠋⠙⠻⠿⠇⠀
+           ⠀⠀⠀⠀⠀⠀🪲 BUG DETECTED⠀⠀⠀⠀⠀
+
+    >> kill() executed on WalletLibrary
+    >> access rights: PUBLIC
+    >> 513 wallets frozen forever
+        </pre>
+
         <section class="sources-section">
             <div class="sources-text">
                 <p>* Œuvre originale de l'artiste Claude Closky, « Rectangulaire » (2014), image en tant que hash de « Rolland Maël », voir http://www.nouveauxcommanditaires.eu/fr/25/254/rectangulaire</p>
@@ -244,6 +313,42 @@
                 themeText.textContent = 'Clair';
             }
         });
+
+        // Easter egg functionality
+        const thesisButton = document.querySelector('a[href="these-fr.html"]');
+        const easterEgg = document.getElementById('easter-egg');
+        let clickCount = 0;
+        let timer;
+
+        if (thesisButton && easterEgg) {
+            thesisButton.addEventListener('click', (e) => {
+                clickCount++;
+                
+                // Feedback visuel du clic
+                thesisButton.classList.add('thesis-button-clicked');
+                setTimeout(() => thesisButton.classList.remove('thesis-button-clicked'), 100);
+                
+                if (clickCount === 5) {
+                    e.preventDefault(); // bloque la redirection vers these-fr.html
+                    
+                    // Animation d'apparition
+                    easterEgg.style.display = 'block';
+                    setTimeout(() => easterEgg.classList.add('show'), 10);
+                }
+                
+                clearTimeout(timer);
+                timer = setTimeout(() => clickCount = 0, 600);
+            });
+
+            // Fermeture de l'easter egg au clic
+            easterEgg.addEventListener('click', () => {
+                easterEgg.classList.remove('show');
+                setTimeout(() => {
+                    easterEgg.style.display = 'none';
+                    clickCount = 0;
+                }, 300);
+            });
+        }
     </script>
 </body>
 </html>
