@@ -316,60 +316,42 @@
 
         // Easter egg functionality
         let clickCount = 0;
-        let clickTimer;
+        let timer;
 
         document.addEventListener('DOMContentLoaded', function() {
             const thesisButton = document.querySelector('a[href="these-fr.html"]');
             const easterEgg = document.getElementById('easter-egg');
 
-            console.log('Easter egg init:', thesisButton, easterEgg); // Debug
-
             if (thesisButton && easterEgg) {
                 thesisButton.addEventListener('click', function(e) {
                     clickCount++;
-                    console.log('Click count:', clickCount); // Debug
                     
                     // Feedback visuel
                     thesisButton.classList.add('thesis-button-clicked');
                     setTimeout(() => thesisButton.classList.remove('thesis-button-clicked'), 100);
                     
-                    if (clickCount >= 5) {
+                    if (clickCount === 5) {
                         e.preventDefault();
-                        e.stopPropagation();
                         
-                        console.log('Showing easter egg'); // Debug
+                        // Montrer l'easter egg
                         easterEgg.style.display = 'block';
-                        easterEgg.style.opacity = '0';
-                        easterEgg.style.transform = 'translateY(-20px)';
-                        
-                        setTimeout(() => {
-                            easterEgg.classList.add('show');
-                            easterEgg.style.opacity = '1';
-                            easterEgg.style.transform = 'translateY(0)';
-                        }, 50);
+                        setTimeout(() => easterEgg.classList.add('show'), 10);
                         
                         clickCount = 0;
-                        return false;
                     }
                     
-                    // Reset timer
-                    clearTimeout(clickTimer);
-                    clickTimer = setTimeout(() => {
+                    // Reset compteur après 600ms
+                    clearTimeout(timer);
+                    timer = setTimeout(() => {
                         clickCount = 0;
-                        console.log('Reset click count'); // Debug
-                    }, 800);
+                    }, 600);
                 });
 
                 // Fermer easter egg
                 easterEgg.addEventListener('click', function() {
-                    console.log('Closing easter egg'); // Debug
                     easterEgg.classList.remove('show');
-                    easterEgg.style.opacity = '0';
-                    easterEgg.style.transform = 'translateY(-20px)';
-                    
                     setTimeout(() => {
                         easterEgg.style.display = 'none';
-                        clickCount = 0;
                     }, 300);
                 });
             }
