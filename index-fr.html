@@ -314,24 +314,46 @@
             }
         });
 
-        // Easter egg - Version extrêmement basique
+        // Easter egg - Version robuste
         let clickCount = 0;
+        let resetTimer = null;
         
-        window.onload = function() {
-            document.querySelector('a[href="these-fr.html"]').addEventListener('click', function(e) {
-                clickCount++;
-                if (clickCount === 5) {
-                    e.preventDefault();
-                    document.getElementById('easter-egg').style.display = 'block';
-                    clickCount = 0;
-                }
-                setTimeout(() => clickCount = 0, 2000);
-            });
+        document.addEventListener('DOMContentLoaded', function() {
+            const thesisLink = document.querySelector('a[href="these-fr.html"]');
+            const easterEgg = document.getElementById('easter-egg');
             
-            document.getElementById('easter-egg').addEventListener('click', function() {
-                this.style.display = 'none';
-            });
-        };
+            if (thesisLink && easterEgg) {
+                thesisLink.addEventListener('click', function(e) {
+                    clickCount++;
+                    
+                    // Feedback visuel
+                    this.style.backgroundColor = '#28a745';
+                    setTimeout(() => {
+                        this.style.backgroundColor = '';
+                    }, 150);
+                    
+                    if (clickCount >= 5) {
+                        e.preventDefault();
+                        easterEgg.style.display = 'block';
+                        easterEgg.style.opacity = '1';
+                        clickCount = 0;
+                        return false;
+                    }
+                    
+                    // Reset après 1.5 secondes
+                    clearTimeout(resetTimer);
+                    resetTimer = setTimeout(() => {
+                        clickCount = 0;
+                    }, 1500);
+                });
+                
+                // Fermer l'easter egg
+                easterEgg.addEventListener('click', function() {
+                    this.style.display = 'none';
+                    clickCount = 0;
+                });
+            }
+        });
     </script>
 </body>
 </html>
