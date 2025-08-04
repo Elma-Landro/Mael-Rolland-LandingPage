@@ -135,7 +135,7 @@
             border-color: #74b9ff;
             color: #74b9ff;
         }
-        .type-netset {
+        .type-network-split {
             border-color: #ff7675;
             color: #ff7675;
         }
@@ -311,7 +311,7 @@
                 <button class="filter-btn" data-type="dos">DOS</button>
                 <button class="filter-btn" data-type="theft">Vol</button>
                 <button class="filter-btn" data-type="fake-conf">Fausse Conf</button>
-                <button class="filter-btn" data-type="netset">Réseau</button>
+                <button class="filter-btn" data-type="network-split">Division Réseau</button>
                 <button class="filter-btn" data-type="exposure">Exposition</button>
                 <button class="filter-btn" data-type="inflation">Inflation</button>
                 <button class="filter-btn" data-type="unknown">Inconnu</button>
@@ -366,17 +366,17 @@
             { year: 2010, month: 8, cve: "CVE-2010-5145", type: "inflation", title: "Combined Output Overflow", description: "Type de faille : Inflation ; Netsplit ; Combined output overflow", date: "15/08/2010" },
             { year: 2010, month: 9, cve: "CVE-2010-5140", type: "dos", title: "Never Confirming TX", description: "Type de faille : DOS ; Never confirming transactions", date: "01/09/2010" },
             { year: 2011, month: 8, cve: "CVE-2011-4447", type: "exposure", title: "Wallet Exposure", description: "Type de faille : Exposure ; Wallet non encryption", date: "11/11/2011" },
-            { year: 2012, month: 1, cve: "CVE-2012-1909", type: "netset", title: "Netset Corruption", description: "Type de faille : Netset ; connection corrupting", date: "17/03/2012" },
+            { year: 2012, month: 1, cve: "CVE-2012-1909", type: "network-split", title: "Corruption Division Réseau", description: "Type de faille : Network Split ; connection corrupting", date: "17/03/2012" },
             { year: 2012, month: 3, cve: "CVE-2012-3210", type: "fake-conf", title: "DER Signature Soft Fork", description: "Type de faille : Fake Conf ; Soft fork via DER signature rules", date: "01/03/2012" },
             { year: 2012, month: 5, cve: "CVE-2012-1739", type: "dos", title: "Orphan Resource Leak", description: "Type de faille : DOS ; Orphan tx resource exhaustion", date: "12/05/2012" },
             { year: 2012, month: 5, cve: "CVE-2012-3789", type: "dos", title: "DOS via Orphan", description: "Type de faille : DOS ; (Lack of) orphan tx resource limits", date: "12/05/2012" },
-            { year: 2012, month: 8, cve: "CVE-2012-2459", type: "netset", title: "Block Hash Collision", description: "Type de faille : Netset ; Block hash collision (via merkle root)", date: "14/08/2012" },
+            { year: 2012, month: 8, cve: "CVE-2012-2459", type: "network-split", title: "Collision Hash de Bloc", description: "Type de faille : Network Split ; Block hash collision (via merkle root)", date: "14/08/2012" },
             { year: 2012, month: 8, cve: "CVE-2012-4683", type: "dos", title: "Memory Exhaustion", description: "Type de faille : DOS ; Memory exhaustion using alerts", date: "23/08/2012" },
             { year: 2012, month: 8, cve: "CVE-2012-4684", type: "dos", title: "DOS Network-wide", description: "Type de faille : DOS ; Network-wide DoS using hash signatures", date: "24/08/2012" },
             { year: 2012, month: 9, cve: "CVE-2012-4692", type: "dos", title: "DOS Lack Info", description: "Type de faille : DOS ; (Lack of information)", date: "16/09/2012" },
             { year: 2013, month: 1, cve: "CVE-2013-2292", type: "dos", title: "DOS via Blockchain", description: "Type de faille : DOS ; DoS : Connection slot exhaustion at least 3 minutes to verify", date: "30/01/2013" },
             { year: 2013, month: 2, cve: "CVE-2013-2273", type: "exposure", title: "Predictable Change Output", description: "Type de faille : Exposure ; Predictable change output", date: "20/02/2013" },
-            { year: 2013, month: 3, cve: "CVE-2013-2293", type: "netset", title: "Remote Disclosure", description: "Type de faille : Exposure ; Remote discovery of node's wallet addresses", date: "11/03/2013" },
+            { year: 2013, month: 3, cve: "CVE-2013-2293", type: "network-split", title: "Divulgation à Distance", description: "Type de faille : Exposure ; Remote discovery of node's wallet addresses", date: "11/03/2013" },
             { year: 2013, month: 3, cve: "CVE-2013-3220", type: "fake-conf", title: "Soft Fork Race Condition", description: "Type de faille : Fake Conf ; Race condition chain split", date: "01/03/2013" },
             { year: 2013, month: 5, cve: "CVE-2013-2292", type: "dos", title: "DOS via Large Fork", description: "Type de faille : DOS ; Connection handshake takes at least 3 minutes to verify", date: "05/01/2013" },
             { year: 2013, month: 5, cve: "CVE-2013-3219", type: "fake-conf", title: "Invalid Rule Accepted", description: "Type de faille : Fake Conf ; Accept invalid protocol rule", date: "15/05/2013" },
