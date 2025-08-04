@@ -263,18 +263,6 @@
                 font-size: 0.8em;
             }
         }
-
-        .avatar-icon {
-            width: 90px;
-            height: 90px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 2px solid #ffaa33;
-            background-color: #330000;
-            image-rendering: pixelated;
-            display: block;
-            margin: 0 auto 10px auto;
-        }
     </style>
 </head>
 <body>
@@ -355,23 +343,6 @@
 
     <script src="script.js"></script>
     <script>
-        // Theme toggle function (assuming this is defined in script.js or needs to be here)
-        function toggleTheme() {
-            const body = document.body;
-            const themeIcon = document.getElementById('theme-icon');
-            const themeText = document.getElementById('theme-text');
-            
-            body.classList.toggle('dark-mode');
-            
-            if (body.classList.contains('dark-mode')) {
-                themeIcon.src = "assets/icons/Moon.jpg"; // Path to your moon icon
-                themeText.textContent = "Dark";
-            } else {
-                themeIcon.src = "assets/icons/Sun.jpg"; // Path to your sun icon
-                themeText.textContent = "Light";
-            }
-        }
-
         // Timeline data with all vulnerability events
         const timelineData = [
             // 2009
@@ -429,7 +400,7 @@
                 marker.className = 'year-marker';
                 marker.textContent = year;
                 marker.dataset.year = year;
-
+                
                 // Calculate position for year markers
                 const leftPercent = ((year - minYear) / totalYears) * 100;
                 marker.style.left = `${leftPercent}%`;
