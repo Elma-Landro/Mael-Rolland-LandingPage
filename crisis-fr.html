@@ -288,14 +288,16 @@
     <script src="script.js"></script>
     <script>
         const vulnerabilities = [
-            { year: 2009, month: 1, cve: "Genesis Block", type: "inflation", title: "Lancement du protocole Bitcoin", description: "Lancement du protocole Bitcoin", date: "03/01/2009" },
-            { year: 2010, month: 7, cve: "CVE-2010-5144", type: "dos", title: "OP_RETURN Crash", description: "Type de faille : DOS ; OP_RETURN used to spend output", date: "28/07/2010" },
+            { year: 2009, month: 1, cve: "Genesis Block", type: "inflation", title: "Lancement du protocole Bitcoin", description: "03/01/2009" },
+            { year: 2010, month: 7, cve: "CVE-2010-5137", type: "dos", title: "DOS via JSON-RPC", description: "Type de faille : DOS ; Attaque par buffer overflow", date: "28/07/2010" },
             { year: 2010, month: 7, cve: "CVE-2010-5138", type: "dos", title: "Unlimited SigOp", description: "Type de faille : DOS ; Too many CHECKSIG commands", date: "29/07/2010" },
-            { year: 2010, month: 8, cve: "CVE-2010-5143", type: "dos", title: "JSIF Crash", description: "Type de faille : DOS ; JSIF crash", date: "01/08/2010" },
+            { year: 2010, month: 7, cve: "CVE-2010-5139", type: "dos", title: "DOS via SigOp", description: "Unlimited SigOp DoS via OP_CHECKMULTISIG opcodes", date: "29/07/2010" },
+            { year: 2010, month: 7, cve: "CVE-2010-5144", type: "dos", title: "OP_RETURN Crash", description: "Type de faille : DOS ; OP_RETURN used to spend output", date: "28/07/2010" },
+            { year: 2010, month: 8, cve: "CVE-2010-5141", type: "theft", title: "GetBLOCK DoS", description: "Type de faille : Theft ; getBlockHash could be overloaded causing", date: "23/07/2010" },
             { year: 2010, month: 8, cve: "CVE-2010-5142", type: "dos", title: "OP_NOP Bug", description: "Type de faille : DOS ; OP_NOP overflow", date: "01/08/2010" },
+            { year: 2010, month: 8, cve: "CVE-2010-5143", type: "dos", title: "JSIF Crash", description: "Type de faille : DOS ; JSIF crash", date: "01/08/2010" },
             { year: 2010, month: 8, cve: "CVE-2010-5145", type: "inflation", title: "Combined Output Overflow", description: "Type de faille : Inflation ; Netsplit ; Combined output overflow", date: "15/08/2010" },
             { year: 2010, month: 9, cve: "CVE-2010-5140", type: "dos", title: "Never Confirming TX", description: "Type de faille : DOS ; Never confirming transactions", date: "01/09/2010" },
-            { year: 2012, month: 5, cve: "CVE-2012-1739", type: "dos", title: "Orphan Resource Leak", description: "Type de faille : DOS ; Orphan tx resource exhaustion", date: "12/05/2012" },
             { year: 2011, month: 8, cve: "CVE-2011-4447", type: "exposure", title: "Wallet Exposure", description: "Type de faille : Exposure ; Wallet non encryption", date: "11/11/2011" },
             { year: 2012, month: 1, cve: "CVE-2012-1909", type: "netset", title: "Netset Corruption", description: "Type de faille : Netset ; connection corrupting", date: "17/03/2012" },
             { year: 2012, month: 3, cve: "CVE-2012-3210", type: "fake-conf", title: "DER Signature Soft Fork", description: "Type de faille : Fake Conf ; Soft fork via DER signature rules", date: "01/03/2012" },
@@ -371,10 +373,4 @@
                     vulnItem.innerHTML = `
                         <div class="vuln-title">${vuln.title}</div>
                         <div class="vuln-cve">${vuln.cve}</div>
-                        <div class="vuln-type type-${vuln.type}">${vuln.type.toUpperCase()}</div>
-                        ${vuln.date ? `<div class="vuln-date" style="color: var(--text-accent); font-size: 0.8em; margin-bottom: 5px;">${vuln.date}</div>` : ''}
-                        <div class="vuln-description">${vuln.description}</div>
-                    `;
-
-                    if (vuln.cve.startsWith('CVE-')) {
- 
+                        <div class="vuln-type type-${vuln.type}">${vuln.type.toUppe
