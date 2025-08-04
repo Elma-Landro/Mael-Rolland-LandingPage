@@ -132,6 +132,18 @@
             color: var(--text-primary);
         }
 
+        .avatar-icon {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #ffaa33;
+            background-color: #330000;
+            image-rendering: pixelated;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+
         .filters {
             text-align: center;
             margin: 20px 0;
@@ -174,7 +186,7 @@
 <body>
     <!-- Theme Toggle -->
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Basculer mode sombre/clair">
-        <img id="theme-icon" src="assets/icons/Sun.jpg" alt="Soleil"> <span id="theme-text">Clair</span>
+        <img id="theme-icon" src="assets/icons/Moon.jpg" alt="Lune"> <span id="theme-text">Sombre</span>
     </button>
 
     <div class="language-switcher">
