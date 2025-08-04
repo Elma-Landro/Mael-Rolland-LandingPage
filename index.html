@@ -239,10 +239,24 @@
         </footer>
     </div>
     
-<div id="easter-egg">
-This is an easter egg! 
-Click me to close.
-</div>
+<pre id="easter-egg">        ╔═════════════════════════════════════╗
+        ║     ⚠️  SYSTEM CRITICAL FAILURE    ⚠️     ║
+        ╚═════════════════════════════════════╝
+
+             "I'm sorry."
+             "I accidentally killed it."
+             — devops199, 6 Nov 2017
+
+           ⠀⠀⠀⠀⠀⢀⣤⣾⣷⣦⣤⣀⠀⠀⠀⠀⠀
+           ⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀
+           ⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀
+           ⠀⠘⠿⠿⠟⠋⠙⠛⠿⠿⠛⠋⠙⠻⠿⠇⠀
+           ⠀⠀⠀⠀⠀⠀🪲 BUG DETECTED⠀⠀⠀⠀⠀
+
+    >> kill() executed on WalletLibrary
+    >> access rights: PUBLIC
+    >> 513 wallets frozen forever
+        </pre>
 
 <script>
         // Theme toggle functionality
@@ -287,49 +301,38 @@ Click me to close.
         });
 
         // Easter egg functionality
-        const easterEgg = document.getElementById('easter-egg');
-        let easterEggVisible = false;
-
-        function showEasterEgg() {
-            easterEgg.style.display = 'block';
-            setTimeout(() => {
-                easterEgg.classList.add('show');
-            }, 10); // Small delay to allow CSS transition
-        }
-
-        function hideEasterEgg() {
-            easterEgg.classList.remove('show');
-            easterEgg.addEventListener('transitionend', function() {
-                if (!easterEggVisible) { // Check if it was hidden intentionally
-                    easterEgg.style.display = 'none';
-                }
-            }, { once: true });
-        }
-
-        // Trigger easter egg by clicking the "Thesis & co." button
         const thesisButton = document.querySelector('a[href="these.html"]');
-        if (thesisButton) {
-            thesisButton.addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent the default link behavior
-                if (!easterEggVisible) {
-                    showEasterEgg();
-                    easterEggVisible = true;
-                    // Add visual feedback to the button
-                    thesisButton.classList.add('thesis-button-clicked');
-                    setTimeout(() => {
-                        thesisButton.classList.remove('thesis-button-clicked');
-                    }, 200); // Remove feedback after a short duration
-                }
-            });
-        }
+        const easterEgg = document.getElementById('easter-egg');
+        let clickCount = 0;
+        let timer;
 
-        // Close easter egg by clicking on it
-        if (easterEgg) {
-            easterEgg.addEventListener('click', function() {
-                if (easterEggVisible) {
-                    hideEasterEgg();
-                    easterEggVisible = false;
+        if (thesisButton && easterEgg) {
+            thesisButton.addEventListener('click', (e) => {
+                clickCount++;
+                
+                // Visual feedback for clicks
+                thesisButton.classList.add('thesis-button-clicked');
+                setTimeout(() => thesisButton.classList.remove('thesis-button-clicked'), 100);
+                
+                if (clickCount === 5) {
+                    e.preventDefault(); // Prevent redirect to these.html
+                    
+                    // Show animation
+                    easterEgg.style.display = 'block';
+                    setTimeout(() => easterEgg.classList.add('show'), 10);
                 }
+                
+                clearTimeout(timer);
+                timer = setTimeout(() => clickCount = 0, 600);
+            });
+
+            // Close easter egg when clicked
+            easterEgg.addEventListener('click', () => {
+                easterEgg.classList.remove('show');
+                setTimeout(() => {
+                    easterEgg.style.display = 'none';
+                    clickCount = 0;
+                }, 300);
             });
         }
 
