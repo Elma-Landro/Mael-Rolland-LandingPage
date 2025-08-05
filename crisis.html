@@ -101,6 +101,7 @@
             padding: 10px;
             margin-bottom: 10px;
             font-size: 0.9em;
+            position: relative; /* For badge positioning */
         }
 
         .vuln-title {
@@ -164,6 +165,27 @@
             color: var(--text-primary);
             font-size: 0.8em;
             line-height: 1.3;
+        }
+
+        .badges-container {
+            position: absolute;
+            top: 10px; /* Adjust as needed */
+            right: 10px; /* Adjust as needed */
+            display: flex;
+            gap: 5px;
+        }
+
+        .badge {
+            display: inline-block;
+            position: relative;
+            transform: rotate(45deg);
+        }
+
+        .badge img {
+            width: 30px; /* Adjust size as needed */
+            height: 30px; /* Adjust size as needed */
+            display: block;
+            cursor: pointer;
         }
 
         .stats-container {
@@ -482,14 +504,19 @@
                         <div class="vuln-cve">${vuln.cve}</div>
                         <div class="vuln-type type-${vuln.type}">${vuln.type.toUpperCase()}</div>
                         <div class="vuln-description">${vuln.description}</div>
+                        <div class="badges-container">
+                            ${vuln.cve.startsWith('CVE-') ? `
+                                <span class="badge" onclick="window.open('https://cve.mitre.org/cgi-bin/cvename.cgi?name=${vuln.cve}', '_blank')">
+                                    <img src="assets/icons/cvedata.png" alt="CVE Data">
+                                </span>
+                            ` : ''}
+                            ${vuln.cve !== "Genesis Block" ? `
+                                <span class="badge" onclick="openBitcoinWiki('${vuln.cve}', ${vuln.year})">
+                                    <img src="assets/icons/bitcoinwiki.png" alt="Bitcoin Wiki">
+                                </span>
+                            ` : ''}
+                        </div>
                     `;
-
-                    if (vuln.cve.startsWith('CVE-')) {
-                        vulnItem.style.cursor = 'pointer';
-                        vulnItem.addEventListener('click', () => {
-                            window.open(`https://cve.mitre.org/cgi-bin/cvename.cgi?name=${vuln.cve}`, '_blank');
-                        });
-                    }
 
                     yearSection.appendChild(vulnItem);
                 });
@@ -498,6 +525,55 @@
             });
 
             updateStats(filtered);
+        }
+
+        // Function to open Bitcoin Wiki links
+        function openBitcoinWiki(cve, year) {
+            // Map CVEs to specific Bitcoin Wiki sections
+            const wikiMap = {
+                'CVE-2010-5137': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5137',
+                'CVE-2010-5138': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5138',
+                'CVE-2010-5139': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5139',
+                'CVE-2010-5144': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5144',
+                'CVE-2010-5141': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5141',
+                'CVE-2010-5142': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5142',
+                'CVE-2010-5143': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5143',
+                'CVE-2010-5145': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5145',
+                'CVE-2010-5140': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5140',
+                'CVE-2011-4447': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2011-4447',
+                'CVE-2012-1909': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-1909',
+                'CVE-2012-3210': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-3210',
+                'CVE-2012-1739': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-1739',
+                'CVE-2012-3789': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-3789',
+                'CVE-2012-2459': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-2459',
+                'CVE-2012-4683': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-4683',
+                'CVE-2012-4684': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-4684',
+                'CVE-2012-4692': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-4692',
+                'CVE-2013-2292': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-2292',
+                'CVE-2013-2273': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-2273',
+                'CVE-2013-2293': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-2293',
+                'CVE-2013-3220': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-3220',
+                'CVE-2013-3219': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-3219',
+                'CVE-2013-4627': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-4627',
+                'CVE-2013-4165': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-4165',
+                'CVE-2013-5700': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-5700',
+                'BIP-0042': 'https://en.bitcoin.it/wiki/BIP_0042',
+                'CVE-2014-0160': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2014-0160',
+                'CVE-2015-3641': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2015-3641',
+                'CVE-2016-10724': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2016-10724',
+                'CVE-2016-10725': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2016-10725',
+                'CVE-2016-8889': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2016-8889',
+                'CVE-2017-12842': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2017-12842',
+                'BIP 145': 'https://en.bitcoin.it/wiki/BIP_0145',
+                'CVE-2017-9230': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2017-9230',
+                'CVE-2017-18350': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2017-18350',
+                'CVE-2018-20587': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2018-20587',
+                'CVE-2018-17144': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2018-17144',
+                'CVE-2018-20586': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2018-20586'
+            };
+
+            const url = wikiMap[cve] || 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures';
+            window.open(url, '_blank');
         }
 
         function updateStats(filtered) {
