@@ -418,7 +418,7 @@
                     </div>
                 </div>
                 <p style="color: var(--text-secondary); margin-top: 15px; text-align: center; font-size: 0.8em; background-color: rgba(255, 204, 102, 0.1); padding: 10px; border: 1px solid #ffcc66; border-radius: 4px;">
-                    <strong style="color: #ff3838;">CRITICAL VULNERABILITIES:</strong> <strong style="color: #ff3838;">INFLATION</strong> and <strong style="color: #f1c40f;">THEFT</strong> type vulnerabilities are considered critical as they can directly compromise the protocol's economic integrity or enable asset theft.
+                    <strong style="color: #ff3838;">CRITICAL VULNERABILITIES:</strong> Vulnerabilities classified as <strong style="color: #ff3838;">RED SEVERITY</strong> on the Bitcoin Wiki, including <strong style="color: #ff3838;">INFLATION</strong> and <strong style="color: #f1c40f;">THEFT</strong> types that can directly compromise protocol integrity or enable asset extraction.
                 </p>
                 <p style="color: var(--text-secondary); margin-top: 10px; text-align: center; font-size: 0.7em;">
                     <strong>CVE:</strong> Common Vulnerabilities and Exposures identifier | <strong>BIP:</strong> Bitcoin Improvement Proposal
@@ -662,9 +662,20 @@
         }
 
         function updateStats(filtered) {
-            const criticalTypes = ['inflation', 'theft'];
+            // Critical CVEs based on Bitcoin Wiki red severity classification
+            const criticalCVEs = [
+                'CVE-2010-5145', // Combined Output Overflow (inflation)
+                'CVE-2010-5141', // GetBLOCK DoS (theft potential)
+                'CVE-2013-4165', // Theft Timing Leak
+                'CVE-2018-20587', // Theft via RPC
+                'CVE-2018-17144', // Inflation Bug
+                'BIP-0042' // Monetary supply inflation bug
+            ];
+            
             const filteredWithoutGenesis = filtered.filter(v => v.type !== 'genesis');
-            const criticalCount = filteredWithoutGenesis.filter(v => criticalTypes.includes(v.type)).length;
+            const criticalCount = filteredWithoutGenesis.filter(v => 
+                criticalCVEs.includes(v.cve) || ['inflation', 'theft'].includes(v.type)
+            ).length;
 
             document.getElementById('total-vulns').textContent = filteredWithoutGenesis.length;
             document.getElementById('critical-vulns').textContent = criticalCount;
