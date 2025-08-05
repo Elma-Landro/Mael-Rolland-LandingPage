@@ -346,7 +346,7 @@
 
         .chart-wrapper canvas {
             max-width: 100%;
-            height: auto !important;
+            height: 300px !important;
         }
 
         @media (max-width: 768px) {
@@ -720,19 +720,28 @@
                             '#ff7675', '#81ecec', '#ff3838', '#636e72'
                         ],
                         borderColor: '#ffcc66',
-                        borderWidth: 2
+                        borderWidth: 1
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            top: 10,
+                            bottom: 10,
+                            left: 10,
+                            right: 10
+                        }
+                    },
                     plugins: {
                         legend: {
                             position: 'bottom',
                             labels: {
                                 color: '#ffcc66',
-                                font: { family: 'VT323', size: 14 },
-                                padding: 15
+                                font: { family: 'VT323', size: 12 },
+                                padding: 8,
+                                boxWidth: 12
                             }
                         }
                     }
@@ -748,6 +757,7 @@
 
             const years = Object.keys(yearCounts).sort();
             const counts = years.map(year => yearCounts[year]);
+            const maxCount = Math.max(...counts);
 
             const ctx = document.getElementById('barChart').getContext('2d');
             new Chart(ctx, {
@@ -759,29 +769,38 @@
                         data: counts,
                         backgroundColor: '#f1c40f',
                         borderColor: '#ffcc66',
-                        borderWidth: 2
+                        borderWidth: 1
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            top: 10,
+                            bottom: 10,
+                            left: 10,
+                            right: 10
+                        }
+                    },
                     plugins: { legend: { display: false } },
                     scales: {
                         y: {
                             beginAtZero: true,
+                            max: maxCount + 1,
                             ticks: {
                                 color: '#ffcc66',
-                                font: { family: 'VT323', size: 12 },
+                                font: { family: 'VT323', size: 11 },
                                 stepSize: 1
                             },
-                            grid: { color: 'rgba(255, 204, 102, 0.3)' }
+                            grid: { color: 'rgba(255, 204, 102, 0.2)' }
                         },
                         x: {
                             ticks: {
                                 color: '#ffcc66',
-                                font: { family: 'VT323', size: 12 }
+                                font: { family: 'VT323', size: 11 }
                             },
-                            grid: { color: 'rgba(255, 204, 102, 0.3)' }
+                            grid: { color: 'rgba(255, 204, 102, 0.2)' }
                         }
                     }
                 }
@@ -831,12 +850,20 @@
                             '#636e72'  // unknown
                         ],
                         borderColor: '#ffcc66',
-                        borderWidth: 2
+                        borderWidth: 1
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            top: 10,
+                            bottom: 10,
+                            left: 10,
+                            right: 10
+                        }
+                    },
                     plugins: {
                         legend: {
                             position: 'bottom',
@@ -844,9 +871,10 @@
                                 color: '#ffcc66',
                                 font: {
                                     family: 'VT323',
-                                    size: 14
+                                    size: 12
                                 },
-                                padding: 15
+                                padding: 8,
+                                boxWidth: 12
                             }
                         }
                     }
@@ -862,6 +890,7 @@
 
             const years = Object.keys(yearCounts).sort();
             const counts = years.map(year => yearCounts[year]);
+            const maxCount = Math.max(...counts);
 
             const ctx = document.getElementById('barChart').getContext('2d');
             new Chart(ctx, {
@@ -873,12 +902,20 @@
                         data: counts,
                         backgroundColor: '#f1c40f',
                         borderColor: '#ffcc66',
-                        borderWidth: 2
+                        borderWidth: 1
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            top: 10,
+                            bottom: 10,
+                            left: 10,
+                            right: 10
+                        }
+                    },
                     plugins: {
                         legend: {
                             display: false
@@ -887,16 +924,17 @@
                     scales: {
                         y: {
                             beginAtZero: true,
+                            max: maxCount + 1,
                             ticks: {
                                 color: '#ffcc66',
                                 font: {
                                     family: 'VT323',
-                                    size: 12
+                                    size: 11
                                 },
                                 stepSize: 1
                             },
                             grid: {
-                                color: 'rgba(255, 204, 102, 0.3)'
+                                color: 'rgba(255, 204, 102, 0.2)'
                             }
                         },
                         x: {
@@ -904,11 +942,11 @@
                                 color: '#ffcc66',
                                 font: {
                                     family: 'VT323',
-                                    size: 12
+                                    size: 11
                                 }
                             },
                             grid: {
-                                color: 'rgba(255, 204, 102, 0.3)'
+                                color: 'rgba(255, 204, 102, 0.2)'
                             }
                         }
                     }
