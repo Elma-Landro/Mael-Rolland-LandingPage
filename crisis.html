@@ -180,14 +180,14 @@
 
         .badge-left {
             position: absolute;
-            left: 5px;
-            top: 35px;
+            left: 8px;
+            top: 8px;
         }
 
         .badge-right {
             position: absolute;
-            right: 5px;
-            top: 35px;
+            right: 8px;
+            top: 8px;
         }
 
         .badge {
@@ -196,8 +196,8 @@
         }
 
         .badge img {
-            width: 45px;
-            height: 45px;
+            width: 60px;
+            height: 60px;
             display: block;
             cursor: pointer;
             opacity: 0.8;
@@ -314,18 +314,8 @@
             }
 
             .badge img {
-                width: 35px;
-                height: 35px;
-            }
-
-            .badge-left {
-                top: 30px;
-                left: 3px;
-            }
-
-            .badge-right {
-                top: 30px;
-                right: 3px;
+                width: 51px;
+                height: 51px;
             }
         }
 
@@ -364,11 +354,11 @@
                 gap: 20px;
                 margin: 20px 0;
             }
-
+            
             .chart-wrapper {
                 padding: 15px;
             }
-
+            
             .chart-wrapper h3 {
                 font-size: 1em;
             }
@@ -437,11 +427,11 @@
 
             <div class="stats-container">
                 <div class="stat-box">
-                    <span class="stat-number" id="total-vulns">40</span>
+                    <span class="stat-number" id="total-vulns">46</span>
                     <span class="stat-label">Total vulnerabilities</span>
                 </div>
                 <div class="stat-box">
-                    <span class="stat-number" id="critical-vulns">13</span>
+                    <span class="stat-number" id="critical-vulns">14</span>
                     <span class="stat-label">Critical vulnerabilities</span>
                 </div>
                 <div class="stat-box">
@@ -514,44 +504,43 @@
             { year: 2010, month: 7, cve: "CVE-2010-5137", type: "dos", title: "DOS via JSON-RPC", description: "Vulnerability type: DOS; Buffer overflow attack", date: "28/07/2010" },
             { year: 2010, month: 7, cve: "CVE-2010-5138", type: "dos", title: "Unlimited SigOp", description: "Vulnerability type: DOS; Too many CHECKSIG commands", date: "29/07/2010" },
             { year: 2010, month: 7, cve: "CVE-2010-5139", type: "dos", title: "DOS via SigOp", description: "Unlimited SigOp DoS via OP_CHECKMULTISIG opcodes", date: "29/07/2010" },
+            { year: 2010, month: 7, cve: "CVE-2010-5144", type: "dos", title: "OP_RETURN Crash", description: "Vulnerability type: DOS; OP_RETURN used to spend output", date: "28/07/2010" },
             { year: 2010, month: 8, cve: "CVE-2010-5141", type: "theft", title: "GetBLOCK DoS", description: "Vulnerability type: Theft; getBlockHash could be overloaded causing", date: "23/07/2010" },
+            { year: 2010, month: 8, cve: "CVE-2010-5142", type: "dos", title: "OP_NOP Bug", description: "Vulnerability type: DOS; OP_NOP overflow", date: "01/08/2010" },
+            { year: 2010, month: 8, cve: "CVE-2010-5143", type: "dos", title: "JSIF Crash", description: "Vulnerability type: DOS; JSIF crash", date: "01/08/2010" },
+            { year: 2010, month: 8, cve: "CVE-2010-5145", type: "inflation", title: "Combined Output Overflow", description: "Vulnerability type: Inflation; Netsplit; Combined output overflow", date: "15/08/2010" },
             { year: 2010, month: 9, cve: "CVE-2010-5140", type: "dos", title: "Never Confirming TX", description: "Vulnerability type: DOS; Never confirming transactions", date: "01/09/2010" },
             { year: 2011, month: 8, cve: "CVE-2011-4447", type: "exposure", title: "Wallet Exposure", description: "Vulnerability type: Exposure; Wallet non encryption", date: "11/11/2011" },
-            { year: 2011, cve: "BIP0016", type: "fake-conf", title: "Softfork: P2SH", description: "Pay to Script Hash softfork", date: "01/04/2012" },
             { year: 2012, month: 1, cve: "CVE-2012-1909", type: "network-split", title: "Network Split Corruption", description: "Vulnerability type: Network Split ; connection corrupting", date: "17/03/2012" },
-            { year: 2012, cve: "CVE-2012-1910", type: "unknown", title: "Non-thread safe MingW exceptions", description: "Bug in MingW leading to crash on Windows", date: "17/03/2012" },
+            { year: 2012, month: 3, cve: "CVE-2012-3210", type: "fake-conf", title: "DER Signature Soft Fork", description: "Vulnerability type: Fake Conf; Soft fork via DER signature rules", date: "01/03/2012" },
+            { year: 2012, month: 5, cve: "CVE-2012-1739", type: "dos", title: "Orphan Resource Leak", description: "Vulnerability type: DOS; Orphan tx resource exhaustion", date: "12/05/2012" },
             { year: 2012, month: 5, cve: "CVE-2012-3789", type: "dos", title: "DOS via Orphan", description: "Vulnerability type: DOS; (Lack of) orphan tx resource limits", date: "12/05/2012" },
             { year: 2012, month: 8, cve: "CVE-2012-2459", type: "network-split", title: "Block Hash Collision", description: "Vulnerability type: Network Split ; Block hash collision (via merkle root)", date: "14/08/2012" },
-            { year: 2012, cve: "CVE-2012-4682", type: "dos", title: "DoS (undefined)", description: "Resource exhaustion, unspecified details", date: "01/08/2012" },
             { year: 2012, month: 8, cve: "CVE-2012-4683", type: "dos", title: "Memory Exhaustion", description: "Vulnerability type: DOS; Memory exhaustion using alerts", date: "23/08/2012" },
             { year: 2012, month: 8, cve: "CVE-2012-4684", type: "dos", title: "DOS Network-wide", description: "Vulnerability type: DOS; Network-wide DoS using hash signatures", date: "24/08/2012" },
+            { year: 2012, month: 9, cve: "CVE-2012-4692", type: "dos", title: "DOS Lack Info", description: "Vulnerability type: DOS; (Lack of information)", date: "16/09/2012" },
             { year: 2013, month: 1, cve: "CVE-2013-2292", type: "dos", title: "DOS via Large Fork", description: "Vulnerability type: DOS; Connection handshake takes at least 3 minutes to verify", date: "30/01/2013" },
-            { year: 2013, cve: "CVE-2013-2272", type: "exposure", title: "Wallet address leak", description: "Remote discovery of node's wallet addresses", date: "11/01/2013" },
             { year: 2013, month: 2, cve: "CVE-2013-2273", type: "exposure", title: "Predictable Change Output", description: "Vulnerability type: Exposure; Predictable change output", date: "20/02/2013" },
             { year: 2013, month: 3, cve: "CVE-2013-2293", type: "network-split", title: "Remote Disclosure", description: "Vulnerability type: Exposure ; Remote discovery of node's wallet addresses", date: "11/03/2013" },
             { year: 2013, month: 3, cve: "CVE-2013-3220", type: "fake-conf", title: "Soft Fork Race Condition", description: "Vulnerability type: Fake Conf; Race condition chain split", date: "01/03/2013" },
-            { year: 2013, cve: "BIP0034", type: "fake-conf", title: "Softfork: Height in coinbase", description: "Include block height in coinbase input", date: "25/03/2013" },
             { year: 2013, month: 5, cve: "CVE-2013-2292", type: "dos", title: "DOS via Large Fork", description: "Vulnerability type: DOS; Connection handshake takes at least 3 minutes to verify", date: "05/01/2013" },
             { year: 2013, month: 5, cve: "CVE-2013-3219", type: "fake-conf", title: "Invalid Rule Accepted", description: "Vulnerability type: Fake Conf; Accept invalid protocol rule", date: "15/05/2013" },
-            { year: 2013, cve: "BIP0050", type: "netsplit", title: "Hardfork: TXID limit rule removal", description: "Remove txid chain limit (accidental hardfork)", date: "15/05/2013" },
             { year: 2013, month: 8, cve: "CVE-2013-4627", type: "dos", title: "DOS Memory Exhaustion", description: "Vulnerability type: DOS; Memory exhaustion with excess tx message data", date: "08/02/2013" },
             { year: 2013, month: 11, cve: "CVE-2013-4165", type: "theft", title: "Theft Timing Leak", description: "Vulnerability type: Theft; Timing leak in RPC", date: "20/07/2013" },
             { year: 2013, month: 11, cve: "CVE-2013-5700", type: "dos", title: "DOS Remote p2p", description: "Vulnerability type: DOS; Remote p2p crash via bloom filters", date: "05/09/2013" },
+            { year: 2014, month: 2, cve: "BIP-0042", type: "inflation", title: "Satoshi codes imply a sideline behaviour", description: "Fixed monetary supply inflation bug - https://en.bitcoin.it/wiki/BIP_0042", date: "01/04/2014" },
             { year: 2014, month: 4, cve: "CVE-2014-0160", type: "unknown", title: "Remote Memory Leak", description: "Vulnerability type: Unknown; Remote memory leak via payment protocol", date: "11/04/2016" },
             { year: 2015, month: 7, cve: "CVE-2015-3641", type: "dos", title: "DOS via Unauthenticated", description: "Vulnerability type: DOS; Unauthenticated yet...", date: "09/07/2015" },
-            { year: 2015, cve: "CVE-2015-6031", type: "unknown", title: "MiniUPnPc Buffer Overflow", description: "Buffer overflow vulnerability in MiniUPnPc library", date: "15/09/2015" },
-            { year: 2015, cve: "BIP66", type: "fake-conf", title: "Softfork: Strict DER signatures", description: "Enforce strict DER encoding for signatures", date: "13/02/2015" },
-            { year: 2015, cve: "BIP65", type: "fake-conf", title: "Softfork: OP_CHECKLOCKTIMEVERIFY", description: "Enable CLTV opcode for timelocks", date: "12/11/2015" },
             { year: 2016, month: 11, cve: "CVE-2016-10724", type: "fake-conf", title: "DDOS Vulnerability", description: "Vulnerability type: DDOS; Vulnerability in system", date: "11/11/2015" },
             { year: 2016, month: 11, cve: "CVE-2016-10725", type: "fake-conf", title: "DDOS Alert System", description: "Vulnerability type: DDOS; Vulnerability in system Alert system misbehave cancellation", date: "02/07/2016" },
-            { year: 2016, cve: "BIPs 68, 112 & 113", type: "fake-conf", title: "Softforks: Relative locktime & MTP", description: "CSV and MTP-based timelocks", date: "11/04/2016" },
             { year: 2016, month: 7, cve: "CVE-2016-8889", type: "exposure", title: "Bitcoin Knots Exposure", description: "Implementation [Bitcoin Knots 0.11.0 - 0.13.0]", date: "11/07/2016" },
-            { year: 2016, cve: "BIPs 141, 143 & 147", type: "fake-conf", title: "Softfork: SegWit", description: "Segregated Witness upgrade (v0)", date: "27/10/2016" },
             { year: 2017, month: 3, cve: "CVE-2017-12842", type: "fake-conf", title: "Fake SPV Proof", description: "Vulnerability type: Fake SPV proof; No coinbase merkle tree depth", date: "06/02/2017" },
-            { year: 2017, cve: "BIP148", type: "fake-conf", title: "Softfork: SegWit UASF", description: "User Activated Soft Fork to enforce SegWit", date: "12/03/2017" },
+            { year: 2017, month: 3, cve: "BIP 145", type: "fake-conf", title: "Fake Conf & Soft", description: "Vulnerability type: Fake Conf & Soft", date: "12/03/2017" },
             { year: 2017, month: 7, cve: "CVE-2017-9230", type: "unknown", title: "Unknown Type", description: "Vulnerability type: Unknown; infoleak", date: "26/11/2017" },
+            { year: 2017, month: 11, cve: "CVE-2017-18350", type: "unknown", title: "Buffer Overflow", description: "Vulnerability type: Unknown; overflow from SOCKS proxy", date: "22/06/2015" },
+            { year: 2018, month: 5, cve: "CVE-2018-20587", type: "theft", title: "Theft via RPC", description: "Vulnerability type: Theft; Insufficient Access Control vulnerability", date: "05/02/2018" },
             { year: 2018, month: 9, cve: "CVE-2018-17144", type: "inflation", title: "Inflation Bug", description: "Vulnerability type: Inflation; Missing check for duplicate inputs", date: "17/09/2018" },
-            { year: 2024, cve: "TBD", type: "dos", title: "DoS via fake block headers", description: "Out-of-memory via fake headers, pre-0.15.0", date: "03/07/2024" }
+            { year: 2018, month: 11, cve: "CVE-2018-20586", type: "fake-conf", title: "Fake Conf", description: "Vulnerability type: Fake Conf; Unknown", date: "21/11/2018" }
         ];
 
         let currentFilter = 'all';
@@ -594,7 +583,7 @@
                     vulnItem.dataset.type = vuln.type;
 
                     const criticalCVEs = [
-                        'CVE-2010-5141', 'CVE-2010-5139', 'CVE-2011-4447',
+                        'CVE-2010-5137', 'CVE-2010-5141', 'CVE-2010-5139', 'CVE-2011-4447',
                         'CVE-2012-1909', 'CVE-2012-1910', 'CVE-2012-2459', 'CVE-2013-3219',
                         'CVE-2013-3220', 'BIP-0050', 'CVE-2013-4165', 'CVE-2014-0160',
                         'CVE-2015-6031', 'CVE-2018-17144'
@@ -640,42 +629,41 @@
                 'CVE-2010-5141': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5141',
                 'CVE-2010-5138': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5138',
                 'CVE-2010-5139': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5139',
+                'CVE-2010-5144': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5144',
+                'CVE-2010-5142': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5142',
+                'CVE-2010-5143': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5143',
+                'CVE-2010-5145': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5145',
                 'CVE-2010-5140': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5140',
                 'CVE-2011-4447': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2011-4447',
-                'BIP0016': 'https://en.bitcoin.it/wiki/BIP_0016',
                 'CVE-2012-1909': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-1909',
-                'CVE-2012-1910': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-1910',
+                'CVE-2012-3210': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-3210',
+                'CVE-2012-1739': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-1739',
                 'CVE-2012-3789': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-3789',
                 'CVE-2012-2459': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-2459',
-                'CVE-2012-4682': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-4682',
                 'CVE-2012-4683': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-4683',
                 'CVE-2012-4684': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-4684',
+                'CVE-2012-4692': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-4692',
                 'CVE-2013-2292': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-2292',
-                'CVE-2013-2272': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-2272',
                 'CVE-2013-2273': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-2273',
                 'CVE-2013-2293': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-2293',
                 'CVE-2013-3220': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-3220',
-                'BIP0034': 'https://en.bitcoin.it/wiki/BIP_0034',
                 'CVE-2013-3219': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-3219',
-                'BIP0050': 'https://en.bitcoin.it/wiki/BIP_0050',
                 'CVE-2013-4627': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-4627',
                 'CVE-2013-4165': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-4165',
                 'CVE-2013-5700': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-5700',
+                'BIP-0042': 'https://en.bitcoin.it/wiki/BIP_0042',
                 'CVE-2014-0160': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2014-0160',
                 'CVE-2015-3641': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2015-3641',
-                'CVE-2015-6031': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2015-6031',
-                'BIP66': 'https://en.bitcoin.it/wiki/BIP_0066',
-                'BIP65': 'https://en.bitcoin.it/wiki/BIP_0065',
                 'CVE-2016-10724': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2016-10724',
                 'CVE-2016-10725': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2016-10725',
-                'BIPs 68, 112 & 113': 'https://en.bitcoin.it/wiki/BIP_0068',
                 'CVE-2016-8889': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2016-8889',
-                'BIPs 141, 143 & 147': 'https://en.bitcoin.it/wiki/BIP_0141',
                 'CVE-2017-12842': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2017-12842',
-                'BIP148': 'https://en.bitcoin.it/wiki/BIP_0148',
+                'BIP 145': 'https://en.bitcoin.it/wiki/BIP_0145',
                 'CVE-2017-9230': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2017-9230',
+                'CVE-2017-18350': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2017-18350',
+                'CVE-2018-20587': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2018-20587',
                 'CVE-2018-17144': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2018-17144',
-                'TBD': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures'
+                'CVE-2018-20586': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2018-20586'
             };
 
             const url = wikiMap[cve] || 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures';
@@ -685,12 +673,12 @@
         function updateStats(filtered) {
             // Critical CVEs based on Bitcoin Wiki red severity classification
             const criticalCVEs = [
-                'CVE-2010-5139', 'CVE-2010-5141', 'CVE-2011-4447',
-                'CVE-2012-1909', 'CVE-2012-1910', 'CVE-2012-2459', 'CVE-2013-3219',
-                'CVE-2013-3220', 'BIP-0050', 'CVE-2013-4165', 'CVE-2014-0160',
-                'CVE-2015-6031', 'CVE-2018-17144'
+                'CVE-2010-5137', 'CVE-2010-5138', 'CVE-2010-5139', 'CVE-2010-5140',
+                'CVE-2010-5141', 'CVE-2010-5142', 'CVE-2010-5143', 'CVE-2010-5144',
+                'CVE-2010-5145', 'CVE-2013-4165', 'CVE-2018-20587', 'CVE-2018-17144',
+                'BIP-0042', 'CVE-2012-2459'
             ];
-
+            
             const filteredWithoutGenesis = filtered.filter(v => v.type !== 'genesis');
             const criticalCount = filteredWithoutGenesis.filter(v => 
                 criticalCVEs.includes(v.cve)
@@ -706,7 +694,7 @@
                 btn.classList.add('active');
                 currentFilter = btn.dataset.type;
                 renderVulnerabilities();
-
+                
                 // Destroy existing charts and regenerate with filtered data
                 Chart.getChart('pieChart')?.destroy();
                 Chart.getChart('barChart')?.destroy();
@@ -716,9 +704,9 @@
 
         function generateChartsFiltered() {
             const filtered = currentFilter === 'all' 
-                ? vulnerabilities.filter(v => v.type !== 'genesis' && v.type !== 'anything')
-                : vulnerabilities.filter(v => v.type === currentFilter && v.type !== 'genesis' && v.type !== 'anything');
-
+                ? vulnerabilities.filter(v => v.type !== 'genesis')
+                : vulnerabilities.filter(v => v.type === currentFilter && v.type !== 'genesis');
+            
             generatePieChartFiltered(filtered);
             generateBarChartFiltered(filtered);
         }
@@ -726,6 +714,7 @@
         function generatePieChartFiltered(data) {
             const typeCounts = {};
             const typeLabels = {
+                'genesis': 'Genesis',
                 'dos': 'DOS',
                 'theft': 'Theft',
                 'fake-conf': 'Fake Conf',
@@ -735,28 +724,21 @@
                 'unknown': 'Unknown'
             };
 
-            // Define colors mapping to match the actual data order
-            const colorMapping = {
-                'dos': '#6a89cc',
-                'theft': '#f1c40f', 
-                'fake-conf': '#74b9ff',
-                'network-split': '#ff7675',
-                'exposure': '#81ecec',
-                'inflation': '#ff3838',
-                'unknown': '#636e72'
-            };
-
-            const labels = Object.keys(typeCounts).map(type => typeLabels[type] || type);
-            const colors = Object.keys(typeCounts).map(type => colorMapping[type] || '#636e72');
+            data.forEach(vuln => {
+                typeCounts[vuln.type] = (typeCounts[vuln.type] || 0) + 1;
+            });
 
             const ctx = document.getElementById('pieChart').getContext('2d');
             new Chart(ctx, {
                 type: 'pie',
                 data: {
-                    labels: labels,
+                    labels: Object.keys(typeCounts).map(type => typeLabels[type] || type),
                     datasets: [{
                         data: Object.values(typeCounts),
-                        backgroundColor: colors,
+                        backgroundColor: [
+                            '#f1c40f', '#6a89cc', '#f1c40f', '#74b9ff', 
+                            '#ff7675', '#81ecec', '#ff3838', '#636e72'
+                        ],
                         borderColor: '#ffcc66',
                         borderWidth: 1
                     }]
@@ -865,33 +847,27 @@
                 'unknown': 'Unknown'
             };
 
-            // Filter out genesis and anything types
-            vulnerabilities.filter(v => v.type !== 'genesis' && v.type !== 'anything').forEach(vuln => {
+            vulnerabilities.filter(v => v.type !== 'genesis').forEach(vuln => {
                 typeCounts[vuln.type] = (typeCounts[vuln.type] || 0) + 1;
             });
-
-            // Define colors mapping to match the actual data order
-            const colorMapping = {
-                'dos': '#6a89cc',
-                'theft': '#f1c40f', 
-                'fake-conf': '#74b9ff',
-                'network-split': '#ff7675',
-                'exposure': '#81ecec',
-                'inflation': '#ff3838',
-                'unknown': '#636e72'
-            };
-
-            const labels = Object.keys(typeCounts).map(type => typeLabels[type] || type);
-            const colors = Object.keys(typeCounts).map(type => colorMapping[type] || '#636e72');
 
             const ctx = document.getElementById('pieChart').getContext('2d');
             new Chart(ctx, {
                 type: 'pie',
                 data: {
-                    labels: labels,
+                    labels: Object.keys(typeCounts).map(type => typeLabels[type] || type),
                     datasets: [{
                         data: Object.values(typeCounts),
-                        backgroundColor: colors,
+                        backgroundColor: [
+                            '#f1c40f', // genesis
+                            '#6a89cc', // dos
+                            '#f1c40f', // theft
+                            '#74b9ff', // fake-conf
+                            '#ff7675', // network-split
+                            '#81ecec', // exposure
+                            '#ff3838', // inflation
+                            '#636e72'  // unknown
+                        ],
                         borderColor: '#ffcc66',
                         borderWidth: 1
                     }]
@@ -927,7 +903,7 @@
 
         function generateBarChart() {
             const yearCounts = {};
-            vulnerabilities.filter(v => v.type !== 'genesis' && v.type !== 'anything').forEach(vuln => {
+            vulnerabilities.filter(v => v.type !== 'genesis').forEach(vuln => {
                 yearCounts[vuln.year] = (yearCounts[vuln.year] || 0) + 1;
             });
 
