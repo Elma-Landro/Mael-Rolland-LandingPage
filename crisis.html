@@ -437,7 +437,7 @@
 
             <div class="stats-container">
                 <div class="stat-box">
-                    <span class="stat-number" id="total-vulns">46</span>
+                    <span class="stat-number" id="total-vulns">40</span>
                     <span class="stat-label">Total vulnerabilities</span>
                 </div>
                 <div class="stat-box">
@@ -539,7 +539,7 @@
             { year: 2013, month: 11, cve: "CVE-2013-5700", type: "dos", title: "DOS Remote p2p", description: "Vulnerability type: DOS; Remote p2p crash via bloom filters", date: "05/09/2013" },
             { year: 2014, month: 4, cve: "CVE-2014-0160", type: "unknown", title: "Remote Memory Leak", description: "Vulnerability type: Unknown; Remote memory leak via payment protocol", date: "11/04/2016" },
             { year: 2015, month: 7, cve: "CVE-2015-3641", type: "dos", title: "DOS via Unauthenticated", description: "Vulnerability type: DOS; Unauthenticated yet...", date: "09/07/2015" },
-            { year: 2015, cve: "CVE-2015-6031", type: "anything", title: "MiniUPnPc Buffer Overflow", description: "Buffer overflow vulnerability in MiniUPnPc library", date: "15/09/2015" },
+            { year: 2015, cve: "CVE-2015-6031", type: "unknown", title: "MiniUPnPc Buffer Overflow", description: "Buffer overflow vulnerability in MiniUPnPc library", date: "15/09/2015" },
             { year: 2015, cve: "BIP66", type: "fake-conf", title: "Softfork: Strict DER signatures", description: "Enforce strict DER encoding for signatures", date: "13/02/2015" },
             { year: 2015, cve: "BIP65", type: "fake-conf", title: "Softfork: OP_CHECKLOCKTIMEVERIFY", description: "Enable CLTV opcode for timelocks", date: "12/11/2015" },
             { year: 2016, month: 11, cve: "CVE-2016-10724", type: "fake-conf", title: "DDOS Vulnerability", description: "Vulnerability type: DDOS; Vulnerability in system", date: "11/11/2015" },
@@ -716,8 +716,8 @@
 
         function generateChartsFiltered() {
             const filtered = currentFilter === 'all' 
-                ? vulnerabilities.filter(v => v.type !== 'genesis')
-                : vulnerabilities.filter(v => v.type === currentFilter && v.type !== 'genesis');
+                ? vulnerabilities.filter(v => v.type !== 'genesis' && v.type !== 'anything')
+                : vulnerabilities.filter(v => v.type === currentFilter && v.type !== 'genesis' && v.type !== 'anything');
             
             generatePieChartFiltered(filtered);
             generateBarChartFiltered(filtered);
@@ -726,7 +726,6 @@
         function generatePieChartFiltered(data) {
             const typeCounts = {};
             const typeLabels = {
-                'genesis': 'Genesis',
                 'dos': 'DOS',
                 'theft': 'Theft',
                 'fake-conf': 'Fake Conf',
@@ -740,17 +739,28 @@
                 typeCounts[vuln.type] = (typeCounts[vuln.type] || 0) + 1;
             });
 
+            // Define colors mapping to match the actual data order
+            const colorMapping = {
+                'dos': '#6a89cc',
+                'theft': '#f1c40f', 
+                'fake-conf': '#74b9ff',
+                'network-split': '#ff7675',
+                'exposure': '#81ecec',
+                'inflation': '#ff3838',
+                'unknown': '#636e72'
+            };
+
+            const labels = Object.keys(typeCounts).map(type => typeLabels[type] || type);
+            const colors = Object.keys(typeCounts).map(type => colorMapping[type] || '#636e72');
+
             const ctx = document.getElementById('pieChart').getContext('2d');
             new Chart(ctx, {
                 type: 'pie',
                 data: {
-                    labels: Object.keys(typeCounts).map(type => typeLabels[type] || type),
+                    labels: labels,
                     datasets: [{
                         data: Object.values(typeCounts),
-                        backgroundColor: [
-                            '#f1c40f', '#6a89cc', '#f1c40f', '#74b9ff', 
-                            '#ff7675', '#81ecec', '#ff3838', '#636e72'
-                        ],
+                        backgroundColor: colors,
                         borderColor: '#ffcc66',
                         borderWidth: 1
                     }]
@@ -859,27 +869,33 @@
                 'unknown': 'Unknown'
             };
 
-            vulnerabilities.filter(v => v.type !== 'genesis').forEach(vuln => {
+            // Filter out genesis and anything types
+            vulnerabilities.filter(v => v.type !== 'genesis' && v.type !== 'anything').forEach(vuln => {
                 typeCounts[vuln.type] = (typeCounts[vuln.type] || 0) + 1;
             });
+
+            // Define colors mapping to match the actual data order
+            const colorMapping = {
+                'dos': '#6a89cc',
+                'theft': '#f1c40f', 
+                'fake-conf': '#74b9ff',
+                'network-split': '#ff7675',
+                'exposure': '#81ecec',
+                'inflation': '#ff3838',
+                'unknown': '#636e72'
+            };
+
+            const labels = Object.keys(typeCounts).map(type => typeLabels[type] || type);
+            const colors = Object.keys(typeCounts).map(type => colorMapping[type] || '#636e72');
 
             const ctx = document.getElementById('pieChart').getContext('2d');
             new Chart(ctx, {
                 type: 'pie',
                 data: {
-                    labels: Object.keys(typeCounts).map(type => typeLabels[type] || type),
+                    labels: labels,
                     datasets: [{
                         data: Object.values(typeCounts),
-                        backgroundColor: [
-                            '#f1c40f', // genesis
-                            '#6a89cc', // dos
-                            '#f1c40f', // theft
-                            '#74b9ff', // fake-conf
-                            '#ff7675', // network-split
-                            '#81ecec', // exposure
-                            '#ff3838', // inflation
-                            '#636e72'  // unknown
-                        ],
+                        backgroundColor: colors,
                         borderColor: '#ffcc66',
                         borderWidth: 1
                     }]
@@ -915,7 +931,7 @@
 
         function generateBarChart() {
             const yearCounts = {};
-            vulnerabilities.filter(v => v.type !== 'genesis').forEach(vuln => {
+            vulnerabilities.filter(v => v.type !== 'genesis' && v.type !== 'anything').forEach(vuln => {
                 yearCounts[vuln.year] = (yearCounts[vuln.year] || 0) + 1;
             });
 
