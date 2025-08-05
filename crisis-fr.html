@@ -418,7 +418,7 @@
                     </div>
                 </div>
                 <p style="color: var(--text-secondary); margin-top: 15px; text-align: center; font-size: 0.8em; background-color: rgba(255, 204, 102, 0.1); padding: 10px; border: 1px solid #ffcc66; border-radius: 4px;">
-                    <strong style="color: #ff3838;">VULNÉRABILITÉS CRITIQUES :</strong> Vulnérabilités classées <strong style="color: #ff3838;">SÉVÉRITÉ ROUGE</strong> sur le Bitcoin Wiki, incluant les types <strong style="color: #ff3838;">INFLATION</strong> et <strong style="color: #f1c40f;">THEFT</strong> pouvant directement compromettre l'intégrité du protocole ou permettre l'extraction d'actifs.
+                    <strong style="color: #ff3838;">VULNÉRABILITÉS CRITIQUES :</strong> Vulnérabilités classées <strong style="color: #ff3838;">SÉVÉRITÉ ROUGE</strong> sur le Bitcoin Wiki.
                 </p>
                 <p style="color: var(--text-secondary); margin-top: 10px; text-align: center; font-size: 0.7em;">
                     <strong>CVE :</strong> Identifiant Common Vulnerabilities and Exposures | <strong>BIP :</strong> Bitcoin Improvement Proposal
@@ -431,7 +431,7 @@
                     <span class="stat-label">Total vulnérabilités</span>
                 </div>
                 <div class="stat-box">
-                    <span class="stat-number" id="critical-vulns">5</span>
+                    <span class="stat-number" id="critical-vulns">14</span>
                     <span class="stat-label">Vulnérabilités critiques</span>
                 </div>
                 <div class="stat-box">
@@ -664,17 +664,15 @@
         function updateStats(filtered) {
             // CVE critiques basées sur la classification de sévérité rouge du Bitcoin Wiki
             const criticalCVEs = [
-                'CVE-2010-5145', // Combined Output Overflow (inflation)
-                'CVE-2010-5141', // GetBLOCK DoS (theft potential)
-                'CVE-2013-4165', // Theft Timing Leak
-                'CVE-2018-20587', // Theft via RPC
-                'CVE-2018-17144', // Inflation Bug
-                'BIP-0042' // Monetary supply inflation bug
+                'CVE-2010-5137', 'CVE-2010-5138', 'CVE-2010-5139', 'CVE-2010-5140',
+                'CVE-2010-5141', 'CVE-2010-5142', 'CVE-2010-5143', 'CVE-2010-5144',
+                'CVE-2010-5145', 'CVE-2013-4165', 'CVE-2018-20587', 'CVE-2018-17144',
+                'BIP-0042', 'CVE-2012-2459'
             ];
             
             const filteredWithoutGenesis = filtered.filter(v => v.type !== 'genesis');
             const criticalCount = filteredWithoutGenesis.filter(v => 
-                criticalCVEs.includes(v.cve) || ['inflation', 'theft'].includes(v.type)
+                criticalCVEs.includes(v.cve)
             ).length;
 
             document.getElementById('total-vulns').textContent = filteredWithoutGenesis.length;
