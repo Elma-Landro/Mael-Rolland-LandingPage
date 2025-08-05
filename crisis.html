@@ -184,7 +184,7 @@
             width: 100%;
             display: flex;
             justify-content: space-between;
-            padding: 0 5px;
+            padding: 0;
             pointer-events: none; /* Permet au contenu de rester cliquable */
         }
 
@@ -195,8 +195,8 @@
         }
 
         .badge img {
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             display: block;
             cursor: pointer;
             opacity: 0.8;
@@ -208,11 +208,17 @@
         }
 
         .badge-left {
-            align-self: flex-start;
+            position: absolute;
+            left: -5px;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .badge-right {
-            align-self: flex-end;
+            position: absolute;
+            right: -5px;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .stats-container {
