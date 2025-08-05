@@ -592,6 +592,7 @@
                         <div class="vuln-cve">${vuln.cve}</div>
                         <div class="vuln-type type-${vuln.type}">${vuln.type.toUpperCase()}</div>
                         <div class="vuln-description">${vuln.description}</div>
+                        ${vuln.date ? `<div class="vuln-date" style="color: var(--text-accent); font-size: 0.75em; margin-top: 5px; text-align: center;">${vuln.date}</div>` : ''}
                         ${isCritical ? '<div style="position: absolute; bottom: 8px; right: 8px; color: #ff3838; font-size: 0.6em; font-weight: bold;">CRITICAL</div>' : ''}
                         ${vuln.cve.startsWith('CVE-') ? `
                             <div class="badge-left">
