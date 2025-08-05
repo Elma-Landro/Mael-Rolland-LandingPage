@@ -14,6 +14,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         .timeline-container {
@@ -318,6 +319,51 @@
                 height: 51px;
             }
         }
+
+        .charts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .chart-wrapper {
+            background-color: var(--button-bg);
+            border: 2px solid var(--button-border);
+            padding: 20px;
+            font-family: 'VT323', monospace;
+            text-align: center;
+        }
+
+        .chart-wrapper h3 {
+            color: var(--text-accent);
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+
+        .chart-wrapper canvas {
+            max-width: 100%;
+            height: auto !important;
+        }
+
+        @media (max-width: 768px) {
+            .charts-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin: 20px 0;
+            }
+            
+            .chart-wrapper {
+                padding: 15px;
+            }
+            
+            .chart-wrapper h3 {
+                font-size: 1em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -377,7 +423,7 @@
                 </p>
             </div>
 
-            <div class="stats-container"></div>
+            <div class="stats-container">
                 <div class="stat-box">
                     <span class="stat-number" id="total-vulns">47</span>
                     <span class="stat-label">Vulnérabilités totales</span>
@@ -389,6 +435,17 @@
                 <div class="stat-box">
                     <span class="stat-number">10</span>
                     <span class="stat-label">Années couvertes</span>
+                </div>
+            </div>
+
+            <div class="charts-container">
+                <div class="chart-wrapper">
+                    <h3>Répartition par Type de Vulnérabilité</h3>
+                    <canvas id="pieChart" width="400" height="400"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                    <h3>Vulnérabilités par Année</h3>
+                    <canvas id="barChart" width="400" height="400"></canvas>
                 </div>
             </div>
 
@@ -617,10 +674,247 @@
                 btn.classList.add('active');
                 currentFilter = btn.dataset.type;
                 renderVulnerabilities();
+                
+                // Destroy existing charts and regenerate with filtered data
+                Chart.getChart('pieChart')?.destroy();
+                Chart.getChart('barChart')?.destroy();
+                generateChartsFiltered();
             });
         });
 
+        function generateChartsFiltered() {
+            const filtered = currentFilter === 'all' 
+                ? vulnerabilities 
+                : vulnerabilities.filter(v => v.type === currentFilter);
+            
+            generatePieChartFiltered(filtered);
+            generateBarChartFiltered(filtered);
+        }
+
+        function generatePieChartFiltered(data) {
+            const typeCounts = {};
+            const typeLabels = {
+                'genesis': 'Genesis',
+                'dos': 'DOS',
+                'theft': 'Vol',
+                'fake-conf': 'Fausse Conf',
+                'network-split': 'Division Réseau',
+                'exposure': 'Exposition',
+                'inflation': 'Inflation',
+                'unknown': 'Inconnu'
+            };
+
+            data.forEach(vuln => {
+                typeCounts[vuln.type] = (typeCounts[vuln.type] || 0) + 1;
+            });
+
+            const ctx = document.getElementById('pieChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: Object.keys(typeCounts).map(type => typeLabels[type] || type),
+                    datasets: [{
+                        data: Object.values(typeCounts),
+                        backgroundColor: [
+                            '#f1c40f', '#6a89cc', '#f1c40f', '#74b9ff', 
+                            '#ff7675', '#81ecec', '#ff3838', '#636e72'
+                        ],
+                        borderColor: '#ffcc66',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#ffcc66',
+                                font: { family: 'VT323', size: 14 },
+                                padding: 15
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function generateBarChartFiltered(data) {
+            const yearCounts = {};
+            data.forEach(vuln => {
+                yearCounts[vuln.year] = (yearCounts[vuln.year] || 0) + 1;
+            });
+
+            const years = Object.keys(yearCounts).sort();
+            const counts = years.map(year => yearCounts[year]);
+
+            const ctx = document.getElementById('barChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: years,
+                    datasets: [{
+                        label: 'Nombre de vulnérabilités',
+                        data: counts,
+                        backgroundColor: '#f1c40f',
+                        borderColor: '#ffcc66',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#ffcc66',
+                                font: { family: 'VT323', size: 12 },
+                                stepSize: 1
+                            },
+                            grid: { color: 'rgba(255, 204, 102, 0.3)' }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#ffcc66',
+                                font: { family: 'VT323', size: 12 }
+                            },
+                            grid: { color: 'rgba(255, 204, 102, 0.3)' }
+                        }
+                    }
+                }
+            });
+        }
+
         renderVulnerabilities();
+        generateCharts();
+
+        function generateCharts() {
+            generatePieChart();
+            generateBarChart();
+        }
+
+        function generatePieChart() {
+            const typeCounts = {};
+            const typeLabels = {
+                'genesis': 'Genesis',
+                'dos': 'DOS',
+                'theft': 'Vol',
+                'fake-conf': 'Fausse Conf',
+                'network-split': 'Division Réseau',
+                'exposure': 'Exposition',
+                'inflation': 'Inflation',
+                'unknown': 'Inconnu'
+            };
+
+            vulnerabilities.forEach(vuln => {
+                typeCounts[vuln.type] = (typeCounts[vuln.type] || 0) + 1;
+            });
+
+            const ctx = document.getElementById('pieChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: Object.keys(typeCounts).map(type => typeLabels[type] || type),
+                    datasets: [{
+                        data: Object.values(typeCounts),
+                        backgroundColor: [
+                            '#f1c40f', // genesis
+                            '#6a89cc', // dos
+                            '#f1c40f', // theft
+                            '#74b9ff', // fake-conf
+                            '#ff7675', // network-split
+                            '#81ecec', // exposure
+                            '#ff3838', // inflation
+                            '#636e72'  // unknown
+                        ],
+                        borderColor: '#ffcc66',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#ffcc66',
+                                font: {
+                                    family: 'VT323',
+                                    size: 14
+                                },
+                                padding: 15
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function generateBarChart() {
+            const yearCounts = {};
+            vulnerabilities.forEach(vuln => {
+                yearCounts[vuln.year] = (yearCounts[vuln.year] || 0) + 1;
+            });
+
+            const years = Object.keys(yearCounts).sort();
+            const counts = years.map(year => yearCounts[year]);
+
+            const ctx = document.getElementById('barChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: years,
+                    datasets: [{
+                        label: 'Nombre de vulnérabilités',
+                        data: counts,
+                        backgroundColor: '#f1c40f',
+                        borderColor: '#ffcc66',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#ffcc66',
+                                font: {
+                                    family: 'VT323',
+                                    size: 12
+                                },
+                                stepSize: 1
+                            },
+                            grid: {
+                                color: 'rgba(255, 204, 102, 0.3)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#ffcc66',
+                                font: {
+                                    family: 'VT323',
+                                    size: 12
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(255, 204, 102, 0.3)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
 
         // Theme toggle functionality standardisée
         function toggleTheme() {
