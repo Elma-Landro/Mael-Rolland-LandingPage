@@ -290,7 +290,43 @@
         </header>
 
         <section>
-            <div class="stats-container">
+            <div class="intro-section" style="background-color: var(--button-bg); border: 2px solid var(--button-border); padding: 20px; margin: 20px 0; font-family: 'VT323', monospace;">
+                <h3 style="color: var(--text-accent); text-align: center; margin-bottom: 15px;">Étiquettes de Crise & Gouvernance Indigène</h3>
+                <p style="color: var(--text-primary); margin-bottom: 15px; text-align: center; font-size: 0.9em;">
+                    Ces catégorisations de crises représentent une taxonomie indigène des vulnérabilités et un cadre de gouvernance, développés par l'analyse systématique des protocoles. Chaque étiquette indique des vecteurs de menace spécifiques nécessitant des approches distinctes de gestion de crise.
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; font-size: 0.8em;">
+                    <div style="background-color: rgba(0,0,0,0.3); padding: 8px; border-left: 3px solid #f1c40f;">
+                        <strong style="color: #f1c40f;">GENESIS :</strong> Jalon de lancement du protocole
+                    </div>
+                    <div style="background-color: rgba(0,0,0,0.3); padding: 8px; border-left: 3px solid #6a89cc;">
+                        <strong style="color: #6a89cc;">DOS :</strong> Attaques de déni de service
+                    </div>
+                    <div style="background-color: rgba(0,0,0,0.3); padding: 8px; border-left: 3px solid #f1c40f;">
+                        <strong style="color: #f1c40f;">THEFT :</strong> Vulnérabilités d'extraction d'actifs
+                    </div>
+                    <div style="background-color: rgba(0,0,0,0.3); padding: 8px; border-left: 3px solid #74b9ff;">
+                        <strong style="color: #74b9ff;">FAKE CONF :</strong> Exploits de fausse confirmation
+                    </div>
+                    <div style="background-color: rgba(0,0,0,0.3); padding: 8px; border-left: 3px solid #ff7675;">
+                        <strong style="color: #ff7675;">NETWORK SPLIT :</strong> Vulnérabilités de division de chaîne
+                    </div>
+                    <div style="background-color: rgba(0,0,0,0.3); padding: 8px; border-left: 3px solid #81ecec;">
+                        <strong style="color: #81ecec;">EXPOSURE :</strong> Risques de divulgation d'informations
+                    </div>
+                    <div style="background-color: rgba(0,0,0,0.3); padding: 8px; border-left: 3px solid #ff3838;">
+                        <strong style="color: #ff3838;">INFLATION :</strong> Manipulation de l'offre monétaire
+                    </div>
+                    <div style="background-color: rgba(0,0,0,0.3); padding: 8px; border-left: 3px solid #636e72;">
+                        <strong style="color: #636e72;">UNKNOWN :</strong> Types de vulnérabilités non classés
+                    </div>
+                </div>
+                <p style="color: var(--text-secondary); margin-top: 10px; text-align: center; font-size: 0.7em;">
+                    <strong>CVE :</strong> Identifiant Common Vulnerabilities and Exposures | <strong>BIP :</strong> Bitcoin Improvement Proposal
+                </p>
+            </div>
+
+            <div class="stats-container"></div>
                 <div class="stat-box">
                     <span class="stat-number" id="total-vulns">47</span>
                     <span class="stat-label">Vulnérabilités totales</span>
