@@ -179,17 +179,15 @@
         }
 
         .badge-left {
-            position: fixed;
+            position: absolute;
             left: 20px;
             bottom: 20px;
-            z-index: 1000;
         }
 
         .badge-right {
-            position: fixed;
+            position: absolute;
             right: 20px;
             bottom: 20px;
-            z-index: 1000;
         }
 
         .badge {
@@ -487,18 +485,6 @@
         </div>
     </div>
 
-    <!-- Fixed badges -->
-    <div class="badge-left">
-        <span class="badge" onclick="window.open('https://cve.mitre.org/cgi-bin/cvename.cgi', '_blank')">
-            <img src="assets/icons/cvedata.jpg" alt="CVE Data">
-        </span>
-    </div>
-    <div class="badge-right">
-        <span class="badge" onclick="window.open('https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures', '_blank')">
-            <img src="assets/icons/bitcoinwiki.jpg" alt="Bitcoin Wiki">
-        </span>
-    </div>
-
     <footer class="footer">
         <div class="social-icons">
             <a href="https://x.com/Maelkum" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><img src="assets/icons/X.png" alt="X Icon" class="pixel-icon"></a>
@@ -618,7 +604,20 @@
                         <div class="vuln-description">${vuln.description}</div>
                         ${vuln.date ? `<div class="vuln-date" style="color: var(--text-accent); font-size: 0.75em; margin-top: 5px; text-align: center;">${vuln.date}</div>` : ''}
                         ${isCritical ? '<div style="position: absolute; bottom: 8px; right: 8px; color: #ff3838; font-size: 0.6em; font-weight: bold;">CRITIQUE</div>' : ''}
-                        
+                        ${vuln.cve.startsWith('CVE-') ? `
+                            <div class="badge-left">
+                                <span class="badge" onclick="window.open('https://cve.mitre.org/cgi-bin/cvename.cgi?name=${vuln.cve}', '_blank')">
+                                    <img src="assets/icons/cvedata.jpg" alt="CVE Data">
+                                </span>
+                            </div>
+                        ` : ''}
+                        ${vuln.cve !== "Genesis Block" ? `
+                            <div class="badge-right">
+                                <span class="badge" onclick="openBitcoinWiki('${vuln.cve}', ${vuln.year})">
+                                    <img src="assets/icons/bitcoinwiki.jpg" alt="Bitcoin Wiki">
+                                </span>
+                            </div>
+                        ` : ''}
                     `;
 
                     yearSection.appendChild(vulnItem);
