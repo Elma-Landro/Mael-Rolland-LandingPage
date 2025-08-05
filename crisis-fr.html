@@ -431,7 +431,7 @@
                     <span class="stat-label">Total vulnérabilités</span>
                 </div>
                 <div class="stat-box">
-                    <span class="stat-number" id="critical-vulns">10</span>
+                    <span class="stat-number" id="critical-vulns">14</span>
                     <span class="stat-label">Vulnérabilités critiques</span>
                 </div>
                 <div class="stat-box">
@@ -583,9 +583,10 @@
                     vulnItem.dataset.type = vuln.type;
 
                     const criticalCVEs = [
-                        'CVE-2010-5137', 'CVE-2010-5141', 'CVE-2010-5139', 'CVE-2010-5140',
-                        'CVE-2010-5142', 'CVE-2010-5144', 'CVE-2010-5145', 'CVE-2012-2459',
-                        'CVE-2013-4165', 'CVE-2018-17144'
+                        'CVE-2010-5137', 'CVE-2010-5138', 'CVE-2010-5139', 'CVE-2010-5140',
+                        'CVE-2010-5141', 'CVE-2010-5142', 'CVE-2010-5143', 'CVE-2010-5144',
+                        'CVE-2010-5145', 'CVE-2013-4165', 'CVE-2018-20587', 'CVE-2018-17144',
+                        'BIP-0042', 'CVE-2012-2459'
                     ];
                     const isCritical = criticalCVEs.includes(vuln.cve);
 
@@ -672,9 +673,10 @@
         function updateStats(filtered) {
             // CVE critiques basées sur la classification de sévérité rouge du Bitcoin Wiki
             const criticalCVEs = [
-                'CVE-2010-5137', 'CVE-2010-5141', 'CVE-2010-5139', 'CVE-2010-5140',
-                'CVE-2010-5142', 'CVE-2010-5144', 'CVE-2010-5145', 'CVE-2012-2459',
-                'CVE-2013-4165', 'CVE-2018-17144'
+                'CVE-2010-5137', 'CVE-2010-5138', 'CVE-2010-5139', 'CVE-2010-5140',
+                'CVE-2010-5141', 'CVE-2010-5142', 'CVE-2010-5143', 'CVE-2010-5144',
+                'CVE-2010-5145', 'CVE-2013-4165', 'CVE-2018-20587', 'CVE-2018-17144',
+                'BIP-0042', 'CVE-2012-2459'
             ];
             
             const filteredWithoutGenesis = filtered.filter(v => v.type !== 'genesis');
