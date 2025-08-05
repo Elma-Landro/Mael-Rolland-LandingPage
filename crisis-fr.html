@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -98,7 +99,7 @@
         .vulnerability-item {
             background-color: rgba(0,0,0,0.3);
             border: 1px solid var(--text-secondary);
-            padding: 50px 15px 15px 15px;
+            padding: 10px;
             margin-bottom: 10px;
             font-size: 0.9em;
             position: relative;
@@ -131,37 +132,41 @@
             text-align: center;
         }
 
-        .type-dos {
-            border-color: #6a89cc;
-            color: #6a89cc;
+        .type-dos { 
+            border-color: #6a89cc; 
+            color: #6a89cc; 
         }
-        .type-theft {
-            border-color: #f1c40f;
-            color: #f1c40f;
+        .type-theft { 
+            border-color: #f1c40f; 
+            color: #f1c40f; 
         }
-        .type-fake-conf {
-            border-color: #74b9ff;
-            color: #74b9ff;
+        .type-fake-conf { 
+            border-color: #74b9ff; 
+            color: #74b9ff; 
         }
-        .type-network-split {
-            border-color: #ff7675;
-            color: #ff7675;
+        .type-netset { 
+            border-color: #ff7675; 
+            color: #ff7675; 
         }
-        .type-exposure {
-            border-color: #81ecec;
-            color: #81ecec;
+        .type-exposure { 
+            border-color: #81ecec; 
+            color: #81ecec; 
         }
-        .type-inflation {
-            border-color: #ff3838;
-            color: #ff3838;
+        .type-inflation { 
+            border-color: #ff3838; 
+            color: #ff3838; 
         }
         .type-genesis {
             border-color: #f1c40f;
             color: #f1c40f;
         }
-        .type-unknown {
-            border-color: #636e72;
-            color: #636e72;
+        .type-unknown { 
+            border-color: #636e72; 
+            color: #636e72; 
+        }
+        .type-network-split {
+            border-color: #ff7675; 
+            color: #ff7675; 
         }
 
         .vuln-description {
@@ -175,14 +180,14 @@
 
         .badge-left {
             position: absolute;
-            left: 10px;
-            top: 5px;
+            left: 8px;
+            top: 8px;
         }
 
         .badge-right {
             position: absolute;
-            right: 10px;
-            top: 5px;
+            right: 8px;
+            top: 8px;
         }
 
         .badge {
@@ -191,8 +196,8 @@
         }
 
         .badge img {
-            width: 40px;
-            height: 40px;
+            width: 60px;
+            height: 60px;
             display: block;
             cursor: pointer;
             opacity: 0.8;
@@ -451,7 +456,7 @@
             { year: 2012, month: 8, cve: "CVE-2012-4683", type: "dos", title: "Memory Exhaustion", description: "Type de faille : DOS ; Memory exhaustion using alerts", date: "23/08/2012" },
             { year: 2012, month: 8, cve: "CVE-2012-4684", type: "dos", title: "DOS Network-wide", description: "Type de faille : DOS ; Network-wide DoS using hash signatures", date: "24/08/2012" },
             { year: 2012, month: 9, cve: "CVE-2012-4692", type: "dos", title: "DOS Lack Info", description: "Type de faille : DOS ; (Lack of information)", date: "16/09/2012" },
-            { year: 2013, month: 1, cve: "CVE-2013-2292", type: "dos", title: "DOS via Blockchain", description: "Type de faille : DOS ; DoS : Connection slot exhaustion at least 3 minutes to verify", date: "30/01/2013" },
+            { year: 2013, month: 1, cve: "CVE-2013-2292", type: "dos", title: "DOS via Large Fork", description: "Type de faille : DOS ; Connection handshake takes at least 3 minutes to verify", date: "30/01/2013" },
             { year: 2013, month: 2, cve: "CVE-2013-2273", type: "exposure", title: "Predictable Change Output", description: "Type de faille : Exposure ; Predictable change output", date: "20/02/2013" },
             { year: 2013, month: 3, cve: "CVE-2013-2293", type: "network-split", title: "Divulgation à Distance", description: "Type de faille : Exposure ; Remote discovery of node's wallet addresses", date: "11/03/2013" },
             { year: 2013, month: 3, cve: "CVE-2013-3220", type: "fake-conf", title: "Soft Fork Race Condition", description: "Type de faille : Fake Conf ; Race condition chain split", date: "01/03/2013" },
@@ -535,13 +540,6 @@
                         ` : ''}
                     `;
 
-                    if (vuln.cve.startsWith('CVE-')) {
-                        vulnItem.style.cursor = 'pointer';
-                        vulnItem.addEventListener('click', () => {
-                            window.open(`https://cve.mitre.org/cgi-bin/cvename.cgi?name=${vuln.cve}`, '_blank');
-                        });
-                    }
-
                     yearSection.appendChild(vulnItem);
                 });
 
@@ -550,23 +548,6 @@
 
             updateStats(filtered);
         }
-
-        function updateStats(filtered) {
-            const criticalTypes = ['inflation', 'theft'];
-            const criticalCount = filtered.filter(v => criticalTypes.includes(v.type)).length;
-
-            document.getElementById('total-vulns').textContent = filtered.length;
-            document.getElementById('critical-vulns').textContent = criticalCount;
-        }
-
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentFilter = btn.dataset.type;
-                renderVulnerabilities();
-            });
-        });
 
         // Function to open Bitcoin Wiki links
         function openBitcoinWiki(cve, year) {
@@ -616,6 +597,23 @@
             const url = wikiMap[cve] || 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures';
             window.open(url, '_blank');
         }
+
+        function updateStats(filtered) {
+            const criticalTypes = ['inflation', 'theft'];
+            const criticalCount = filtered.filter(v => criticalTypes.includes(v.type)).length;
+
+            document.getElementById('total-vulns').textContent = filtered.length;
+            document.getElementById('critical-vulns').textContent = criticalCount;
+        }
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.dataset.type;
+                renderVulnerabilities();
+            });
+        });
 
         renderVulnerabilities();
 
