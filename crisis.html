@@ -99,25 +99,21 @@
         .vulnerability-item {
             background-color: rgba(0,0,0,0.3);
             border: 1px solid var(--text-secondary);
-            padding: 20px;
+            padding: 10px;
             margin-bottom: 10px;
             font-size: 0.9em;
             position: relative;
-            text-align: center;
+            text-align: center; /* Centrer le contenu */
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow: hidden; /* Empêche le débordement des badges */
-            min-height: 120px; /* Hauteur minimum pour les badges */
         }
 
         .vuln-title {
             color: var(--text-primary);
             font-weight: bold;
-            margin: 40px 15px 5px 15px; /* Marges pour éviter les badges */
+            margin-bottom: 5px;
             text-align: center;
-            word-wrap: break-word;
-            hyphens: auto;
         }
 
         .vuln-cve {
@@ -125,17 +121,6 @@
             font-size: 0.8em;
             margin-bottom: 5px;
             text-align: center;
-            position: absolute;
-            top: 8px;
-            left: 8px;
-            max-width: calc(60% - 16px);
-            z-index: 2;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            padding: 2px 4px;
-            border-radius: 2px;
-            background-color: rgba(0,0,0,0.5);
         }
 
         .vuln-type {
@@ -143,15 +128,8 @@
             padding: 2px 6px;
             border: 1px solid;
             font-size: 0.7em;
+            margin-bottom: 5px;
             text-align: center;
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            max-width: calc(35% - 16px);
-            z-index: 2;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
 
         .type-dos { 
@@ -197,38 +175,19 @@
             line-height: 1.3;
             text-align: center;
             max-width: 90%;
-            margin: 5px auto 25px auto; /* Marge bottom pour la date */
-            word-wrap: break-word;
-        }
-
-        .vuln-date {
-            position: absolute;
-            bottom: 8px;
-            right: 8px;
-            color: var(--text-accent);
-            font-size: 0.75em;
-            max-width: calc(50% - 16px);
-            z-index: 2;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            padding: 2px 4px;
-            border-radius: 2px;
-            background-color: rgba(0,0,0,0.5);
+            margin: 0 auto;
         }
 
         .badge-left {
             position: absolute;
             left: 8px;
-            bottom: 8px;
-            z-index: 3;
+            top: 8px;
         }
 
         .badge-right {
             position: absolute;
             right: 8px;
-            bottom: 35px;
-            z-index: 3;
+            top: 8px;
         }
 
         .badge {
@@ -354,33 +313,6 @@
                 gap: 15px;
             }
 
-            .vulnerability-item {
-                padding: 15px;
-                min-height: 100px;
-            }
-
-            .vuln-cve,
-            .vuln-type {
-                position: static;
-                display: inline-block;
-                margin: 2px;
-                max-width: 48%;
-                background-color: transparent;
-            }
-
-            .vuln-title {
-                margin: 10px 5px 5px 5px;
-            }
-
-            .vuln-date {
-                position: static;
-                display: block;
-                margin: 5px auto 0 auto;
-                text-align: center;
-                background-color: transparent;
-                max-width: 100%;
-            }
-
             .badge img {
                 width: 50px;
                 height: 50px;
@@ -388,12 +320,12 @@
 
             .badge-left {
                 left: 4px;
-                bottom: 4px;
+                top: 4px;
             }
 
             .badge-right {
                 right: 4px;
-                bottom: 25px;
+                top: 4px;
             }
         }
 
