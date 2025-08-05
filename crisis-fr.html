@@ -193,6 +193,7 @@
         .badge {
             display: inline-block;
             pointer-events: auto;
+            transform: translate(-10px, +25px);
         }
 
         .badge img {
@@ -686,7 +687,7 @@
                 'CVE-2013-3220', 'BIP-0050', 'CVE-2013-4165', 'CVE-2014-0160',
                 'CVE-2015-6031', 'CVE-2018-17144'
             ];
-            
+
             const filteredWithoutGenesis = filtered.filter(v => v.type !== 'genesis');
             const criticalCount = filteredWithoutGenesis.filter(v => 
                 criticalCVEs.includes(v.cve)
