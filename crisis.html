@@ -723,7 +723,6 @@
         function generatePieChartFiltered(data) {
             const typeCounts = {};
             const typeLabels = {
-                'genesis': 'Genesis',
                 'dos': 'DOS',
                 'theft': 'Theft',
                 'fake-conf': 'Fake Conf',
@@ -733,7 +732,7 @@
                 'unknown': 'Unknown'
             };
 
-            data.forEach(vuln => {
+            data.filter(v => v.type !== 'genesis').forEach(vuln => {
                 typeCounts[vuln.type] = (typeCounts[vuln.type] || 0) + 1;
             });
 
@@ -780,7 +779,7 @@
 
         function generateBarChartFiltered(data) {
             const yearCounts = {};
-            data.forEach(vuln => {
+            data.filter(v => v.type !== 'genesis').forEach(vuln => {
                 yearCounts[vuln.year] = (yearCounts[vuln.year] || 0) + 1;
             });
 
