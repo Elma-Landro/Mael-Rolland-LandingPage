@@ -427,7 +427,7 @@
 
             <div class="stats-container">
                 <div class="stat-box">
-                    <span class="stat-number" id="total-vulns">46</span>
+                    <span class="stat-number" id="total-vulns">35</span>
                     <span class="stat-label">Total vulnérabilités</span>
                 </div>
                 <div class="stat-box">
@@ -435,7 +435,7 @@
                     <span class="stat-label">Vulnérabilités critiques</span>
                 </div>
                 <div class="stat-box">
-                    <span class="stat-number">10</span>
+                    <span class="stat-number">11</span>
                     <span class="stat-label">Années couvertes</span>
                 </div>
             </div>
@@ -501,46 +501,41 @@
     <script>
         const vulnerabilities = [
             { year: 2009, month: 1, cve: "Genesis Block", type: "genesis", title: "Lancement du protocole Bitcoin", description: "03/01/2009" },
-            { year: 2010, month: 7, cve: "CVE-2010-5137", type: "dos", title: "DOS via JSON-RPC", description: "Type de faille : DOS ; Attaque par buffer overflow", date: "28/07/2010" },
-            { year: 2010, month: 7, cve: "CVE-2010-5138", type: "dos", title: "Unlimited SigOp", description: "Type de faille : DOS ; Too many CHECKSIG commands", date: "29/07/2010" },
-            { year: 2010, month: 7, cve: "CVE-2010-5139", type: "dos", title: "DOS via SigOp", description: "Unlimited SigOp DoS via OP_CHECKMULTISIG opcodes", date: "29/07/2010" },
-            { year: 2010, month: 7, cve: "CVE-2010-5144", type: "dos", title: "OP_RETURN Crash", description: "Type de faille : DOS ; OP_RETURN used to spend output", date: "28/07/2010" },
-            { year: 2010, month: 8, cve: "CVE-2010-5141", type: "theft", title: "GetBLOCK DoS", description: "Type de faille : Theft ; getBlockHash could be overloaded causing", date: "23/07/2010" },
-            { year: 2010, month: 8, cve: "CVE-2010-5142", type: "dos", title: "OP_NOP Bug", description: "Type de faille : DOS ; OP_NOP overflow", date: "01/08/2010" },
-            { year: 2010, month: 8, cve: "CVE-2010-5143", type: "dos", title: "JSIF Crash", description: "Type de faille : DOS ; JSIF crash", date: "01/08/2010" },
-            { year: 2010, month: 8, cve: "CVE-2010-5145", type: "inflation", title: "Combined Output Overflow", description: "Type de faille : Inflation ; Netsplit ; Combined output overflow", date: "15/08/2010" },
-            { year: 2010, month: 9, cve: "CVE-2010-5140", type: "dos", title: "Never Confirming TX", description: "Type de faille : DOS ; Never confirming transactions", date: "01/09/2010" },
-            { year: 2011, month: 8, cve: "CVE-2011-4447", type: "exposure", title: "Wallet Exposure", description: "Type de faille : Exposure ; Wallet non encryption", date: "11/11/2011" },
-            { year: 2012, month: 1, cve: "CVE-2012-1909", type: "network-split", title: "Corruption Division Réseau", description: "Type de faille : Network Split ; connection corrupting", date: "17/03/2012" },
-            { year: 2012, month: 3, cve: "CVE-2012-3210", type: "fake-conf", title: "DER Signature Soft Fork", description: "Type de faille : Fake Conf ; Soft fork via DER signature rules", date: "01/03/2012" },
-            { year: 2012, month: 5, cve: "CVE-2012-1739", type: "dos", title: "Orphan Resource Leak", description: "Type de faille : DOS ; Orphan tx resource exhaustion", date: "12/05/2012" },
-            { year: 2012, month: 5, cve: "CVE-2012-3789", type: "dos", title: "DOS via Orphan", description: "Type de faille : DOS ; (Lack of) orphan tx resource limits", date: "12/05/2012" },
-            { year: 2012, month: 8, cve: "CVE-2012-2459", type: "network-split", title: "Collision Hash de Bloc", description: "Type de faille : Network Split ; Block hash collision (via merkle root)", date: "14/08/2012" },
-            { year: 2012, month: 8, cve: "CVE-2012-4683", type: "dos", title: "Memory Exhaustion", description: "Type de faille : DOS ; Memory exhaustion using alerts", date: "23/08/2012" },
-            { year: 2012, month: 8, cve: "CVE-2012-4684", type: "dos", title: "DOS Network-wide", description: "Type de faille : DOS ; Network-wide DoS using hash signatures", date: "24/08/2012" },
-            { year: 2012, month: 9, cve: "CVE-2012-4692", type: "dos", title: "DOS Lack Info", description: "Type de faille : DOS ; (Lack of information)", date: "16/09/2012" },
-            { year: 2013, month: 1, cve: "CVE-2013-2292", type: "dos", title: "DOS via Large Fork", description: "Type de faille : DOS ; Connection handshake takes at least 3 minutes to verify", date: "30/01/2013" },
-            { year: 2013, month: 2, cve: "CVE-2013-2273", type: "exposure", title: "Predictable Change Output", description: "Type de faille : Exposure ; Predictable change output", date: "20/02/2013" },
-            { year: 2013, month: 3, cve: "CVE-2013-2293", type: "network-split", title: "Divulgation à Distance", description: "Type de faille : Exposure ; Remote discovery of node's wallet addresses", date: "11/03/2013" },
-            { year: 2013, month: 3, cve: "CVE-2013-3220", type: "fake-conf", title: "Soft Fork Race Condition", description: "Type de faille : Fake Conf ; Race condition chain split", date: "01/03/2013" },
-            { year: 2013, month: 5, cve: "CVE-2013-2292", type: "dos", title: "DOS via Large Fork", description: "Type de faille : DOS ; Connection handshake takes at least 3 minutes to verify", date: "05/01/2013" },
-            { year: 2013, month: 5, cve: "CVE-2013-3219", type: "fake-conf", title: "Invalid Rule Accepted", description: "Type de faille : Fake Conf ; Accept invalid protocol rule", date: "15/05/2013" },
-            { year: 2013, month: 8, cve: "CVE-2013-4627", type: "dos", title: "DOS Memory Exhaustion", description: "Type de faille : DOS ; Memory exhaustion with excess tx message data", date: "08/02/2013" },
-            { year: 2013, month: 11, cve: "CVE-2013-4165", type: "theft", title: "Theft Timing Leak", description: "Type de faille : Theft ; Timing leak in RPC", date: "20/07/2013" },
-            { year: 2013, month: 11, cve: "CVE-2013-5700", type: "dos", title: "DOS Remote p2p", description: "Type de faille : DOS ; Remote p2p crash via bloom filters", date: "05/09/2013" },
-            { year: 2014, month: 2, cve: "BIP-0042", type: "inflation", title: "Satoshi codes imply a sideline behaviour", description: "Fixed monetary supply inflation bug - https://en.bitcoin.it/wiki/BIP_0042", date: "01/04/2014" },
-            { year: 2014, month: 4, cve: "CVE-2014-0160", type: "unknown", title: "Remote Memory Leak", description: "Type de faille : Unknown ; Remote memory leak via payment protocol", date: "11/04/2016" },
-            { year: 2015, month: 7, cve: "CVE-2015-3641", type: "dos", title: "DOS via Unauthenticated", description: "Type de faille : DOS ; Unauthenticated yet...", date: "09/07/2015" },
-            { year: 2016, month: 11, cve: "CVE-2016-10724", type: "fake-conf", title: "Vulnérabilité DDOS", description: "Type de faille : DDOS ; Vulnerability in system", date: "11/11/2015" },
-            { year: 2016, month: 11, cve: "CVE-2016-10725", type: "fake-conf", title: "DDOS Alert System", description: "Type de faille : DDOS ; Vulnerability in system Alert system misbehave cancellation", date: "02/07/2016" },
-            { year: 2016, month: 7, cve: "CVE-2016-8889", type: "exposure", title: "Bitcoin Knots Exposure", description: "Implementation [Bitcoin Knots 0.11.0 - 0.13.0]", date: "11/07/2016" },
-            { year: 2017, month: 3, cve: "CVE-2017-12842", type: "fake-conf", title: "Fake SPV Proof", description: "Type de faille : Fake SPV proof ; No coinbase merkle tree depth", date: "06/02/2017" },
-            { year: 2017, month: 3, cve: "BIP 145", type: "fake-conf", title: "Fake Conf & Soft", description: "Type de faille : Fake Conf & Soft", date: "12/03/2017" },
-            { year: 2017, month: 7, cve: "CVE-2017-9230", type: "unknown", title: "Unknown Type", description: "Type de faille : Unknown ; infoleak", date: "26/11/2017" },
-            { year: 2017, month: 11, cve: "CVE-2017-18350", type: "unknown", title: "Buffer Overflow", description: "Type de faille : Unknown ; overflow from SOCKS proxy", date: "22/06/2015" },
-            { year: 2018, month: 5, cve: "CVE-2018-20587", type: "theft", title: "Theft via RPC", description: "Type de faille : Theft ; Insufficient Access Control vulnerability", date: "05/02/2018" },
-            { year: 2018, month: 9, cve: "CVE-2018-17144", type: "inflation", title: "Inflation Bug", description: "Type de faille : Inflation ; Missing check for duplicate inputs", date: "17/09/2018" },
-            { year: 2018, month: 11, cve: "CVE-2018-20586", type: "fake-conf", title: "Fake Conf", description: "Type de faille : Fake Conf ; Unknown", date: "21/11/2018" }
+            { year: 2010, month: 7, cve: "CVE-2010-5137", type: "dos", title: "Crash OP_LSHIFT", description: "Type de faille : DOS ; Crash OP_LSHIFT", date: "28/07/2010" },
+            { year: 2010, month: 7, cve: "CVE-2010-5141", type: "theft", title: "OP_RETURN pourrait être utilisé pour dépenser n'importe quelle sortie", description: "Type de faille : Vol ; OP_RETURN pourrait être utilisé pour dépenser n'importe quelle sortie", date: "28/07/2010" },
+            { year: 2010, month: 7, cve: "CVE-2010-5138", type: "dos", title: "DoS SigOp illimité", description: "Type de faille : DOS ; DoS SigOp illimité", date: "29/07/2010" },
+            { year: 2010, month: 8, cve: "CVE-2010-5139", type: "inflation", title: "Débordement de sortie combiné", description: "Type de faille : Inflation ; Débordement de sortie combiné", date: "15/08/2010" },
+            { year: 2010, month: 9, cve: "CVE-2010-5140", type: "dos", title: "Transactions ne se confirmant jamais", description: "Type de faille : DOS ; Transactions ne se confirmant jamais", date: "29/09/2010" },
+            { year: 2011, month: 11, cve: "CVE-2011-4447", type: "exposure", title: "Non-chiffrement du portefeuille", description: "Type de faille : Exposition ; Non-chiffrement du portefeuille", date: "11/11/2011" },
+            { year: 2012, month: 3, cve: "CVE-2012-1909", type: "network-split", title: "Écrasement de transaction", description: "Type de faille : Division Réseau ; Écrasement de transaction", date: "07/03/2012" },
+            { year: 2012, month: 3, cve: "CVE-2012-1910", type: "unknown", title: "Exceptions MingW non thread-safe", description: "Type de faille : Inconnu ; Exceptions MingW non thread-safe", date: "17/03/2012" },
+            { year: 2012, month: 4, cve: "BIP 0016", type: "fake-conf", title: "Softfork : P2SH", description: "Type de faille : Fausse Conf ; Softfork : P2SH", date: "01/04/2012" },
+            { year: 2012, month: 5, cve: "CVE-2012-2459", type: "network-split", title: "Collision de hachage de bloc (via racine merkle)", description: "Type de faille : Division Réseau ; Collision de hachage de bloc (via racine merkle)", date: "14/05/2012" },
+            { year: 2012, month: 6, cve: "CVE-2012-3789", type: "dos", title: "(Manque de) limites de ressources txn orphelines", description: "Type de faille : DOS ; (Manque de) limites de ressources txn orphelines", date: "20/06/2012" },
+            { year: 2012, month: 8, cve: "CVE-2012-4683", type: "dos", title: "DoS ciblé par épuisement CPU utilisant des alertes", description: "Type de faille : DOS ; DoS ciblé par épuisement CPU utilisant des alertes", date: "23/08/2012" },
+            { year: 2012, month: 8, cve: "CVE-2012-4684", type: "dos", title: "DoS à l'échelle du réseau utilisant des signatures malléables dans les alertes", description: "Type de faille : DOS ; DoS à l'échelle du réseau utilisant des signatures malléables dans les alertes", date: "24/08/2012" },
+            { year: 2013, month: 1, cve: "CVE-2013-2272", type: "exposure", title: "Découverte à distance des adresses de portefeuille du nœud", description: "Type de faille : Exposition ; Découverte à distance des adresses de portefeuille du nœud", date: "11/01/2013" },
+            { year: 2013, month: 1, cve: "CVE-2013-2273", type: "exposure", title: "Sortie de change prévisible", description: "Type de faille : Exposition ; Sortie de change prévisible", date: "30/01/2013" },
+            { year: 2013, month: 1, cve: "CVE-2013-2292", type: "dos", title: "Une transaction qui prend au moins 3 minutes à vérifier", description: "Type de faille : DOS ; Une transaction qui prend au moins 3 minutes à vérifier", date: "30/01/2013" },
+            { year: 2013, month: 2, cve: "CVE-2013-2293", type: "dos", title: "Recherche continue sur disque dur", description: "Type de faille : DOS ; Recherche continue sur disque dur", date: "14/02/2013" },
+            { year: 2013, month: 3, cve: "CVE-2013-3219", type: "fake-conf", title: "Règle de protocole de bloc non appliquée", description: "Type de faille : Fausse Conf ; Règle de protocole de bloc non appliquée", date: "11/03/2013" },
+            { year: 2013, month: 3, cve: "CVE-2013-3220", type: "network-split", title: "Interactions incohérentes de limite de verrou BDB", description: "Type de faille : Division Réseau ; Interactions incohérentes de limite de verrou BDB", date: "11/03/2013" },
+            { year: 2013, month: 3, cve: "BIP 0034", type: "fake-conf", title: "Softfork : Hauteur dans coinbase", description: "Type de faille : Fausse Conf ; Softfork : Hauteur dans coinbase", date: "25/03/2013" },
+            { year: 2013, month: 5, cve: "BIP 0050", type: "network-split", title: "Hard fork pour supprimer la règle de protocole de limite txid", description: "Type de faille : Division Réseau ; Hard fork pour supprimer la règle de protocole de limite txid", date: "15/05/2013" },
+            { year: 2013, month: 7, cve: "CVE-2013-4165", type: "theft", title: "Fuite temporelle dans l'authentification RPC", description: "Type de faille : Vol ; Fuite temporelle dans l'authentification RPC", date: "20/07/2013" },
+            { year: 2013, month: 9, cve: "CVE-2013-5700", type: "dos", title: "Crash p2p à distance via filtres bloom", description: "Type de faille : DOS ; Crash p2p à distance via filtres bloom", date: "04/09/2013" },
+            { year: 2014, month: 4, cve: "CVE-2014-0160", type: "unknown", title: "Fuite mémoire à distance via protocole de paiement", description: "Type de faille : Inconnu ; Fuite mémoire à distance via protocole de paiement", date: "07/04/2014" },
+            { year: 2014, month: 7, cve: "CVE-2015-3641", type: "dos", title: "OOM via p2p", description: "Type de faille : DOS ; OOM via p2p", date: "07/07/2014" },
+            { year: 2015, month: 2, cve: "BIP 66", type: "fake-conf", title: "Softfork : Signatures DER strictes", description: "Type de faille : Fausse Conf ; Softfork : Signatures DER strictes", date: "13/02/2015" },
+            { year: 2015, month: 11, cve: "BIP 65", type: "fake-conf", title: "Softfork : OP_CHECKLOCKTIMEVERIFY", description: "Type de faille : Fausse Conf ; Softfork : OP_CHECKLOCKTIMEVERIFY", date: "12/11/2015" },
+            { year: 2016, month: 4, cve: "BIPs 68, 112 & 113", type: "fake-conf", title: "Softforks : Rel locktime, CSV & MTP locktime", description: "Type de faille : Fausse Conf ; Softforks : Rel locktime, CSV & MTP locktime", date: "11/04/2016" },
+            { year: 2016, month: 10, cve: "BIPs 141, 143 & 147", type: "fake-conf", title: "Softfork : Segwit", description: "Type de faille : Fausse Conf ; Softfork : Segwit", date: "27/10/2016" },
+            { year: 2016, month: 10, cve: "CVE-2016-8889", type: "exposure", title: "Historique console de débogage stockant des infos sensibles", description: "Type de faille : Exposition ; Historique console de débogage stockant des infos sensibles", date: "27/10/2016" },
+            { year: 2017, month: 3, cve: "BIP 148", type: "fake-conf", title: "Softfork : Segwit UASF", description: "Type de faille : Fausse Conf ; Softfork : Segwit UASF", date: "12/03/2017" },
+            { year: 2018, month: 7, cve: "CVE-2016-10724", type: "dos", title: "Épuisement mémoire d'alerte", description: "Type de faille : DOS ; Épuisement mémoire d'alerte", date: "02/07/2018" },
+            { year: 2018, month: 7, cve: "CVE-2016-10725", type: "dos", title: "Annulation d'alerte finale", description: "Type de faille : DOS ; Annulation d'alerte finale", date: "02/07/2018" },
+            { year: 2018, month: 9, cve: "CVE-2018-17144", type: "inflation", title: "Vérification manquante pour les entrées dupliquées", description: "Type de faille : Inflation ; Vérification manquante pour les entrées dupliquées", date: "17/09/2018" },
+            { year: 2019, month: 2, cve: "CVE-2018-20587", type: "theft", title: "Pas d'alerte pour l'échec de liaison du service RPC", description: "Type de faille : Vol ; Pas d'alerte pour l'échec de liaison du service RPC", date: "08/02/2019" }
         ];
 
         let currentFilter = 'all';
