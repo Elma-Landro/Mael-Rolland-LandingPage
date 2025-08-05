@@ -507,12 +507,12 @@
                         <div class="badges-container">
                             ${vuln.cve.startsWith('CVE-') ? `
                                 <span class="badge" onclick="window.open('https://cve.mitre.org/cgi-bin/cvename.cgi?name=${vuln.cve}', '_blank')">
-                                    <img src="assets/icons/cvedata.png" alt="CVE Data">
+                                    <img src="assets/icons/cvedata.jpg" alt="CVE Data">
                                 </span>
                             ` : ''}
                             ${vuln.cve !== "Genesis Block" ? `
                                 <span class="badge" onclick="openBitcoinWiki('${vuln.cve}', ${vuln.year})">
-                                    <img src="assets/icons/bitcoinwiki.png" alt="Bitcoin Wiki">
+                                    <img src="assets/icons/bitcoinwiki.jpg" alt="Bitcoin Wiki">
                                 </span>
                             ` : ''}
                         </div>
