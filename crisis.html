@@ -424,7 +424,7 @@
 
             <div class="stats-container">
                 <div class="stat-box">
-                    <span class="stat-number" id="total-vulns">47</span>
+                    <span class="stat-number" id="total-vulns">46</span>
                     <span class="stat-label">Total vulnerabilities</span>
                 </div>
                 <div class="stat-box">
@@ -661,9 +661,10 @@
 
         function updateStats(filtered) {
             const criticalTypes = ['inflation', 'theft'];
-            const criticalCount = filtered.filter(v => criticalTypes.includes(v.type)).length;
+            const filteredWithoutGenesis = filtered.filter(v => v.type !== 'genesis');
+            const criticalCount = filteredWithoutGenesis.filter(v => criticalTypes.includes(v.type)).length;
 
-            document.getElementById('total-vulns').textContent = filtered.length;
+            document.getElementById('total-vulns').textContent = filteredWithoutGenesis.length;
             document.getElementById('critical-vulns').textContent = criticalCount;
         }
 
@@ -683,8 +684,8 @@
 
         function generateChartsFiltered() {
             const filtered = currentFilter === 'all' 
-                ? vulnerabilities 
-                : vulnerabilities.filter(v => v.type === currentFilter);
+                ? vulnerabilities.filter(v => v.type !== 'genesis')
+                : vulnerabilities.filter(v => v.type === currentFilter && v.type !== 'genesis');
             
             generatePieChartFiltered(filtered);
             generateBarChartFiltered(filtered);
@@ -817,7 +818,6 @@
         function generatePieChart() {
             const typeCounts = {};
             const typeLabels = {
-                'genesis': 'Genesis',
                 'dos': 'DOS',
                 'theft': 'Theft',
                 'fake-conf': 'Fake Conf',
@@ -827,7 +827,7 @@
                 'unknown': 'Unknown'
             };
 
-            vulnerabilities.forEach(vuln => {
+            vulnerabilities.filter(v => v.type !== 'genesis').forEach(vuln => {
                 typeCounts[vuln.type] = (typeCounts[vuln.type] || 0) + 1;
             });
 
@@ -883,7 +883,7 @@
 
         function generateBarChart() {
             const yearCounts = {};
-            vulnerabilities.forEach(vuln => {
+            vulnerabilities.filter(v => v.type !== 'genesis').forEach(vuln => {
                 yearCounts[vuln.year] = (yearCounts[vuln.year] || 0) + 1;
             });
 
