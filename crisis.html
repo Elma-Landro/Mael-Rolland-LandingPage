@@ -164,7 +164,7 @@
             border-color: #636e72; 
             color: #636e72; 
         }
-        .type-network-split { /* Added for new type */
+        .type-network-split {
             border-color: #ff7675; 
             color: #ff7675; 
         }
@@ -731,8 +731,8 @@
                     datasets: [{
                         data: Object.values(typeCounts),
                         backgroundColor: [
-                            '#f1c40f', '#6a89cc', '#f1c40f', '#74b9ff', 
-                            '#ff7675', '#81ecec', '#ff3838', '#636e72'
+                            '#6a89cc', '#f1c40f', '#ff3838', '#81ecec', 
+                            '#ff7675', '#636e72', '#74b9ff', '#f1c40f'
                         ],
                         borderColor: '#ffcc66',
                         borderWidth: 1
@@ -854,14 +854,13 @@
                     datasets: [{
                         data: Object.values(typeCounts),
                         backgroundColor: [
-                            '#f1c40f', // genesis
                             '#6a89cc', // dos
                             '#f1c40f', // theft
-                            '#74b9ff', // fake-conf
-                            '#ff7675', // network-split
-                            '#81ecec', // exposure
                             '#ff3838', // inflation
-                            '#636e72'  // unknown
+                            '#81ecec', // exposure
+                            '#ff7675', // network-split
+                            '#636e72', // unknown
+                            '#74b9ff'  // fake-conf
                         ],
                         borderColor: '#ffcc66',
                         borderWidth: 1
