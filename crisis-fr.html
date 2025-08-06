@@ -441,11 +441,11 @@
 
             <div class="stats-container">
                 <div class="stat-box">
-                    <span class="stat-number" id="total-vulns">37</span>
+                    <span class="stat-number" id="total-vulns">41</span>
                     <span class="stat-label">Total vulnérabilités</span>
                 </div>
                 <div class="stat-box">
-                    <span class="stat-number" id="critical-vulns">13</span>
+                    <span class="stat-number" id="critical-vulns">14</span>
                     <span class="stat-label">Vulnérabilités critiques</span>
                 </div>
                 <div class="stat-box">
@@ -532,26 +532,32 @@
             { year: 2013, month: 1, cve: "CVE-2013-2272", type: "exposure", title: "Découverte à distance des adresses de portefeuille du nœud", description: "Type de faille : Exposition ; Découverte à distance des adresses de portefeuille du nœud", date: "11/01/2013" },
             { year: 2013, month: 1, cve: "CVE-2013-2273", type: "exposure", title: "Sortie de change prévisible", description: "Type de faille : Exposition ; Sortie de change prévisible", date: "30/01/2013" },
             { year: 2013, month: 1, cve: "CVE-2013-2292", type: "dos", title: "Une transaction qui prend au moins 3 minutes à vérifier", description: "Type de faille : DOS ; Une transaction qui prend au moins 3 minutes à vérifier", date: "30/01/2013" },
-            { year: 2013, month: 2, cve: "CVE-2013-2293", type: "dos", title: "Recherche continue sur disque dur", description: "Type de faille : DOS ; Recherche continue sur disque dur", date: "14/02/2013" },
+            { year: 2013, month: 1, cve: "CVE-2013-2293", type: "dos", title: "Recherche continue sur disque dur", description: "Type de faille : DOS ; Recherche continue sur disque dur", date: "09/01/2013" },
+            { year: 2013, month: 2, cve: "CVE-2013-4627", type: "dos", title: "Épuisement mémoire avec données de message tx excessives", description: "Type de faille : DOS ; Épuisement mémoire avec données de message tx excessives", date: "08/02/2013" },
             { year: 2013, month: 3, cve: "CVE-2013-3219", type: "fake-conf", title: "Règle de protocole de bloc non appliquée", description: "Type de faille : Fausse Conf ; Règle de protocole de bloc non appliquée", date: "11/03/2013" },
             { year: 2013, month: 3, cve: "CVE-2013-3220", type: "network-split", title: "Interactions incohérentes de limite de verrou BDB", description: "Type de faille : Division Réseau ; Interactions incohérentes de limite de verrou BDB", date: "11/03/2013" },
-            { year: 2013, month: 3, cve: "BIP 0034", type: "fake-conf", title: "Softfork : Hauteur dans coinbase", description: "Type de faille : Fausse Conf ; Softfork : Hauteur dans coinbase", date: "25/03/2013" },
+            { year: 2013, month: 3, cve: "BIP 0034", type: "fake-conf", title: "Softfork : Hauteur dans coinbase", description: "Type de faille : Fausse Conf ; Softfork : Hauteur dans coinbase", date: "24/03/2013" },
             { year: 2013, month: 5, cve: "BIP 0050", type: "network-split", title: "Hard fork pour supprimer la règle de protocole de limite txid", description: "Type de faille : Division Réseau ; Hard fork pour supprimer la règle de protocole de limite txid", date: "15/05/2013" },
             { year: 2013, month: 7, cve: "CVE-2013-4165", type: "theft", title: "Fuite temporelle dans l'authentification RPC", description: "Type de faille : Vol ; Fuite temporelle dans l'authentification RPC", date: "20/07/2013" },
             { year: 2013, month: 9, cve: "CVE-2013-5700", type: "dos", title: "Crash p2p à distance via filtres bloom", description: "Type de faille : DOS ; Crash p2p à distance via filtres bloom", date: "04/09/2013" },
             { year: 2014, month: 4, cve: "BIP 0042", type: "inflation", title: "Offre monétaire fixe Bitcoin (Bug d'inflation)", description: "Type de faille : Inflation ; Satoshi code implique un comportement indéfini dans la spécification C++ causant potentiellement une offre monétaire infinie", date: "01/04/2014" },
             { year: 2014, month: 4, cve: "CVE-2014-0160", type: "unknown", title: "Fuite mémoire à distance via protocole de paiement", description: "Type de faille : Inconnu ; Fuite mémoire à distance via protocole de paiement", date: "07/04/2014" },
-            { year: 2014, month: 7, cve: "CVE-2015-3641", type: "dos", title: "OOM via p2p", description: "Type de faille : DOS ; OOM via p2p", date: "07/07/2014" },
+            { year: 2015, month: 2, cve: "CVE-2015-3641", type: "dos", title: "OOM via p2p", description: "Type de faille : DOS ; OOM via p2p", date: "05/02/2015" },
             { year: 2015, month: 2, cve: "BIP 66", type: "fake-conf", title: "Softfork : Signatures DER strictes", description: "Type de faille : Fausse Conf ; Softfork : Signatures DER strictes", date: "13/02/2015" },
+            { year: 2015, month: 9, cve: "CVE-2015-6031", type: "dos", title: "Débordement de tampon, serveurs UPNP distants causent un déni de service", description: "Type de faille : DOS ; Débordement de tampon, serveurs UPNP distants causent un déni de service (crash d'application)", date: "15/09/2015" },
             { year: 2015, month: 11, cve: "BIP 65", type: "fake-conf", title: "Softfork : OP_CHECKLOCKTIMEVERIFY", description: "Type de faille : Fausse Conf ; Softfork : OP_CHECKLOCKTIMEVERIFY", date: "12/11/2015" },
             { year: 2016, month: 4, cve: "BIPs 68, 112 & 113", type: "fake-conf", title: "Softforks : Rel locktime, CSV & MTP locktime", description: "Type de faille : Fausse Conf ; Softforks : Rel locktime, CSV & MTP locktime", date: "11/04/2016" },
             { year: 2016, month: 10, cve: "BIPs 141, 143 & 147", type: "fake-conf", title: "Softfork : Segwit", description: "Type de faille : Fausse Conf ; Softfork : Segwit", date: "27/10/2016" },
             { year: 2016, month: 10, cve: "CVE-2016-8889", type: "exposure", title: "Historique console de débogage stockant des infos sensibles", description: "Type de faille : Exposition ; Historique console de débogage stockant des infos sensibles", date: "27/10/2016" },
             { year: 2017, month: 3, cve: "BIP 148", type: "fake-conf", title: "Softfork : Segwit UASF", description: "Type de faille : Fausse Conf ; Softfork : Segwit UASF", date: "12/03/2017" },
+            { year: 2017, month: 5, cve: "CVE-2017-9230", type: "unknown", title: "AsicBoost", description: "Type de faille : Inconnu ; AsicBoost", date: "24/05/2017" },
+            { year: 2018, month: 6, cve: "CVE-2017-12842", type: "fake-conf", title: "Pas d'engagement à la profondeur de l'arbre merkle de bloc", description: "Type de faille : Fausse Conf ; Pas d'engagement à la profondeur de l'arbre merkle de bloc", date: "09/06/2018" },
             { year: 2018, month: 7, cve: "CVE-2016-10724", type: "dos", title: "Épuisement mémoire d'alerte", description: "Type de faille : DOS ; Épuisement mémoire d'alerte", date: "02/07/2018" },
             { year: 2018, month: 7, cve: "CVE-2016-10725", type: "dos", title: "Annulation d'alerte finale", description: "Type de faille : DOS ; Annulation d'alerte finale", date: "02/07/2018" },
             { year: 2018, month: 9, cve: "CVE-2018-17144", type: "inflation", title: "Vérification manquante pour les entrées dupliquées", description: "Type de faille : Inflation ; Vérification manquante pour les entrées dupliquées", date: "17/09/2018" },
-            { year: 2019, month: 2, cve: "CVE-2018-20587", type: "theft", title: "Pas d'alerte pour l'échec de liaison du service RPC", description: "Type de faille : Vol ; Pas d'alerte pour l'échec de liaison du service RPC", date: "08/02/2019" }
+            { year: 2019, month: 2, cve: "CVE-2018-20587", type: "theft", title: "Pas d'alerte pour l'échec de liaison du service RPC", description: "Type de faille : Vol ; Pas d'alerte pour l'échec de liaison du service RPC", date: "08/02/2019" },
+            { year: 2019, month: 6, cve: "CVE-2018-20586", type: "unknown", title: "Permet l'injection de données arbitraires dans le log de débogage via un appel RPC", description: "Type de faille : Inconnu ; Permet l'injection de données arbitraires dans le log de débogage via un appel RPC", date: "22/06/2019" },
+            { year: 2019, month: 6, cve: "CVE-2017-18350", type: "unknown", title: "Vulnérabilité de débordement de tampon", description: "Type de faille : Inconnu ; Vulnérabilité de débordement de tampon", date: "22/06/2019" }
         ];
 
         let currentFilter = 'all';
@@ -641,41 +647,45 @@
                 'CVE-2010-5141': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5141',
                 'CVE-2010-5138': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5138',
                 'CVE-2010-5139': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5139',
-                'CVE-2010-5144': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5144',
-                'CVE-2010-5142': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5142',
-                'CVE-2010-5143': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5143',
-                'CVE-2010-5145': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5145',
                 'CVE-2010-5140': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5140',
                 'CVE-2011-4447': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2011-4447',
                 'CVE-2012-1909': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-1909',
-                'CVE-2012-3210': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-3210',
-                'CVE-2012-1739': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-1739',
-                'CVE-2012-3789': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-3789',
+                'CVE-2012-1910': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-1910',
+                'BIP 0016': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#BIP-0016',
                 'CVE-2012-2459': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-2459',
+                'CVE-2012-3789': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-3789',
+                'CVE-2012-4682': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-4682',
                 'CVE-2012-4683': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-4683',
                 'CVE-2012-4684': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-4684',
-                'CVE-2012-4692': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2012-4692',
-                'CVE-2013-2292': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-2292',
+                'CVE-2013-2272': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-2272',
                 'CVE-2013-2273': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-2273',
+                'CVE-2013-2292': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-2292',
                 'CVE-2013-2293': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-2293',
-                'CVE-2013-3220': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-3220',
-                'CVE-2013-3219': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-3219',
                 'CVE-2013-4627': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-4627',
+                'CVE-2013-3219': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-3219',
+                'CVE-2013-3220': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-3220',
+                'BIP 0034': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#BIP-0034',
+                'BIP 0050': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#BIP-0050',
                 'CVE-2013-4165': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-4165',
                 'CVE-2013-5700': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2013-5700',
-                'BIP-0042': 'https://en.bitcoin.it/wiki/BIP_0042',
+                'BIP 0042': 'https://en.bitcoin.it/wiki/BIP_0042',
                 'CVE-2014-0160': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2014-0160',
-                'CVE-2015-3641': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2015-3641',
-                'CVE-2016-10724': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2016-10724',
-                'CVE-2016-10725': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2016-10725',
+                'CVE-2015-3641': 'https://bitcoincore.org/en/2024/07/03/disclose_receive_buffer_oom/',
+                'BIP 66': 'https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki',
+                'CVE-2015-6031': 'https://bitcoincore.org/en/2024/07/03/disclose_upnp_rce/',
+                'BIP 65': 'https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki',
+                'BIPs 68, 112 & 113': 'https://github.com/bitcoin/bips/blob/master/bip-0068.mediawiki',
+                'BIPs 141, 143 & 147': 'https://en.bitcoin.it/wiki/BIP_0141',
                 'CVE-2016-8889': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2016-8889',
+                'BIP 148': 'https://en.bitcoin.it/wiki/BIP_0148',
+                'CVE-2017-9230': 'https://github.com/advisories/GHSA-hx58-x97g-cc9p',
                 'CVE-2017-12842': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2017-12842',
-                'BIP 145': 'https://en.bitcoin.it/wiki/BIP_0145',
-                'CVE-2017-9230': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2017-9230',
-                'CVE-2017-18350': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2017-18350',
-                'CVE-2018-20587': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2018-20587',
+                'CVE-2016-10724': 'https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2018-July/016189.html',
+                'CVE-2016-10725': 'https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2018-July/016189.html',
                 'CVE-2018-17144': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2018-17144',
-                'CVE-2018-20586': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2018-20586'
+                'CVE-2018-20587': 'https://medium.com/@lukedashjr/cve-2018-20587-advisory-and-full-disclosure-a3105551e78b',
+                'CVE-2018-20586': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2018-20586',
+                'CVE-2017-18350': 'https://medium.com/@lukedashjr/cve-2017-18350-disclosure-fe6d695f45d5'
             };
 
             const url = wikiMap[cve] || 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures';
