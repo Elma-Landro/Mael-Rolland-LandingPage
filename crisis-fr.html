@@ -107,6 +107,88 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            perspective: 1000px;
+            height: 160px;
+            overflow: hidden;
+        }
+
+        .vulnerability-item:hover {
+            transform: scale(1.02);
+        }
+
+        .vulnerability-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+        }
+
+        .vulnerability-item.flipped .vulnerability-card {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            background-color: rgba(0,0,0,0.5);
+            border: 1px solid var(--text-accent);
+            font-size: 0.75em;
+            overflow-y: auto;
+        }
+
+        .detailed-info {
+            width: 100%;
+            text-align: left;
+        }
+
+        .info-section {
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 204, 102, 0.3);
+            padding-bottom: 4px;
+        }
+
+        .info-label {
+            color: var(--text-accent);
+            font-weight: bold;
+            font-size: 0.8em;
+            margin-bottom: 2px;
+        }
+
+        .info-content {
+            color: var(--text-primary);
+            font-size: 0.75em;
+            line-height: 1.2;
+        }
+
+        .phase-section {
+            background-color: rgba(0,0,0,0.2);
+            padding: 4px;
+            margin: 3px 0;
+            border-left: 2px solid var(--text-accent);
+        }
+
+        .flip-indicator {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            font-size: 0.6em;
+            color: var(--text-accent);
+            opacity: 0.7;
         }
 
         .vuln-title {
@@ -614,27 +696,44 @@
                     const isCritical = criticalCVEs.includes(vuln.cve);
 
                     vulnItem.innerHTML = `
-                        <div class="vuln-title">${vuln.title}</div>
-                        <div class="vuln-cve">${vuln.cve}</div>
-                        <div class="vuln-type type-${vuln.type}">${vuln.type.toUpperCase()}</div>
-                        <div class="vuln-description">${vuln.description}</div>
-                        ${vuln.date ? `<div class="vuln-date" style="color: var(--text-accent); font-size: 0.75em; margin-top: 5px; text-align: center;">${vuln.date}</div>` : ''}
-                        ${isCritical ? '<div style="position: absolute; bottom: 8px; right: 8px; color: #ff3838; font-size: 0.6em; font-weight: bold;">CRITIQUE</div>' : ''}
+                        <div class="vulnerability-card">
+                            <div class="card-front">
+                                <div class="vuln-title">${vuln.title}</div>
+                                <div class="vuln-cve">${vuln.cve}</div>
+                                <div class="vuln-type type-${vuln.type}">${vuln.type.toUpperCase()}</div>
+                                <div class="vuln-description">${vuln.description}</div>
+                                ${vuln.date ? `<div class="vuln-date" style="color: var(--text-accent); font-size: 0.75em; margin-top: 5px; text-align: center;">${vuln.date}</div>` : ''}
+                                ${isCritical ? '<div style="position: absolute; bottom: 8px; right: 8px; color: #ff3838; font-size: 0.6em; font-weight: bold;">CRITIQUE</div>' : ''}
+                                <div class="flip-indicator">Cliquer pour détails ⟲</div>
+                            </div>
+                            <div class="card-back">
+                                <div class="detailed-info">
+                                    ${generateDetailedInfo(vuln)}
+                                </div>
+                            </div>
+                        </div>
                         ${vuln.cve.startsWith('CVE-') ? `
                             <div class="badge-left">
-                                <span class="badge" onclick="window.open('https://cve.mitre.org/cgi-bin/cvename.cgi?name=${vuln.cve}', '_blank')">
+                                <span class="badge" onclick="event.stopPropagation(); window.open('https://cve.mitre.org/cgi-bin/cvename.cgi?name=${vuln.cve}', '_blank')">
                                     <img src="assets/icons/cvedata.jpg" alt="CVE Data">
                                 </span>
                             </div>
                         ` : ''}
                         ${vuln.cve !== "Genesis Block" ? `
                             <div class="badge-right">
-                                <span class="badge" onclick="openBitcoinWiki('${vuln.cve}', ${vuln.year})">
+                                <span class="badge" onclick="event.stopPropagation(); openBitcoinWiki('${vuln.cve}', ${vuln.year})">
                                     <img src="assets/icons/bitcoinwiki.jpg" alt="Bitcoin Wiki">
                                 </span>
                             </div>
                         ` : ''}
                     `;
+
+                    // Add click handler for card flipping
+                    vulnItem.addEventListener('click', function(e) {
+                        if (!e.target.closest('.badge')) {
+                            this.classList.toggle('flipped');
+                        }
+                    });
 
                     yearSection.appendChild(vulnItem);
                 });
@@ -643,6 +742,113 @@
             });
 
             updateStats(filtered);
+        }
+
+        // Function to generate detailed vulnerability information in French
+        function generateDetailedInfo(vuln) {
+            const detailsMap = {
+                'CVE-2010-5137': {
+                    crisis: {
+                        introduction: "L'opérateur OP_LSHIFT causait un crash du client",
+                        versions: "Bitcoin Core 0.3.0 et antérieures",
+                        pullRequest: "N/A (protocole initial)",
+                        discovery: "Découvert par Satoshi Nakamoto durant le développement"
+                    },
+                    resolution: {
+                        fix: "OP_LSHIFT désactivé dans la validation des scripts",
+                        versions: "Corrigé dans Bitcoin Core 0.3.1",
+                        authors: "Satoshi Nakamoto",
+                        pullRequest: "N/A (commit direct)"
+                    },
+                    impact: "Vecteur DoS via crash d'exécution de script",
+                    sources: "Bitcoin Wiki, Commits Bitcoin précoces"
+                },
+                'CVE-2010-5139': {
+                    crisis: {
+                        introduction: "Débordement de valeur dans les sorties de transaction",
+                        versions: "Bitcoin Core 0.3.0 et antérieures",
+                        pullRequest: "N/A (problème protocolaire)",
+                        discovery: "Exploité dans le bloc 74638 le 15 août 2010"
+                    },
+                    resolution: {
+                        fix: "Ajout de vérifications de débordement, réorganisation blockchain",
+                        versions: "Correctif d'urgence dans 0.3.1",
+                        authors: "Satoshi Nakamoto",
+                        pullRequest: "N/A (réponse d'urgence)"
+                    },
+                    impact: "Attaque d'inflation - 184 milliards BTC créés",
+                    sources: "Bitcoin Wiki, Analyse du bloc 74638"
+                },
+                'CVE-2018-17144': {
+                    crisis: {
+                        introduction: "Validation manquante des entrées dupliquées",
+                        versions: "Bitcoin Core 0.15.0 à 0.16.2",
+                        pullRequest: "PR #9049 a introduit le bug par inadvertance",
+                        discovery: "Découvert par un développeur Core en divulgation responsable"
+                    },
+                    resolution: {
+                        fix: "Ajout de vérifications appropriées des entrées dupliquées",
+                        versions: "Corrigé dans 0.16.3, backporté vers 0.15.2",
+                        authors: "Matt Corallo, Pieter Wuille",
+                        pullRequest: "PR #14247, #14249"
+                    },
+                    impact: "Vecteur d'inflation potentiel + DoS",
+                    sources: "Divulgation CVE-2018-17144, Historique PR Bitcoin Core"
+                }
+            };
+
+            const details = detailsMap[vuln.cve] || {
+                crisis: {
+                    introduction: "Analyse détaillée en cours",
+                    versions: "Analyse des versions en cours",
+                    pullRequest: "Investigation PR en cours",
+                    discovery: "Contexte de découverte en révision"
+                },
+                resolution: {
+                    fix: "Analyse du correctif en cours",
+                    versions: "Identification des versions corrigées en cours", 
+                    authors: "Identification des auteurs en cours",
+                    pullRequest: "Analyse des PR de correctif en cours"
+                },
+                impact: "Évaluation d'impact en cours",
+                sources: "Compilation des sources en cours"
+            };
+
+            return `
+                <div class="info-section">
+                    <div class="info-label">📍 PHASES DE CRISE</div>
+                </div>
+                
+                <div class="phase-section">
+                    <div class="info-label">🔴 Mise en Crise</div>
+                    <div class="info-content">
+                        <strong>Introduction :</strong> ${details.crisis.introduction}<br>
+                        <strong>Versions affectées :</strong> ${details.crisis.versions}<br>
+                        <strong>PR liée :</strong> ${details.crisis.pullRequest}<br>
+                        <strong>Découverte :</strong> ${details.crisis.discovery}
+                    </div>
+                </div>
+
+                <div class="phase-section">
+                    <div class="info-label">🟢 Remise en Ordre</div>
+                    <div class="info-content">
+                        <strong>Correctif :</strong> ${details.resolution.fix}<br>
+                        <strong>Corrigé dans :</strong> ${details.resolution.versions}<br>
+                        <strong>Auteurs :</strong> ${details.resolution.authors}<br>
+                        <strong>PR correctifs :</strong> ${details.resolution.pullRequest}
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <div class="info-label">⚠️ Évaluation d'Impact</div>
+                    <div class="info-content">${details.impact}</div>
+                </div>
+
+                <div class="info-section">
+                    <div class="info-label">📚 Sources</div>
+                    <div class="info-content">${details.sources}</div>
+                </div>
+            `;
         }
 
         // Function to open Bitcoin Wiki links
