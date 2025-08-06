@@ -19,7 +19,7 @@
         .timeline-container {
             position: relative;
             max-width: 1200px;
-            margin: 15px auto;
+            margin: 5px auto;
         }
 
         .timeline-arrow {
@@ -187,7 +187,7 @@
         .close-button {
             position: fixed;
             top: 20px;
-            right: 20px;
+            left: 20px;
             color: var(--text-accent);
             font-size: 16px;
             z-index: 1001;
@@ -571,7 +571,7 @@
     </div>
 
     <div class="container">
-        <header>
+        <header style="margin-bottom: 15px;">
             <h1 class="main-title typing-animation">Crisis</h1>
             <div class="avatar-section">
                 <img src="assets/img/avatar-closky-mael-rolland.eth.jpg" alt="Avatar mael-rolland.eth" class="avatar-icon">
@@ -579,15 +579,15 @@
             <p class="subtitle">A rhythmic history of crises to manage (2009-2018)</p>
         </header>
 
-        <section>
-            <div class="intro-section" style="background-color: var(--button-bg); border: 2px solid var(--button-border); padding: 15px; margin: 15px 0; font-family: 'VT323', monospace;">
+        <section style="margin-top: 5px;">
+            <div class="intro-section" style="background-color: var(--button-bg); border: 2px solid var(--button-border); padding: 15px; margin: 5px 0; font-family: 'VT323', monospace;">
                 <h3 style="color: var(--text-accent); text-align: center; margin-bottom: 15px;">0. General Introduction</h3>
                 <p style="color: var(--text-primary); margin-bottom: 15px; text-align: center; font-size: 0.9em;">
                     This interactive timeline presents a systematic analysis of Bitcoin protocol vulnerabilities from 2009 to 2019. Each vulnerability is catalogued using an indigenous crisis taxonomy developed through empirical research into blockchain governance mechanisms. The timeline serves as both a historical record and a methodological framework for understanding cryptocurrency crisis management patterns.
                 </p>
             </div>
 
-            <div class="intro-section" style="background-color: var(--button-bg); border: 2px solid var(--button-border); padding: 15px; margin: 15px 0; font-family: 'VT323', monospace;">
+            <div class="intro-section" style="background-color: var(--button-bg); border: 2px solid var(--button-border); padding: 15px; margin: 5px 0; font-family: 'VT323', monospace;">
                 <h3 style="color: var(--text-accent); text-align: center; margin-bottom: 15px;">Indigenous Labels & Crisis Governance</h3>
                 <p style="color: var(--text-primary); margin-bottom: 15px; text-align: center; font-size: 0.9em;">
                     These crisis categorizations represent an indigenous vulnerability taxonomy pointing to an existing crisis governance framework, drawn through systematic protocol crisis analysis. Each label indicates specific threat vectors requiring potentially distinct crisis management approaches.
@@ -626,7 +626,7 @@
                 </p>
             </div>
 
-            <div class="stats-container">
+            <div class="stats-container" style="margin: 15px 0;">
                 <div class="stat-box">
                     <span class="stat-number" id="total-vulns">41</span>
                     <span class="stat-label">Total vulnerabilities</span>
@@ -641,7 +641,7 @@
                 </div>
             </div>
 
-            <div class="charts-container">
+            <div class="charts-container" style="margin: 20px 0;">
                 <div class="chart-wrapper">
                     <h3>Distribution by Vulnerability Type</h3>
                     <canvas id="pieChart" width="400" height="400"></canvas>
@@ -663,7 +663,7 @@
                 <button class="filter-btn" data-type="unknown">Unknown</button>
             </div>
 
-            <div class="data-notice" style="margin: 15px 0; padding: 12px; border: 2px dashed #f1c40f; background-color: rgba(241, 196, 15, 0.1); color: #f1c40f; font-family: 'VT323', monospace; font-size: 1em; text-align: center; border-radius: 4px;">
+            <div class="data-notice" style="margin: 5px 0; padding: 12px; border: 2px dashed #f1c40f; background-color: rgba(241, 196, 15, 0.1); color: #f1c40f; font-family: 'VT323', monospace; font-size: 1em; text-align: center; border-radius: 4px;">
                 <p><strong>⚠️ DATA UPDATE IN PROGRESS ⚠️</strong></p>
                 <p style="font-size: 0.9em; margin-top: 10px;">Timeline currently covers 2009-2019. Additional vulnerabilities from 2019-2024 are being verified and will be added soon.</p>
                 <p style="font-size: 0.8em; margin-top: 8px; opacity: 0.8;">Data validation based on Bitcoin Wiki, CVE databases, and Bitcoin Core disclosures.</p>
