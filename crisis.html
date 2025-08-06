@@ -102,27 +102,29 @@
         .vulnerability-item {
             background-color: rgba(0,0,0,0.3);
             border: 1px solid var(--text-secondary);
-            padding: 10px;
-            margin-bottom: 10px;
-            font-size: 0.9em;
+            padding: 15px;
+            margin: 0 auto 15px auto;
+            font-size: 1em;
             position: relative;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: all 0.4s ease;
             perspective: 1000px;
-            height: 160px;
-            overflow: hidden;
-            min-width: 280px;
+            height: 220px;
+            overflow: visible;
+            min-width: 400px;
+            max-width: 500px;
+            width: 100%;
             box-sizing: border-box;
             visibility: visible;
             opacity: 1;
         }
 
         .vulnerability-item:hover {
-            transform: scale(1.02);
+            transform: scale(1.03);
         }
 
         .vulnerability-card {
@@ -139,8 +141,16 @@
 
         .vulnerability-item.flipped {
             z-index: 1000;
-            transform: scale(1.05);
-            position: relative;
+            transform: scale(1.4) !important;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-left: -200px;
+            margin-top: -110px;
+            width: 400px;
+            height: 220px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+            border: 2px solid var(--text-accent);
         }
 
         .card-front, .card-back {
@@ -164,6 +174,30 @@
             border: 1px solid var(--text-accent);
             font-size: 0.75em;
             overflow-y: auto;
+        }
+
+        .vulnerability-item.flipped::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 999;
+            pointer-events: auto;
+        }
+
+        .vulnerability-item.flipped::after {
+            content: '✕';
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            color: var(--text-accent);
+            font-size: 24px;
+            z-index: 1001;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
         }
 
         .detailed-info {
@@ -404,12 +438,41 @@
 
             .timeline-container {
                 margin: 30px auto;
-                padding: 0 10px;
+                padding: 0 5px;
+                max-width: 100%;
+            }
+
+            .year-section {
+                padding: 15px 10px;
+                margin: 0 auto;
+                max-width: 100%;
+            }
+
+            .vulnerability-item {
+                min-width: 280px;
+                max-width: 320px;
+                height: 180px;
+                margin: 0 auto 15px auto;
+                padding: 10px;
+                font-size: 0.9em;
+            }
+
+            .vulnerability-item.flipped {
+                transform: scale(1.2) !important;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                margin-left: -160px;
+                margin-top: -90px;
+                width: 320px;
+                height: 180px;
+                z-index: 1000;
+                box-shadow: 0 0 25px rgba(0,0,0,0.9);
             }
 
             .crisis-grid {
-                grid-template-columns: 1fr;
                 gap: 15px;
+                align-items: center;
             }
 
             .stats-container {
