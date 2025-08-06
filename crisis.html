@@ -27,10 +27,11 @@
             left: 50%;
             top: 0;
             bottom: 0;
-            width: 6px;
+            width: 12px;
             background: linear-gradient(to bottom, #f1c40f 0%, #ffcc66 50%, #f1c40f 100%);
             transform: translateX(-50%);
             z-index: 1;
+            box-shadow: 0 0 8px rgba(241, 196, 15, 0.5);
         }
 
         .timeline-arrow::before {
@@ -77,15 +78,15 @@
         .year-section::before {
             content: '';
             position: absolute;
-            left: -15px;
+            left: -21px;
             top: 50%;
             transform: translateY(-50%);
-            width: 12px;
-            height: 12px;
+            width: 18px;
+            height: 18px;
             background: #f1c40f;
-            border: 2px solid #ffcc66;
+            border: 3px solid #ffcc66;
             border-radius: 50%;
-            box-shadow: 0 0 8px #f1c40f;
+            box-shadow: 0 0 12px #f1c40f;
             z-index: 3;
         }
 
@@ -134,6 +135,12 @@
 
         .vulnerability-item.flipped .vulnerability-card {
             transform: rotateY(180deg);
+        }
+
+        .vulnerability-item.flipped {
+            z-index: 1000;
+            transform: scale(1.05);
+            position: relative;
         }
 
         .card-front, .card-back {
@@ -379,8 +386,9 @@
 
         @media (max-width: 768px) {
             .timeline-arrow {
-                width: 4px;
+                width: 8px;
                 background: linear-gradient(to bottom, #f1c40f 0%, #ffcc66 50%, #f1c40f 100%);
+                box-shadow: 0 0 6px rgba(241, 196, 15, 0.4);
             }
 
             .timeline-arrow::before,
@@ -389,9 +397,14 @@
             }
 
             .year-section::before {
-                width: 8px;
-                height: 8px;
-                left: -12px;
+                width: 12px;
+                height: 12px;
+                left: -18px;
+            }
+
+            .timeline-container {
+                margin: 30px auto;
+                padding: 0 10px;
             }
 
             .crisis-grid {
@@ -756,18 +769,14 @@
         function generateDetailedInfo(vuln) {
             const detailsMap = {
                 'Genesis Block': {
-                    crisis: {
-                        introduction: "Bitcoin network genesis block creation",
-                        versions: "Bitcoin Protocol v1.0",
-                        pullRequest: "N/A (protocol genesis)",
-                        discovery: "Satoshi Nakamoto, January 3, 2009"
-                    },
-                    resolution: {
-                        fix: "N/A (genesis event)",
-                        versions: "Bitcoin Core 0.1.0",
-                        authors: "Satoshi Nakamoto",
-                        pullRequest: "Initial codebase release"
-                    },
+                    insemination: "Bitcoin network genesis block creation",
+                    versions: "Bitcoin Protocol v1.0",
+                    pullRequest: "N/A (protocol genesis)",
+                    trigger: "Satoshi Nakamoto, January 3, 2009",
+                    evaluation: "N/A (genesis event)",
+                    remediation: "Bitcoin Core 0.1.0",
+                    authors: "Satoshi Nakamoto",
+                    remediationPR: "Initial codebase release",
                     impact: "Birth of Bitcoin blockchain",
                     sources: "Genesis block, Bitcoin whitepaper"
                 },
@@ -920,41 +929,41 @@
 
             return `
                 <div class="info-section">
-                    <div class="info-label">📍 STANDARDIZED CRISIS RECORD</div>
+                    <div class="info-label">STANDARDIZED CRISIS RECORD</div>
                 </div>
                 
                 <div class="phase-section">
-                    <div class="info-label">🔴 CRISIS INTRODUCTION PHASE</div>
+                    <div class="info-label">1. CRISIS INTRODUCTION PHASE</div>
                     <div class="info-content">
-                        <strong>Vulnerability Introduction:</strong> ${details.crisis.introduction}<br>
-                        <strong>Affected Versions:</strong> ${details.crisis.versions}<br>
-                        <strong>Related PR/Commit:</strong> ${details.crisis.pullRequest}<br>
-                        <strong>Discovery Context:</strong> ${details.crisis.discovery}
+                        <strong>1a. Insemination:</strong> ${details.insemination || details.crisis?.introduction || 'Analysis pending'}<br>
+                        <strong>Affected Versions:</strong> ${details.versions || details.crisis?.versions || 'Under review'}<br>
+                        <strong>Related PR/Commit:</strong> ${details.pullRequest || details.crisis?.pullRequest || 'Investigation ongoing'}<br>
+                        <strong>1b. Trigger:</strong> ${details.trigger || details.crisis?.discovery || 'Context under review'}
                     </div>
                 </div>
 
                 <div class="phase-section">
-                    <div class="info-label">🟢 CRISIS RESOLUTION PHASE</div>
+                    <div class="info-label">2. CRISIS RESOLUTION PHASE</div>
                     <div class="info-content">
-                        <strong>Fix Implementation:</strong> ${details.resolution.fix}<br>
-                        <strong>Fixed in Versions:</strong> ${details.resolution.versions}<br>
-                        <strong>Fix Authors:</strong> ${details.resolution.authors}<br>
-                        <strong>Resolution PRs:</strong> ${details.resolution.pullRequest}
+                        <strong>2a. Evaluation:</strong> ${details.evaluation || details.resolution?.fix || 'Fix analysis pending'}<br>
+                        <strong>2b. Remediation:</strong> ${details.remediation || details.resolution?.versions || 'Version analysis ongoing'}<br>
+                        <strong>Fix Authors:</strong> ${details.authors || details.resolution?.authors || 'Author identification pending'}<br>
+                        <strong>Resolution PRs:</strong> ${details.remediationPR || details.resolution?.pullRequest || 'PR analysis ongoing'}
                     </div>
                 </div>
 
                 <div class="info-section">
-                    <div class="info-label">⚠️ IMPACT & SEVERITY ASSESSMENT</div>
-                    <div class="info-content">${details.impact}</div>
+                    <div class="info-label">3. IMPACT & SEVERITY ASSESSMENT</div>
+                    <div class="info-content">${details.impact || 'Impact assessment in progress'}</div>
                 </div>
 
                 <div class="info-section">
-                    <div class="info-label">📚 THIRD-PARTY SOURCES & REFERENCES</div>
-                    <div class="info-content">${details.sources}</div>
+                    <div class="info-label">4. THIRD-PARTY SOURCES & REFERENCES</div>
+                    <div class="info-content">${details.sources || 'Source compilation ongoing'}</div>
                 </div>
 
                 <div class="info-section" style="border-top: 1px solid var(--text-accent); margin-top: 8px; padding-top: 4px;">
-                    <div class="info-label">🔄 DATA STATUS</div>
+                    <div class="info-label">5. DATA STATUS</div>
                     <div class="info-content" style="font-size: 0.7em; opacity: 0.8;">
                         ${vuln.cve === 'Genesis Block' || ['CVE-2010-5137', 'CVE-2010-5139', 'CVE-2018-17144'].includes(vuln.cve) 
                             ? 'Verified data - Cross-referenced with multiple sources' 

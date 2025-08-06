@@ -27,10 +27,11 @@
             left: 50%;
             top: 0;
             bottom: 0;
-            width: 6px;
+            width: 12px;
             background: linear-gradient(to bottom, #f1c40f 0%, #ffcc66 50%, #f1c40f 100%);
             transform: translateX(-50%);
             z-index: 1;
+            box-shadow: 0 0 8px rgba(241, 196, 15, 0.5);
         }
 
         .timeline-arrow::before {
@@ -77,15 +78,15 @@
         .year-section::before {
             content: '';
             position: absolute;
-            left: -15px;
+            left: -21px;
             top: 50%;
             transform: translateY(-50%);
-            width: 12px;
-            height: 12px;
+            width: 18px;
+            height: 18px;
             background: #f1c40f;
-            border: 2px solid #ffcc66;
+            border: 3px solid #ffcc66;
             border-radius: 50%;
-            box-shadow: 0 0 8px #f1c40f;
+            box-shadow: 0 0 12px #f1c40f;
             z-index: 3;
         }
 
@@ -134,6 +135,12 @@
 
         .vulnerability-item.flipped .vulnerability-card {
             transform: rotateY(180deg);
+        }
+
+        .vulnerability-item.flipped {
+            z-index: 1000;
+            transform: scale(1.05);
+            position: relative;
         }
 
         .card-front, .card-back {
@@ -379,8 +386,9 @@
 
         @media (max-width: 768px) {
             .timeline-arrow {
-                width: 4px;
+                width: 8px;
                 background: linear-gradient(to bottom, #f1c40f 0%, #ffcc66 50%, #f1c40f 100%);
+                box-shadow: 0 0 6px rgba(241, 196, 15, 0.4);
             }
 
             .timeline-arrow::before,
@@ -389,9 +397,14 @@
             }
 
             .year-section::before {
-                width: 8px;
-                height: 8px;
-                left: -12px;
+                width: 12px;
+                height: 12px;
+                left: -18px;
+            }
+
+            .timeline-container {
+                margin: 30px auto;
+                padding: 0 10px;
             }
 
             .crisis-grid {
@@ -920,41 +933,41 @@
 
             return `
                 <div class="info-section">
-                    <div class="info-label">📍 FICHE CRISE STANDARDISÉE</div>
+                    <div class="info-label">FICHE CRISE STANDARDISÉE</div>
                 </div>
                 
                 <div class="phase-section">
-                    <div class="info-label">🔴 PHASE DE MISE EN CRISE</div>
+                    <div class="info-label">1. PHASE DE MISE EN CRISE</div>
                     <div class="info-content">
-                        <strong>Introduction Vulnérabilité :</strong> ${details.crisis.introduction}<br>
-                        <strong>Versions Affectées :</strong> ${details.crisis.versions}<br>
-                        <strong>PR/Commit Liée :</strong> ${details.crisis.pullRequest}<br>
-                        <strong>Contexte Découverte :</strong> ${details.crisis.discovery}
+                        <strong>1a. Insémination :</strong> ${details.insemination || details.crisis?.introduction || 'Analyse en cours'}<br>
+                        <strong>Versions Affectées :</strong> ${details.versions || details.crisis?.versions || 'Révision en cours'}<br>
+                        <strong>PR/Commit Liée :</strong> ${details.pullRequest || details.crisis?.pullRequest || 'Investigation en cours'}<br>
+                        <strong>1b. Déclenchement :</strong> ${details.trigger || details.crisis?.discovery || 'Contexte en révision'}
                     </div>
                 </div>
 
                 <div class="phase-section">
-                    <div class="info-label">🟢 PHASE DE REMISE EN ORDRE</div>
+                    <div class="info-label">2. PHASE DE REMISE EN ORDRE</div>
                     <div class="info-content">
-                        <strong>Implémentation Correctif :</strong> ${details.resolution.fix}<br>
-                        <strong>Corrigé dans Versions :</strong> ${details.resolution.versions}<br>
-                        <strong>Auteurs Correctif :</strong> ${details.resolution.authors}<br>
-                        <strong>PRs Résolution :</strong> ${details.resolution.pullRequest}
+                        <strong>2a. Évaluation :</strong> ${details.evaluation || details.resolution?.fix || 'Analyse correctif en cours'}<br>
+                        <strong>2b. Remédiation :</strong> ${details.remediation || details.resolution?.versions || 'Analyse versions en cours'}<br>
+                        <strong>Auteurs Correctif :</strong> ${details.authors || details.resolution?.authors || 'Identification auteurs en cours'}<br>
+                        <strong>PRs Résolution :</strong> ${details.remediationPR || details.resolution?.pullRequest || 'Analyse PR en cours'}
                     </div>
                 </div>
 
                 <div class="info-section">
-                    <div class="info-label">⚠️ ÉVALUATION IMPACT & SÉVÉRITÉ</div>
-                    <div class="info-content">${details.impact}</div>
+                    <div class="info-label">3. ÉVALUATION IMPACT & SÉVÉRITÉ</div>
+                    <div class="info-content">${details.impact || 'Évaluation impact en cours'}</div>
                 </div>
 
                 <div class="info-section">
-                    <div class="info-label">📚 SOURCES TIERCES & RÉFÉRENCES</div>
-                    <div class="info-content">${details.sources}</div>
+                    <div class="info-label">4. SOURCES TIERCES & RÉFÉRENCES</div>
+                    <div class="info-content">${details.sources || 'Compilation sources en cours'}</div>
                 </div>
 
                 <div class="info-section" style="border-top: 1px solid var(--text-accent); margin-top: 8px; padding-top: 4px;">
-                    <div class="info-label">🔄 STATUT DONNÉES</div>
+                    <div class="info-label">5. STATUT DONNÉES</div>
                     <div class="info-content" style="font-size: 0.7em; opacity: 0.8;">
                         ${vuln.cve === 'Genesis Block' || ['CVE-2010-5137', 'CVE-2010-5139', 'CVE-2018-17144'].includes(vuln.cve) 
                             ? 'Données vérifiées - Recoupement avec sources multiples' 
