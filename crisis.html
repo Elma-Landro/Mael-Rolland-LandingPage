@@ -158,12 +158,11 @@
 
         .card-back {
             transform: rotateY(180deg);
-            background-color: rgba(139, 0, 0, 0.95);
-            border: 2px solid #ffcc66;
+            background-color: rgba(0,0,0,0.9);
+            border: 1px solid var(--text-accent);
             font-size: 0.85em;
             overflow-y: auto;
             padding: 20px;
-            color: #ffcc66;
         }
 
         .vulnerability-item.flipped::before {
@@ -217,18 +216,16 @@
         }
 
         .info-content {
-            color: #ffcc66;
+            color: var(--text-primary);
             font-size: 0.75em;
             line-height: 1.2;
-            text-shadow: 1px 1px 0px rgba(0,0,0,0.8);
         }
 
         .phase-section {
-            background-color: rgba(51,255,51,0.1);
-            padding: 6px;
-            margin: 5px 0;
-            border-left: 3px solid var(--text-accent);
-            border-radius: 2px;
+            background-color: rgba(0,0,0,0.2);
+            padding: 4px;
+            margin: 3px 0;
+            border-left: 2px solid var(--text-accent);
         }
 
         .flip-indicator {
@@ -1236,6 +1233,151 @@
                                 font: { family: 'VT323', size: 11 }
                             },
                             grid: { color: 'rgba(255, 204, 102, 0.2)' }
+                        }
+                    }
+                }
+            });
+        }
+
+        renderVulnerabilities();
+        generateCharts();
+
+        function generateCharts() {
+            generatePieChart();
+            generateBarChart();
+        }
+
+        function generatePieChart() {
+            const typeCounts = {};
+            const typeLabels = {
+                'dos': 'DOS',
+                'theft': 'Theft',
+                'fake-conf': 'Fake Conf',
+                'network-split': 'Network Split',
+                'exposure': 'Exposure',
+                'inflation': 'Inflation',
+                'unknown': 'Unknown'
+            };
+
+            vulnerabilities.filter(v => v.type !== 'genesis').forEach(vuln => {
+                typeCounts[vuln.type] = (typeCounts[vuln.type] || 0) + 1;
+            });
+
+            const ctx = document.getElementById('pieChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: Object.keys(typeCounts).map(type => typeLabels[type] || type),
+                    datasets: [{
+                        data: Object.values(typeCounts),
+                        backgroundColor: [
+                            '#6a89cc', // dos
+                            '#f1c40f', // theft
+                            '#ff3838', // inflation
+                            '#81ecec', // exposure
+                            '#ff7675', // network-split
+                            '#636e72', // unknown
+                            '#74b9ff'  // fake-conf
+                        ],
+                        borderColor: '#ffcc66',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            top: 10,
+                            bottom: 10,
+                            left: 10,
+                            right: 10
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#ffcc66',
+                                font: {
+                                    family: 'VT323',
+                                    size: 12
+                                },
+                                padding: 8,
+                                boxWidth: 12
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function generateBarChart() {
+            const yearCounts = {};
+            vulnerabilities.filter(v => v.type !== 'genesis').forEach(vuln => {
+                yearCounts[vuln.year] = (yearCounts[vuln.year] || 0) + 1;
+            });
+
+            const years = Object.keys(yearCounts).sort();
+            const counts = years.map(year => yearCounts[year]);
+            const maxCount = Math.max(...counts);
+
+            const ctx = document.getElementById('barChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: years,
+                    datasets: [{
+                        label: 'Number of vulnerabilities',
+                        data: counts,
+                        backgroundColor: '#f1c40f',
+                        borderColor: '#ffcc66',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            top: 10,
+                            bottom: 10,
+                            left: 10,
+                            right: 10
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: maxCount + 1,
+                            ticks: {
+                                color: '#ffcc66',
+                                font: {
+                                    family: 'VT323',
+                                    size: 11
+                                },
+                                stepSize: 1
+                            },
+                            grid: {
+                                color: 'rgba(255, 204, 102, 0.2)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#ffcc66',
+                                font: {
+                                    family: 'VT323',
+                                    size: 11
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(255, 204, 102, 0.2)'
+                            }
                         }
                     }
                 }

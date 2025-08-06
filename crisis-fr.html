@@ -158,12 +158,11 @@
 
         .card-back {
             transform: rotateY(180deg);
-            background-color: rgba(139, 0, 0, 0.95);
-            border: 2px solid #ffcc66;
+            background-color: rgba(0,0,0,0.9);
+            border: 1px solid var(--text-accent);
             font-size: 0.85em;
             overflow-y: auto;
             padding: 20px;
-            color: #ffcc66;
         }
 
         .vulnerability-item.flipped::before {
@@ -217,18 +216,16 @@
         }
 
         .info-content {
-            color: #ffcc66;
+            color: var(--text-primary);
             font-size: 0.75em;
             line-height: 1.2;
-            text-shadow: 1px 1px 0px rgba(0,0,0,0.8);
         }
 
         .phase-section {
-            background-color: rgba(51,255,51,0.1);
-            padding: 6px;
-            margin: 5px 0;
-            border-left: 3px solid var(--text-accent);
-            border-radius: 2px;
+            background-color: rgba(0,0,0,0.2);
+            padding: 4px;
+            margin: 3px 0;
+            border-left: 2px solid var(--text-accent);
         }
 
         .flip-indicator {
@@ -988,14 +985,14 @@
                     pullRequest: "Analyse des PR de correctif en cours - révision historique des commits requise"
                 },
                 impact: "Évaluation d'impact en cours - analyse de sévérité en progrès",
-                sources: "Compilation des sources en cours - recoupement de multiples base de données"
+                sources: "Compilation des sources en cours - recoupement de multiples bases de données"
             };
 
             return `
                 <div class="info-section">
                     <div class="info-label">FICHE CRISE STANDARDISÉE</div>
                 </div>
-
+                
                 <div class="phase-section">
                     <div class="info-label">1. PHASE DE MISE EN CRISE</div>
                     <div class="info-content">
