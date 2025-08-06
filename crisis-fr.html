@@ -143,6 +143,11 @@
             border: 3px solid var(--text-accent);
         }
 
+        .vulnerability-item.flipped .badge-left,
+        .vulnerability-item.flipped .badge-right {
+            display: none;
+        }
+
         .card-front, .card-back {
             position: absolute;
             width: 100%;
@@ -798,6 +803,11 @@
                             </div>
                             <div class="card-back">
                                 <div class="detailed-info">
+                                    <div class="card-header" style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid var(--text-accent); padding-bottom: 10px;">
+                                        <div style="color: var(--text-primary); font-size: 1.1em; font-weight: bold; margin-bottom: 5px;">${vuln.title}</div>
+                                        <div style="color: var(--text-accent); font-size: 0.9em; margin-bottom: 5px;">${vuln.cve}</div>
+                                        ${vuln.date ? `<div style="color: var(--text-secondary); font-size: 0.8em;">${vuln.date}</div>` : ''}
+                                    </div>
                                     ${generateDetailedInfo(vuln)}
                                 </div>
                             </div>
@@ -1005,10 +1015,6 @@
             };
 
             return `
-                <div class="info-section">
-                    <div class="info-label">FICHE CRISE STANDARDISÉE</div>
-                </div>
-
                 <div class="phase-section">
                     <div class="info-label">1. PHASE DE MISE EN CRISE</div>
                     <div class="info-content">
