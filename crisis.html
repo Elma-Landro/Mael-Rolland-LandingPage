@@ -76,6 +76,7 @@
             position: relative;
             display: block;
             width: 100%;
+            max-width: 900px;
         }
 
         .year-section::before {
@@ -470,6 +471,7 @@
             .vulnerability-item {
                 width: 95%;
                 max-width: none;
+                min-width: unset;
                 height: 180px;
                 margin: 0 auto 12px auto;
                 padding: 10px;
@@ -569,7 +571,7 @@
                 height: 160px;
                 font-size: 0.85em;
             }
-            
+
             .timeline-container {
                 padding: 0 10px;
             }
@@ -1444,7 +1446,7 @@
         function showModal() {
             const overlay = document.querySelector('.modal-overlay') || createOverlay();
             const closeButton = document.querySelector('.close-button') || createCloseButton();
-            
+
             overlay.style.display = 'block';
             closeButton.style.display = 'flex';
             document.body.style.overflow = 'hidden';
@@ -1454,7 +1456,7 @@
             const flippedCard = document.querySelector('.vulnerability-item.flipped');
             const overlay = document.querySelector('.modal-overlay');
             const closeButton = document.querySelector('.close-button');
-            
+
             if (flippedCard) flippedCard.classList.remove('flipped');
             if (overlay) overlay.style.display = 'none';
             if (closeButton) closeButton.style.display = 'none';
