@@ -25,11 +25,11 @@
         .timeline-arrow {
             position: absolute;
             left: 50%;
+            transform: translateX(-50%);
             top: 0;
             bottom: 0;
             width: 12px;
             background: linear-gradient(to bottom, #f1c40f 0%, #ffcc66 50%, #f1c40f 100%);
-            transform: translateX(-50%);
             z-index: 1;
             box-shadow: 0 0 8px rgba(241, 196, 15, 0.5);
         }
@@ -78,9 +78,9 @@
         .year-section::before {
             content: '';
             position: absolute;
-            left: -21px;
+            left: 50%;
             top: 50%;
-            transform: translateY(-50%);
+            transform: translate(-50%, -50%);
             width: 18px;
             height: 18px;
             background: #f1c40f;

@@ -78,9 +78,9 @@
         .year-section::before {
             content: '';
             position: absolute;
-            left: -21px;
+            left: 50%;
             top: 50%;
-            transform: translateY(-50%);
+            transform: translate(-50%, -50%);
             width: 18px;
             height: 18px;
             background: #f1c40f;
@@ -441,7 +441,9 @@
             .year-section::before {
                 width: 12px;
                 height: 12px;
-                left: -18px;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
             }
 
             .timeline-container {
@@ -697,8 +699,8 @@
             { year: 2010, month: 7, cve: "CVE-2010-5137", type: "dos", title: "OP_LSHIFT crash", description: "Vulnerability type: DOS; OP_LSHIFT crash", date: "28/07/2010" },
             { year: 2010, month: 7, cve: "CVE-2010-5141", type: "theft", title: "OP_RETURN could be used to spend any output", description: "Vulnerability type: Theft; OP_RETURN could be used to spend any output", date: "28/07/2010" },
             { year: 2010, month: 7, cve: "CVE-2010-5138", type: "dos", title: "Unlimited SigOp DoS", description: "Vulnerability type: DOS; Unlimited SigOp DoS", date: "29/07/2010" },
-            { year: 2010, month: 8, cve: "CVE-2010-5139", type: "inflation", title: "Combined output overflow", description: "Vulnerability type: Inflation; Combined output overflow", date: "15/08/2010" },
-            { year: 2010, month: 9, cve: "CVE-2010-5140", type: "dos", title: "Never confirming transactions", description: "Vulnerability type: DOS; Never confirming transactions", date: "29/09/2010" },
+            { year: 2010, month: 7, cve: "CVE-2010-5139", type: "inflation", title: "Combined output overflow", description: "Vulnerability type: Inflation; Combined output overflow", date: "15/08/2010" },
+            { year: 2010, month: 7, cve: "CVE-2010-5140", type: "dos", title: "Never confirming transactions", description: "Vulnerability type: DOS; Never confirming transactions", date: "29/09/2010" },
             { year: 2011, month: 11, cve: "CVE-2011-4447", type: "exposure", title: "Wallet non-encryption", description: "Vulnerability type: Exposure; Wallet non-encryption", date: "11/11/2011" },
             { year: 2012, month: 3, cve: "CVE-2012-1909", type: "network-split", title: "Transaction overwriting", description: "Vulnerability type: Network Split; Transaction overwriting", date: "07/03/2012" },
             { year: 2012, month: 3, cve: "CVE-2012-1910", type: "unknown", title: "Non-thread safe MingW exceptions", description: "Vulnerability type: Unknown; Non-thread safe MingW exceptions", date: "17/03/2012" },
@@ -1001,7 +1003,7 @@
                 <div class="info-section">
                     <div class="info-label">STANDARDIZED CRISIS RECORD</div>
                 </div>
-                
+
                 <div class="phase-section">
                     <div class="info-label">1. CRISIS INTRODUCTION PHASE</div>
                     <div class="info-content">
