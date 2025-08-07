@@ -594,6 +594,134 @@
             <p class="subtitle" style="margin-bottom: 15px;">Une histoire rythmée de crises à gérer (2009-2018)</p>
         </header>
 
+        <!-- SECTION CADRE THÉORIQUE -->
+        <section id="theoretical-framework" class="theoretical-section" style="margin: 20px 0; padding: 20px; background-color: rgba(0,0,0,0.8); border: 2px solid var(--text-accent); font-family: 'VT323', monospace;">
+            <div class="crisis-definition-container">
+                <h2 style="font-family: 'Press Start 2P', monospace; font-size: 1.2em; color: var(--text-accent); text-align: center; margin-bottom: 20px; text-shadow: 2px 2px 0px #000;">Cadre Théorique : Définir la crise du point de vue des acteurs</h2>
+                
+                <!-- Sélecteur de Mode -->
+                <div class="mode-selector" style="text-align: center; margin: 20px 0;">
+                    <select id="crisis-mode" style="font-family: 'VT323', monospace; font-size: 16px; background: var(--button-bg); color: var(--text-primary); border: 2px solid var(--text-accent); padding: 8px; margin: 5px;">
+                        <option value="general">Mode Exploration Générale</option>
+                        <option value="specific">Mode Analyse Spécifique</option>
+                    </select>
+                    <select id="specific-crisis" style="font-family: 'VT323', monospace; font-size: 16px; background: var(--button-bg); color: var(--text-primary); border: 2px solid var(--text-accent); padding: 8px; margin: 5px; display: none;">
+                        <option value="">Sélectionner une crise...</option>
+                    </select>
+                </div>
+                
+                <!-- Texte Théorique -->
+                <div class="theoretical-text" style="font-family: 'VT323', monospace; font-size: 1em; color: #00FF00; background: rgba(0, 0, 0, 0.9); border: 2px solid #00FF00; padding: 20px; margin: 20px 0; line-height: 1.4;">
+                    <p><strong>"Code is Law"</strong> - cette phrase célèbre de Lawrence Lessig capture l'essence des protocoles blockchain où les règles algorithmiques remplacent les mécanismes de gouvernance traditionnels. Pourtant, dans ce cadre déterministe, émergent des crises qui défient les fondements mêmes des systèmes "immuables".</p>
+                    
+                    <p>Le paradoxe du coiner se révèle : tout en proclamant la supériorité des systèmes "sans confiance" sur les institutions humaines, les communautés protocolaires démontrent répétitivement des capacités sophistiquées de gestion de crise qui reflètent les réponses institutionnelles traditionnelles.</p>
+                    
+                    <p>Notre taxonomie indigène des crises émerge de l'analyse empirique de la gouvernance protocolaire réelle lors de moments critiques. Chaque crise révèle l'écart entre pureté idéologique et nécessité pragmatique - l'espace où le jugement humain se réaffirme inévitablement au sein des systèmes algorithmiques.</p>
+                </div>
+                
+                <!-- Matrice Interactive 2x2 -->
+                <div class="matrix-container" style="position: relative; max-width: 800px; margin: 40px auto; font-family: 'VT323', monospace;">
+                    <h3 style="font-family: 'Press Start 2P', monospace; font-size: 1em; color: var(--text-accent); text-align: center; margin-bottom: 30px; text-shadow: 2px 2px 0px #000;">Deux Grandes Familles de Crises Protocolaires</h3>
+                    
+                    <!-- Étiquettes des Axes -->
+                    <div class="matrix-axes" style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.9em; color: #FFA500; font-weight: bold;">
+                            <span>Le code ne permet pas...</span>
+                            <span>Le code permet...</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Grille Matrice -->
+                    <div class="matrix-grid" style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 4px; background: #000; border: 3px solid var(--text-accent);">
+                        
+                        <!-- Quadrant D: Normal-Restreint -->
+                        <div class="quadrant" data-quadrant="d" style="background: rgba(139, 0, 0, 0.6); border: 2px solid var(--text-accent); padding: 15px; cursor: pointer; transition: all 0.3s ease; min-height: 180px;" onmouseover="this.style.background='rgba(139, 0, 0, 1)'" onmouseout="this.style.background='rgba(139, 0, 0, 0.6)'">
+                            <div style="font-family: 'Press Start 2P', monospace; font-size: 0.7em; color: var(--text-accent); margin-bottom: 10px;">[d] Limitations Acceptées</div>
+                            <div style="font-size: 0.8em; color: #00FF00; margin-bottom: 10px; font-style: italic;">Action : Statu quo</div>
+                            <div class="examples" id="examples-d" style="font-size: 0.8em; color: #FFF; line-height: 1.3;">
+                                • Rejet automatique des doubles dépenses<br>
+                                • Invalidation de création monétaire illégitime<br>
+                                • Respect strict des règles de consensus<br>
+                                • Mécanismes de protection actifs
+                            </div>
+                        </div>
+                        
+                        <!-- Quadrant A: Normal-Autorisé -->
+                        <div class="quadrant" data-quadrant="a" style="background: rgba(139, 0, 0, 0.6); border: 2px solid var(--text-accent); padding: 15px; cursor: pointer; transition: all 0.3s ease; min-height: 180px;" onmouseover="this.style.background='rgba(139, 0, 0, 1)'" onmouseout="this.style.background='rgba(139, 0, 0, 0.6)'">
+                            <div style="font-family: 'Press Start 2P', monospace; font-size: 0.7em; color: var(--text-accent); margin-bottom: 10px;">[a] Fonctionnement Standard</div>
+                            <div style="font-size: 0.8em; color: #00FF00; margin-bottom: 10px; font-style: italic;">Action : Statu quo</div>
+                            <div class="examples" id="examples-a" style="font-size: 0.8em; color: #FFF; line-height: 1.3;">
+                                • Prévention des doubles dépenses<br>
+                                • Création monétaire selon échéancier<br>
+                                • Validation des transactions légitimes<br>
+                                • Mécanismes de consensus fonctionnels
+                            </div>
+                        </div>
+                        
+                        <!-- Quadrant C: Crise-Évolution -->
+                        <div class="quadrant crisis-evolution" data-quadrant="c" style="background: rgba(255, 165, 0, 0.4); border: 2px solid var(--text-accent); padding: 15px; cursor: pointer; transition: all 0.3s ease; min-height: 180px;" onmouseover="this.style.background='rgba(255, 165, 0, 0.6)'" onmouseout="this.style.background='rgba(255, 165, 0, 0.4)'">
+                            <div style="font-family: 'Press Start 2P', monospace; font-size: 0.7em; color: var(--text-accent); margin-bottom: 10px;">[c] Crise d'Évolution</div>
+                            <div style="font-size: 0.8em; color: #00FF00; margin-bottom: 10px; font-style: italic;">Action : Application nouvelles règles</div>
+                            <div class="examples" id="examples-c" style="font-size: 0.8em; color: #FFF; line-height: 1.3;">
+                                • SegWit et débat de passage à l'échelle<br>
+                                • Exigences de mise à niveau protocolaire<br>
+                                • Implémentation de nouvelles règles<br>
+                                • Réponse à une crise de légitimité
+                            </div>
+                        </div>
+                        
+                        <!-- Quadrant B: Crise-Vulnérabilité -->
+                        <div class="quadrant crisis-vulnerability" data-quadrant="b" style="background: rgba(255, 0, 0, 0.4); border: 2px solid var(--text-accent); padding: 15px; cursor: pointer; transition: all 0.3s ease; min-height: 180px;" onmouseover="this.style.background='rgba(255, 0, 0, 0.6)'" onmouseout="this.style.background='rgba(255, 0, 0, 0.4)'">
+                            <div style="font-family: 'Press Start 2P', monospace; font-size: 0.7em; color: var(--text-accent); margin-bottom: 10px;">[b] Crise de Vulnérabilité</div>
+                            <div style="font-size: 0.8em; color: #00FF00; margin-bottom: 10px; font-style: italic;">Action : Correction de bogue</div>
+                            <div class="examples" id="examples-b" style="font-size: 0.8em; color: #FFF; line-height: 1.3;">
+                                • CVE-2018-17144: Bug d'inflation<br>
+                                • CVE-2010-5139: Débordement de sortie<br>
+                                • CVE-2010-5141: Exploit OP_RETURN<br>
+                                • Corrections d'urgence requises
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <!-- Typologie des Crises Interactive -->
+                <div class="crisis-typology" style="margin: 40px 0; padding: 20px; background: rgba(0, 0, 0, 0.8); border: 2px solid var(--text-accent);">
+                    <h3 style="font-family: 'Press Start 2P', monospace; font-size: 1em; color: var(--text-accent); text-align: center; margin-bottom: 20px;">Typologie Interactive des Crises</h3>
+                    
+                    <!-- Filtres de Crise -->
+                    <div class="crisis-filters" style="text-align: center; margin: 20px 0;">
+                        <button class="filter-btn active" data-filter="all" style="font-family: 'VT323', monospace; font-size: 16px; background: var(--button-bg); color: var(--text-primary); border: 2px solid var(--text-accent); padding: 10px 15px; margin: 5px; cursor: pointer;">
+                            🔍 Toutes les Crises
+                        </button>
+                        <button class="filter-btn" data-filter="vulnerability" style="font-family: 'VT323', monospace; font-size: 16px; background: var(--button-bg); color: var(--text-primary); border: 2px solid var(--text-accent); padding: 10px 15px; margin: 5px; cursor: pointer;">
+                            🛡️ Crises de Vulnérabilité
+                        </button>
+                        <button class="filter-btn" data-filter="evolution" style="font-family: 'VT323', monospace; font-size: 16px; background: var(--button-bg); color: var(--text-primary); border: 2px solid var(--text-accent); padding: 10px 15px; margin: 5px; cursor: pointer;">
+                            ⬆️ Crises d'Évolution
+                        </button>
+                    </div>
+                    
+                    <!-- Basculeur de Contexte -->
+                    <div class="context-toggle" style="text-align: center; margin: 20px 0;">
+                        <button class="toggle-btn active" data-context="crisis" style="font-family: 'VT323', monospace; font-size: 16px; background: #ff3838; color: #FFF; border: 2px solid #ff3838; padding: 10px 15px; margin: 5px; cursor: pointer;">
+                            Situations de Crise ([b] + [c])
+                        </button>
+                        <button class="toggle-btn" data-context="normal" style="font-family: 'VT323', monospace; font-size: 16px; background: var(--button-bg); color: var(--text-primary); border: 2px solid var(--text-accent); padding: 10px 15px; margin: 5px; cursor: pointer;">
+                            Situations Normales ([a] + [d])
+                        </button>
+                    </div>
+                    
+                    <!-- Affichage Dynamique -->
+                    <div class="typology-display" id="typology-content" style="background: rgba(0,0,0,0.5); padding: 15px; border: 1px solid var(--text-accent); margin: 10px 0; font-family: 'VT323', monospace; color: var(--text-primary); min-height: 100px;">
+                        <div style="text-align: center; color: var(--text-accent);">
+                            Cliquez sur les quadrants de la matrice ou utilisez les filtres ci-dessus pour explorer les patterns de crise
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section style="margin-top: 2px;">
             <div class="intro-section" style="background-color: var(--button-bg); border: 2px solid var(--button-border); padding: 15px; margin: 5px 0; font-family: 'VT323', monospace;">
                 <h3 style="color: var(--text-accent); text-align: center; margin-bottom: 15px;">0. Introduction Générale</h3>
@@ -1486,6 +1614,295 @@
             document.body.appendChild(closeButton);
             return closeButton;
         }
+
+        // JavaScript Cadre Théorique
+        class TheoreticalFramework {
+            constructor() {
+                this.currentMode = 'general';
+                this.selectedCrisis = null;
+                this.currentFilter = 'all';
+                this.currentContext = 'crisis';
+                this.init();
+            }
+            
+            init() {
+                this.bindEvents();
+                this.populateCrisisSelector();
+                this.updateTypologyDisplay();
+            }
+            
+            bindEvents() {
+                // Sélecteur de mode
+                const modeSelect = document.getElementById('crisis-mode');
+                if (modeSelect) {
+                    modeSelect.addEventListener('change', (e) => {
+                        this.switchMode(e.target.value);
+                    });
+                }
+                
+                // Sélecteur de crise spécifique
+                const specificSelect = document.getElementById('specific-crisis');
+                if (specificSelect) {
+                    specificSelect.addEventListener('change', (e) => {
+                        this.selectedCrisis = e.target.value;
+                        this.updateMatrixForSpecificCrisis();
+                    });
+                }
+                
+                // Clics sur quadrants
+                document.querySelectorAll('.quadrant').forEach(quad => {
+                    quad.addEventListener('click', (e) => {
+                        this.handleQuadrantClick(e.currentTarget.dataset.quadrant);
+                    });
+                });
+                
+                // Boutons de filtre
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                        e.currentTarget.classList.add('active');
+                        this.currentFilter = e.currentTarget.dataset.filter;
+                        this.updateTypologyDisplay();
+                        this.linkToTimeline(this.currentFilter);
+                    });
+                });
+                
+                // Boutons de basculement
+                document.querySelectorAll('.toggle-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        document.querySelectorAll('.toggle-btn').forEach(b => {
+                            b.classList.remove('active');
+                            b.style.background = 'var(--button-bg)';
+                            b.style.color = 'var(--text-primary)';
+                        });
+                        e.currentTarget.classList.add('active');
+                        this.currentContext = e.currentTarget.dataset.context;
+                        
+                        if (this.currentContext === 'crisis') {
+                            e.currentTarget.style.background = '#ff3838';
+                            e.currentTarget.style.color = '#FFF';
+                        } else {
+                            e.currentTarget.style.background = '#00FF00';
+                            e.currentTarget.style.color = '#000';
+                        }
+                        
+                        this.updateTypologyDisplay();
+                    });
+                });
+            }
+            
+            switchMode(mode) {
+                this.currentMode = mode;
+                const specificSelector = document.getElementById('specific-crisis');
+                
+                if (mode === 'specific') {
+                    specificSelector.style.display = 'inline-block';
+                } else {
+                    specificSelector.style.display = 'none';
+                    this.selectedCrisis = null;
+                    this.resetMatrix();
+                }
+            }
+            
+            populateCrisisSelector() {
+                const selector = document.getElementById('specific-crisis');
+                if (!selector || !vulnerabilities) return;
+                
+                selector.innerHTML = '<option value="">Sélectionner une crise...</option>';
+                
+                vulnerabilities.filter(v => v.type !== 'genesis').forEach(vuln => {
+                    const option = document.createElement('option');
+                    option.value = vuln.cve;
+                    option.textContent = `${vuln.cve}: ${vuln.title}`;
+                    selector.appendChild(option);
+                });
+            }
+            
+            handleQuadrantClick(quadrant) {
+                // Surligner le quadrant cliqué
+                document.querySelectorAll('.quadrant').forEach(q => {
+                    q.style.boxShadow = 'none';
+                });
+                
+                const clickedQuad = document.querySelector(`[data-quadrant="${quadrant}"]`);
+                clickedQuad.style.boxShadow = '0 0 20px var(--text-accent)';
+                
+                // Mettre à jour l'affichage de typologie
+                this.showQuadrantDetails(quadrant);
+                
+                // Lien vers timeline si applicable
+                if (quadrant === 'b' || quadrant === 'c') {
+                    setTimeout(() => {
+                        this.linkToTimeline(quadrant === 'b' ? 'vulnerability' : 'evolution');
+                    }, 1000);
+                }
+            }
+            
+            showQuadrantDetails(quadrant) {
+                const display = document.getElementById('typology-content');
+                const content = this.getQuadrantContent(quadrant);
+                
+                display.innerHTML = `
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <h4 style="color: var(--text-accent); font-family: 'Press Start 2P', monospace; font-size: 0.8em;">${content.title}</h4>
+                    </div>
+                    <div style="color: #00FF00; margin-bottom: 10px; font-style: italic;">
+                        ${content.action}
+                    </div>
+                    <div style="line-height: 1.4;">
+                        ${content.examples.map(ex => `• ${ex}`).join('<br>')}
+                    </div>
+                    ${content.links.length > 0 ? `
+                        <div style="margin-top: 15px; text-align: center;">
+                            ${content.links.map(link => `<span style="color: var(--text-accent); cursor: pointer; text-decoration: underline;">${link}</span>`).join(' | ')}
+                        </div>
+                    ` : ''}
+                `;
+            }
+            
+            getQuadrantContent(quadrant) {
+                const content = {
+                    a: {
+                        title: "Fonctionnement Standard",
+                        action: "Action : Statu quo",
+                        examples: [
+                            "Prévention des doubles dépenses fonctionnant correctement",
+                            "Création monétaire planifiée suivant les règles",
+                            "Validation des transactions légitimes",
+                            "Mécanismes de consensus fonctionnels"
+                        ],
+                        links: ["Voir exemples dans la chronologie →"]
+                    },
+                    b: {
+                        title: "Crise de Vulnérabilité",
+                        action: "Action : Correction de bogue",
+                        examples: [
+                            "CVE-2018-17144: Possibilité d'inflation non intentionnelle",
+                            "CVE-2010-5139: Débordement de sortie combiné",
+                            "CVE-2010-5141: Vulnérabilité de dépense OP_RETURN",
+                            "Corrections d'urgence pour restaurer l'intégrité protocolaire"
+                        ],
+                        links: ["Filtrer les crises de vulnérabilité →"]
+                    },
+                    c: {
+                        title: "Crise d'Évolution",
+                        action: "Action : Appliquer de nouvelles règles protocolaires",
+                        examples: [
+                            "SegWit et le débat de passage à l'échelle",
+                            "Exigences de mise à niveau protocolaire",
+                            "Processus d'implémentation de nouvelles règles",
+                            "Construction de consensus communautaire"
+                        ],
+                        links: ["Voir les évolutions protocolaires →"]
+                    },
+                    d: {
+                        title: "Limitations Acceptées",
+                        action: "Action : Statu quo",
+                        examples: [
+                            "Rejet automatique des doubles dépenses",
+                            "Invalidation de création monétaire illégitime",
+                            "Adhésion stricte aux règles de consensus",
+                            "Mécanismes de protection actifs fonctionnant"
+                        ],
+                        links: ["Voir mécanismes de sécurité →"]
+                    }
+                };
+                
+                return content[quadrant] || content.a;
+            }
+            
+            updateTypologyDisplay() {
+                const display = document.getElementById('typology-content');
+                
+                if (this.currentContext === 'crisis') {
+                    display.innerHTML = `
+                        <div style="text-align: center; color: #ff3838; font-weight: bold; margin-bottom: 15px;">
+                            SITUATIONS DE CRISE ([b] Vulnérabilité + [c] Évolution)
+                        </div>
+                        <div style="line-height: 1.4;">
+                            Les situations de crise surviennent quand les règles actuelles du protocole permettent des comportements indésirables ou empêchent des évolutions souhaitées. Elles nécessitent une intervention active par corrections de bogues ou changements de règles.
+                            <br><br>
+                            • <strong>Crises de Vulnérabilité:</strong> Bogues protocolaires permettant l'exploitation<br>
+                            • <strong>Crises d'Évolution:</strong> Besoin de nouvelles capacités protocolaires
+                        </div>
+                    `;
+                } else {
+                    display.innerHTML = `
+                        <div style="text-align: center; color: #00FF00; font-weight: bold; margin-bottom: 15px;">
+                            SITUATIONS NORMALES ([a] Standard + [d] Limité)
+                        </div>
+                        <div style="line-height: 1.4;">
+                            Les situations normales représentent le protocole fonctionnant comme prévu, soit en permettant les comportements désirés, soit en empêchant correctement ceux qui sont indésirables.
+                            <br><br>
+                            • <strong>Fonctionnement Standard:</strong> Protocole fonctionnant comme conçu<br>
+                            • <strong>Limitations Acceptées:</strong> Restrictions intentionnelles fonctionnant correctement
+                        </div>
+                    `;
+                }
+            }
+            
+            linkToTimeline(filter) {
+                const timelineSection = document.getElementById('crisis-grid');
+                if (timelineSection) {
+                    timelineSection.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Appliquer le filtre correspondant à la timeline existante
+                    setTimeout(() => {
+                        const filterMap = {
+                            'vulnerability': ['dos', 'theft', 'inflation', 'exposure'],
+                            'evolution': ['fake-conf', 'network-split'],
+                            'all': 'all'
+                        };
+                        
+                        const targetFilter = filterMap[filter] || filter;
+                        if (Array.isArray(targetFilter)) {
+                            // Pour plusieurs types, montrer tous pour l'instant
+                            const allBtn = document.querySelector('[data-type="all"]');
+                            if (allBtn) allBtn.click();
+                        } else {
+                            const filterBtn = document.querySelector(`[data-type="${targetFilter}"]`);
+                            if (filterBtn) filterBtn.click();
+                        }
+                    }, 500);
+                }
+            }
+            
+            resetMatrix() {
+                document.querySelectorAll('.quadrant').forEach(q => {
+                    q.style.boxShadow = 'none';
+                });
+                this.updateTypologyDisplay();
+            }
+            
+            updateMatrixForSpecificCrisis() {
+                if (!this.selectedCrisis) return;
+                
+                const crisis = vulnerabilities.find(v => v.cve === this.selectedCrisis);
+                if (!crisis) return;
+                
+                // Mettre à jour le contenu de la matrice pour l'analyse de crise spécifique
+                const display = document.getElementById('typology-content');
+                display.innerHTML = `
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <h4 style="color: var(--text-accent); font-family: 'Press Start 2P', monospace; font-size: 0.8em;">
+                            Analyse Spécifique: ${crisis.title}
+                        </h4>
+                    </div>
+                    <div style="line-height: 1.4;">
+                        <strong>Type:</strong> ${crisis.type.toUpperCase()}<br>
+                        <strong>Date:</strong> ${crisis.date}<br>
+                        <strong>Description:</strong> ${crisis.description}
+                        <br><br>
+                        Cliquez sur les quadrants de la matrice pour voir comment cette crise spécifique se rapporte à chaque catégorie.
+                    </div>
+                `;
+            }
+        }
+
+        // Initialiser le cadre théorique
+        document.addEventListener('DOMContentLoaded', function() {
+            new TheoreticalFramework();
+        });
 
         // Theme toggle functionality standardisée
         function toggleTheme() {
