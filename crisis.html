@@ -653,26 +653,26 @@
                     
                     <!-- Labels des axes -->
                     <div style="grid-row: 1; grid-column: 1; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; text-orientation: mixed; font-size: 0.8em; color: var(--text-secondary); font-weight: bold;">
-                        Le code ne permet pas…
-                    </div>
-                    <div style="grid-row: 2; grid-column: 1; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; text-orientation: mixed; font-size: 0.8em; color: var(--text-secondary); font-weight: bold;">
                         Le code permet…
                     </div>
-                    
-                    <!-- Quadrant [d] - Haut Gauche -->
-                    <div class="quadrant" data-quadrant="d" style="grid-row: 1; grid-column: 2; background: rgba(0, 255, 0, 0.1); border: 1px solid var(--text-accent); padding: 12px; cursor: pointer; transition: all 0.3s ease; min-height: 150px;">
-                        <div class="quadrant-label" style="font-size: 1em; color: var(--text-accent); font-weight: bold; margin-bottom: 6px;">[d]</div>
-                        <div class="quadrant-title" style="font-size: 0.9em; color: var(--text-primary); margin-bottom: 8px; font-weight: bold;">Situation normale</div>
-                        <div class="quadrant-action" style="font-size: 0.8em; color: var(--text-accent); margin-bottom: 8px; line-height: 1.2;">Action : Statu quo</div>
-                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : rejet des doubles dépenses, invalidation de toute création monétaire qui ne suit pas les règles</div>
+                    <div style="grid-row: 2; grid-column: 1; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; text-orientation: mixed; font-size: 0.8em; color: var(--text-secondary); font-weight: bold;">
+                        Le code ne permet pas…
                     </div>
                     
-                    <!-- Quadrant [a] - Haut Droite -->
-                    <div class="quadrant" data-quadrant="a" style="grid-row: 1; grid-column: 3; background: rgba(0, 255, 0, 0.1); border: 1px solid var(--text-accent); padding: 12px; cursor: pointer; transition: all 0.3s ease; min-height: 150px;">
+                    <!-- Quadrant [a] - Haut Gauche -->
+                    <div class="quadrant" data-quadrant="a" style="grid-row: 1; grid-column: 2; background: rgba(0, 255, 0, 0.1); border: 1px solid var(--text-accent); padding: 12px; cursor: pointer; transition: all 0.3s ease; min-height: 150px;">
                         <div class="quadrant-label" style="font-size: 1em; color: var(--text-accent); font-weight: bold; margin-bottom: 6px;">[a]</div>
                         <div class="quadrant-title" style="font-size: 0.9em; color: var(--text-primary); margin-bottom: 8px; font-weight: bold;">Situation normale</div>
                         <div class="quadrant-action" style="font-size: 0.8em; color: var(--text-accent); margin-bottom: 8px; line-height: 1.2;">Action : Statu quo</div>
-                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : contrôle de la double dépense, création monétaire selon l'échéancier prévu</div>
+                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : contrôle de la double dépense, création monétaire qui suit l'échéancier prévu, etc.</div>
+                    </div>
+                    
+                    <!-- Quadrant [b] - Haut Droite -->
+                    <div class="quadrant" data-quadrant="b" style="grid-row: 1; grid-column: 3; background: rgba(255, 0, 0, 0.2); border: 1px solid #ff3838; padding: 12px; cursor: pointer; transition: all 0.3s ease; min-height: 150px;">
+                        <div class="quadrant-label" style="font-size: 1em; color: #ff3838; font-weight: bold; margin-bottom: 6px;">[b]</div>
+                        <div class="quadrant-title" style="font-size: 0.9em; color: var(--text-primary); margin-bottom: 8px; font-weight: bold;">Crise « de vulnérabilité »</div>
+                        <div class="quadrant-action" style="font-size: 0.8em; color: #ff3838; margin-bottom: 8px; line-height: 1.2;">Action : Correction d'un bogue (lettre du code) pour retrouver le caractère exécutoire des normes passées, toujours légitimes (esprit du code)</div>
+                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : double dépense et régulation de la création monétaire suivant les règles et l'échéancier prévu (Cas CVE 20182).</div>
                     </div>
                     
                     <!-- Quadrant [c] - Bas Gauche -->
@@ -680,15 +680,15 @@
                         <div class="quadrant-label" style="font-size: 1em; color: #ffa500; font-weight: bold; margin-bottom: 6px;">[c]</div>
                         <div class="quadrant-title" style="font-size: 0.9em; color: var(--text-primary); margin-bottom: 8px; font-weight: bold;">Crise « d'évolution »</div>
                         <div class="quadrant-action" style="font-size: 0.8em; color: #ffa500; margin-bottom: 8px; line-height: 1.2;">Action : Application de nouvelles règles protocolaires (lettre du code) pour sortir des normes passées, devenues illégitimes et s'adapter à l'évolution des attentes communautaires (esprit du code)</div>
-                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : SegWit et le Scaling Debate, The DAO hack — adoption de nouvelles règles pour répondre à une perte de légitimité</div>
+                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : SegWit et le Scaling Debate; The DAO hack.</div>
                     </div>
                     
-                    <!-- Quadrant [b] - Bas Droite -->
-                    <div class="quadrant" data-quadrant="b" style="grid-row: 2; grid-column: 3; background: rgba(255, 0, 0, 0.2); border: 1px solid #ff3838; padding: 12px; cursor: pointer; transition: all 0.3s ease; min-height: 150px;">
-                        <div class="quadrant-label" style="font-size: 1em; color: #ff3838; font-weight: bold; margin-bottom: 6px;">[b]</div>
-                        <div class="quadrant-title" style="font-size: 0.9em; color: var(--text-primary); margin-bottom: 8px; font-weight: bold;">Crise « de vulnérabilité »</div>
-                        <div class="quadrant-action" style="font-size: 0.8em; color: #ff3838; margin-bottom: 8px; line-height: 1.2;">Action : Correction d'un bogue (lettre du code) pour retrouver le caractère exécutoire des normes passées, toujours légitimes (esprit du code)</div>
-                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : CVE 2018, inflation involontaire — correction d'un bogue pour restaurer l'exécution des normes passées</div>
+                    <!-- Quadrant [d] - Bas Droite -->
+                    <div class="quadrant" data-quadrant="d" style="grid-row: 2; grid-column: 3; background: rgba(0, 255, 0, 0.1); border: 1px solid var(--text-accent); padding: 12px; cursor: pointer; transition: all 0.3s ease; min-height: 150px;">
+                        <div class="quadrant-label" style="font-size: 1em; color: var(--text-accent); font-weight: bold; margin-bottom: 6px;">[d]</div>
+                        <div class="quadrant-title" style="font-size: 0.9em; color: var(--text-primary); margin-bottom: 8px; font-weight: bold;">Situation normale</div>
+                        <div class="quadrant-action" style="font-size: 0.8em; color: var(--text-accent); margin-bottom: 8px; line-height: 1.2;">Action : Statu quo</div>
+                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : rejet des doubles dépenses, invalidation de toute création monétaire qui ne suit pas les règles et l'échéancier prévu, etc.</div>
                     </div>
                 </div>
             </div>
