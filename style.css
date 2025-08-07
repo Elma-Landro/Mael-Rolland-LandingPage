@@ -1156,58 +1156,221 @@ footer {
             margin: 0 auto;
         }
 
-/* Adjust header cell styling and text size */
-.matrix-grid div[style*="grid-row: 1"] {
-    padding: 3px;
-    font-size: 0.65em;
-    line-height: 1.1;
+/* Matrix Grid Standardized Layout */
+.matrix-grid {
+    display: grid !important;
+    grid-template-columns: 140px 1fr 1fr !important;
+    grid-template-rows: 50px 1fr 1fr !important;
+    gap: 3px !important;
+    width: 100% !important;
+    max-width: 750px !important;
+    margin: 0 auto !important;
+    font-family: 'VT323', monospace !important;
 }
 
-/* Adjust left header labels for better fit */
-.matrix-grid div[style*="grid-column: 1"] {
-    font-size: 0.65em;
+/* Empty corner cell */
+.matrix-grid > div:first-child {
+    background: transparent !important;
+    border: none !important;
 }
 
-/* Specific content for header cells */
-.matrix-grid div[style*="grid-row: 1; grid-column: 2"] {
-    background: rgba(255, 204, 102, 0.2);
-    border: 1px solid var(--text-secondary);
-    color: var(--text-secondary);
-    text-align: center;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Header row cells */
+.matrix-grid > div:nth-child(2),
+.matrix-grid > div:nth-child(3) {
+    background: rgba(255, 204, 102, 0.15) !important;
+    border: 2px solid var(--text-secondary) !important;
+    padding: 8px 6px !important;
+    font-size: 0.75em !important;
+    color: var(--text-secondary) !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1.2 !important;
+    word-wrap: break-word !important;
 }
 
-.matrix-grid div[style*="grid-row: 1; grid-column: 3"] {
-    background: rgba(255, 204, 102, 0.2);
-    border: 1px solid var(--text-secondary);
-    color: var(--text-secondary);
-    text-align: center;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Left column header cells */
+.matrix-grid > div:nth-child(4),
+.matrix-grid > div:nth-child(7) {
+    background: rgba(255, 204, 102, 0.1) !important;
+    border: 2px solid var(--text-secondary) !important;
+    padding: 6px 4px !important;
+    font-size: 0.7em !important;
+    color: var(--text-secondary) !important;
+    font-weight: bold !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    writing-mode: vertical-rl !important;
+    text-orientation: mixed !important;
+    line-height: 1.1 !important;
 }
 
-/* Specific content for left header labels */
-.matrix-grid div[style*="grid-row: 2; grid-column: 1"] {
-    background: rgba(255, 204, 102, 0.1);
-    border: 1px solid var(--text-secondary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
+/* Quadrant cells - standardized */
+.matrix-grid .quadrant {
+    padding: 15px 12px !important;
+    min-height: 180px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    border-width: 2px !important;
+    border-style: solid !important;
+    font-size: 1em !important;
+    line-height: 1.3 !important;
+    box-sizing: border-box !important;
 }
 
-.matrix-grid div[style*="grid-row: 3; grid-column: 1"] {
-    background: rgba(255, 204, 102, 0.1);
-    border: 1px solid var(--text-secondary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
+/* Quadrant labels standardized */
+.matrix-grid .quadrant .quadrant-label {
+    font-size: 1.1em !important;
+    font-weight: bold !important;
+    margin-bottom: 8px !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+}
+
+/* Quadrant actions standardized */
+.matrix-grid .quadrant .quadrant-action {
+    font-size: 0.85em !important;
+    margin-bottom: 10px !important;
+    font-weight: normal !important;
+    line-height: 1.3 !important;
+}
+
+/* Quadrant examples standardized */
+.matrix-grid .quadrant .quadrant-example {
+    font-size: 0.8em !important;
+    line-height: 1.3 !important;
+    font-weight: normal !important;
+    color: var(--text-primary) !important;
+}
+
+/* Specific quadrant colors - maintained */
+.matrix-grid .quadrant[data-quadrant="a"],
+.matrix-grid .quadrant[data-quadrant="d"] {
+    background: rgba(0, 255, 0, 0.1) !important;
+    border-color: var(--text-accent) !important;
+}
+
+.matrix-grid .quadrant[data-quadrant="a"] .quadrant-label,
+.matrix-grid .quadrant[data-quadrant="d"] .quadrant-label {
+    color: var(--text-accent) !important;
+}
+
+.matrix-grid .quadrant[data-quadrant="a"] .quadrant-action,
+.matrix-grid .quadrant[data-quadrant="d"] .quadrant-action {
+    color: var(--text-accent) !important;
+}
+
+.matrix-grid .quadrant[data-quadrant="b"] {
+    background: rgba(255, 0, 0, 0.2) !important;
+    border-color: #ff3838 !important;
+}
+
+.matrix-grid .quadrant[data-quadrant="b"] .quadrant-label,
+.matrix-grid .quadrant[data-quadrant="b"] .quadrant-action {
+    color: #ff3838 !important;
+}
+
+.matrix-grid .quadrant[data-quadrant="c"] {
+    background: rgba(255, 165, 0, 0.2) !important;
+    border-color: #ffa500 !important;
+}
+
+.matrix-grid .quadrant[data-quadrant="c"] .quadrant-label,
+.matrix-grid .quadrant[data-quadrant="c"] .quadrant-action {
+    color: #ffa500 !important;
+}
+
+/* Hover effects */
+.matrix-grid .quadrant:hover {
+    transform: scale(1.02) !important;
+    box-shadow: 0 4px 12px rgba(51, 255, 51, 0.3) !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .matrix-grid {
+        display: none !important;
+    }
+    
+    .matrix-grid-mobile {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+    
+    .matrix-grid-mobile .quadrant-mobile {
+        background: rgba(0, 0, 0, 0.3) !important;
+        border: 2px solid var(--text-accent) !important;
+        padding: 15px !important;
+        border-radius: 0 !important;
+    }
+    
+    .matrix-grid-mobile .quadrant-mobile .quadrant-label {
+        font-size: 1em !important;
+        font-weight: bold !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .matrix-grid-mobile .quadrant-mobile .quadrant-action {
+        font-size: 0.85em !important;
+        margin-bottom: 10px !important;
+        line-height: 1.3 !important;
+    }
+    
+    .matrix-grid-mobile .quadrant-mobile .quadrant-example {
+        font-size: 0.8em !important;
+        line-height: 1.3 !important;
+    }
+    
+    .matrix-grid-mobile .quadrant-mobile .mobile-context {
+        font-size: 0.75em !important;
+        color: var(--text-secondary) !important;
+        margin-bottom: 8px !important;
+        text-align: center !important;
+        font-weight: bold !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        padding: 4px 8px !important;
+        background: rgba(0, 0, 0, 0.3) !important;
+        border-radius: 0 !important;
+    }
+    
+    /* Mobile quadrant type colors */
+    .matrix-grid-mobile .quadrant-mobile[data-type="vulnerability"] {
+        background: rgba(255, 0, 0, 0.2) !important;
+        border-color: #ff3838 !important;
+    }
+    
+    .matrix-grid-mobile .quadrant-mobile[data-type="vulnerability"] .quadrant-label,
+    .matrix-grid-mobile .quadrant-mobile[data-type="vulnerability"] .quadrant-action {
+        color: #ff3838 !important;
+    }
+    
+    .matrix-grid-mobile .quadrant-mobile[data-type="evolution"] {
+        background: rgba(255, 165, 0, 0.2) !important;
+        border-color: #ffa500 !important;
+    }
+    
+    .matrix-grid-mobile .quadrant-mobile[data-type="evolution"] .quadrant-label,
+    .matrix-grid-mobile .quadrant-mobile[data-type="evolution"] .quadrant-action {
+        color: #ffa500 !important;
+    }
+    
+    .matrix-grid-mobile .quadrant-mobile:not([data-type]) {
+        background: rgba(0, 255, 0, 0.1) !important;
+        border-color: var(--text-accent) !important;
+    }
+    
+    .matrix-grid-mobile .quadrant-mobile:not([data-type]) .quadrant-label,
+    .matrix-grid-mobile .quadrant-mobile:not([data-type]) .quadrant-action {
+        color: var(--text-accent) !important;
+    }
 }

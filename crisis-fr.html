@@ -700,35 +700,35 @@
                 <div class="matrix-grid-mobile" style="display: none; flex-direction: column; gap: 15px;">
 
                     <!-- Quadrant [a] Mobile -->
-                    <div class="quadrant-mobile" style="background: rgba(0, 255, 0, 0.1); border: 1px solid var(--text-accent); padding: 12px;">
-                        <div style="font-size: 0.8em; color: var(--text-secondary); margin-bottom: 6px; text-align: center; font-weight: bold;">CODE PERMET + ATTENDU</div>
-                        <div class="quadrant-label" style="font-size: 1em; color: var(--text-accent); font-weight: bold; margin-bottom: 6px;">[a] Situation normale</div>
-                        <div class="quadrant-action" style="font-size: 0.8em; color: var(--text-accent); margin-bottom: 8px;">Action : Statu quo</div>
-                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : contrôle de la double dépense, création monétaire qui suit l'échéancier prévu, etc.</div>
+                    <div class="quadrant-mobile">
+                        <div class="mobile-context">CODE PERMET + ATTENDU</div>
+                        <div class="quadrant-label">[a] Situation normale</div>
+                        <div class="quadrant-action">Action : Statu quo</div>
+                        <div class="quadrant-example">Ex. : contrôle de la double dépense, création monétaire qui suit l'échéancier prévu, etc.</div>
                     </div>
 
                     <!-- Quadrant [b] Mobile -->
-                    <div class="quadrant-mobile" style="background: rgba(255, 0, 0, 0.2); border: 1px solid #ff3838; padding: 12px;">
-                        <div style="font-size: 0.8em; color: var(--text-secondary); margin-bottom: 6px; text-align: center; font-weight: bold;">CODE PERMET + INATTENDU</div>
-                        <div class="quadrant-label" style="font-size: 1em; color: #ff3838; font-weight: bold; margin-bottom: 6px;">[b] Crise « de vulnérabilité »</div>
-                        <div class="quadrant-action" style="font-size: 0.8em; color: #ff3838; margin-bottom: 8px; line-height: 1.2;">Action : Correction de bogue pour retrouver le caractère exécutoire des normes passées</div>
-                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : cas CVE 2018 - correction vulnérabilité d'inflation</div>
+                    <div class="quadrant-mobile" data-type="vulnerability">
+                        <div class="mobile-context">CODE PERMET + INATTENDU</div>
+                        <div class="quadrant-label">[b] Crise « de vulnérabilité »</div>
+                        <div class="quadrant-action">Action : Correction de bogue pour retrouver le caractère exécutoire des normes passées</div>
+                        <div class="quadrant-example">Ex. : cas CVE 2018 - correction vulnérabilité d'inflation</div>
                     </div>
 
                     <!-- Quadrant [c] Mobile -->
-                    <div class="quadrant-mobile" style="background: rgba(255, 165, 0, 0.2); border: 1px solid #ffa500; padding: 12px;">
-                        <div style="font-size: 0.8em; color: var(--text-secondary); margin-bottom: 6px; text-align: center; font-weight: bold;">CODE NE PERMET PAS + ATTENDU</div>
-                        <div class="quadrant-label" style="font-size: 1em; color: #ffa500; font-weight: bold; margin-bottom: 6px;">[c] Crise « d'évolution »</div>
-                        <div class="quadrant-action" style="font-size: 0.8em; color: #ffa500; margin-bottom: 8px; line-height: 1.2;">Action : Application de nouvelles règles protocolaires pour s'adapter aux attentes de la communauté</div>
-                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : SegWit et Scaling Debate ; The DAO hack</div>
+                    <div class="quadrant-mobile" data-type="evolution">
+                        <div class="mobile-context">CODE NE PERMET PAS + ATTENDU</div>
+                        <div class="quadrant-label">[c] Crise « d'évolution »</div>
+                        <div class="quadrant-action">Action : Application de nouvelles règles protocolaires pour s'adapter aux attentes de la communauté</div>
+                        <div class="quadrant-example">Ex. : SegWit et Scaling Debate ; The DAO hack</div>
                     </div>
 
                     <!-- Quadrant [d] Mobile -->
-                    <div class="quadrant-mobile" style="background: rgba(0, 255, 0, 0.1); border: 1px solid var(--text-accent); padding: 12px;">
-                        <div style="font-size: 0.8em; color: var(--text-secondary); margin-bottom: 6px; text-align: center; font-weight: bold;">CODE NE PERMET PAS + INATTENDU</div>
-                        <div class="quadrant-label" style="font-size: 1em; color: var(--text-accent); font-weight: bold; margin-bottom: 6px;">[d] Situation normale</div>
-                        <div class="quadrant-action" style="font-size: 0.8em; color: var(--text-accent); margin-bottom: 8px;">Action : Statu quo</div>
-                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : rejet des doubles dépenses, invalidation de toute création monétaire non autorisée, etc.</div>
+                    <div class="quadrant-mobile">
+                        <div class="mobile-context">CODE NE PERMET PAS + INATTENDU</div>
+                        <div class="quadrant-label">[d] Situation normale</div>
+                        <div class="quadrant-action">Action : Statu quo</div>
+                        <div class="quadrant-example">Ex. : rejet des doubles dépenses, invalidation de toute création monétaire non autorisée, etc.</div>
                     </div>
                 </div>
             </div>
