@@ -1159,11 +1159,11 @@ footer {
 /* Matrix Grid - Universal Layout */
 .matrix-grid {
     display: grid !important;
-    grid-template-columns: 140px 1fr 1fr !important;
-    grid-template-rows: 80px 1fr 1fr !important;
-    gap: 3px !important;
+    grid-template-columns: 120px 1fr 1fr !important;
+    grid-template-rows: 60px 140px 140px !important;
+    gap: 2px !important;
     width: 100% !important;
-    max-width: 780px !important;
+    max-width: 600px !important;
     margin: 0 auto !important;
     font-family: 'VT323', monospace !important;
 }
@@ -1235,8 +1235,9 @@ footer {
 
 /* Quadrant cells */
 .matrix-grid .quadrant {
-    padding: 15px 10px !important;
-    min-height: 160px !important;
+    padding: 8px 6px !important;
+    min-height: 140px !important;
+    max-height: 140px !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -1244,37 +1245,32 @@ footer {
     text-align: center !important;
     cursor: pointer !important;
     transition: all 0.3s ease !important;
-    perspective: 1000px !important;
-    height: 220px; /* Overriding conflicting height */
-    overflow: visible !important;
-    width: 90%;
-    max-width: 800px;
-    min-width: unset !important;
+    overflow: hidden !important;
     box-sizing: border-box !important;
-    visibility: visible;
-    opacity: 1;
+    border: 2px solid #FFD700 !important;
 }
 
 /* Quadrant content */
 .matrix-grid .quadrant .quadrant-label {
-    font-size: 1.1em !important;
+    font-size: 0.8em !important;
     font-weight: bold !important;
-    margin-bottom: 10px !important;
+    margin-bottom: 4px !important;
     text-align: center !important;
     width: 100% !important;
 }
 
 .matrix-grid .quadrant .quadrant-action {
-    font-size: 0.9em !important;
-    margin-bottom: 12px !important;
-    line-height: 1.4 !important;
+    font-size: 0.65em !important;
+    margin-bottom: 6px !important;
+    line-height: 1.2 !important;
     text-align: center !important;
     width: 100% !important;
+    font-style: italic !important;
 }
 
 .matrix-grid .quadrant .quadrant-example {
-    font-size: 0.85em !important;
-    line-height: 1.4 !important;
+    font-size: 0.6em !important;
+    line-height: 1.1 !important;
     color: var(--text-primary) !important;
     text-align: center !important;
     width: 100% !important;
