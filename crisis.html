@@ -598,6 +598,166 @@
             <p class="subtitle" style="margin-bottom: 15px;">A rhythmic history of crises to manage (2009-2018)</p>
         </header>
 
+        <!-- Section Théorique Interactive -->
+        <section id="theoretical-framework" class="theoretical-section" style="margin-top: 2px;">
+            <!-- Sélecteur de mode -->
+            <div class="mode-selector" style="text-align: center; margin: 15px 0;">
+                <select id="crisis-mode" class="pixel-select" style="background-color: var(--button-bg); color: var(--text-primary); border: 2px solid var(--button-border); padding: 8px 12px; font-family: 'VT323', monospace; font-size: 1em; margin-right: 10px;">
+                    <option value="general">Mode Exploration Générale</option>
+                    <option value="specific">Mode Analyse Spécifique</option>
+                </select>
+                <select id="specific-crisis" class="pixel-select" style="background-color: var(--button-bg); color: var(--text-primary); border: 2px solid var(--button-border); padding: 8px 12px; font-family: 'VT323', monospace; font-size: 1em; display: none;">
+                    <option value="">Sélectionner une crise...</option>
+                    <option value="CVE-2018-17144">CVE-2018-17144 - Inflation Bug</option>
+                    <option value="CVE-2010-5139">CVE-2010-5139 - Combined Output Overflow</option>
+                    <option value="SegWit">SegWit et Scaling Debate</option>
+                </select>
+            </div>
+
+            <!-- Section A : Qu'est-ce qu'une crise ? -->
+            <div class="crisis-definition-container" style="background-color: var(--button-bg); border: 2px solid var(--button-border); padding: 20px; margin: 15px 0; font-family: 'VT323', monospace;">
+                <h2 style="color: var(--text-accent); text-align: center; margin-bottom: 20px; font-size: 1.3em;">Cadre Théorique : Définir la crise en partant du point de vue des acteurs</h2>
+                
+                <div class="theoretical-text" style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--text-accent); padding: 20px; margin: 15px 0; color: var(--text-accent); font-size: 0.9em; line-height: 1.5;">
+                    <p style="margin-bottom: 15px; text-align: justify;">L'état de crise révèle ce que les acteurs considèrent comme « normal » et ce qui ne l'est pas pour une crypto-monnaie : est reconnu, plus ou moins brutalement, un hiatus entre les actions prescrites par la conception (et les concepteurs) et les actions effectivement réalisées, interrogeant les dichotomies opposant la routine au dysfonctionnement, le bogue à l'attaque, le normal à l'exceptionnel ainsi que les acteurs et dispositifs participant de leur établissement.</p>
+
+                    <p style="margin-bottom: 15px; text-align: justify;">L'acception rigoriste du slogan « code is law » vide de tout fondement les concepts mêmes de failles, de vulnérabilités, de bogues, voire d'attaques. Du point de vue qui voudrait que la gouvernance d'une crypto-monnaie relève d'un seul code informatique souverain, tous les résultats d'un code sont par définition normaux, indiscutables et légitimes.</p>
+
+                    <p style="margin-bottom: 15px; text-align: justify;">S'il faut prendre au sérieux le slogan « Code is Law », c'est dans le sens originel qu'il revêt chez Lessig (2000) : il impose une mise en parallèle du code et de la loi, non l'hypothétique substitution de l'une, défaillante et arbitraire car « humide », par de la technique efficace et neutre car codée « en sec », substitution que suppose N. Szabo (2008b) : si le droit est conflictuel du fait de sa dimension interprétative, il en est de même pour le « code informatique et [les] fichiers lisibles par ordinateur (dans la mesure où : [si en temps normal] un ordinateur les traite de manière cohérente) », en temps de crise justement, il les traite de manière non cohérente. La dimension interprétative inhérente au droit l'est aussi pour les codes : on retrouve l'opposition conceptuelle entre la « lettre » et l'« esprit de la loi ». L'application d'une loi suppose une activité interprétative du juge, mêlant la lettre de la loi (les textes législatifs et l'interprétation littérale qu'ils permettent) et son esprit, censé saisir les intentions sous-jacentes d'un texte législatif. De même, les règles protocolaires canoniques de Bitcoin vont au-delà de leur syntaxe et de leur sémantique (la lettre des codes), englobant les intentions des développeurs, les débats communautaires et leurs compromis, qui se traduiront dans l'inclusion/exclusion de nouvelles fonctionnalités, la publication de nouvelles versions, voire de forks.</p>
+
+                    <p style="margin-bottom: 15px; text-align: justify;">D'où le paradoxe. De nombreux coiners se revendiquent du camp de la règle radicalisée, notamment Satoshi : ce qui est écrit dans le code est/doit être indiscutable et immuable. Pourtant, impossible de confondre le légal et le légitime suivant un "Code is Law" rabattant l'esprit du code sur sa seule lettre : ici, aucun dysfonctionnement, seulement des fonctionnements. Pour preuve, même les coiners les plus rigoristes mobilisent une terminologie de crise – parlant de faille, d'attaque, de l'« honnêteté » attendue des nœuds (Nakamoto 2008) – et ajoutent à ces codes un supplément d'âme, une normativité sans laquelle ils n'ont sens. Ils mobilisent en cela une normativité supposant un « contrat social » et des dispositifs variés, sans lesquels aucun décalage problématique entre le produit désiré d'un code (son « esprit ») et le résultat de sa « lettre » ne peut être reconnu.</p>
+
+                    <p style="margin-bottom: 0; text-align: justify;">Ce hiatus et sa reconnaissance renvoient à un processus de normalisation à partir duquel les coiners dessinent différents types de crises/modifications de règles protocolaires consensuelles canoniques. Quatre situations apparaissent possibles, suivant que coïncident ou non « les codes » logiciels protocolaires (« leur lettre ») et les attentes qu'en ont les membres de la communauté (leur « esprit »), comme représenté dans le tableau suivant.</p>
+                </div>
+            </div>
+
+            <!-- Matrice 2x2 Interactive -->
+            <div class="matrix-container" style="background-color: var(--button-bg); border: 2px solid var(--button-border); padding: 20px; margin: 15px 0; font-family: 'VT323', monospace;">
+                <h3 style="color: var(--text-accent); text-align: center; margin-bottom: 20px; font-size: 1.2em;">Deux grandes familles de crises protocolaires</h3>
+                
+                <!-- En-têtes du tableau -->
+                <div class="matrix-headers" style="margin-bottom: 15px;">
+                    <div class="header-row" style="display: grid; grid-template-columns: 180px 1fr 1fr; gap: 2px;">
+                        <div class="empty-cell" style="background: transparent;"></div>
+                        <div class="header-cell" style="background: rgba(255, 204, 102, 0.2); border: 1px solid var(--text-secondary); padding: 8px; font-size: 0.8em; color: var(--text-secondary); text-align: center; font-weight: bold;">
+                            …ce qui est attendu = considéré comme légitime par le consensus social
+                        </div>
+                        <div class="header-cell" style="background: rgba(255, 204, 102, 0.2); border: 1px solid var(--text-secondary); padding: 8px; font-size: 0.8em; color: var(--text-secondary); text-align: center; font-weight: bold;">
+                            …ce qui n'est pas attendu = considéré comme illégitime par le consensus social
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Grille 2x2 -->
+                <div class="matrix-grid" style="display: grid; grid-template-columns: 180px 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 2px; position: relative;">
+                    
+                    <!-- Labels des axes -->
+                    <div style="grid-row: 1; grid-column: 1; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; text-orientation: mixed; font-size: 0.8em; color: var(--text-secondary); font-weight: bold;">
+                        Le code ne permet pas…
+                    </div>
+                    <div style="grid-row: 2; grid-column: 1; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; text-orientation: mixed; font-size: 0.8em; color: var(--text-secondary); font-weight: bold;">
+                        Le code permet…
+                    </div>
+                    
+                    <!-- Quadrant [d] - Haut Gauche -->
+                    <div class="quadrant" data-quadrant="d" style="grid-row: 1; grid-column: 2; background: rgba(0, 255, 0, 0.1); border: 1px solid var(--text-accent); padding: 12px; cursor: pointer; transition: all 0.3s ease; min-height: 150px;">
+                        <div class="quadrant-label" style="font-size: 1em; color: var(--text-accent); font-weight: bold; margin-bottom: 6px;">[d]</div>
+                        <div class="quadrant-title" style="font-size: 0.9em; color: var(--text-primary); margin-bottom: 8px; font-weight: bold;">Situation normale</div>
+                        <div class="quadrant-action" style="font-size: 0.8em; color: var(--text-accent); margin-bottom: 8px; line-height: 1.2;">Action : Statu quo</div>
+                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : rejet des doubles dépenses, invalidation de toute création monétaire qui ne suit pas les règles</div>
+                    </div>
+                    
+                    <!-- Quadrant [a] - Haut Droite -->
+                    <div class="quadrant" data-quadrant="a" style="grid-row: 1; grid-column: 3; background: rgba(0, 255, 0, 0.1); border: 1px solid var(--text-accent); padding: 12px; cursor: pointer; transition: all 0.3s ease; min-height: 150px;">
+                        <div class="quadrant-label" style="font-size: 1em; color: var(--text-accent); font-weight: bold; margin-bottom: 6px;">[a]</div>
+                        <div class="quadrant-title" style="font-size: 0.9em; color: var(--text-primary); margin-bottom: 8px; font-weight: bold;">Situation normale</div>
+                        <div class="quadrant-action" style="font-size: 0.8em; color: var(--text-accent); margin-bottom: 8px; line-height: 1.2;">Action : Statu quo</div>
+                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : contrôle de la double dépense, création monétaire selon l'échéancier prévu</div>
+                    </div>
+                    
+                    <!-- Quadrant [c] - Bas Gauche -->
+                    <div class="quadrant" data-quadrant="c" style="grid-row: 2; grid-column: 2; background: rgba(255, 165, 0, 0.2); border: 1px solid #ffa500; padding: 12px; cursor: pointer; transition: all 0.3s ease; min-height: 150px;">
+                        <div class="quadrant-label" style="font-size: 1em; color: #ffa500; font-weight: bold; margin-bottom: 6px;">[c]</div>
+                        <div class="quadrant-title" style="font-size: 0.9em; color: var(--text-primary); margin-bottom: 8px; font-weight: bold;">Crise « d'évolution »</div>
+                        <div class="quadrant-action" style="font-size: 0.8em; color: #ffa500; margin-bottom: 8px; line-height: 1.2;">Action : Application de nouvelles règles protocolaires (lettre du code) pour sortir des normes passées, devenues illégitimes et s'adapter à l'évolution des attentes communautaires (esprit du code)</div>
+                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : SegWit et le Scaling Debate, The DAO hack — adoption de nouvelles règles pour répondre à une perte de légitimité</div>
+                    </div>
+                    
+                    <!-- Quadrant [b] - Bas Droite -->
+                    <div class="quadrant" data-quadrant="b" style="grid-row: 2; grid-column: 3; background: rgba(255, 0, 0, 0.2); border: 1px solid #ff3838; padding: 12px; cursor: pointer; transition: all 0.3s ease; min-height: 150px;">
+                        <div class="quadrant-label" style="font-size: 1em; color: #ff3838; font-weight: bold; margin-bottom: 6px;">[b]</div>
+                        <div class="quadrant-title" style="font-size: 0.9em; color: var(--text-primary); margin-bottom: 8px; font-weight: bold;">Crise « de vulnérabilité »</div>
+                        <div class="quadrant-action" style="font-size: 0.8em; color: #ff3838; margin-bottom: 8px; line-height: 1.2;">Action : Correction d'un bogue (lettre du code) pour retrouver le caractère exécutoire des normes passées, toujours légitimes (esprit du code)</div>
+                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : CVE 2018, inflation involontaire — correction d'un bogue pour restaurer l'exécution des normes passées</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section B : Typologie des Crises -->
+            <div class="crisis-typology" style="background-color: var(--button-bg); border: 2px solid var(--button-border); padding: 20px; margin: 15px 0; font-family: 'VT323', monospace;">
+                <h3 style="color: var(--text-accent); text-align: center; margin-bottom: 20px; font-size: 1.2em;">Typologie des Crises Interactive</h3>
+                
+                <!-- Types de crises -->
+                <div class="crisis-types" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
+                    <div class="crisis-type-card vulnerability" style="background: rgba(255, 0, 0, 0.1); border: 1px solid #ff3838; padding: 15px;">
+                        <div class="crisis-type-header" style="display: flex; align-items: center; margin-bottom: 12px;">
+                            <span class="crisis-icon" style="font-size: 20px; margin-right: 8px;">🛡️</span>
+                            <h4 style="color: #ff3838; margin: 0; font-size: 1em;">Crises de vulnérabilité</h4>
+                        </div>
+                        <div class="crisis-type-content">
+                            <div style="margin-bottom: 6px; font-size: 0.9em; color: #ff3838; font-weight: bold;">Couleur : Rouge</div>
+                            <div style="margin-bottom: 6px; font-size: 0.9em; color: var(--text-primary);">Icône : Bug / Bouclier fissuré</div>
+                            <div style="color: var(--text-accent); font-size: 0.9em; line-height: 1.3;">Définition : "Le code permet ce qui ne devrait pas être permis"</div>
+                        </div>
+                    </div>
+                    
+                    <div class="crisis-type-card evolution" style="background: rgba(255, 165, 0, 0.1); border: 1px solid #ffa500; padding: 15px;">
+                        <div class="crisis-type-header" style="display: flex; align-items: center; margin-bottom: 12px;">
+                            <span class="crisis-icon" style="font-size: 20px; margin-right: 8px;">⬆️</span>
+                            <h4 style="color: #ffa500; margin: 0; font-size: 1em;">Crises d'évolution</h4>
+                        </div>
+                        <div class="crisis-type-content">
+                            <div style="margin-bottom: 6px; font-size: 0.9em; color: #ffa500; font-weight: bold;">Couleur : Orange</div>
+                            <div style="margin-bottom: 6px; font-size: 0.9em; color: var(--text-primary);">Icône : Flèche vers le haut / Upgrade</div>
+                            <div style="color: var(--text-accent); font-size: 0.9em; line-height: 1.3;">Définition : "Le code ne permet pas ce qui devrait être permis"</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contextualisation -->
+                <div class="context-views" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
+                    <div class="context-view normal-situations" style="background: rgba(0, 255, 0, 0.1); border: 1px solid var(--text-accent); padding: 15px;">
+                        <h4 style="color: var(--text-accent); margin-bottom: 12px; font-size: 1em;">Vue "Situations Normales" ([a] + [d])</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="color: var(--text-primary); font-size: 0.9em; margin-bottom: 6px; padding-left: 15px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--text-accent);">▶</span>
+                                Affichage des mécanismes de stabilité
+                            </li>
+                            <li style="color: var(--text-primary); font-size: 0.9em; margin-bottom: 6px; padding-left: 15px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--text-accent);">▶</span>
+                                Mise en évidence des garde-fous qui fonctionnent
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="context-view crisis-situations" style="background: rgba(255, 0, 0, 0.1); border: 1px solid #ff3838; padding: 15px;">
+                        <h4 style="color: #ff3838; margin-bottom: 12px; font-size: 1em;">Vue "Situations de Crise" ([b] + [c])</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="color: var(--text-primary); font-size: 0.9em; margin-bottom: 6px; padding-left: 15px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #ff3838;">▶</span>
+                                Focus sur les dysfonctionnements et évolutions nécessaires
+                            </li>
+                            <li style="color: var(--text-primary); font-size: 0.9em; margin-bottom: 6px; padding-left: 15px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #ff3838;">▶</span>
+                                Analyse des réponses apportées
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section timeline existante -->
         <section style="margin-top: 2px;">
             <div class="intro-section" style="background-color: var(--button-bg); border: 2px solid var(--button-border); padding: 12px; margin: 3px 0; font-family: 'VT323', monospace;">
                 <h3 style="color: var(--text-accent); text-align: center; margin-bottom: 12px;">0. General Introduction</h3>
@@ -1486,6 +1646,184 @@
             document.body.appendChild(closeButton);
             return closeButton;
         }
+
+        // Section Théorique Interactive JavaScript
+        class TheoreticalFramework {
+            constructor() {
+                this.currentMode = 'general';
+                this.selectedCrisis = null;
+                this.init();
+            }
+            
+            init() {
+                this.bindEvents();
+                this.setupQuadrantInteractions();
+            }
+            
+            bindEvents() {
+                // Sélecteur de mode
+                const modeSelector = document.getElementById('crisis-mode');
+                if (modeSelector) {
+                    modeSelector.addEventListener('change', (e) => {
+                        this.switchMode(e.target.value);
+                    });
+                }
+                
+                // Sélecteur de crise spécifique
+                const crisisSelector = document.getElementById('specific-crisis');
+                if (crisisSelector) {
+                    crisisSelector.addEventListener('change', (e) => {
+                        this.selectedCrisis = e.target.value;
+                        this.updateQuadrantContent();
+                    });
+                }
+            }
+            
+            setupQuadrantInteractions() {
+                document.querySelectorAll('.quadrant').forEach(quad => {
+                    quad.addEventListener('mouseenter', (e) => {
+                        e.currentTarget.style.transform = 'scale(1.02)';
+                        e.currentTarget.style.boxShadow = '0 4px 12px rgba(51, 255, 51, 0.3)';
+                    });
+                    
+                    quad.addEventListener('mouseleave', (e) => {
+                        e.currentTarget.style.transform = 'scale(1)';
+                        e.currentTarget.style.boxShadow = 'none';
+                    });
+                    
+                    quad.addEventListener('click', (e) => {
+                        this.handleQuadrantClick(e.currentTarget.dataset.quadrant);
+                    });
+                });
+            }
+            
+            switchMode(mode) {
+                this.currentMode = mode;
+                const specificSelector = document.getElementById('specific-crisis');
+                
+                if (mode === 'specific') {
+                    specificSelector.style.display = 'inline-block';
+                    this.populateCrisisSelector();
+                } else {
+                    specificSelector.style.display = 'none';
+                    this.selectedCrisis = null;
+                }
+                
+                this.updateQuadrantContent();
+            }
+            
+            populateCrisisSelector() {
+                const selector = document.getElementById('specific-crisis');
+                // Nettoyer et repeupler avec les crises de la timeline
+                selector.innerHTML = '<option value="">Sélectionner une crise...</option>';
+                
+                // Ajouter des options basées sur les vulnérabilités existantes
+                const crises = [
+                    { value: 'CVE-2018-17144', text: 'CVE-2018-17144 - Missing duplicate inputs check' },
+                    { value: 'CVE-2010-5139', text: 'CVE-2010-5139 - Combined output overflow' },
+                    { value: 'CVE-2010-5141', text: 'CVE-2010-5141 - OP_RETURN vulnerability' },
+                    { value: 'BIP-SegWit', text: 'SegWit Implementation & Scaling Debate' },
+                    { value: 'CVE-2013-3220', text: 'CVE-2013-3220 - BDB lock limit interactions' }
+                ];
+                
+                crises.forEach(crisis => {
+                    const option = document.createElement('option');
+                    option.value = crisis.value;
+                    option.textContent = crisis.text;
+                    selector.appendChild(option);
+                });
+            }
+            
+            handleQuadrantClick(quadrant) {
+                // Highlight temporaire du quadrant cliqué
+                const quadrantEl = document.querySelector(`[data-quadrant="${quadrant}"]`);
+                if (quadrantEl) {
+                    quadrantEl.style.border = '2px solid var(--text-accent)';
+                    setTimeout(() => {
+                        const originalBorder = quadrant === 'b' ? '1px solid #ff3838' : 
+                                            quadrant === 'c' ? '1px solid #ffa500' : 
+                                            '1px solid var(--text-accent)';
+                        quadrantEl.style.border = originalBorder;
+                    }, 1000);
+                }
+                
+                if (this.currentMode === 'general') {
+                    this.showGeneralExamples(quadrant);
+                } else {
+                    this.showSpecificAnalysis(quadrant);
+                }
+            }
+            
+            showGeneralExamples(quadrant) {
+                const examples = {
+                    'a': ['Validation normale des transactions', 'Création monétaire selon les règles', 'Propagation des blocs sans problème'],
+                    'b': ['CVE-2018-17144 : Vulnérabilité d\'inflation', 'CVE-2010-5139 : Débordement de sortie', 'Corrections de bogues critiques'],
+                    'c': ['SegWit et débat sur la scalabilité', 'The DAO hack et hard fork Ethereum', 'Évolutions protocolaires majeures'],
+                    'd': ['Rejet automatique des doubles dépenses', 'Invalidation des transactions malformées', 'Limitations de sécurité actives']
+                };
+                
+                this.displayExamples(quadrant, examples[quadrant]);
+            }
+            
+            showSpecificAnalysis(quadrant) {
+                if (!this.selectedCrisis) {
+                    alert('Veuillez d\'abord sélectionner une crise spécifique à analyser.');
+                    return;
+                }
+                
+                // Analyse spécifique selon la crise sélectionnée
+                const analysis = this.getSpecificAnalysis(this.selectedCrisis, quadrant);
+                this.displayAnalysis(quadrant, analysis);
+            }
+            
+            getSpecificAnalysis(crisis, quadrant) {
+                const analyses = {
+                    'CVE-2018-17144': {
+                        'a': 'Mécanismes de validation qui continuaient à fonctionner normalement',
+                        'b': 'Vulnérabilité permettant des entrées dupliquées, corrigée rapidement',
+                        'c': 'N/A pour cette crise de vulnérabilité',
+                        'd': 'Protections qui ont limité l\'exploitation de la faille'
+                    },
+                    'BIP-SegWit': {
+                        'a': 'Fonctionnalités Bitcoin qui restaient opérationnelles',
+                        'b': 'N/A pour cette crise d\'évolution',
+                        'c': 'Implémentation de SegWit pour résoudre les problèmes de scalabilité',
+                        'd': 'Limitations de capacité acceptées avant SegWit'
+                    }
+                };
+                
+                return analyses[crisis] && analyses[crisis][quadrant] || 'Analyse en cours de développement pour cette combinaison crise/quadrant.';
+            }
+            
+            displayExamples(quadrant, examples) {
+                const message = `Quadrant [${quadrant}] - Exemples généraux:\n\n${examples.join('\n• ')}`;
+                alert(message);
+            }
+            
+            displayAnalysis(quadrant, analysis) {
+                const message = `Quadrant [${quadrant}] - Analyse spécifique (${this.selectedCrisis}):\n\n${analysis}`;
+                alert(message);
+            }
+            
+            updateQuadrantContent() {
+                // Mise à jour visuelle selon le mode
+                const quadrants = document.querySelectorAll('.quadrant');
+                quadrants.forEach(quad => {
+                    if (this.currentMode === 'specific' && this.selectedCrisis) {
+                        quad.style.cursor = 'pointer';
+                        quad.style.opacity = '1';
+                    } else {
+                        quad.style.cursor = 'pointer';
+                        quad.style.opacity = '1';
+                    }
+                });
+            }
+        }
+        
+        // Initialiser le framework théorique au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            const theoreticalFramework = new TheoreticalFramework();
+        });
 
         // Theme toggle functionality standardisée
         function toggleTheme() {
