@@ -1210,6 +1210,13 @@ footer {
     min-width: 140px !important;
 }
 
+/* Ensure top header cells stay horizontal */
+.matrix-grid > div:nth-child(2),
+.matrix-grid > div:nth-child(3) {
+    writing-mode: horizontal-tb !important;
+    text-orientation: initial !important;
+}
+
 /* Quadrant cells */
 .matrix-grid .quadrant {
     padding: 15px 10px !important;
