@@ -5,7 +5,7 @@
  * Copyright (C) 2024 Maël Rolland
  * This file is part of the Mael-Rolland-LandingPage project.
  *
- * This program is free software; you can redistribute and/or
+ * This program is free software; you redistribute and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 2
  * of the License, or (at your option) any later version.
@@ -635,7 +635,7 @@ footer {
         max-width: 100% !important;
         letter-spacing: 0.01em !important;
         padding: 0 15px !important;
-        line-height: 1.4 !important; /* Meilleur espacement pour les lignes multiples */
+        line-height: 1.4 !important; /* Meilleur espacement des lignes */
         white-space: normal !important;
         word-break: break-word; /* Coupe les mots longs si nécessaire */
         overflow-wrap: anywhere; /* Force la coupure si vraiment nécessaire */
@@ -1244,11 +1244,15 @@ footer {
     text-align: center !important;
     cursor: pointer !important;
     transition: all 0.3s ease !important;
-    border-width: 2px !important;
-    border-style: solid !important;
-    font-size: 0.9em !important;
-    line-height: 1.3 !important;
+    perspective: 1000px !important;
+    height: 220px; /* Overriding conflicting height */
+    overflow: visible !important;
+    width: 90%;
+    max-width: 800px;
+    min-width: unset !important;
     box-sizing: border-box !important;
+    visibility: visible;
+    opacity: 1;
 }
 
 /* Quadrant content */
