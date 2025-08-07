@@ -513,6 +513,14 @@
                 top: 50%;
                 transform: translateY(-50%);
             }
+
+            /* Afficher la grille mobile et cacher la grille desktop */
+            .matrix-grid {
+                display: none !important;
+            }
+            .matrix-grid-mobile {
+                display: flex !important;
+            }
         }
 
         .charts-container {
@@ -634,7 +642,7 @@
             <!-- Matrice 2x2 Interactive -->
             <div class="matrix-container" style="background-color: var(--button-bg); border: 2px solid var(--button-border); padding: 20px; margin: 15px 0; font-family: 'VT323', monospace;">
                 <h3 style="color: var(--text-accent); text-align: center; margin-bottom: 20px; font-size: 1.2em;">Deux grandes familles de crises protocolaires</h3>
-                
+
                 <!-- En-têtes du tableau -->
                 <div class="matrix-headers" style="margin-bottom: 15px;">
                     <div class="header-row" style="display: grid; grid-template-columns: 180px 1fr 1fr; gap: 2px;">
@@ -647,10 +655,10 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Grille 2x2 -->
                 <div class="matrix-grid" style="display: grid; grid-template-columns: 180px 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 2px; position: relative;">
-                    
+
                     <!-- Labels des axes -->
                     <div style="grid-row: 1; grid-column: 1; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; text-orientation: mixed; font-size: 0.8em; color: var(--text-secondary); font-weight: bold;">
                         Le code permet…
@@ -658,7 +666,7 @@
                     <div style="grid-row: 2; grid-column: 1; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; text-orientation: mixed; font-size: 0.8em; color: var(--text-secondary); font-weight: bold;">
                         Le code ne permet pas…
                     </div>
-                    
+
                     <!-- Quadrant [a] - Haut Gauche -->
                     <div class="quadrant" data-quadrant="a" style="grid-row: 1; grid-column: 2; background: rgba(0, 255, 0, 0.1); border: 1px solid var(--text-accent); padding: 12px; cursor: pointer; transition: all 0.3s ease; min-height: 150px;">
                         <div class="quadrant-label" style="font-size: 1em; color: var(--text-accent); font-weight: bold; margin-bottom: 6px;">[a]</div>
@@ -666,7 +674,7 @@
                         <div class="quadrant-action" style="font-size: 0.8em; color: var(--text-accent); margin-bottom: 8px; line-height: 1.2;">Action : Statu quo</div>
                         <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : contrôle de la double dépense, création monétaire qui suit l'échéancier prévu, etc.</div>
                     </div>
-                    
+
                     <!-- Quadrant [b] - Haut Droite -->
                     <div class="quadrant" data-quadrant="b" style="grid-row: 1; grid-column: 3; background: rgba(255, 0, 0, 0.2); border: 1px solid #ff3838; padding: 12px; cursor: pointer; transition: all 0.3s ease; min-height: 150px;">
                         <div class="quadrant-label" style="font-size: 1em; color: #ff3838; font-weight: bold; margin-bottom: 6px;">[b]</div>
@@ -674,7 +682,7 @@
                         <div class="quadrant-action" style="font-size: 0.8em; color: #ff3838; margin-bottom: 8px; line-height: 1.2;">Action : Correction d'un bogue (lettre du code) pour retrouver le caractère exécutoire des normes passées, toujours légitimes (esprit du code)</div>
                         <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : double dépense et régulation de la création monétaire suivant les règles et l'échéancier prévu (Cas CVE 20182).</div>
                     </div>
-                    
+
                     <!-- Quadrant [c] - Bas Gauche -->
                     <div class="quadrant" data-quadrant="c" style="grid-row: 2; grid-column: 2; background: rgba(255, 165, 0, 0.2); border: 1px solid #ffa500; padding: 12px; cursor: pointer; transition: all 0.3s ease; min-height: 150px;">
                         <div class="quadrant-label" style="font-size: 1em; color: #ffa500; font-weight: bold; margin-bottom: 6px;">[c]</div>
@@ -682,7 +690,7 @@
                         <div class="quadrant-action" style="font-size: 0.8em; color: #ffa500; margin-bottom: 8px; line-height: 1.2;">Action : Application de nouvelles règles protocolaires (lettre du code) pour sortir des normes passées, devenues illégitimes et s'adapter à l'évolution des attentes communautaires (esprit du code)</div>
                         <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : SegWit et le Scaling Debate; The DAO hack.</div>
                     </div>
-                    
+
                     <!-- Quadrant [d] - Bas Droite -->
                     <div class="quadrant" data-quadrant="d" style="grid-row: 2; grid-column: 3; background: rgba(0, 255, 0, 0.1); border: 1px solid var(--text-accent); padding: 12px; cursor: pointer; transition: all 0.3s ease; min-height: 150px;">
                         <div class="quadrant-label" style="font-size: 1em; color: var(--text-accent); font-weight: bold; margin-bottom: 6px;">[d]</div>
@@ -691,12 +699,48 @@
                         <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : rejet des doubles dépenses, invalidation de toute création monétaire qui ne suit pas les règles et l'échéancier prévu, etc.</div>
                     </div>
                 </div>
+
+                <!-- Grille 2x2 - Version Mobile -->
+                <div class="matrix-grid-mobile" style="display: none; flex-direction: column; gap: 15px;">
+
+                    <!-- Quadrant [a] Mobile -->
+                    <div class="quadrant-mobile" style="background: rgba(0, 255, 0, 0.1); border: 1px solid var(--text-accent); padding: 12px;">
+                        <div style="font-size: 0.8em; color: var(--text-secondary); margin-bottom: 6px; text-align: center; font-weight: bold;">CODE PERMET + ATTENDU</div>
+                        <div class="quadrant-label" style="font-size: 1em; color: var(--text-accent); font-weight: bold; margin-bottom: 6px;">[a] Situation normale</div>
+                        <div class="quadrant-action" style="font-size: 0.8em; color: var(--text-accent); margin-bottom: 8px;">Action : Statu quo</div>
+                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : contrôle de la double dépense, création monétaire qui suit l'échéancier prévu, etc.</div>
+                    </div>
+
+                    <!-- Quadrant [b] Mobile -->
+                    <div class="quadrant-mobile" style="background: rgba(255, 0, 0, 0.2); border: 1px solid #ff3838; padding: 12px;">
+                        <div style="font-size: 0.8em; color: var(--text-secondary); margin-bottom: 6px; text-align: center; font-weight: bold;">CODE PERMET + INATTENDU</div>
+                        <div class="quadrant-label" style="font-size: 1em; color: #ff3838; font-weight: bold; margin-bottom: 6px;">[b] Crise « de vulnérabilité »</div>
+                        <div class="quadrant-action" style="font-size: 0.8em; color: #ff3838; margin-bottom: 8px; line-height: 1.2;">Action : Correction de bogue pour retrouver le caractère exécutoire des normes passées</div>
+                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : cas CVE 2018 - correction vulnérabilité d'inflation</div>
+                    </div>
+
+                    <!-- Quadrant [c] Mobile -->
+                    <div class="quadrant-mobile" style="background: rgba(255, 165, 0, 0.2); border: 1px solid #ffa500; padding: 12px;">
+                        <div style="font-size: 0.8em; color: var(--text-secondary); margin-bottom: 6px; text-align: center; font-weight: bold;">CODE NE PERMET PAS + ATTENDU</div>
+                        <div class="quadrant-label" style="font-size: 1em; color: #ffa500; font-weight: bold; margin-bottom: 6px;">[c] Crise « d'évolution »</div>
+                        <div class="quadrant-action" style="font-size: 0.8em; color: #ffa500; margin-bottom: 8px; line-height: 1.2;">Action : Application de nouvelles règles protocolaires pour s'adapter aux attentes de la communauté</div>
+                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : SegWit et Scaling Debate ; The DAO hack</div>
+                    </div>
+
+                    <!-- Quadrant [d] Mobile -->
+                    <div class="quadrant-mobile" style="background: rgba(0, 255, 0, 0.1); border: 1px solid var(--text-accent); padding: 12px;">
+                        <div style="font-size: 0.8em; color: var(--text-secondary); margin-bottom: 6px; text-align: center; font-weight: bold;">CODE NE PERMET PAS + INATTENDU</div>
+                        <div class="quadrant-label" style="font-size: 1em; color: var(--text-accent); font-weight: bold; margin-bottom: 6px;">[d] Situation normale</div>
+                        <div class="quadrant-action" style="font-size: 0.8em; color: var(--text-accent); margin-bottom: 8px;">Action : Statu quo</div>
+                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.2;">Ex. : rejet des doubles dépenses, invalidation de toute création monétaire non autorisée, etc.</div>
+                    </div>
+                </div>
             </div>
 
             <!-- Section B : Typologie des Crises -->
             <div class="crisis-typology" style="background-color: var(--button-bg); border: 2px solid var(--button-border); padding: 20px; margin: 15px 0; font-family: 'VT323', monospace;">
                 <h3 style="color: var(--text-accent); text-align: center; margin-bottom: 20px; font-size: 1.2em;">Typologie des Crises Interactive</h3>
-                
+
                 <!-- Types de crises -->
                 <div class="crisis-types" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
                     <div class="crisis-type-card vulnerability" style="background: rgba(255, 0, 0, 0.1); border: 1px solid #ff3838; padding: 15px;">
@@ -710,7 +754,7 @@
                             <div style="color: var(--text-accent); font-size: 0.9em; line-height: 1.3;">Définition : "Le code permet ce qui ne devrait pas être permis"</div>
                         </div>
                     </div>
-                    
+
                     <div class="crisis-type-card evolution" style="background: rgba(255, 165, 0, 0.1); border: 1px solid #ffa500; padding: 15px;">
                         <div class="crisis-type-header" style="display: flex; align-items: center; margin-bottom: 12px;">
                             <span class="crisis-icon" style="font-size: 20px; margin-right: 8px;">⬆️</span>
@@ -723,7 +767,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Contextualisation -->
                 <div class="context-views" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
                     <div class="context-view normal-situations" style="background: rgba(0, 255, 0, 0.1); border: 1px solid var(--text-accent); padding: 15px;">
@@ -739,7 +783,7 @@
                             </li>
                         </ul>
                     </div>
-                    
+
                     <div class="context-view crisis-situations" style="background: rgba(255, 0, 0, 0.1); border: 1px solid #ff3838; padding: 15px;">
                         <h4 style="color: #ff3838; margin-bottom: 12px; font-size: 1em;">Vue "Situations de Crise" ([b] + [c])</h4>
                         <ul style="list-style: none; padding: 0; margin: 0;">
@@ -1658,12 +1702,12 @@
                 this.selectedCrisis = null;
                 this.init();
             }
-            
+
             init() {
                 this.bindEvents();
                 this.setupQuadrantInteractions();
             }
-            
+
             bindEvents() {
                 // Sélecteur de mode
                 const modeSelector = document.getElementById('crisis-mode');
@@ -1672,7 +1716,7 @@
                         this.switchMode(e.target.value);
                     });
                 }
-                
+
                 // Sélecteur de crise spécifique
                 const crisisSelector = document.getElementById('specific-crisis');
                 if (crisisSelector) {
@@ -1682,29 +1726,29 @@
                     });
                 }
             }
-            
+
             setupQuadrantInteractions() {
                 document.querySelectorAll('.quadrant').forEach(quad => {
                     quad.addEventListener('mouseenter', (e) => {
                         e.currentTarget.style.transform = 'scale(1.02)';
                         e.currentTarget.style.boxShadow = '0 4px 12px rgba(51, 255, 51, 0.3)';
                     });
-                    
+
                     quad.addEventListener('mouseleave', (e) => {
                         e.currentTarget.style.transform = 'scale(1)';
                         e.currentTarget.style.boxShadow = 'none';
                     });
-                    
+
                     quad.addEventListener('click', (e) => {
                         this.handleQuadrantClick(e.currentTarget.dataset.quadrant);
                     });
                 });
             }
-            
+
             switchMode(mode) {
                 this.currentMode = mode;
                 const specificSelector = document.getElementById('specific-crisis');
-                
+
                 if (mode === 'specific') {
                     specificSelector.style.display = 'inline-block';
                     this.populateCrisisSelector();
@@ -1712,15 +1756,15 @@
                     specificSelector.style.display = 'none';
                     this.selectedCrisis = null;
                 }
-                
+
                 this.updateQuadrantContent();
             }
-            
+
             populateCrisisSelector() {
                 const selector = document.getElementById('specific-crisis');
                 // Nettoyer et repeupler avec les crises de la timeline
                 selector.innerHTML = '<option value="">Sélectionner une crise...</option>';
-                
+
                 // Ajouter des options basées sur les vulnérabilités existantes (version française)
                 const crises = [
                     { value: 'CVE-2018-17144', text: 'CVE-2018-17144 - Vérification manquante entrées dupliquées' },
@@ -1729,7 +1773,7 @@
                     { value: 'BIP-SegWit', text: 'Implémentation SegWit & Débat de Scalabilité' },
                     { value: 'CVE-2013-3220', text: 'CVE-2013-3220 - Interactions limites verrous BDB' }
                 ];
-                
+
                 crises.forEach(crisis => {
                     const option = document.createElement('option');
                     option.value = crisis.value;
@@ -1737,7 +1781,7 @@
                     selector.appendChild(option);
                 });
             }
-            
+
             handleQuadrantClick(quadrant) {
                 // Highlight temporaire du quadrant cliqué
                 const quadrantEl = document.querySelector(`[data-quadrant="${quadrant}"]`);
@@ -1750,14 +1794,14 @@
                         quadrantEl.style.border = originalBorder;
                     }, 1000);
                 }
-                
+
                 if (this.currentMode === 'general') {
                     this.showGeneralExamples(quadrant);
                 } else {
                     this.showSpecificAnalysis(quadrant);
                 }
             }
-            
+
             showGeneralExamples(quadrant) {
                 const examples = {
                     'a': ['Validation normale des transactions', 'Création monétaire selon les règles', 'Propagation des blocs sans problème'],
@@ -1765,21 +1809,21 @@
                     'c': ['SegWit et débat sur la scalabilité', 'The DAO hack et hard fork Ethereum', 'Évolutions protocolaires majeures'],
                     'd': ['Rejet automatique des doubles dépenses', 'Invalidation des transactions malformées', 'Limitations de sécurité actives']
                 };
-                
+
                 this.displayExamples(quadrant, examples[quadrant]);
             }
-            
+
             showSpecificAnalysis(quadrant) {
                 if (!this.selectedCrisis) {
                     alert('Veuillez d\'abord sélectionner une crise spécifique à analyser.');
                     return;
                 }
-                
+
                 // Analyse spécifique selon la crise sélectionnée
                 const analysis = this.getSpecificAnalysis(this.selectedCrisis, quadrant);
                 this.displayAnalysis(quadrant, analysis);
             }
-            
+
             getSpecificAnalysis(crisis, quadrant) {
                 const analyses = {
                     'CVE-2018-17144': {
@@ -1795,20 +1839,20 @@
                         'd': 'Limitations de capacité acceptées avant SegWit'
                     }
                 };
-                
+
                 return analyses[crisis] && analyses[crisis][quadrant] || 'Analyse en cours de développement pour cette combinaison crise/quadrant.';
             }
-            
+
             displayExamples(quadrant, examples) {
                 const message = `Quadrant [${quadrant}] - Exemples généraux :\n\n• ${examples.join('\n• ')}`;
                 alert(message);
             }
-            
+
             displayAnalysis(quadrant, analysis) {
                 const message = `Quadrant [${quadrant}] - Analyse spécifique (${this.selectedCrisis}) :\n\n${analysis}`;
                 alert(message);
             }
-            
+
             updateQuadrantContent() {
                 // Mise à jour visuelle selon le mode
                 const quadrants = document.querySelectorAll('.quadrant');
@@ -1823,7 +1867,7 @@
                 });
             }
         }
-        
+
         // Initialiser le framework théorique au chargement
         document.addEventListener('DOMContentLoaded', function() {
             const theoreticalFramework = new TheoreticalFramework();
