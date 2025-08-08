@@ -1166,249 +1166,157 @@ footer {
             margin: 0 auto;
         }
 
-/* Matrix Grid - Tableau unifié avec bordures continues */
-.matrix-grid {
-    display: grid !important;
-    grid-template-columns: 120px 1fr 1fr !important;
-    grid-template-rows: 45px 1fr 1fr !important;
-    gap: 0 !important;
-    width: 100% !important;
-    max-width: 720px !important;
-    margin: 0 auto !important;
-    font-family: 'VT323', monospace !important;
-    border: 3px solid #FFD700 !important;
-    background: var(--button-bg) !important;
-    border-collapse: collapse !important;
+/* Nouveau tableau simple basé sur l'image de référence */
+.matrix-container {
+    background-color: var(--button-bg);
+    border: 3px solid #FFD700;
+    padding: 15px;
+    margin: 20px auto;
+    font-family: 'VT323', monospace;
+    max-width: 700px;
+    width: 95%;
 }
 
-/* Toutes les cellules ont des bordures unifiées */
-.matrix-grid > div {
-    border: 1px solid #FFD700 !important;
-    margin: -1px !important;
-    box-sizing: border-box !important;
+.matrix-container h3 {
+    color: var(--text-accent);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.2em;
 }
 
-/* Cellule vide coin supérieur gauche */
-.matrix-grid > div:first-child {
-    background: rgba(255, 204, 102, 0.05) !important;
+/* Table simple et propre */
+.crisis-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #FFD700;
+    background-color: #4d0000;
 }
 
-/* Headers horizontaux - ligne du haut */
-.matrix-grid > div:nth-child(2),
-.matrix-grid > div:nth-child(3) {
-    background: rgba(255, 204, 102, 0.15) !important;
-    padding: 8px 6px !important;
-    font-size: 0.75em !important;
-    color: var(--text-secondary) !important;
-    text-align: center !important;
-    font-weight: bold !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    line-height: 1.2 !important;
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-    writing-mode: horizontal-tb !important;
-    text-orientation: initial !important;
-    min-height: 45px !important;
-    max-height: 45px !important;
+.crisis-table th,
+.crisis-table td {
+    border: 2px solid #FFD700;
+    padding: 12px;
+    text-align: center;
+    vertical-align: middle;
 }
 
-/* Headers verticaux - colonne de gauche */
-.matrix-grid > div:nth-child(4),
-.matrix-grid > div:nth-child(7) {
-    background: rgba(255, 204, 102, 0.1) !important;
-    padding: 8px 4px !important;
-    font-size: 0.72em !important;
-    color: var(--text-secondary) !important;
-    font-weight: bold !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    writing-mode: vertical-rl !important;
-    text-orientation: mixed !important;
-    line-height: 1.2 !important;
-    text-align: center !important;
-    word-wrap: break-word !important;
-    width: 120px !important;
-    max-width: 120px !important;
-    overflow: hidden !important;
-    white-space: nowrap !important;
+/* En-têtes */
+.crisis-table th {
+    background-color: rgba(255, 215, 0, 0.2);
+    color: #FFD700;
+    font-weight: bold;
+    font-size: 0.9em;
 }
 
-/* Quadrants - cellules de contenu */
-.matrix-grid .quadrant {
-    padding: 12px 8px !important;
-    min-height: 160px !important;
-    max-height: 160px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    text-align: center !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
-    overflow-y: auto !important;
-    position: relative !important;
-    writing-mode: horizontal-tb !important;
-    text-orientation: initial !important;
+/* Headers verticaux */
+.crisis-table .vertical-header {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    background-color: rgba(255, 215, 0, 0.15);
+    color: #FFD700;
+    font-weight: bold;
+    width: 100px;
+    font-size: 0.85em;
 }
 
-/* Contenu des quadrants - TOUT EN HORIZONTAL */
-.matrix-grid .quadrant .quadrant-label {
-    font-size: 0.85em !important;
-    font-weight: bold !important;
-    margin-bottom: 6px !important;
-    text-align: center !important;
-    width: 100% !important;
-    writing-mode: horizontal-tb !important;
-    text-orientation: initial !important;
-    line-height: 1.2 !important;
+/* Cellules de contenu */
+.crisis-table .quadrant-cell {
+    background-color: #4d0000;
+    color: #ffcc66;
+    font-size: 0.8em;
+    line-height: 1.3;
+    padding: 15px 10px;
+    height: 150px;
+    vertical-align: top;
 }
 
-.matrix-grid .quadrant .quadrant-action {
-    font-size: 0.7em !important;
-    margin-bottom: 6px !important;
-    line-height: 1.2 !important;
-    text-align: center !important;
-    width: 100% !important;
-    font-style: italic !important;
-    writing-mode: horizontal-tb !important;
-    text-orientation: initial !important;
+/* Couleurs spécifiques par quadrant */
+.crisis-table .quadrant-normal {
+    background-color: rgba(0, 255, 0, 0.1);
+    border-color: #FFD700;
 }
 
-.matrix-grid .quadrant .quadrant-example {
-    font-size: 0.65em !important;
-    line-height: 1.1 !important;
-    color: var(--text-primary) !important;
-    text-align: center !important;
-    width: 100% !important;
-    writing-mode: horizontal-tb !important;
-    text-orientation: initial !important;
+.crisis-table .quadrant-normal .label,
+.crisis-table .quadrant-normal .action {
+    color: #33ff33;
 }
 
-/* Couleurs des quadrants */
-.matrix-grid .quadrant[data-quadrant="a"],
-.matrix-grid .quadrant[data-quadrant="d"] {
-    background: rgba(0, 255, 0, 0.1) !important;
+.crisis-table .quadrant-evolution {
+    background-color: rgba(255, 165, 0, 0.15);
+    border-color: #FFD700;
 }
 
-.matrix-grid .quadrant[data-quadrant="a"] .quadrant-label,
-.matrix-grid .quadrant[data-quadrant="d"] .quadrant-label,
-.matrix-grid .quadrant[data-quadrant="a"] .quadrant-action,
-.matrix-grid .quadrant[data-quadrant="d"] .quadrant-action {
-    color: var(--text-accent) !important;
+.crisis-table .quadrant-evolution .label,
+.crisis-table .quadrant-evolution .action {
+    color: #ffa500;
 }
 
-.matrix-grid .quadrant[data-quadrant="b"] {
-    background: rgba(255, 0, 0, 0.15) !important;
+.crisis-table .quadrant-vulnerability {
+    background-color: rgba(255, 0, 0, 0.15);
+    border-color: #FFD700;
 }
 
-.matrix-grid .quadrant[data-quadrant="b"] .quadrant-label,
-.matrix-grid .quadrant[data-quadrant="b"] .quadrant-action {
-    color: #ff3838 !important;
+.crisis-table .quadrant-vulnerability .label,
+.crisis-table .quadrant-vulnerability .action {
+    color: #ff3838;
 }
 
-.matrix-grid .quadrant[data-quadrant="c"] {
-    background: rgba(255, 165, 0, 0.15) !important;
+/* Contenu des cellules */
+.crisis-table .label {
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 8px;
+    display: block;
 }
 
-.matrix-grid .quadrant[data-quadrant="c"] .quadrant-label,
-.matrix-grid .quadrant[data-quadrant="c"] .quadrant-action {
-    color: #ffa500 !important;
+.crisis-table .action {
+    font-style: italic;
+    margin-bottom: 8px;
+    display: block;
+    font-size: 0.9em;
 }
 
-/* Effet hover */
-.matrix-grid .quadrant:hover {
-    transform: scale(1.02) !important;
-    box-shadow: inset 0 0 20px rgba(51, 255, 51, 0.2) !important;
-    z-index: 2 !important;
+.crisis-table .example {
+    color: #ffcc66;
+    font-size: 0.8em;
+    line-height: 1.2;
 }
 
-/* Responsive design - Grille adaptée */
+/* Responsive */
 @media (max-width: 768px) {
-    .matrix-grid {
-        grid-template-columns: 80px 1fr 1fr !important;
-        grid-template-rows: 50px 1fr 1fr !important;
-        max-width: 100% !important;
-        border: 2px solid var(--text-secondary) !important;
+    .crisis-table {
+        font-size: 0.85em;
     }
-
-    .matrix-grid > div:nth-child(2),
-    .matrix-grid > div:nth-child(3) {
-        font-size: 0.7em !important;
-        padding: 8px 4px !important;
-        min-height: 50px !important;
+    
+    .crisis-table th,
+    .crisis-table td {
+        padding: 8px 6px;
     }
-
-    .matrix-grid > div:nth-child(4),
-    .matrix-grid > div:nth-child(7) {
-        font-size: 0.7em !important;
-        padding: 8px 3px !important;
+    
+    .crisis-table .quadrant-cell {
+        height: 130px;
+        padding: 10px 6px;
     }
-
-    .matrix-grid .quadrant {
-        padding: 10px 6px !important;
-        min-height: 150px !important;
-        max-height: 150px !important;
-    }
-
-    .matrix-grid .quadrant .quadrant-label {
-        font-size: 0.85em !important;
-        margin-bottom: 6px !important;
-    }
-
-    .matrix-grid .quadrant .quadrant-action {
-        font-size: 0.7em !important;
-        margin-bottom: 6px !important;
-    }
-
-    .matrix-grid .quadrant .quadrant-example {
-        font-size: 0.65em !important;
-    }
-
-    /* Masquer la version mobile car la grille principale est responsive */
-    .matrix-grid-mobile {
-        display: none !important;
+    
+    .crisis-table .vertical-header {
+        width: 80px;
+        font-size: 0.8em;
     }
 }
 
 @media (max-width: 480px) {
-    .matrix-grid {
-        grid-template-columns: 70px 1fr 1fr !important;
-        grid-template-rows: 35px 1fr 1fr !important;
+    .crisis-table {
+        font-size: 0.75em;
     }
-
-    .matrix-grid > div:nth-child(2),
-    .matrix-grid > div:nth-child(3) {
-        font-size: 0.65em !important;
-        padding: 4px 2px !important;
+    
+    .crisis-table .quadrant-cell {
+        height: 110px;
+        padding: 8px 4px;
     }
-
-    .matrix-grid > div:nth-child(4),
-    .matrix-grid > div:nth-child(7) {
-        font-size: 0.7em !important;
-        padding: 4px 2px !important;
-    }
-
-    .matrix-grid .quadrant {
-        padding: 6px 4px !important;
-        min-height: 120px !important;
-        max-height: 120px !important;
-    }
-
-    .matrix-grid .quadrant .quadrant-label {
-        font-size: 0.8em !important;
-        margin-bottom: 5px !important;
-    }
-
-    .matrix-grid .quadrant .quadrant-action {
-        font-size: 0.65em !important;
-        margin-bottom: 5px !important;
-    }
-
-    .matrix-grid .quadrant .quadrant-example {
-        font-size: 0.6em !important;
+    
+    .crisis-table .vertical-header {
+        width: 60px;
+        font-size: 0.75em;
     }
 }
 /* Styles spécifiques pour les cartes retournées (crisis pages) - Palette mode dark avec dominante jaune */
