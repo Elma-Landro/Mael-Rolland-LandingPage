@@ -1176,7 +1176,7 @@ footer {
     max-width: 720px !important;
     margin: 0 auto !important;
     font-family: 'VT323', monospace !important;
-    border: 3px solid var(--text-secondary) !important;
+    border: 3px solid #FFD700 !important;
     background: var(--button-bg) !important;
 }
 
@@ -1191,7 +1191,7 @@ footer {
 .matrix-grid > div:nth-child(2),
 .matrix-grid > div:nth-child(3) {
     background: rgba(255, 204, 102, 0.15) !important;
-    border-bottom: 2px solid var(--text-secondary) !important;
+    border-bottom: 2px solid #FFD700 !important;
     padding: 8px 6px !important;
     font-size: 0.75em !important;
     color: var(--text-secondary) !important;
@@ -1212,14 +1212,14 @@ footer {
 
 /* Séparateur vertical entre les headers horizontaux */
 .matrix-grid > div:nth-child(2) {
-    border-right: 2px solid var(--text-secondary) !important;
+    border-right: 2px solid #FFD700 !important;
 }
 
 /* Headers verticaux - colonne de gauche - TEXTE VERTICAL PARFAITEMENT CENTRÉ */
 .matrix-grid > div:nth-child(4),
 .matrix-grid > div:nth-child(7) {
     background: rgba(255, 204, 102, 0.1) !important;
-    border-right: 2px solid var(--text-secondary) !important;
+    border-right: 2px solid #FFD700 !important;
     padding: 8px 4px !important;
     font-size: 0.72em !important;
     color: var(--text-secondary) !important;
@@ -1234,12 +1234,14 @@ footer {
     text-align: center !important;
     word-wrap: break-word !important;
     width: 120px !important;
+    max-width: 120px !important;
     overflow: hidden !important;
+    white-space: nowrap !important;
 }
 
 /* Séparateur horizontal entre les headers verticaux */
 .matrix-grid > div:nth-child(4) {
-    border-bottom: 2px solid var(--text-secondary) !important;
+    border-bottom: 2px solid #FFD700 !important;
 }
 
 /* Quadrants - cellules de contenu PARFAITEMENT ALIGNÉES */
@@ -1254,7 +1256,7 @@ footer {
     text-align: center !important;
     cursor: pointer !important;
     transition: all 0.3s ease !important;
-    overflow: hidden !important;
+    overflow-y: auto !important;
     box-sizing: border-box !important;
     border: none !important;
     position: relative !important;
@@ -1264,16 +1266,16 @@ footer {
 
 /* Bordures internes pour les quadrants - ALIGNEMENT PARFAIT */
 .matrix-grid .quadrant:nth-child(5) {
-    border-right: 2px solid var(--text-secondary) !important;
-    border-bottom: 2px solid var(--text-secondary) !important;
+    border-right: 2px solid #FFD700 !important;
+    border-bottom: 2px solid #FFD700 !important;
 }
 
 .matrix-grid .quadrant:nth-child(6) {
-    border-bottom: 2px solid var(--text-secondary) !important;
+    border-bottom: 2px solid #FFD700 !important;
 }
 
 .matrix-grid .quadrant:nth-child(8) {
-    border-right: 2px solid var(--text-secondary) !important;
+    border-right: 2px solid #FFD700 !important;
 }
 
 /* Contenu des quadrants - TOUT EN HORIZONTAL */
@@ -1504,18 +1506,24 @@ footer {
 .card-back {
     border-color: #ffdd77 !important; /* Bordure principale jaune */
     box-shadow: inset 0 0 20px rgba(255, 221, 119, 0.2), 0 0 30px rgba(0, 0, 0, 0.9) !important;
-    overflow-y: auto !important; /* Permettre le défilement vertical */
-    max-height: 100% !important; /* Utiliser toute la hauteur disponible */
+    overflow: visible !important; /* Laisser le container gérer l'overflow */
+    max-height: 85vh !important; /* Hauteur maximale du modal */
+    height: auto !important; /* Hauteur automatique */
+    display: flex !important;
+    flex-direction: column !important;
 }
 
 /* S'assurer que le contenu détaillé peut défiler */
 .card-back .detailed-info {
-    overflow-y: scroll !important; /* Force le défilement visible */
-    max-height: calc(85vh - 80px) !important; /* Hauteur adaptée au modal */
-    height: calc(85vh - 80px) !important; /* Force la hauteur pour activer le scroll */
-    padding-right: 20px !important; /* Plus d'espace pour la barre de défilement */
-    scrollbar-width: thick !important; /* Firefox - barre plus visible */
-    scrollbar-color: #ffdd77 rgba(0, 0, 0, 0.3) !important; /* Firefox - contraste amélioré */
+    overflow-y: auto !important; /* Défilement automatique quand nécessaire */
+    max-height: 70vh !important; /* Hauteur maximale claire */
+    height: auto !important; /* Hauteur automatique */
+    padding-right: 15px !important; /* Espace pour la barre de défilement */
+    scrollbar-width: thin !important; /* Firefox - barre visible mais pas trop grosse */
+    scrollbar-color: #ffdd77 #2a0000 !important; /* Firefox - contraste amélioré */
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
 }
 
 /* Style de la barre de défilement pour les cartes retournées */
