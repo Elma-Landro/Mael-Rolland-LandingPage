@@ -344,12 +344,12 @@ header, section, footer {
 .main-title {
     font-size: 2.5em;
     color: var(--text-primary);
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+    margin-top: 10px;
     transition: color 0.3s ease;
     overflow: hidden;
     border-right: 3px solid var(--text-accent);
     white-space: nowrap;
-    margin: 0 auto;
     letter-spacing: 0.1em;
     animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
     max-width: 90vw; /* S'adapte à la largeur de l'écran */
@@ -1105,7 +1105,7 @@ footer {
 
 .vulnerability-item {
             background-color: rgba(0,0,0,0.3);
-            border: 2px solid #FFD700;
+            border: 2px solid #FFD700 !important;
             padding: 15px 80px;
             margin: 0 auto 15px auto;
             font-size: 1em;
@@ -1499,8 +1499,11 @@ footer {
 /* S'assurer que le contenu détaillé peut défiler */
 .card-back .detailed-info {
     overflow-y: auto !important; /* Permettre le défilement du contenu */
-    max-height: calc(100% - 80px) !important; /* Laisser de l'espace pour l'en-tête */
-    padding-right: 10px !important; /* Espace pour la barre de défilement */
+    max-height: calc(100vh - 160px) !important; /* Hauteur fixe basée sur viewport */
+    height: calc(100vh - 160px) !important; /* Force la hauteur pour activer le scroll */
+    padding-right: 15px !important; /* Espace pour la barre de défilement */
+    scrollbar-width: thin !important; /* Firefox */
+    scrollbar-color: #ffdd77 rgba(255, 221, 119, 0.1) !important; /* Firefox */
 }
 
 /* Style de la barre de défilement pour les cartes retournées */
