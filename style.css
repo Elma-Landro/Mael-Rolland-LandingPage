@@ -1196,6 +1196,16 @@ footer {
     font-size: 0.75em;
 }
 
+/* Ajustement des colonnes pour les nouveaux en-têtes */
+.crisis-table colgroup col:first-child {
+    width: 20px;
+}
+
+.crisis-table colgroup col:nth-child(2),
+.crisis-table colgroup col:nth-child(3) {
+    width: calc((100% - 20px) / 2);
+}
+
 .crisis-table th,
 .crisis-table td {
     border: 1px solid #FFD700;
@@ -1223,10 +1233,13 @@ footer {
     background-color: rgba(255, 215, 0, 0.15);
     color: #FFD700;
     font-weight: bold;
-    width: 80px;
-    font-size: 0.7em;
-    padding: 8px 4px;
-    line-height: 1.2;
+    width: 20px;
+    font-size: 0.6em;
+    padding: 6px 2px;
+    line-height: 1.1;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 /* Cellules de contenu */
@@ -1316,9 +1329,9 @@ footer {
     }
     
     .crisis-table .vertical-header {
-        width: 60px;
-        font-size: 0.6em;
-        padding: 6px 2px;
+        width: 15px;
+        font-size: 0.5em;
+        padding: 4px 1px;
     }
     
     .crisis-table th {
@@ -1344,9 +1357,9 @@ footer {
     }
     
     .crisis-table .vertical-header {
-        width: 50px;
-        font-size: 0.55em;
-        padding: 4px 2px;
+        width: 12px;
+        font-size: 0.45em;
+        padding: 3px 1px;
     }
     
     .crisis-table th {
