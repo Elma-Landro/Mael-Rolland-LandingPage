@@ -140,7 +140,7 @@ body {
     /* Simple blocky arch top for now */
 }
 
-/* Add more icon styles here: Lens, X, LinkedIn */
+/* Add more icon styles here: Lens, Farcaster, X, LinkedIn */
 
 
 /* Lens Icon (Green Crystal/Eye) - Example using box-shadow */
@@ -1491,10 +1491,15 @@ footer {
 
 /* Bordures et cadres des cartes retournées */
 .card-back {
-    border-color: #ffdd77 !important; /* Bordure principale jaune */
-    box-shadow: inset 0 0 20px rgba(255, 221, 119, 0.2), 0 0 30px rgba(0, 0, 0, 0.9) !important;
-    overflow-y: auto !important; /* Permettre le défilement vertical */
-    max-height: 100% !important; /* Utiliser toute la hauteur disponible */
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.98), rgba(40, 20, 20, 0.98));
+    border: 3px solid var(--text-accent);
+    font-size: 0.9em;
+    overflow: hidden !important; /* Cache overflow sur le container principal */
+    padding: 0 !important; /* Supprime padding du container */
+    box-shadow: inset 0 0 20px rgba(51, 255, 51, 0.2), 0 0 30px rgba(0, 0, 0, 0.9);
+    display: flex !important;
+    flex-direction: column !important;
 }
 
 /* S'assurer que le contenu détaillé peut défiler */
