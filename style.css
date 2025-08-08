@@ -2905,3 +2905,21 @@ footer {
 .card-back .phase-section strong {
     color: #33ff33 !important; /* Vert pour les sous-titres en gras */
 }
+
+/* Cohérence esthétique avec le mode dark pour les cartes retournées */
+.card-back .info-content {
+    color: #ffdd77 !important; /* Jaune clair pour le contenu principal */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 1), 0 0 4px rgba(255, 221, 119, 0.3) !important;
+}
+
+.card-back .vuln-title {
+    color: #33ff33 !important; /* Vert pour les titres de vulnérabilités */
+}
+
+.card-back .vuln-cve {
+    color: #33ff33 !important; /* Vert pour les références CVE */
+}
+
+.card-back .vuln-description {
+    color: #ffdd77 !important; /* Jaune clair pour les descriptions */
+}
