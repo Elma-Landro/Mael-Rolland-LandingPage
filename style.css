@@ -24,11 +24,11 @@
     /* Light theme (default - current design) */
     --bg-primary: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), linear-gradient(to bottom, #6a0000, #4d0000);
     --bg-fallback: #4d0000;
-    --text-primary: #ffcc66;
-    --text-secondary: #ffaa33;
-    --text-accent: #33ff33;
+    --text-primary: #ffdd77;
+    --text-secondary: #ffcc66;
+    --text-accent: #ffdd77;
     --button-bg: #8b0000;
-    --button-border: #ffcc66;
+    --button-border: #ffdd77;
     --button-hover: #a52a2a;
 }
 
