@@ -1166,7 +1166,7 @@ footer {
             margin: 0 auto;
         }
 
-/* Matrix Grid - Layout corrigé et parfaitement aligné */
+/* Matrix Grid - Tableau unifié avec bordures continues */
 .matrix-grid {
     display: grid !important;
     grid-template-columns: 120px 1fr 1fr !important;
@@ -1178,20 +1178,25 @@ footer {
     font-family: 'VT323', monospace !important;
     border: 3px solid #FFD700 !important;
     background: var(--button-bg) !important;
+    border-collapse: collapse !important;
+}
+
+/* Toutes les cellules ont des bordures unifiées */
+.matrix-grid > div {
+    border: 1px solid #FFD700 !important;
+    margin: -1px !important;
+    box-sizing: border-box !important;
 }
 
 /* Cellule vide coin supérieur gauche */
 .matrix-grid > div:first-child {
     background: rgba(255, 204, 102, 0.05) !important;
-    border-right: 2px solid var(--text-secondary) !important;
-    border-bottom: 2px solid var(--text-secondary) !important;
 }
 
-/* Headers horizontaux - ligne du haut - TEXTE HORIZONTAL PARFAITEMENT CENTRÉ */
+/* Headers horizontaux - ligne du haut */
 .matrix-grid > div:nth-child(2),
 .matrix-grid > div:nth-child(3) {
     background: rgba(255, 204, 102, 0.15) !important;
-    border-bottom: 2px solid #FFD700 !important;
     padding: 8px 6px !important;
     font-size: 0.75em !important;
     color: var(--text-secondary) !important;
@@ -1205,21 +1210,14 @@ footer {
     overflow-wrap: break-word !important;
     writing-mode: horizontal-tb !important;
     text-orientation: initial !important;
-    box-sizing: border-box !important;
     min-height: 45px !important;
     max-height: 45px !important;
 }
 
-/* Séparateur vertical entre les headers horizontaux */
-.matrix-grid > div:nth-child(2) {
-    border-right: 2px solid #FFD700 !important;
-}
-
-/* Headers verticaux - colonne de gauche - TEXTE VERTICAL PARFAITEMENT CENTRÉ */
+/* Headers verticaux - colonne de gauche */
 .matrix-grid > div:nth-child(4),
 .matrix-grid > div:nth-child(7) {
     background: rgba(255, 204, 102, 0.1) !important;
-    border-right: 2px solid #FFD700 !important;
     padding: 8px 4px !important;
     font-size: 0.72em !important;
     color: var(--text-secondary) !important;
@@ -1230,7 +1228,6 @@ footer {
     writing-mode: vertical-rl !important;
     text-orientation: mixed !important;
     line-height: 1.2 !important;
-    box-sizing: border-box !important;
     text-align: center !important;
     word-wrap: break-word !important;
     width: 120px !important;
@@ -1239,12 +1236,7 @@ footer {
     white-space: nowrap !important;
 }
 
-/* Séparateur horizontal entre les headers verticaux */
-.matrix-grid > div:nth-child(4) {
-    border-bottom: 2px solid #FFD700 !important;
-}
-
-/* Quadrants - cellules de contenu PARFAITEMENT ALIGNÉES */
+/* Quadrants - cellules de contenu */
 .matrix-grid .quadrant {
     padding: 12px 8px !important;
     min-height: 160px !important;
@@ -1257,25 +1249,9 @@ footer {
     cursor: pointer !important;
     transition: all 0.3s ease !important;
     overflow-y: auto !important;
-    box-sizing: border-box !important;
-    border: none !important;
     position: relative !important;
     writing-mode: horizontal-tb !important;
     text-orientation: initial !important;
-}
-
-/* Bordures internes pour les quadrants - ALIGNEMENT PARFAIT */
-.matrix-grid .quadrant:nth-child(5) {
-    border-right: 2px solid #FFD700 !important;
-    border-bottom: 2px solid #FFD700 !important;
-}
-
-.matrix-grid .quadrant:nth-child(6) {
-    border-bottom: 2px solid #FFD700 !important;
-}
-
-.matrix-grid .quadrant:nth-child(8) {
-    border-right: 2px solid #FFD700 !important;
 }
 
 /* Contenu des quadrants - TOUT EN HORIZONTAL */
