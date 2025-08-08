@@ -2889,23 +2889,31 @@ footer {
         font-size: 0.6em !important;
     }
 }
-/* Styles spécifiques pour les cartes retournées (crisis pages) - Palette mode dark */
+/* Styles spécifiques pour les cartes retournées (crisis pages) - Palette mode dark avec dominante jaune */
 .card-back .detailed-info {
     color: #ffdd77 !important; /* Jaune clair pour le contenu des cartes retournées */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
 }
 
 .card-back .card-header {
-    color: #44ff44 !important; /* Vert clair pour les titres des cartes retournées */
+    color: #ffdd77 !important; /* Jaune clair pour les titres des cartes retournées */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9) !important;
+    border-color: #ffdd77 !important; /* Bordures jaunes pour les en-têtes */
 }
 
 .card-back .phase-section {
     color: #ffdd77 !important; /* Jaune clair pour les sections de phase */
+    border-left-color: #ffdd77 !important; /* Bordure gauche jaune */
+    background: linear-gradient(90deg, rgba(255, 221, 119, 0.15), rgba(255, 221, 119, 0.05)) !important;
 }
 
 .card-back .phase-section strong {
-    color: #44ff44 !important; /* Vert clair pour les sous-titres en gras */
+    color: #ffdd77 !important; /* Jaune clair pour les sous-titres en gras */
+}
+
+.card-back .info-section {
+    border-bottom-color: rgba(255, 221, 119, 0.5) !important; /* Bordures inférieures jaunes */
+    background: rgba(255, 221, 119, 0.1) !important; /* Fond légèrement jaune */
 }
 
 /* Cohérence esthétique complète avec le mode dark pour les cartes retournées */
@@ -2914,13 +2922,18 @@ footer {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
 }
 
+.card-back .info-label {
+    color: #ffdd77 !important; /* Jaune clair pour les labels */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1), 0 0 6px rgba(255, 221, 119, 0.8) !important;
+}
+
 .card-back .vuln-title {
-    color: #44ff44 !important; /* Vert clair pour les titres de vulnérabilités */
+    color: #ffdd77 !important; /* Jaune clair pour les titres de vulnérabilités */
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9) !important;
 }
 
 .card-back .vuln-cve {
-    color: #44ff44 !important; /* Vert clair pour les références CVE */
+    color: #44ff44 !important; /* Vert clair pour les références CVE (accent) */
 }
 
 .card-back .vuln-description {
@@ -2929,7 +2942,7 @@ footer {
 
 /* Application générale de la palette aux éléments des cartes */
 .card-back h3, .card-back h4, .card-back h5 {
-    color: #44ff44 !important; /* Tous les titres en vert clair */
+    color: #ffdd77 !important; /* Tous les titres en jaune clair */
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9) !important;
 }
 
@@ -2938,5 +2951,11 @@ footer {
 }
 
 .card-back strong, .card-back b {
-    color: #44ff44 !important; /* Texte en gras en vert clair */
+    color: #ffdd77 !important; /* Texte en gras en jaune clair */
+}
+
+/* Bordures et cadres des cartes retournées */
+.card-back {
+    border-color: #ffdd77 !important; /* Bordure principale jaune */
+    box-shadow: inset 0 0 20px rgba(255, 221, 119, 0.2), 0 0 30px rgba(0, 0, 0, 0.9) !important;
 }
