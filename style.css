@@ -2904,6 +2904,7 @@ footer {
 .card-back .phase-section {
     color: #ffdd77 !important; /* Jaune clair pour les sections de phase */
     border-left-color: #ffdd77 !important; /* Bordure gauche jaune */
+    border-color: #ffdd77 !important; /* Toutes les bordures en jaune clair */
     background: linear-gradient(90deg, rgba(255, 221, 119, 0.15), rgba(255, 221, 119, 0.05)) !important;
 }
 
@@ -2912,7 +2913,8 @@ footer {
 }
 
 .card-back .info-section {
-    border-bottom-color: rgba(255, 221, 119, 0.5) !important; /* Bordures inférieures jaunes */
+    border-bottom-color: #ffdd77 !important; /* Bordures inférieures jaunes */
+    border-color: #ffdd77 !important; /* Toutes les bordures en jaune clair */
     background: rgba(255, 221, 119, 0.1) !important; /* Fond légèrement jaune */
 }
 
@@ -2958,4 +2960,32 @@ footer {
 .card-back {
     border-color: #ffdd77 !important; /* Bordure principale jaune */
     box-shadow: inset 0 0 20px rgba(255, 221, 119, 0.2), 0 0 30px rgba(0, 0, 0, 0.9) !important;
+    overflow-y: auto !important; /* Permettre le défilement vertical */
+    max-height: 100% !important; /* Utiliser toute la hauteur disponible */
+}
+
+/* S'assurer que le contenu détaillé peut défiler */
+.card-back .detailed-info {
+    overflow-y: auto !important; /* Permettre le défilement du contenu */
+    max-height: calc(100% - 80px) !important; /* Laisser de l'espace pour l'en-tête */
+    padding-right: 10px !important; /* Espace pour la barre de défilement */
+}
+
+/* Style de la barre de défilement pour les cartes retournées */
+.card-back::-webkit-scrollbar,
+.card-back .detailed-info::-webkit-scrollbar {
+    width: 8px !important;
+    background-color: rgba(255, 221, 119, 0.1) !important;
+}
+
+.card-back::-webkit-scrollbar-thumb,
+.card-back .detailed-info::-webkit-scrollbar-thumb {
+    background-color: #ffdd77 !important;
+    border-radius: 4px !important;
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
+}
+
+.card-back::-webkit-scrollbar-thumb:hover,
+.card-back .detailed-info::-webkit-scrollbar-thumb:hover {
+    background-color: #ffee88 !important;
 }
