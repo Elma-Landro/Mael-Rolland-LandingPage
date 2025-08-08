@@ -1495,56 +1495,46 @@ footer {
     background: linear-gradient(135deg, rgba(20, 20, 20, 0.98), rgba(40, 20, 20, 0.98));
     border: 3px solid var(--text-accent);
     font-size: 0.9em;
-    
-    /* CORRECTIONS CRITIQUES */
-    overflow: hidden; /* Pas de scroll ici */
-    padding: 0; /* Retire le padding */
+    overflow: hidden !important; /* Cache overflow sur le container principal */
+    padding: 0 !important; /* Supprime padding du container */
     box-shadow: inset 0 0 20px rgba(51, 255, 51, 0.2), 0 0 30px rgba(0, 0, 0, 0.9);
-    
-    /* Structure flex pour optimiser l'espace */
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    display: flex !important;
+    flex-direction: column !important;
 }
 
-/* Contenu détaillé avec scroll fonctionnel */
-.detailed-info {
-    width: 100%;
-    text-align: left;
-    padding: 25px; /* Déplace le padding ici */
-    flex: 1;
-    overflow-y: auto; /* Active le scroll ici */
-    overflow-x: hidden;
-    
-    /* Scrollbar personnalisée */
-    scrollbar-width: thin;
-    scrollbar-color: #33ff33 rgba(0,0,0,0.3);
+/* S'assurer que le contenu détaillé peut défiler */
+.card-back .detailed-info {
+    overflow-y: scroll !important; /* Force le défilement visible */
+    max-height: calc(85vh - 80px) !important; /* Hauteur adaptée au modal */
+    height: calc(85vh - 80px) !important; /* Force la hauteur pour activer le scroll */
+    padding-right: 20px !important; /* Plus d'espace pour la barre de défilement */
+    scrollbar-width: thick !important; /* Firefox - barre plus visible */
+    scrollbar-color: #ffdd77 rgba(0, 0, 0, 0.3) !important; /* Firefox - contraste amélioré */
 }
 
-/* Scrollbar webkit pour Chrome/Safari */
-.detailed-info::-webkit-scrollbar {
-    width: 8px;
+/* Style de la barre de défilement pour les cartes retournées */
+.card-back::-webkit-scrollbar,
+.card-back .detailed-info::-webkit-scrollbar {
+    width: 12px !important; /* Barre plus large et visible */
+    background-color: rgba(0, 0, 0, 0.4) !important; /* Fond plus contrasté */
 }
 
-.detailed-info::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.3);
-    border-radius: 4px;
+.card-back::-webkit-scrollbar-thumb,
+.card-back .detailed-info::-webkit-scrollbar-thumb {
+    background-color: #ffdd77 !important;
+    border-radius: 6px !important;
+    border: 2px solid rgba(0, 0, 0, 0.5) !important; /* Bordure plus marquée */
+    box-shadow: inset 0 0 4px rgba(255, 221, 119, 0.6) !important; /* Effet interne */
 }
 
-.detailed-info::-webkit-scrollbar-thumb {
-    background: #33ff33;
-    border-radius: 4px;
+.card-back::-webkit-scrollbar-thumb:hover,
+.card-back .detailed-info::-webkit-scrollbar-thumb:hover {
+    background-color: #ffee88 !important;
+    box-shadow: inset 0 0 6px rgba(255, 238, 136, 0.8) !important;
 }
 
-.detailed-info::-webkit-scrollbar-thumb:hover {
-    background: #66ff66;
-}
-
-/* Assurer les hauteurs pour le scroll */
-.vulnerability-item.flipped .vulnerability-card {
-    height: 100%;
-}
-
-.vulnerability-item.flipped .card-back {
-    height: 100%;
+/* Force l'affichage permanent de la barre de défilement */
+.card-back .detailed-info::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border-radius: 6px !important;
 }
