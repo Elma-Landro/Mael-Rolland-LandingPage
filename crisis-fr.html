@@ -919,11 +919,11 @@
     <script>
         const vulnerabilities = [
             { year: 2009, month: 1, cve: "Genesis Block", type: "genesis", title: "Lancement du protocole Bitcoin", description: "Lancement du réseau Bitcoin", date: "03/01/2009" },
-            { year: 2010, month: 7, cve: "CVE-2010-5137", type: "dos", title: "Crash OP_LSHIFT", description: "Type de faille : DOS ; Crash OP_LSHIFT", date: "28/07/2010" },
-            { year: 2010, month: 7, cve: "CVE-2010-5141", type: "theft", title: "OP_RETURN pourrait être utilisé pour dépenser n'importe quelle sortie", description: "Type de faille : Vol ; OP_RETURN pourrait être utilisé pour dépenser n'importe quelle sortie", date: "28/07/2010" },
-            { year: 2010, month: 7, cve: "CVE-2010-5138", type: "dos", title: "DoS SigOp illimité", description: "Type de faille : DOS ; DoS SigOp illimité", date: "29/07/2010" },
-            { year: 2010, month: 8, cve: "CVE-2010-5139", type: "inflation", title: "Débordement de sortie combiné", description: "Type de faille : Inflation ; Débordement de sortie combiné", date: "15/08/2010" },
-            { year: 2010, month: 9, cve: "CVE-2010-5140", type: "dos", title: "Transactions ne se confirmant jamais", description: "Type de faille : DOS ; Transactions ne se confirmant jamais", date: "29/09/2010" },
+            { year: 2010, month: 7, cve: "CVE-2010-5137", type: "dos", title: "Crash OP_LSHIFT", description: "Vulnérabilité d'exécution de script causant l'arrêt du client", date: "28/07/2010" },
+            { year: 2010, month: 7, cve: "CVE-2010-5141", type: "theft", title: "OP_RETURN pourrait être utilisé pour dépenser n'importe quelle sortie", description: "Vulnérabilité critique permettant la dépense non autorisée de tout UTXO", date: "28/07/2010" },
+            { year: 2010, month: 7, cve: "CVE-2010-5138", type: "dos", title: "DoS SigOp illimité", description: "Épuisement des ressources par opérations de signature excessives", date: "29/07/2010" },
+            { year: 2010, month: 8, cve: "CVE-2010-5139", type: "inflation", title: "Débordement de sortie combiné", description: "Débordement d'entier permettant la création de 184 milliards BTC dans le bloc 74638", date: "15/08/2010" },
+            { year: 2010, month: 9, cve: "CVE-2010-5140", type: "dos", title: "Transactions ne se confirmant jamais", description: "Congestion réseau par propagation de transactions non confirmables", date: "29/09/2010" },
             { year: 2011, month: 11, cve: "CVE-2011-4447", type: "exposure", title: "Non-chiffrement du portefeuille", description: "Type de faille : Exposition ; Non-chiffrement du portefeuille", date: "11/11/2011" },
             { year: 2012, month: 3, cve: "CVE-2012-1909", type: "network-split", title: "Écrasement de transaction", description: "Type de faille : Division Réseau ; Écrasement de transaction", date: "07/03/2012" },
             { year: 2012, month: 3, cve: "CVE-2012-1910", type: "unknown", title: "Exceptions MingW non thread-safe", description: "Type de faille : Inconnu ; Exceptions MingW non thread-safe", date: "17/03/2012" },
