@@ -1150,8 +1150,8 @@ footer {
 .matrix-container {
             background-color: var(--button-bg);
             border: 2px solid var(--button-border);
-            padding: 15px 10px;
-            margin: 15px auto;
+            padding: 8px 10px;
+            margin: 8px auto;
             font-family: 'VT323', monospace;
             max-width: 720px;
         }
@@ -1169,11 +1169,11 @@ footer {
 /* Matrix Grid - Layout corrigé et parfaitement aligné */
 .matrix-grid {
     display: grid !important;
-    grid-template-columns: 100px 1fr 1fr !important;
-    grid-template-rows: 60px 1fr 1fr !important;
+    grid-template-columns: 120px 1fr 1fr !important;
+    grid-template-rows: 45px 1fr 1fr !important;
     gap: 0 !important;
     width: 100% !important;
-    max-width: 700px !important;
+    max-width: 720px !important;
     margin: 0 auto !important;
     font-family: 'VT323', monospace !important;
     border: 3px solid var(--text-secondary) !important;
@@ -1187,26 +1187,27 @@ footer {
     border-bottom: 2px solid var(--text-secondary) !important;
 }
 
-/* Headers horizontaux - ligne du haut - TEXTE HORIZONTAL */
+/* Headers horizontaux - ligne du haut - TEXTE HORIZONTAL PARFAITEMENT CENTRÉ */
 .matrix-grid > div:nth-child(2),
 .matrix-grid > div:nth-child(3) {
     background: rgba(255, 204, 102, 0.15) !important;
     border-bottom: 2px solid var(--text-secondary) !important;
-    padding: 12px 8px !important;
-    font-size: 0.8em !important;
+    padding: 8px 6px !important;
+    font-size: 0.75em !important;
     color: var(--text-secondary) !important;
     text-align: center !important;
     font-weight: bold !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    line-height: 1.3 !important;
+    line-height: 1.2 !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
     writing-mode: horizontal-tb !important;
     text-orientation: initial !important;
     box-sizing: border-box !important;
-    min-height: 60px !important;
+    min-height: 45px !important;
+    max-height: 45px !important;
 }
 
 /* Séparateur vertical entre les headers horizontaux */
@@ -1214,13 +1215,13 @@ footer {
     border-right: 2px solid var(--text-secondary) !important;
 }
 
-/* Headers verticaux - colonne de gauche - TEXTE VERTICAL */
+/* Headers verticaux - colonne de gauche - TEXTE VERTICAL PARFAITEMENT CENTRÉ */
 .matrix-grid > div:nth-child(4),
 .matrix-grid > div:nth-child(7) {
     background: rgba(255, 204, 102, 0.1) !important;
     border-right: 2px solid var(--text-secondary) !important;
-    padding: 12px 6px !important;
-    font-size: 0.75em !important;
+    padding: 8px 4px !important;
+    font-size: 0.72em !important;
     color: var(--text-secondary) !important;
     font-weight: bold !important;
     display: flex !important;
@@ -1228,10 +1229,12 @@ footer {
     justify-content: center !important;
     writing-mode: vertical-rl !important;
     text-orientation: mixed !important;
-    line-height: 1.3 !important;
+    line-height: 1.2 !important;
     box-sizing: border-box !important;
     text-align: center !important;
     word-wrap: break-word !important;
+    width: 120px !important;
+    overflow: hidden !important;
 }
 
 /* Séparateur horizontal entre les headers verticaux */
@@ -1241,9 +1244,9 @@ footer {
 
 /* Quadrants - cellules de contenu PARFAITEMENT ALIGNÉES */
 .matrix-grid .quadrant {
-    padding: 15px 10px !important;
-    min-height: 180px !important;
-    max-height: 180px !important;
+    padding: 12px 8px !important;
+    min-height: 160px !important;
+    max-height: 160px !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -1255,6 +1258,8 @@ footer {
     box-sizing: border-box !important;
     border: none !important;
     position: relative !important;
+    writing-mode: horizontal-tb !important;
+    text-orientation: initial !important;
 }
 
 /* Bordures internes pour les quadrants - ALIGNEMENT PARFAIT */
@@ -1271,30 +1276,37 @@ footer {
     border-right: 2px solid var(--text-secondary) !important;
 }
 
-/* Contenu des quadrants */
+/* Contenu des quadrants - TOUT EN HORIZONTAL */
 .matrix-grid .quadrant .quadrant-label {
-    font-size: 0.9em !important;
+    font-size: 0.85em !important;
     font-weight: bold !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 6px !important;
     text-align: center !important;
     width: 100% !important;
+    writing-mode: horizontal-tb !important;
+    text-orientation: initial !important;
+    line-height: 1.2 !important;
 }
 
 .matrix-grid .quadrant .quadrant-action {
-    font-size: 0.75em !important;
-    margin-bottom: 8px !important;
-    line-height: 1.3 !important;
+    font-size: 0.7em !important;
+    margin-bottom: 6px !important;
+    line-height: 1.2 !important;
     text-align: center !important;
     width: 100% !important;
     font-style: italic !important;
+    writing-mode: horizontal-tb !important;
+    text-orientation: initial !important;
 }
 
 .matrix-grid .quadrant .quadrant-example {
-    font-size: 0.7em !important;
-    line-height: 1.2 !important;
+    font-size: 0.65em !important;
+    line-height: 1.1 !important;
     color: var(--text-primary) !important;
     text-align: center !important;
     width: 100% !important;
+    writing-mode: horizontal-tb !important;
+    text-orientation: initial !important;
 }
 
 /* Couleurs des quadrants */
