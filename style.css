@@ -1105,7 +1105,7 @@ footer {
 
 .vulnerability-item {
             background-color: rgba(0,0,0,0.3);
-            border: 1px solid var(--text-secondary);
+            border: 2px solid #FFD700;
             padding: 15px 80px;
             margin: 0 auto 15px auto;
             font-size: 1em;
@@ -1118,7 +1118,7 @@ footer {
             transition: all 0.4s ease;
             perspective: 1000px;
             height: 220px;
-            overflow: visible;
+            overflow: hidden;
             width: 85%;
             max-width: 750px;
             min-width: 300px;
@@ -1839,7 +1839,7 @@ footer {
 
 .vulnerability-item {
             background-color: rgba(0,0,0,0.3);
-            border: 1px solid var(--text-secondary);
+            border: 2px solid #FFD700;
             padding: 15px 80px;
             margin: 0 auto 15px auto;
             font-size: 1em;
@@ -1852,7 +1852,7 @@ footer {
             transition: all 0.4s ease;
             perspective: 1000px;
             height: 220px;
-            overflow: visible;
+            overflow: hidden;
             width: 85%;
             max-width: 750px;
             min-width: 300px;
@@ -2573,7 +2573,7 @@ footer {
 
 .vulnerability-item {
             background-color: rgba(0,0,0,0.3);
-            border: 1px solid var(--text-secondary);
+            border: 2px solid #FFD700;
             padding: 15px 80px;
             margin: 0 auto 15px auto;
             font-size: 1em;
@@ -2586,7 +2586,7 @@ footer {
             transition: all 0.4s ease;
             perspective: 1000px;
             height: 220px;
-            overflow: visible;
+            overflow: hidden;
             width: 85%;
             max-width: 750px;
             min-width: 300px;
