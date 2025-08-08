@@ -2889,37 +2889,54 @@ footer {
         font-size: 0.6em !important;
     }
 }
-/* Styles spécifiques pour les cartes retournées (crisis pages) */
+/* Styles spécifiques pour les cartes retournées (crisis pages) - Palette mode dark */
 .card-back .detailed-info {
-    color: #ffdd77 !important; /* Jaune pâle pour le contenu des cartes retournées */
+    color: #ffdd77 !important; /* Jaune clair pour le contenu des cartes retournées */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
 }
 
 .card-back .card-header {
-    color: #33ff33 !important; /* Vert pour les titres des cartes retournées */
+    color: #44ff44 !important; /* Vert clair pour les titres des cartes retournées */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9) !important;
 }
 
 .card-back .phase-section {
-    color: #ffdd77 !important; /* Jaune pâle pour les sections de phase */
+    color: #ffdd77 !important; /* Jaune clair pour les sections de phase */
 }
 
 .card-back .phase-section strong {
-    color: #33ff33 !important; /* Vert pour les sous-titres en gras */
+    color: #44ff44 !important; /* Vert clair pour les sous-titres en gras */
 }
 
-/* Cohérence esthétique avec le mode dark pour les cartes retournées */
+/* Cohérence esthétique complète avec le mode dark pour les cartes retournées */
 .card-back .info-content {
     color: #ffdd77 !important; /* Jaune clair pour le contenu principal */
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 1), 0 0 4px rgba(255, 221, 119, 0.3) !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
 }
 
 .card-back .vuln-title {
-    color: #33ff33 !important; /* Vert pour les titres de vulnérabilités */
+    color: #44ff44 !important; /* Vert clair pour les titres de vulnérabilités */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9) !important;
 }
 
 .card-back .vuln-cve {
-    color: #33ff33 !important; /* Vert pour les références CVE */
+    color: #44ff44 !important; /* Vert clair pour les références CVE */
 }
 
 .card-back .vuln-description {
     color: #ffdd77 !important; /* Jaune clair pour les descriptions */
+}
+
+/* Application générale de la palette aux éléments des cartes */
+.card-back h3, .card-back h4, .card-back h5 {
+    color: #44ff44 !important; /* Tous les titres en vert clair */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9) !important;
+}
+
+.card-back p, .card-back li, .card-back span {
+    color: #ffdd77 !important; /* Tout le texte courant en jaune clair */
+}
+
+.card-back strong, .card-back b {
+    color: #44ff44 !important; /* Texte en gras en vert clair */
 }
