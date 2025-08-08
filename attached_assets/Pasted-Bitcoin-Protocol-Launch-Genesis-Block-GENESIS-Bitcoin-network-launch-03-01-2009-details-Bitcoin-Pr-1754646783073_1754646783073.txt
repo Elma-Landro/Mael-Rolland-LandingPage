@@ -1,0 +1,89 @@
+Bitcoin Protocol Launch
+Genesis Block
+GENESIS
+Bitcoin network launch
+03/01/2009
+details ⟲
+Bitcoin Protocol Launch
+Genesis Block
+03/01/2009
+0. INTRODUCTION
+General Context: This vulnerability is part of the systematic analysis of Bitcoin protocol security issues documented in our indigenous crisis taxonomy framework.
+1. CRISIS INTRODUCTION PHASE
+1a. Insemination: Bitcoin network genesis block creation
+Affected Versions: Bitcoin Protocol v1.0
+Related PR/Commit: N/A (protocol genesis)
+1b. Trigger: Satoshi Nakamoto, January 3, 2009
+2. CRISIS RESOLUTION PHASE
+2a. Evaluation: N/A (genesis event)
+2b. Remediation: Bitcoin Core 0.1.0
+Fix Authors: Satoshi Nakamoto
+Resolution PRs: Initial codebase release
+3. IMPACT & SEVERITY ASSESSMENT
+Birth of Bitcoin blockchain
+4. THIRD-PARTY SOURCES & REFERENCES
+Genesis block, Bitcoin whitepaper
+5. DATA STATUS
+Verified data - Cross-referenced with multiple sources
+2010
+OP_LSHIFT crash
+CVE-2010-5137
+DOS
+Vulnerability type: DOS; OP_LSHIFT crash
+28/07/2010
+details ⟲
+OP_LSHIFT crash
+CVE-2010-5137
+28/07/2010
+0. INTRODUCTION
+General Context: This vulnerability is part of the systematic analysis of Bitcoin protocol security issues documented in our indigenous crisis taxonomy framework.
+1. CRISIS INTRODUCTION PHASE
+1a. Insemination: OP_LSHIFT operator caused client crash
+Affected Versions: Bitcoin Core 0.3.0 and earlier
+Related PR/Commit: N/A (early protocol)
+1b. Trigger: Discovered by Satoshi during protocol development
+2. CRISIS RESOLUTION PHASE
+2a. Evaluation: OP_LSHIFT disabled in script validation
+2b. Remediation: Fixed in Bitcoin Core 0.3.1
+Fix Authors: Satoshi Nakamoto
+Resolution PRs: N/A (direct commit)
+3. IMPACT & SEVERITY ASSESSMENT
+DoS vector through script execution crash
+4. THIRD-PARTY SOURCES & REFERENCES
+Bitcoin Wiki, Early Bitcoin commits
+5. DATA STATUS
+Verified data - Cross-referenced with multiple sources
+CVE DataBitcoin Wiki
+OP_RETURN could be used to spend any output
+CVE-2010-5141
+THEFT
+Vulnerability type: Theft; OP_RETURN could be used to spend any output
+28/07/2010
+CRITICALdetails ⟲
+OP_RETURN could be used to spend any output
+CVE-2010-5141
+28/07/2010
+0. INTRODUCTION
+General Context: This vulnerability is part of the systematic analysis of Bitcoin protocol security issues documented in our indigenous crisis taxonomy framework.
+1. CRISIS INTRODUCTION PHASE
+1a. Insemination: OP_RETURN could spend any output vulnerability
+Affected Versions: Bitcoin Core 0.3.0 and earlier
+Related PR/Commit: N/A (protocol-level issue)
+1b. Trigger: Discovered during early security review
+2. CRISIS RESOLUTION PHASE
+2a. Evaluation: OP_RETURN restricted to terminate script
+2b. Remediation: Fixed in Bitcoin Core 0.3.1
+Fix Authors: Satoshi Nakamoto
+Resolution PRs: N/A (emergency patch)
+3. IMPACT & SEVERITY ASSESSMENT
+Complete theft vulnerability - any UTXO spendable
+4. THIRD-PARTY SOURCES & REFERENCES
+Bitcoin Wiki, CVE database
+5. DATA STATUS
+Preliminary data - Requires additional verification and source validation
+CVE DataBitcoin Wiki
+Unlimited SigOp DoS
+CVE-2010-5138
+DOS
+Vulnerability type: DOS; Unlimited SigOp DoS
+29/07/2010
