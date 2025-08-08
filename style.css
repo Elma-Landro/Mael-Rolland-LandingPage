@@ -1188,12 +1188,18 @@ footer {
     hyphens: auto;
 }
 
-/* Optional: shrink vertical labels a hair and keep them readable */
+/* Fix vertical labels to display correctly */
 .matrix-grid .vertical-label {
     writing-mode: vertical-rl;
     text-orientation: mixed;
     font-size: 0.68em;
     padding: 6px 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    min-height: 160px;
 }
 
 /* Mobile: actually switch to the stacked version */
@@ -1212,6 +1218,19 @@ footer {
 @media (max-width: 780px) {
     .matrix-container { padding: 12px; }
     .matrix-grid .quadrant { min-height: 120px !important; }
+    .matrix-grid .vertical-label { min-height: 120px !important; }
+}
+
+/* Ensure vertical labels are properly vertical */
+.vertical-label {
+    writing-mode: vertical-rl !important;
+    text-orientation: mixed !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    font-size: 0.7em !important;
+    line-height: 1.2 !important;
 }
 /* Styles spécifiques pour les cartes retournées (crisis pages) - Palette mode dark avec dominante jaune */
 .card-back .detailed-info {
