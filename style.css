@@ -1513,21 +1513,22 @@ footer {
     border-radius: 6px !important;
 }
 .quadrant-label {
-    font-size: 1.1em; /* augmentation significative du titre */
+    font-size: 1.3em; /* taille encore plus grande pour les titres */
     color: var(--text-accent);
     font-weight: bold;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
 
 .quadrant-action {
-    font-size: 0.8em; /* augmentation du sous-titre */
+    font-size: 1em; /* augmentation significative du sous-titre */
     color: var(--text-accent);
-    margin-bottom: 6px;
+    font-weight: bold; /* mise en gras des actions */
+    margin-bottom: 8px;
     line-height: 1.2;
 }
 
 .quadrant-example {
-    font-size: 0.75em; /* augmentation du texte d'exemple */
+    font-size: 0.85em; /* légère augmentation du texte d'exemple */
     color: var(--text-primary);
     line-height: 1.3;
 }
