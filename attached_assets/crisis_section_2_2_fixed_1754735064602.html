@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,6 +114,34 @@
     .q-allowed{ box-shadow: inset 0 0 0 2px rgba(41,163,106,.35); }
     .q-forbidden{ box-shadow: inset 0 0 0 2px rgba(193,43,43,.35); }
 
+    /* Optimisation tableau Section 2.2 */
+    .matrix-grid {
+      grid-template-columns: 70px minmax(0,1fr) minmax(0,1fr);
+      gap: 4px; /* espace horizontal/vertical réduit */
+      max-width: 680px; /* largeur globale plus compacte */
+    }
+
+    .matrix-grid > div {
+      padding: 6px 8px; /* moins de padding interne */
+      line-height: 1.25; /* lignes plus serrées */
+    }
+
+    .matrix-grid .header-cell {
+      font-size: 0.9em; /* texte plus petit */
+      padding: 4px 6px;
+    }
+
+    .matrix-grid .vertical-label {
+      font-size: 0.75em;
+      padding: 4px 2px;
+    }
+
+    .matrix-grid .quadrant {
+      font-size: 0.9em;
+      padding: 6px;
+      min-height: auto; /* laisse la hauteur s'adapter au contenu */
+    }
+
     /* Mobile tuning: keep grid (no text fallback), just tighten spacing */
     @media (max-width: 680px){
       h2{font-size:28px}
@@ -157,13 +186,13 @@
             </div>
 
             <div class="mcell q q-allowed" style="grid-row:2;grid-column:3">
-              <span class="ttl">[b] “Vulnerability” crisis</span>
+              <span class="ttl">[b] "Vulnerability" crisis</span>
               <span class="sub">Action: Patch / mitigate</span>
               <p>Ex.: exposure, DoS, fake-confirmation — code allows what society rejects.</p>
             </div>
 
             <div class="mcell q q-forbidden" style="grid-row:3;grid-column:2">
-              <span class="ttl">[c] “Evolution” crisis</span>
+              <span class="ttl">[c] "Evolution" crisis</span>
               <span class="sub">Action: Protocol change</span>
               <p>Ex.: feature gaps — code forbids what society expects (scalability, UX, fees).</p>
             </div>
