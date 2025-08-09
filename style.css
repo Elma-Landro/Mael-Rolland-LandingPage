@@ -1220,42 +1220,42 @@ footer {
         padding: 15px 8px; 
         margin: 10px 0;
     }
-    
+
     .matrix-grid {
         grid-template-columns: 80px 1fr 1fr;
         grid-template-rows: 30px 1fr 1fr;
         gap: 3px;
         font-size: 0.85em;
     }
-    
+
     .matrix-grid .header-cell {
         padding: 4px 2px;
         font-size: clamp(8px, 2.5vw, 10px);
         line-height: 1.1;
     }
-    
+
     .matrix-grid .vertical-label {
         font-size: 0.65em;
         padding: 4px 2px;
         min-height: 120px;
     }
-    
+
     .matrix-grid .quadrant {
         padding: 8px 4px;
         min-height: 120px;
     }
-    
+
     .quadrant-label {
         font-size: 0.65em !important;
         margin-bottom: 4px;
     }
-    
+
     .quadrant-action {
         font-size: 0.5em !important;
         line-height: 1.2;
         margin-bottom: 4px;
     }
-    
+
     .quadrant-example {
         font-size: 0.45em !important;
         line-height: 1.2;
@@ -1266,13 +1266,13 @@ footer {
     .matrix-grid { 
         display: none !important; 
     }
-    
+
     .matrix-grid-mobile { 
         display: flex !important;
         flex-direction: column;
         gap: 12px;
     }
-    
+
     .quadrant-mobile {
         background-color: var(--button-bg);
         border: 2px solid var(--button-border);
@@ -1280,7 +1280,7 @@ footer {
         border-radius: 0;
         text-align: center;
     }
-    
+
     .mobile-context {
         font-size: 0.7em;
         color: var(--text-secondary);
@@ -1288,21 +1288,21 @@ footer {
         font-weight: bold;
         text-transform: uppercase;
     }
-    
+
     .quadrant-mobile .quadrant-label {
         font-size: 0.9em;
         color: var(--text-accent);
         font-weight: bold;
         margin-bottom: 8px;
     }
-    
+
     .quadrant-mobile .quadrant-action {
         font-size: 0.75em;
         color: var(--text-accent);
         margin-bottom: 8px;
         line-height: 1.3;
     }
-    
+
     .quadrant-mobile .quadrant-example {
         font-size: 0.7em;
         color: var(--text-primary);
@@ -1315,23 +1315,23 @@ footer {
         padding: 10px 5px;
         margin: 8px 0;
     }
-    
+
     .quadrant-mobile {
         padding: 10px 8px;
     }
-    
+
     .mobile-context {
         font-size: 0.65em;
     }
-    
+
     .quadrant-mobile .quadrant-label {
         font-size: 0.85em;
     }
-    
+
     .quadrant-mobile .quadrant-action {
         font-size: 0.7em;
     }
-    
+
     .quadrant-mobile .quadrant-example {
         font-size: 0.65em;
     }
