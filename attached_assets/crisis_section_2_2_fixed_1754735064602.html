@@ -145,12 +145,29 @@
     /* Mobile tuning: keep grid (no text fallback), just tighten spacing */
     @media (max-width: 680px){
       h2{font-size:28px}
-      .matrix{ gap:6px; }
-      .mcell.header{ font-size:20px; padding:8px 10px; }
-      .mcell.vlabel{ font-size:16px; padding:6px 4px; }
-      .mcell.q{ min-height:120px; padding:12px; }
-      .mcell.q .ttl{ font-size:22px; }
-      .mcell.q p{ font-size:20px; }
+      .matrix{ 
+        gap:4px; 
+        grid-template-columns: 60px minmax(0,1fr) minmax(0,1fr);
+      }
+      .mcell.header{ font-size:16px; padding:6px 8px; line-height:1.2; }
+      .mcell.vlabel{ font-size:14px; padding:4px 2px; }
+      .mcell.q{ min-height:100px; padding:8px; }
+      .mcell.q .ttl{ font-size:18px; margin-bottom:4px; }
+      .mcell.q .sub{ font-size:14px; margin-bottom:4px; }
+      .mcell.q p{ font-size:16px; line-height:1.2; }
+    }
+    
+    @media (max-width: 480px){
+      .matrix{ 
+        gap:3px; 
+        grid-template-columns: 50px minmax(0,1fr) minmax(0,1fr);
+      }
+      .mcell.header{ font-size:14px; padding:4px 6px; }
+      .mcell.vlabel{ font-size:12px; padding:2px 1px; }
+      .mcell.q{ min-height:90px; padding:6px; }
+      .mcell.q .ttl{ font-size:16px; }
+      .mcell.q .sub{ font-size:12px; }
+      .mcell.q p{ font-size:14px; }
     }
   </style>
 </head>
