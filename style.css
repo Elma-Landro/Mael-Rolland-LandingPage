@@ -1368,6 +1368,33 @@ footer {
     line-height: 1.2 !important;
 }
 
+/* --- Section 2.2: compact left rail --- */
+.matrix-grid {
+  /* make the left column narrow */
+  grid-template-columns: 56px minmax(0,1fr) minmax(0,1fr); /* was wider */
+  gap: 6px;                    /* keep the grid tight */
+}
+
+.matrix-grid > div { box-sizing: border-box; }
+
+.matrix-grid .vertical-label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  /* compact text */
+  font-size: 0.72em;
+  line-height: 1.1;
+  /* kill extra padding that eats width */
+  padding: 2px 0;
+}
+
+/* the two "empty" left cells must be real spacers (no chrome) */
+.matrix-grid .rail-spacer {
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  min-height: 0 !important;
+}
+
 /* Styles spécifiques pour les cartes retournées (crisis pages) - Palette mode dark avec dominante jaune */
 .card-back .detailed-info {
     color: #ffdd77 !important; /* Jaune clair pour le contenu des cartes retournées */
