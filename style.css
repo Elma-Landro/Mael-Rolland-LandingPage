@@ -1263,77 +1263,91 @@ footer {
 }
 
 @media (max-width: 580px) {
-    .matrix-grid { 
-        display: none !important; 
+    .matrix-grid {
+        grid-template-columns: 60px 1fr 1fr;
+        grid-template-rows: 25px 1fr 1fr;
+        gap: 2px;
+        font-size: 0.8em;
     }
 
-    .matrix-grid-mobile { 
-        display: flex !important;
-        flex-direction: column;
-        gap: 12px;
+    .matrix-grid .header-cell {
+        padding: 2px 1px;
+        font-size: clamp(7px, 2vw, 9px);
+        line-height: 1.1;
     }
 
-    .quadrant-mobile {
-        background-color: var(--button-bg);
-        border: 2px solid var(--button-border);
-        padding: 12px;
-        border-radius: 0;
-        text-align: center;
+    .matrix-grid .vertical-label {
+        font-size: 0.6em;
+        padding: 2px 1px;
+        min-height: 100px;
     }
 
-    .mobile-context {
-        font-size: 0.7em;
-        color: var(--text-secondary);
-        margin-bottom: 8px;
-        font-weight: bold;
-        text-transform: uppercase;
+    .matrix-grid .quadrant {
+        padding: 6px 3px;
+        min-height: 100px;
     }
 
-    .quadrant-mobile .quadrant-label {
-        font-size: 0.9em;
-        color: var(--text-accent);
-        font-weight: bold;
-        margin-bottom: 8px;
+    .quadrant-label {
+        font-size: 0.6em !important;
+        margin-bottom: 2px;
     }
 
-    .quadrant-mobile .quadrant-action {
-        font-size: 0.75em;
-        color: var(--text-accent);
-        margin-bottom: 8px;
-        line-height: 1.3;
+    .quadrant-action {
+        font-size: 0.45em !important;
+        line-height: 1.1;
+        margin-bottom: 2px;
     }
 
-    .quadrant-mobile .quadrant-example {
-        font-size: 0.7em;
-        color: var(--text-primary);
-        line-height: 1.3;
+    .quadrant-example {
+        font-size: 0.4em !important;
+        line-height: 1.1;
     }
 }
 
 @media (max-width: 480px) {
     .matrix-container {
-        padding: 10px 5px;
-        margin: 8px 0;
+        padding: 8px 3px;
+        margin: 5px 0;
     }
 
-    .quadrant-mobile {
-        padding: 10px 8px;
+    .matrix-grid {
+        grid-template-columns: 50px 1fr 1fr;
+        grid-template-rows: 20px 1fr 1fr;
+        gap: 1px;
+        font-size: 0.75em;
     }
 
-    .mobile-context {
-        font-size: 0.65em;
+    .matrix-grid .header-cell {
+        padding: 1px;
+        font-size: clamp(6px, 1.8vw, 8px);
+        line-height: 1.0;
     }
 
-    .quadrant-mobile .quadrant-label {
-        font-size: 0.85em;
+    .matrix-grid .vertical-label {
+        font-size: 0.55em;
+        padding: 1px;
+        min-height: 80px;
     }
 
-    .quadrant-mobile .quadrant-action {
-        font-size: 0.7em;
+    .matrix-grid .quadrant {
+        padding: 4px 2px;
+        min-height: 80px;
     }
 
-    .quadrant-mobile .quadrant-example {
-        font-size: 0.65em;
+    .quadrant-label {
+        font-size: 0.55em !important;
+        margin-bottom: 1px;
+    }
+
+    .quadrant-action {
+        font-size: 0.4em !important;
+        line-height: 1.0;
+        margin-bottom: 1px;
+    }
+
+    .quadrant-example {
+        font-size: 0.35em !important;
+        line-height: 1.0;
     }
 }
 
