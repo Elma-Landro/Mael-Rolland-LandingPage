@@ -1169,19 +1169,21 @@ footer {
 /* --- Matrix fixes --- */
 .matrix-grid {
     display: grid;
-    grid-template-columns: 100px minmax(0,1fr) minmax(0,1fr);
+    grid-template-columns: 50px minmax(0,1fr) minmax(0,1fr); /* largeur réduite pour les labels */
     grid-template-rows: auto 1fr 1fr;
-    gap: 4px;
-    max-width: 720px;
+    gap: 4px; /* espace horizontal/vertical réduit */
+    max-width: 680px; /* largeur globale plus compacte */
     margin: 0 auto;
 }
 
 .matrix-grid > div {
     box-sizing: border-box;
+    padding: 6px 8px; /* moins de padding interne */
+    line-height: 1.25; /* lignes plus serrées */
 }
 
 .matrix-grid .header-cell {
-    padding: 8px 4px;
+    padding: 4px 6px; /* moins de padding interne */
     font-size: clamp(10px, 2.2vw, 12px);
     line-height: 1.2;
     word-break: break-word;
@@ -1190,13 +1192,14 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 0.9em; /* texte plus petit */
 }
 
 .matrix-grid .vertical-label {
     writing-mode: vertical-rl;
     text-orientation: mixed;
     font-size: 0.75em;
-    padding: 8px 4px;
+    padding: 2px 1px; /* padding drastiquement réduit */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1206,12 +1209,13 @@ footer {
 }
 
 .matrix-grid .quadrant {
-    padding: 12px 8px;
+    padding: 6px; /* moins de padding interne */
     min-height: 140px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    font-size: 0.9em; /* texte plus petit */
 }
 
 /* Mobile-first responsive design */
