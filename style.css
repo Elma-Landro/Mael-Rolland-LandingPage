@@ -1169,7 +1169,7 @@ footer {
 /* --- Matrix fixes --- */
 .matrix-grid {
     display: grid;
-    grid-template-columns: 30px minmax(0,1fr) minmax(0,1fr); /* largeur encore plus réduite pour les labels */
+    grid-template-columns: 15px minmax(0,1fr) minmax(0,1fr); /* réduction de 50% supplémentaire des labels */
     grid-template-rows: auto 1fr 1fr;
     gap: 4px; /* espace horizontal/vertical réduit */
     max-width: 680px; /* largeur globale plus compacte */
@@ -1198,8 +1198,8 @@ footer {
 .matrix-grid .vertical-label {
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    font-size: 0.75em;
-    padding: 1px 0px !important; /* padding minimal avec !important */
+    font-size: 0.5em; /* encore plus petit */
+    padding: 0px !important; /* suppression totale du padding */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1486,21 +1486,21 @@ footer {
     border-radius: 6px !important;
 }
 .quadrant-label {
-    font-size: 0.7em;
+    font-size: 1.1em; /* augmentation significative du titre */
     color: var(--text-accent);
     font-weight: bold;
-    margin-bottom: 1.6px;
+    margin-bottom: 6px;
 }
 
 .quadrant-action {
-    font-size: 0.56em;
+    font-size: 0.8em; /* augmentation du sous-titre */
     color: var(--text-accent);
-    margin-bottom: 2px;
-    line-height: 0.26;
+    margin-bottom: 6px;
+    line-height: 1.2;
 }
 
 .quadrant-example {
-    font-size: 0.56em;
+    font-size: 0.75em; /* augmentation du texte d'exemple */
     color: var(--text-primary);
-    line-height: 0.26;
+    line-height: 1.3;
 }
