@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crisis — Section 2.2 Matrix (Fixed, palette preserved)</title>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <style>
+    /* ====== Palette (tuned to user's screenshots) ====== */
+    :root{
+      --bg-outer:#3d0b0b;
+      --bg-inner:#5a1414;
+      --card:#6a1a1a;
+      --stroke:#f0b35a;
+      --stroke-dim:#c4883e;
+      --text:#f4e9d5;
+      --text-secondary:#f0b35a;
+      --accent:#20ff7a; /* neon green titles */
+      --accent-2:#ffcc66; /* warm headings / borders */
+      --danger:#c12b2b;
+      --ok:#29a36a;
+      --maxw:980px;
+    }
+
+    html,body{height:100%}
+    html{background:radial-gradient(ellipse at top, var(--bg-inner), var(--bg-outer));}
+    body{
+      margin:0;
+      color:var(--text);
+      font-family:'VT323', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:22px;
+      line-height:1.35;
+    }
+
+    .page{max-width:var(--maxw); margin:0 auto; padding:24px 14px 72px;}
+    .card{
+      background: linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.04)), var(--card);
+      border:2px solid var(--stroke);
+      border-radius:10px;
+      padding:18px;
+    }
+    h1,h2,h3{margin:0 0 12px}
+    h1{color:var(--accent); font-size:44px; text-align:center; letter-spacing:1px;}
+    h2{color:var(--accent); font-size:34px; text-align:center}
+    p{margin:8px 0 12px}
+    .muted{color:var(--text-secondary)}
+
+    /* ====== Section 2.2 matrix ====== */
+    .matrix-shell{
+      margin-top:12px;
+      padding:16px;
+      border:2px solid var(--stroke);
+      border-radius:10px;
+      background:rgba(0,0,0,.06);
+    }
+
+    /* Scroll guard so nothing overflows the page; matrix stays centered */
+    .matrix-scroll{
+      overflow-x:auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .matrix{
+      /* centered + contained */
+      width:100%;
+      max-width:760px;
+      margin:0 auto;
+      /* grid */
+      display:grid;
+      grid-template-columns: 84px minmax(0,1fr) minmax(0,1fr);
+      grid-template-rows: auto minmax(0,1fr) minmax(0,1fr);
+      gap:8px;
+      box-sizing:border-box;
+    }
+    .mcell{
+      box-sizing:border-box;
+      border:2px solid var(--stroke-dim);
+      background: rgba(0,0,0,.12);
+      border-radius:8px;
+      padding:12px;
+      min-width:0; /* allow wrapping */
+    }
+
+    /* Top headers */
+    .mcell.header{
+      background: rgba(0,0,0,.18);
+      color:var(--text);
+      text-align:center;
+      line-height:1.2;
+      padding:10px 12px;
+      overflow-wrap:anywhere;
+      word-break:break-word;
+      font-size:22px;
+    }
+    /* Left vertical labels (compact) */
+    .mcell.vlabel{
+      background: rgba(0,0,0,.12);
+      color:var(--text-secondary);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      letter-spacing:.5px;
+      text-align:center;
+      padding:8px 6px;
+      font-size:18px;
+    }
+    /* Quadrants */
+    .mcell.q{background: rgba(0,0,0,.1); padding:14px; min-height:140px;}
+    .mcell.q .ttl{color:var(--accent); font-size:26px; margin-bottom:8px; display:block; text-align:center}
+    .mcell.q .sub{color:var(--text-secondary); margin-bottom:6px; display:block; text-align:center}
+    .mcell.q p{margin:6px 0 0; font-size:22px; text-align:center}
+
+    /* Fine borders: highlight "allowed/forbidden" with subtle green/red */
+    .q-allowed{ box-shadow: inset 0 0 0 2px rgba(41,163,106,.35); }
+    .q-forbidden{ box-shadow: inset 0 0 0 2px rgba(193,43,43,.35); }
+
+    /* Mobile tuning: keep grid (no text fallback), just tighten spacing */
+    @media (max-width: 680px){
+      h2{font-size:28px}
+      .matrix{ gap:6px; }
+      .mcell.header{ font-size:20px; padding:8px 10px; }
+      .mcell.vlabel{ font-size:16px; padding:6px 4px; }
+      .mcell.q{ min-height:120px; padding:12px; }
+      .mcell.q .ttl{ font-size:22px; }
+      .mcell.q p{ font-size:20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <h2>Two major families of protocol crises</h2>
+
+      <div class="matrix-shell">
+        <div class="matrix-scroll">
+          <div class="matrix" role="table" aria-label="2x2 crisis matrix">
+
+            <!-- empty corner -->
+            <div class="mcell" style="grid-row:1;grid-column:1;background:transparent;border:none"></div>
+
+            <!-- top headers -->
+            <div class="mcell header" style="grid-row:1;grid-column:2">
+              …what is <strong>EXPECTED</strong> — considered legitimate by social consensus
+            </div>
+            <div class="mcell header" style="grid-row:1;grid-column:3">
+              …what is <strong>UNEXPECTED</strong> — considered illegitimate by social consensus
+            </div>
+
+            <!-- left labels -->
+            <div class="mcell vlabel" style="grid-row:2;grid-column:1">The code ALLOWS…</div>
+            <div class="mcell vlabel" style="grid-row:3;grid-column:1">The code FORBIDS…</div>
+
+            <!-- Quadrants -->
+            <div class="mcell q q-allowed" style="grid-row:2;grid-column:2">
+              <span class="ttl">[a] Normal situation</span>
+              <span class="sub">Action: Status quo</span>
+              <p>Ex.: double-spending control, monetary creation following planned schedule, expected settlement.</p>
+            </div>
+
+            <div class="mcell q q-allowed" style="grid-row:2;grid-column:3">
+              <span class="ttl">[b] “Vulnerability” crisis</span>
+              <span class="sub">Action: Patch / mitigate</span>
+              <p>Ex.: exposure, DoS, fake-confirmation — code allows what society rejects.</p>
+            </div>
+
+            <div class="mcell q q-forbidden" style="grid-row:3;grid-column:2">
+              <span class="ttl">[c] “Evolution” crisis</span>
+              <span class="sub">Action: Protocol change</span>
+              <p>Ex.: feature gaps — code forbids what society expects (scalability, UX, fees).</p>
+            </div>
+
+            <div class="mcell q q-forbidden" style="grid-row:3;grid-column:3">
+              <span class="ttl">[d] Normal situation</span>
+              <span class="sub">Action: Status quo</span>
+              <p>Ex.: rejection of double-spend, invalidation of unauthorized minting, ledger uniqueness.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
