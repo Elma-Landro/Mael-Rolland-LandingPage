@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gouvernance des Crises - Gestion des Crises Protocole Bitcoin | Maël Rolland</title>
+    <meta name="description" content="Analyse des processus de gouvernance, acteurs et mécanismes de décision dans la résolution des vulnérabilités du protocole Bitcoin.">
+    <meta name="keywords" content="gouvernance Bitcoin, gestion crise, gouvernance protocole, prise décision cryptomonnaie">
+    <meta name="author" content="Maël Rolland">
+    <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
+
+    <style>
+        /* Navigation Bar */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--button-bg);
+            border-bottom: 2px solid var(--button-border);
+            padding: 10px 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'VT323', monospace;
+        }
+
+        .nav-logo {
+            color: var(--text-accent);
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9em;
+            padding: 5px 10px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            border-color: var(--text-accent);
+            background: rgba(51, 255, 51, 0.1);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            margin-top: 70px;
+            margin-bottom: 10px;
+            text-align: center;
+            font-family: 'VT323', monospace;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: var(--text-accent);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main content */
+        .container {
+            margin-top: 0px;
+            padding-top: 20px;
+        }
+
+        .content-section {
+            background-color: var(--button-bg);
+            border: 2px solid var(--button-border);
+            padding: 20px;
+            margin-bottom: 20px;
+            font-family: 'VT323', monospace;
+        }
+
+        .governance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .governance-card {
+            background: var(--button-bg);
+            border: 2px solid var(--button-border);
+            padding: 15px;
+            font-family: 'VT323', monospace;
+        }
+
+        .governance-card h3 {
+            color: var(--text-accent);
+            margin-bottom: 10px;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .nav-bar {
+                padding: 8px 15px;
+            }
+
+            .nav-logo {
+                font-size: 1em;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 0.8em;
+                padding: 4px 8px;
+            }
+
+            .governance-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <a href="index-fr.html" class="nav-logo">Maël Rolland</a>
+        <div class="nav-links">
+            <a href="index-fr.html">Accueil</a>
+            <a href="crisis-fr.html">Hub Crises</a>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="crisis-fr.html">← Retour au Hub Crises</a>
+    </div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Basculer mode sombre/clair">
+        <img id="theme-icon" src="assets/icons/Moon.jpg" alt="Lune"> <span id="theme-text">Sombre</span>
+    </button>
+
+    <div class="language-switcher">
+        <a href="crisis-governance.html">🇬🇧 English</a> | 
+        <a href="crisis-governance-fr.html">🇫🇷 Français</a>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1 class="main-title typing-animation">Gouvernance des Crises</h1>
+            <div class="avatar-section" style="margin: 10px 0;">
+                <img src="assets/img/avatar-closky-mael-rolland.eth.jpg" alt="Avatar mael-rolland.eth" class="avatar-icon">
+            </div>
+            <p class="subtitle">Analyse de la Gestion des Crises du Protocole Bitcoin</p>
+        </header>
+
+        <div class="content-section">
+            <h3 style="color: var(--text-accent); text-align: center; margin-bottom: 15px;">Cadre de Gouvernance</h3>
+            <p style="color: var(--text-primary); text-align: center; font-size: 0.9em;">
+                Analyse des processus de gouvernance, des acteurs et des mécanismes de prise de décision employés dans la résolution des crises du protocole Bitcoin. 
+                Cette section examine les structures de gouvernance polycentrique révélées par la gestion des vulnérabilités.
+            </p>
+        </div>
+
+        <div class="governance-grid">
+            <div class="governance-card">
+                <h3>Acteurs de Crise</h3>
+                <p style="color: var(--text-primary); font-size: 0.9em;">
+                    Analyse des parties prenantes clés impliquées dans la résolution de crise : développeurs principaux, mineurs, opérateurs de nœuds et membres de la communauté.
+                </p>
+            </div>
+
+            <div class="governance-card">
+                <h3>Mécanismes de Décision</h3>
+                <p style="color: var(--text-primary); font-size: 0.9em;">
+                    Examen des processus formels et informels régissant la divulgation des vulnérabilités, le développement de correctifs et la coordination du déploiement.
+                </p>
+            </div>
+
+            <div class="governance-card">
+                <h3>Canaux de Communication</h3>
+                <p style="color: var(--text-primary); font-size: 0.9em;">
+                    Étude des flux d'information et des mécanismes de coordination pendant les situations de crise, incluant listes de diffusion, IRC et alertes d'urgence.
+                </p>
+            </div>
+
+            <div class="governance-card">
+                <h3>Construction de Consensus</h3>
+                <p style="color: var(--text-primary); font-size: 0.9em;">
+                    Investigation sur la façon dont le consensus émerge autour des changements critiques de protocole et des mesures d'urgence lors des réponses aux vulnérabilités.
+                </p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h3 style="color: var(--text-accent); margin-bottom: 15px;">Statut de la Recherche</h3>
+            <p style="color: var(--text-primary); font-size: 0.9em; text-align: center; background-color: rgba(241, 196, 15, 0.1); padding: 15px; border: 1px solid #f1c40f; border-radius: 4px;">
+                <strong>⚠️ CONTENU EN DÉVELOPPEMENT ⚠️</strong><br>
+                Cette analyse de gouvernance est actuellement étendue avec des études de cas détaillées et des données empiriques provenant de la recherche sur la chronologie des crises.
+            </p>
+        </div>
+
+        <div class="back-link">
+            <a href="crisis-fr.html">← Retour au Hub Crises</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="https://x.com/Maelkum" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><img src="assets/icons/X.png" alt="X Icon" class="pixel-icon"></a>
+            <a href="https://www.linkedin.com/in/mael-rolland/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="assets/icons/LinkedIn.png" alt="LinkedIn Icon" class="pixel-icon"></a>
+            <a href="https://warpcast.com/mael-rolland" target="_blank" rel="noopener noreferrer" aria-label="Farcaster"><img src="assets/icons/Farcaster.png" alt="Farcaster Icon" class="pixel-icon"></a>
+            <a href="https://github.com/Elma-Landro" target="_blank" rel="noopener noreferrer" aria-label="Github"><img src="assets/icons/Github.png" alt="Github Icon" class="pixel-icon"></a>
+            <a href="https://hey.xyz/u/mael-rolland" target="_blank" rel="noopener noreferrer" aria-label="Lens Protocol"><img src="assets/icons/Lens.png" alt="Lens Icon" class="pixel-icon"></a>
+        </div>
+        <div class="ethereum-badge-centered">
+            <a href="https://ipfs.tech/" target="_blank" rel="noopener noreferrer" aria-label="Built on Ethereum (Swarm)">
+                <img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge">
+            </a>
+            <div class="ethereum-tooltip">
+                ALERTE FAUCILLE & MARTEAU ! Emprunté au troll épique de BTC Socialist contre l'élite Web3, un défi malicieux aux narratifs crypto libertariens. Consultez ma thèse pour le côté sérieux de cette plaisanterie pixelisée !
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (body.dataset.theme === 'dark') {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Lune';
+                themeText.textContent = 'Sombre';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.dataset.theme = 'dark';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Soleil';
+                themeText.textContent = 'Clair';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (savedTheme === 'light') {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Lune';
+                themeText.textContent = 'Sombre';
+            } else {
+                body.dataset.theme = 'dark';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Soleil';
+                themeText.textContent = 'Clair';
+            }
+        });
+    </script>
+</body>
+</html>

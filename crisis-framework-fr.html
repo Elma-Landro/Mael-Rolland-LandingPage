@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadre Théorique - Analyse Vulnérabilités Protocole Bitcoin | Maël Rolland</title>
+    <meta name="description" content="Matrice taxonomique des crises et définitions conceptuelles pour comprendre les vulnérabilités du protocole Bitcoin.">
+    <meta name="keywords" content="taxonomie crise, cadre théorique, vulnérabilités Bitcoin, protocole sécurité">
+    <meta name="author" content="Maël Rolland">
+    <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
+
+    <style>
+        /* Navigation Bar */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--button-bg);
+            border-bottom: 2px solid var(--button-border);
+            padding: 10px 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'VT323', monospace;
+        }
+
+        .nav-logo {
+            color: var(--text-accent);
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9em;
+            padding: 5px 10px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            border-color: var(--text-accent);
+            background: rgba(51, 255, 51, 0.1);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            margin-top: 70px;
+            margin-bottom: 10px;
+            text-align: center;
+            font-family: 'VT323', monospace;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: var(--text-accent);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main content */
+        .container {
+            margin-top: 0px;
+            padding-top: 20px;
+        }
+
+        .content-section {
+            background-color: var(--button-bg);
+            border: 2px solid var(--button-border);
+            padding: 20px;
+            margin-bottom: 20px;
+            font-family: 'VT323', monospace;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .nav-bar {
+                padding: 8px 15px;
+            }
+
+            .nav-logo {
+                font-size: 1em;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 0.8em;
+                padding: 4px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <a href="index-fr.html" class="nav-logo">Maël Rolland</a>
+        <div class="nav-links">
+            <a href="index-fr.html">Accueil</a>
+            <a href="crisis-fr.html">Hub Crises</a>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="crisis-fr.html">← Retour au Hub Crises</a>
+    </div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Basculer mode sombre/clair">
+        <img id="theme-icon" src="assets/icons/Moon.jpg" alt="Lune"> <span id="theme-text">Sombre</span>
+    </button>
+
+    <div class="language-switcher">
+        <a href="crisis-framework.html">🇬🇧 English</a> | 
+        <a href="crisis-framework-fr.html">🇫🇷 Français</a>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1 class="main-title typing-animation">Cadre Théorique</h1>
+            <div class="avatar-section" style="margin: 10px 0;">
+                <img src="assets/img/avatar-closky-mael-rolland.eth.jpg" alt="Avatar mael-rolland.eth" class="avatar-icon">
+            </div>
+            <p class="subtitle">Taxonomie et Définitions Conceptuelles des Crises</p>
+        </header>
+
+        <div class="content-section">
+            <h3 style="color: var(--text-accent); text-align: center; margin-bottom: 15px;">Cadre Conceptuel</h3>
+            <p style="color: var(--text-primary); text-align: center; font-size: 0.9em;">
+                Matrice taxonomique des crises et définitions conceptuelles pour comprendre les vulnérabilités du protocole Bitcoin. 
+                Ce cadre théorique établit une classification indigène des types de crises et de leurs implications pour la gouvernance protocolaire.
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h3 style="color: var(--text-accent); margin-bottom: 15px;">Statut du Contenu</h3>
+            <p style="color: var(--text-primary); font-size: 0.9em; text-align: center; background-color: rgba(241, 196, 15, 0.1); padding: 15px; border: 1px solid #f1c40f; border-radius: 4px;">
+                <strong>⚠️ CADRE THÉORIQUE EN DÉVELOPPEMENT ⚠️</strong><br>
+                Le cadre conceptuel détaillé et la matrice taxonomique sont en cours d'élaboration avec les définitions formelles des types de crises protocolaires.
+            </p>
+        </div>
+
+        <div class="back-link">
+            <a href="crisis-fr.html">← Retour au Hub Crises</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="https://x.com/Maelkum" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><img src="assets/icons/X.png" alt="X Icon" class="pixel-icon"></a>
+            <a href="https://www.linkedin.com/in/mael-rolland/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="assets/icons/LinkedIn.png" alt="LinkedIn Icon" class="pixel-icon"></a>
+            <a href="https://warpcast.com/mael-rolland" target="_blank" rel="noopener noreferrer" aria-label="Farcaster"><img src="assets/icons/Farcaster.png" alt="Farcaster Icon" class="pixel-icon"></a>
+            <a href="https://github.com/Elma-Landro" target="_blank" rel="noopener noreferrer" aria-label="Github"><img src="assets/icons/Github.png" alt="Github Icon" class="pixel-icon"></a>
+            <a href="https://hey.xyz/u/mael-rolland" target="_blank" rel="noopener noreferrer" aria-label="Lens Protocol"><img src="assets/icons/Lens.png" alt="Lens Icon" class="pixel-icon"></a>
+        </div>
+        <div class="ethereum-badge-centered">
+            <a href="https://ipfs.tech/" target="_blank" rel="noopener noreferrer" aria-label="Built on Ethereum (Swarm)">
+                <img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge">
+            </a>
+            <div class="ethereum-tooltip">
+                ALERTE FAUCILLE & MARTEAU ! Emprunté au troll épique de BTC Socialist contre l'élite Web3, un défi malicieux aux narratifs crypto libertariens. Consultez ma thèse pour le côté sérieux de cette plaisanterie pixelisée !
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (body.dataset.theme === 'dark') {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Lune';
+                themeText.textContent = 'Sombre';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.dataset.theme = 'dark';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Soleil';
+                themeText.textContent = 'Clair';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (savedTheme === 'light') {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Lune';
+                themeText.textContent = 'Sombre';
+            } else {
+                body.dataset.theme = 'dark';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Soleil';
+                themeText.textContent = 'Clair';
+            }
+        });
+    </script>
+</body>
+</html>
