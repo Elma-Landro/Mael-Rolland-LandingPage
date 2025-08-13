@@ -1,0 +1,1463 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crisis Timeline - Bitcoin Vulnerabilities 2009-2019 | Maël Rolland</title>
+    <meta name="description" content="Interactive timeline of Bitcoin protocol vulnerabilities from 2009-2019. Detailed analysis of each vulnerability with crisis governance framework.">
+    <meta name="keywords" content="Bitcoin timeline, cryptocurrency vulnerabilities, protocol security history">
+    <meta name="author" content="Maël Rolland">
+    <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* Navigation Bar */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--button-bg);
+            border-bottom: 2px solid var(--button-border);
+            padding: 10px 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'VT323', monospace;
+        }
+
+        .nav-logo {
+            color: var(--text-accent);
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9em;
+            padding: 5px 10px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            border-color: var(--text-accent);
+            background: rgba(51, 255, 51, 0.1);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            margin-top: 70px;
+            margin-bottom: 10px;
+            text-align: center;
+            font-family: 'VT323', monospace;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: var(--text-accent);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main content with nav offset */
+        .container {
+            margin-top: 0px;
+            padding-top: 20px;
+        }
+
+        /* Timeline specific styles - keeping all existing timeline CSS */
+        .timeline-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .timeline-arrow {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 12px;
+            background: linear-gradient(to bottom, #f1c40f 0%, #ffcc66 50%, #f1c40f 100%);
+            transform: translateX(-50%);
+            z-index: 1;
+            box-shadow: 0 0 8px rgba(241, 196, 15, 0.5);
+        }
+
+        .timeline-arrow::before {
+            content: '▼';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #f1c40f;
+            font-size: 16px;
+            text-shadow: 0 0 8px #f1c40f;
+        }
+
+        .timeline-arrow::after {
+            content: '▲';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #f1c40f;
+            font-size: 16px;
+            text-shadow: 0 0 8px #f1c40f;
+        }
+
+        .crisis-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .year-section {
+            background-color: var(--button-bg);
+            border: 2px solid var(--button-border);
+            padding: 20px;
+            font-family: 'VT323', monospace;
+            position: relative;
+            display: block;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .year-section::before {
+            display: none;
+        }
+
+        .year-header {
+            font-size: 1.5em;
+            color: var(--text-accent);
+            text-align: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--text-accent);
+            padding-bottom: 5px;
+        }
+
+        .vulnerability-item {
+            background-color: rgba(0,0,0,0.3);
+            border: 1px solid var(--text-secondary);
+            padding: 15px 20px;
+            margin: 0 auto 15px auto;
+            font-size: 1em;
+            position: relative;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            perspective: 1000px;
+            height: 220px;
+            overflow: visible;
+            width: 85%;
+            max-width: 750px;
+            min-width: 300px;
+            box-sizing: border-box;
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .vulnerability-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(51, 255, 51, 0.3);
+        }
+
+        .vulnerability-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+        }
+
+        .vulnerability-item.flipped .vulnerability-card {
+            transform: rotateY(180deg);
+        }
+
+        .vulnerability-item.flipped {
+            z-index: 1000;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1) !important;
+            margin: 0;
+            width: 85vw;
+            max-width: 900px;
+            height: 85vh;
+            max-height: 700px;
+            box-shadow: 0 0 30px rgba(51, 255, 51, 0.3);
+            border: 3px solid var(--text-accent);
+        }
+
+        .vulnerability-item.flipped .badge-left,
+        .vulnerability-item.flipped .badge-right {
+            display: none;
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.98), rgba(40, 20, 20, 0.98));
+            border: 3px solid var(--text-accent);
+            font-size: 0.9em;
+            overflow-y: auto;
+            padding: 25px;
+            box-shadow: inset 0 0 20px rgba(51, 255, 51, 0.2), 0 0 30px rgba(0, 0, 0, 0.9);
+        }
+
+        /* Overlay background */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0,0,0,0.2);
+            z-index: 999;
+            display: none;
+        }
+
+        /* Close button */
+        .close-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: var(--text-accent);
+            font-size: 16px;
+            z-index: 1001;
+            cursor: pointer;
+            background: rgba(0,0,0,0.9);
+            border: 2px solid var(--text-accent);
+            padding: 4px;
+            width: 24px;
+            height: 24px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .close-button:hover {
+            background: rgba(51, 255, 51, 0.2);
+        }
+
+        .detailed-info {
+            width: 100%;
+            text-align: left;
+        }
+
+        .info-section {
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 204, 102, 0.5);
+            padding-bottom: 8px;
+            background: rgba(139, 0, 0, 0.1);
+            padding: 8px;
+            border-radius: 3px;
+        }
+
+        .info-label {
+            color: var(--text-accent);
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 1), 0 0 6px rgba(51, 255, 51, 0.8);
+        }
+
+        .info-content {
+            color: #ffffff;
+            font-size: 0.85em;
+            line-height: 1.4;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 1), 0 0 4px rgba(255, 255, 255, 0.3);
+            font-weight: bold;
+        }
+
+        .phase-section {
+            background: linear-gradient(90deg, rgba(51, 255, 51, 0.15), rgba(51, 255, 51, 0.05));
+            padding: 8px 12px;
+            margin: 8px 0;
+            border-left: 4px solid var(--text-accent);
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .flip-indicator {
+            position: absolute;
+            bottom: 5px;
+            left: 15px;
+            font-size: 0.6em;
+            color: var(--text-accent);
+            opacity: 0.7;
+        }
+
+        .vuln-title {
+            color: var(--text-primary);
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .vuln-cve {
+            color: var(--text-accent);
+            font-size: 0.8em;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .vuln-type {
+            display: inline-block;
+            padding: 2px 6px;
+            border: 1px solid;
+            font-size: 0.7em;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .type-dos { 
+            border-color: #6a89cc; 
+            color: #6a89cc; 
+        }
+        .type-theft { 
+            border-color: #f1c40f; 
+            color: #f1c40f; 
+        }
+        .type-fake-conf { 
+            border-color: #74b9ff; 
+            color: #74b9ff; 
+        }
+        .type-netset { 
+            border-color: #ff7675; 
+            color: #ff7675; 
+        }
+        .type-exposure { 
+            border-color: #81ecec; 
+            color: #81ecec; 
+        }
+        .type-inflation { 
+            border-color: #ff3838; 
+            color: #ff3838; 
+        }
+        .type-genesis {
+            border-color: #f1c40f;
+            color: #f1c40f;
+        }
+        .type-unknown { 
+            border-color: #636e72; 
+            color: #636e72; 
+        }
+        .type-network-split {
+            border-color: #ff7675; 
+            color: #ff7675; 
+        }
+
+        .vuln-description {
+            color: var(--text-primary);
+            font-size: 0.8em;
+            line-height: 1.3;
+            text-align: center;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .badge-left {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .badge-right {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .badge {
+            display: inline-block;
+            pointer-events: auto;
+        }
+
+        .badge img {
+            width: 67px;
+            height: 67px;
+            display: block;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .badge img:hover {
+            opacity: 1;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background-color: var(--button-bg);
+            border: 2px solid var(--button-border);
+            padding: 15px;
+            text-align: center;
+            font-family: 'VT323', monospace;
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            color: var(--text-accent);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: var(--text-primary);
+        }
+
+        .filters {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .filter-btn {
+            background-color: var(--button-bg);
+            color: var(--text-primary);
+            border: 2px solid #000000;
+            box-shadow: inset 0 0 0 2px var(--button-border),
+                        inset 0 0 0 4px var(--button-bg);
+            padding: 8px 12px;
+            margin: 5px;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.7em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background-color: var(--button-hover);
+            box-shadow: inset 0 0 0 2px var(--text-primary),
+                        inset 0 0 0 4px var(--button-hover);
+            transform: translateY(-1px);
+        }
+
+        .filter-btn:hover {
+            background-color: var(--button-hover);
+            box-shadow: inset 0 0 0 2px var(--text-primary),
+                        inset 0 0 0 4px var(--button-hover);
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .avatar-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .avatar-icon {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #ffaa33;
+            background-color: #330000;
+            image-rendering: pixelated;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .charts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .chart-wrapper {
+            background-color: var(--button-bg);
+            border: 2px solid var(--button-border);
+            padding: 20px;
+            font-family: 'VT323', monospace;
+            text-align: center;
+        }
+
+        .chart-wrapper h3 {
+            color: var(--text-accent);
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+
+        .chart-wrapper canvas {
+            max-width: 100%;
+            height: 300px !important;
+        }
+
+        .intro-section {
+            background-color: var(--button-bg);
+            border: 2px solid var(--button-border);
+            padding: 15px;
+            margin: 5px 0;
+            font-family: 'VT323', monospace;
+        }
+
+        @media (max-width: 768px) {
+            .nav-bar {
+                padding: 8px 15px;
+            }
+
+            .nav-logo {
+                font-size: 1em;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 0.8em;
+                padding: 4px 8px;
+            }
+
+            .charts-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin: 20px 0;
+            }
+
+            .chart-wrapper {
+                padding: 15px;
+            }
+
+            .chart-wrapper h3 {
+                font-size: 1em;
+            }
+
+            .timeline-arrow {
+                width: 8px;
+                background: linear-gradient(to bottom, #f1c40f 0%, #ffcc66 50%, #f1c40f 100%);
+                box-shadow: 0 0 6px rgba(241, 196, 15, 0.4);
+            }
+
+            .timeline-arrow::before,
+            .timeline-arrow::after {
+                font-size: 12px;
+            }
+
+            .year-section::before {
+                display: none;
+            }
+
+            .timeline-container {
+                margin: 15px auto;
+                padding: 0 10px;
+                max-width: 100%;
+            }
+
+            .year-section {
+                padding: 12px 8px;
+                margin: 0 auto;
+                max-width: 100%;
+            }
+
+            .vulnerability-item {
+                width: 95%;
+                max-width: none;
+                min-width: unset;
+                height: 180px;
+                margin: 0 auto 12px auto;
+                padding: 10px;
+                font-size: 0.9em;
+            }
+
+            .vulnerability-item.flipped {
+                transform: none !important;
+                position: fixed;
+                top: 5vh;
+                left: 5vw;
+                margin: 0;
+                width: 90vw;
+                height: 90vh;
+                z-index: 1000;
+                box-shadow: 0 0 25px rgba(0,0,0,0.9);
+            }
+
+            .crisis-grid {
+                gap: 15px;
+                align-items: center;
+            }
+
+            .stats-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .badge img {
+                width: 42px;
+                height: 42px;
+            }
+
+            .badge-left {
+                left: 4px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .badge-right {
+                right: 4px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .vulnerability-item {
+                width: 98%;
+                padding: 8px;
+                height: 160px;
+                font-size: 0.85em;
+            }
+
+            .timeline-container {
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-logo">Maël Rolland</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="crisis.html">Crisis Hub</a>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="crisis.html">← Back to Crisis Hub</a>
+    </div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+        <img id="theme-icon" src="assets/icons/Moon.jpg" alt="Moon"> <span id="theme-text">Dark</span>
+    </button>
+
+    <div class="language-switcher">
+        <a href="crisis-timeline.html">🇬🇧 English</a> | 
+        <a href="crisis-timeline-fr.html">🇫🇷 Français</a>
+    </div>
+
+    <div class="container">
+        <header style="margin-bottom: 2px;">
+            <h1 class="main-title typing-animation">Crisis Timeline</h1>
+            <div class="avatar-section" style="margin: 10px 0;">
+                <img src="assets/img/avatar-closky-mael-rolland.eth.jpg" alt="Avatar mael-rolland.eth" class="avatar-icon">
+            </div>
+            <p class="subtitle" style="margin-bottom: 15px;">Interactive Bitcoin Vulnerability Timeline (2009-2019)</p>
+        </header>
+
+        <div class="intro-section" style="background-color: var(--button-bg); border: 2px solid var(--button-border); padding: 12px; margin: 3px 0; font-family: 'VT323', monospace;">
+            <h3 style="color: var(--text-accent); text-align: center; margin-bottom: 12px;">Bitcoin Historical Crisis</h3>
+            <p style="color: var(--text-primary); margin-bottom: 15px; text-align: center; font-size: 0.9em;">
+                This interactive timeline presents a systematic analysis of Bitcoin protocol vulnerabilities from 2009 to 2019. Each vulnerability is catalogued using an indigenous crisis taxonomy developed through empirical research into blockchain governance mechanisms. The timeline serves as both a historical record and a methodological framework for understanding cryptocurrency crisis management patterns.
+            </p>
+        </div>
+
+        <div class="intro-section" style="background-color: var(--button-bg); border: 2px solid var(--button-border); padding: 15px; margin: 5px 0; font-family: 'VT323', monospace;">
+            <h3 style="color: var(--text-accent); text-align: center; margin-bottom: 15px;">Indigenous Labels & Crisis Governance</h3>
+            <p style="color: var(--text-primary); margin-bottom: 15px; text-align: center; font-size: 0.9em;">
+                These crisis categorizations represent an indigenous vulnerability taxonomy pointing to an existing crisis governance framework, drawn through systematic protocol crisis analysis. Each label indicates specific threat vectors requiring potentially distinct crisis management approaches.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 10px; font-size: 0.85em;">
+                <div style="background-color: rgba(0,0,0,0.3); padding: 10px; border-left: 3px solid #f1c40f;">
+                    <strong style="color: #f1c40f; font-size: 1em;">GENESIS:</strong> Protocol launch milestone
+                </div>
+                <div style="background-color: rgba(0,0,0,0.3); padding: 10px; border-left: 3px solid #6a89cc;">
+                    <strong style="color: #6a89cc; font-size: 1em;">DOS:</strong> Denial of Service attacks, disrupt network access as nodes encounter issues (crashes, difficulty processing incoming data, etc.), impairing transactional properties.
+                </div>
+                <div style="background-color: rgba(0,0,0,0.3); padding: 10px; border-left: 3px solid #f1c40f;">
+                    <strong style="color: #f1c40f; font-size: 1em;">THEFT:</strong> Asset extraction vulnerabilities, one or more actors gain control of native account units outside of consensual protocol rules.
+                </div>
+                <div style="background-color: rgba(0,0,0,0.3); padding: 10px; border-left: 3px solid #74b9ff;">
+                    <strong style="color: #74b9ff; font-size: 1em;">FAKE CONF:</strong> False confirmation exploits, one or more actors can perform double-spending by manipulating confirmations.
+                </div>
+                <div style="background-color: rgba(0,0,0,0.3); padding: 10px; border-left: 3px solid #ff7675;">
+                    <strong style="color: #ff7675; font-size: 1em;">NETWORK SPLIT:</strong> Chain division vulnerabilities, network uniqueness and canonical ledger compromised as alternative networks emerge with nodes operating under different protocol rules, unable to converge.
+                </div>
+                <div style="background-color: rgba(0,0,0,0.3); padding: 10px; border-left: 3px solid #81ecec;">
+                    <strong style="color: #81ecec; font-size: 1em;">EXPOSURE:</strong> Information disclosure risks, one or more actors can access data from users beyond the intended scope.
+                </div>
+                <div style="background-color: rgba(0,0,0,0.3); padding: 10px; border-left: 3px solid #ff3838;">
+                    <strong style="color: #ff3838; font-size: 1em;">INFLATION:</strong> Monetary supply manipulation, one or more actors can create native account units outside of canonical protocol minting rules.
+                </div>
+                <div style="background-color: rgba(0,0,0,0.3); padding: 10px; border-left: 3px solid #636e72;">
+                    <strong style="color: #636e72; font-size: 1em;">UNKNOWN:</strong> Unclassified vulnerability types, the full scope of potential abuses is not precisely known.
+                </div>
+            </div>
+            <p style="color: var(--text-secondary); margin-top: 15px; text-align: center; font-size: 0.8em; background-color: rgba(255, 204, 102, 0.1); padding: 10px; border: 1px solid #ffcc66; border-radius: 4px;">
+                <strong style="color: #ff3838;">CRITICAL VULNERABILITIES:</strong> Vulnerabilities classified as <strong style="color: #ff3838;">RED SEVERITY</strong> on the Bitcoin Wiki.
+            </p>
+            <p style="color: var(--text-secondary); margin-top: 10px; text-align: center; font-size: 0.7em;">
+                <strong>CVE:</strong> Common Vulnerabilities and Exposures identifier | <strong>BIP:</strong> Bitcoin Improvement Proposal
+            </p>
+        </div>
+
+        <div class="stats-container" style="margin: 15px 0;">
+            <div class="stat-box">
+                <span class="stat-number" id="total-vulns">41</span>
+                <span class="stat-label">Total vulnerabilities</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number" id="critical-vulns">14</span>
+                <span class="stat-label">Critical vulnerabilities</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">11</span>
+                <span class="stat-label">Years covered</span>
+            </div>
+        </div>
+
+        <div class="charts-container" style="margin: 20px 0;">
+            <div class="chart-wrapper">
+                <h3>Distribution by Vulnerability Type</h3>
+                <canvas id="pieChart" width="400" height="400"></canvas>
+            </div>
+            <div class="chart-wrapper">
+                <h3>Vulnerabilities by Year</h3>
+                <canvas id="barChart" width="400" height="400"></canvas>
+            </div>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" data-type="all">All</button>
+            <button class="filter-btn" data-type="dos">DOS</button>
+            <button class="filter-btn" data-type="theft">Theft</button>
+            <button class="filter-btn" data-type="fake-conf">Fake Conf</button>
+            <button class="filter-btn" data-type="network-split">Network Split</button>
+            <button class="filter-btn" data-type="exposure">Exposure</button>
+            <button class="filter-btn" data-type="inflation">Inflation</button>
+            <button class="filter-btn" data-type="unknown">Unknown</button>
+        </div>
+
+        <div class="data-notice" style="margin: 5px 0; padding: 12px; border: 2px dashed #f1c40f; background-color: rgba(241, 196, 15, 0.1); color: #f1c40f; font-family: 'VT323', monospace; font-size: 1em; text-align: center; border-radius: 4px;">
+            <p><strong>⚠️ DATA UPDATE IN PROGRESS ⚠️</strong></p>
+            <p style="font-size: 0.9em; margin-top: 10px;">Timeline currently covers 2009-2019. Additional vulnerabilities from 2019-2024 are being verified and will be added soon.</p>
+            <p style="font-size: 0.8em; margin-top: 8px; opacity: 0.8;">Data validation based on Bitcoin Wiki, CVE databases, and Bitcoin Core disclosures.</p>
+        </div>
+
+        <div class="timeline-container">
+            <div class="timeline-arrow"></div>
+            <div class="crisis-grid" id="crisis-grid">
+                <!-- Content will be generated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="back-link">
+            <a href="crisis.html">← Back to Crisis Hub</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="https://x.com/Maelkum" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><img src="assets/icons/X.png" alt="X Icon" class="pixel-icon"></a>
+            <a href="https://www.linkedin.com/in/mael-rolland/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="assets/icons/LinkedIn.png" alt="LinkedIn Icon" class="pixel-icon"></a>
+            <a href="https://warpcast.com/mael-rolland" target="_blank" rel="noopener noreferrer" aria-label="Farcaster"><img src="assets/icons/Farcaster.png" alt="Farcaster Icon" class="pixel-icon"></a>
+            <a href="https://github.com/Elma-Landro" target="_blank" rel="noopener noreferrer" aria-label="Github"><img src="assets/icons/Github.png" alt="Github Icon" class="pixel-icon"></a>
+            <a href="https://hey.xyz/u/mael-rolland" target="_blank" rel="noopener noreferrer" aria-label="Lens Protocol"><img src="assets/icons/Lens.png" alt="Lens Icon" class="pixel-icon"></a>
+        </div>
+        <div class="ethereum-badge-centered">
+            <a href="https://ipfs.tech/" target="_blank" rel="noopener noreferrer" aria-label="Built on Ethereum (Swarm)">
+                <img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge">
+            </a>
+            <div class="ethereum-tooltip">
+                HAMMER & SICKLE ALERT! Borrowed from BTC Socialist's epic Web3 troll, a quirky challenge to libertarian crypto narratives. Check my thesis for the serious side of this pixelated jest!
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // All the existing JavaScript from the original crisis.html
+        const vulnerabilities = [
+            { year: 2009, month: 1, cve: "Genesis Block", type: "genesis", title: "Bitcoin Protocol Launch", description: "Bitcoin network launch", date: "03/01/2009" },
+            { year: 2010, month: 7, cve: "CVE-2010-5137", type: "dos", title: "OP_LSHIFT crash", description: "Script execution vulnerability causing client termination", date: "28/07/2010" },
+            { year: 2010, month: 7, cve: "CVE-2010-5141", type: "theft", title: "OP_RETURN could be used to spend any output", description: "Critical vulnerability allowing unauthorized spending of any UTXO", date: "28/07/2010" },
+            { year: 2010, month: 7, cve: "CVE-2010-5138", type: "dos", title: "Unlimited SigOp DoS", description: "Resource exhaustion through excessive signature operations", date: "29/07/2010" },
+            { year: 2010, month: 8, cve: "CVE-2010-5139", type: "inflation", title: "Combined output overflow", description: "Integer overflow allowing creation of 184 billion BTC in block 74638", date: "15/08/2010" },
+            { year: 2010, month: 9, cve: "CVE-2010-5140", type: "dos", title: "Never confirming transactions", description: "Network congestion through unconfirmable transaction propagation", date: "29/09/2010" },
+            { year: 2011, month: 11, cve: "CVE-2011-4447", type: "exposure", title: "Wallet non-encryption", description: "Private keys stored unencrypted on disk by default", date: "11/11/2011" },
+            { year: 2012, month: 3, cve: "CVE-2012-1909", type: "network-split", title: "Transaction overwriting", description: "Duplicate transaction hashes could cause blockchain inconsistencies", date: "07/03/2012" },
+            { year: 2012, month: 3, cve: "CVE-2012-1910", type: "unknown", title: "Non-thread safe MingW exceptions", description: "Windows-specific threading vulnerability with undefined behavior", date: "17/03/2012" },
+            { year: 2012, month: 4, cve: "BIP 0016", type: "fake-conf", title: "Softfork: P2SH", description: "Pay-to-Script-Hash implementation creating validation discrepancies", date: "01/04/2012" },
+            { year: 2012, month: 5, cve: "CVE-2012-2459", type: "network-split", title: "Block hash collision (via merkle root)", description: "Merkle tree manipulation allowing duplicate block hashes", date: "14/05/2012" },
+            { year: 2012, month: 6, cve: "CVE-2012-3789", type: "dos", title: "(Lack of) orphan txn resource limits", description: "Memory exhaustion through unlimited orphaned transaction storage", date: "20/06/2012" },
+            { year: 2012, month: 8, cve: "CVE-2012-4682", type: "dos", title: "Memory exhaustion", description: "Uncontrolled memory allocation leading to node crashes", date: "16/09/2012" },
+            { year: 2012, month: 8, cve: "CVE-2012-4683", type: "dos", title: "Targeted DoS by CPU exhaustion using alerts", description: "Alert system abuse for computational resource depletion", date: "23/08/2012" },
+            { year: 2012, month: 8, cve: "CVE-2012-4684", type: "dos", title: "Network-wide DoS using malleable signatures in alerts", description: "Signature malleability in alert messages causing network disruption", date: "24/08/2012" },
+            { year: 2013, month: 1, cve: "CVE-2013-2272", type: "exposure", title: "Remote discovery of node's wallet addresses", description: "Network analysis allowing identification of node wallet addresses", date: "11/01/2013" },
+            { year: 2013, month: 1, cve: "CVE-2013-2273", type: "exposure", title: "Predictable change output", description: "Change address generation patterns revealing transaction relationships", date: "30/01/2013" },
+            { year: 2013, month: 1, cve: "CVE-2013-2292", type: "dos", title: "A transaction that takes at least 3 minutes to verify", description: "Computationally expensive transaction verification causing delays", date: "30/01/2013" },
+            { year: 2013, month: 1, cve: "CVE-2013-2293", type: "dos", title: "Continuous hard disk seek", description: "Storage access patterns causing performance degradation", date: "09/01/2013" },
+            { year: 2013, month: 2, cve: "CVE-2013-4627", type: "dos", title: "Memory exhaustion with excess tx message data", description: "Oversized transaction messages causing memory overflow", date: "08/02/2013" },
+            { year: 2013, month: 3, cve: "CVE-2013-3219", type: "fake-conf", title: "Unenforced block protocol rule", description: "Block validation inconsistencies allowing invalid confirmations", date: "11/03/2013" },
+            { year: 2013, month: 3, cve: "CVE-2013-3220", type: "network-split", title: "Inconsistent BDB lock limit interactions", description: "Database lock limits causing blockchain fork on March 11, 2013", date: "11/03/2013" },
+            { year: 2013, month: 3, cve: "BIP 0034", type: "fake-conf", title: "Softfork: Height in coinbase", description: "Block height inclusion requirement creating validation discrepancies", date: "24/03/2013" },
+            { year: 2013, month: 5, cve: "BIP 0050", type: "network-split", title: "Hard fork to remove txid limit protocol rule", description: "Emergency protocol change following March 2013 chain split", date: "15/05/2013" },
+            { year: 2013, month: 7, cve: "CVE-2013-4165", type: "theft", title: "Timing leak in RPC authentication", description: "Password timing attack allowing credential discovery", date: "20/07/2013" },
+            { year: 2013, month: 9, cve: "CVE-2013-5700", type: "dos", title: "Remote p2p crash via bloom filters", description: "Malformed bloom filter messages causing node crashes", date: "04/09/2013" },
+            { year: 2014, month: 4, cve: "BIP 0042", type: "inflation", title: "Bitcoin fixed monetary supply (Inflation Bug)", description: "Undefined C++ behavior potentially causing infinite monetary supply beyond 21M BTC", date: "01/04/2014" },
+            { year: 2014, month: 4, cve: "CVE-2014-0160", type: "unknown", title: "Remote memory leak via payment protocol", description: "Payment protocol implementation allowing memory content disclosure", date: "07/04/2014" },
+            { year: 2015, month: 2, cve: "CVE-2015-3641", type: "dos", title: "OOM via p2p", description: "Memory exhaustion through crafted peer-to-peer network messages", date: "05/02/2015" },
+            { year: 2015, month: 2, cve: "BIP 66", type: "fake-conf", title: "Softfork: Strict DER signatures", description: "Signature encoding standardization creating validation inconsistencies", date: "13/02/2015" },
+            { year: 2015, month: 9, cve: "CVE-2015-6031", type: "dos", title: "Buffer overflow, remote UPNP servers to cause a denial of service", description: "UPnP implementation buffer overflow allowing remote code execution", date: "15/09/2015" },
+            { year: 2015, month: 11, cve: "BIP 65", type: "fake-conf", title: "Softfork: OP_CHECKLOCKTIMEVERIFY", description: "Time-locked transaction validation creating soft fork conditions", date: "12/11/2015" },
+            { year: 2016, month: 4, cve: "BIPs 68, 112 & 113", type: "fake-conf", title: "Softforks: Rel locktime, CSV & MTP locktime", description: "Relative locktime and CSV implementation creating validation conflicts", date: "11/04/2016" },
+            { year: 2016, month: 10, cve: "BIPs 141, 143 & 147", type: "fake-conf", title: "Softfork: Segwit", description: "Segregated Witness implementation addressing transaction malleability", date: "27/10/2016" },
+            { year: 2016, month: 10, cve: "CVE-2016-8889", type: "exposure", title: "Debug console history storing sensitive info", description: "Debug console retaining sensitive commands and data in history", date: "27/10/2016" },
+            { year: 2017, month: 3, cve: "BIP 148", type: "fake-conf", title: "Softfork: Segwit UASF", description: "User Activated Soft Fork proposal forcing SegWit adoption", date: "12/03/2017" },
+            { year: 2017, month: 5, cve: "CVE-2017-9230", type: "unknown", title: "AsicBoost", description: "ASIC optimization technique affecting mining decentralization", date: "24/05/2017" },
+            { year: 2018, month: 6, cve: "CVE-2017-12842", type: "fake-conf", title: "No commitment to block merkle tree depth", description: "Merkle tree depth manipulation allowing invalid block acceptance", date: "09/06/2018" },
+            { year: 2018, month: 7, cve: "CVE-2016-10724", type: "dos", title: "Alert memory exhaustion", description: "Alert system allowing unlimited memory consumption", date: "02/07/2018" },
+            { year: 2018, month: 7, cve: "CVE-2016-10725", type: "dos", title: "Final alert cancellation", description: "Alert system shutdown preventing future emergency communications", date: "02/07/2018" },
+            { year: 2018, month: 9, cve: "CVE-2018-17144", type: "inflation", title: "Missing check for duplicate inputs", description: "Duplicate input validation bypass allowing potential inflation and DoS", date: "17/09/2018" },
+            { year: 2019, month: 2, cve: "CVE-2018-20587", type: "theft", title: "No alert for RPC service binding failure", description: "Silent RPC binding failures exposing services to unintended networks", date: "08/02/2019" },
+            { year: 2019, month: 6, cve: "CVE-2018-20586", type: "unknown", title: "Allow injection of arbitrary data into the debug log via an RPC call", description: "RPC interface allowing arbitrary log injection for potential attacks", date: "22/06/2019" },
+            { year: 2019, month: 6, cve: "CVE-2017-18350", type: "unknown", title: "Buffer overflow vulnerability", description: "Memory buffer overflow with undefined security implications", date: "22/06/2019" }
+        ];
+
+        // All the JavaScript functions from the original timeline (same logic)
+        let currentFilter = 'all';
+
+        function groupByYear(vulnerabilities) {
+            const grouped = {};
+            vulnerabilities.forEach(vuln => {
+                if (!grouped[vuln.year]) {
+                    grouped[vuln.year] = [];
+                }
+                grouped[vuln.year].push(vuln);
+            });
+            return grouped;
+        }
+
+        function renderVulnerabilities() {
+            const filtered = currentFilter === 'all' 
+                ? vulnerabilities 
+                : vulnerabilities.filter(v => v.type === currentFilter);
+
+            const grouped = groupByYear(filtered);
+            const years = Object.keys(grouped).sort((a, b) => parseInt(a) - parseInt(b));
+
+            const grid = document.getElementById('crisis-grid');
+            grid.innerHTML = '';
+
+            years.forEach(year => {
+                const yearSection = document.createElement('div');
+                yearSection.className = 'year-section';
+
+                const yearHeader = document.createElement('div');
+                yearHeader.className = 'year-header';
+                yearHeader.textContent = year;
+
+                yearSection.appendChild(yearHeader);
+
+                grouped[year].forEach(vuln => {
+                    const vulnItem = document.createElement('div');
+                    vulnItem.className = 'vulnerability-item';
+                    vulnItem.dataset.type = vuln.type;
+
+                    const criticalCVEs = [
+                        'CVE-2010-5141', 'CVE-2010-5139', 'CVE-2011-4447',
+                        'CVE-2012-1909', 'CVE-2012-1910', 'CVE-2012-2459', 'CVE-2013-3219',
+                        'CVE-2013-3220', 'BIP-0050', 'CVE-2013-4165', 'CVE-2014-0160',
+                        'CVE-2015-6031', 'CVE-2018-17144'
+                    ];
+                    const isCritical = criticalCVEs.includes(vuln.cve);
+
+                    vulnItem.innerHTML = `
+                        <div class="vulnerability-card">
+                            <div class="card-front">
+                                <div class="vuln-title">${vuln.title}</div>
+                                <div class="vuln-cve">${vuln.cve}</div>
+                                <div class="vuln-type type-${vuln.type}">${vuln.type.toUpperCase()}</div>
+                                <div class="vuln-description">${vuln.description}</div>
+                                ${vuln.date ? `<div class="vuln-date" style="color: var(--text-accent); font-size: 0.75em; margin-top: 5px; text-align: center;">${vuln.date}</div>` : ''}
+                                ${isCritical ? '<div style="position: absolute; bottom: 8px; right: 8px; color: #ff3838; font-size: 0.6em; font-weight: bold;">CRITICAL</div>' : ''}
+                                <div class="flip-indicator">details ⟲</div>
+                            </div>
+                            <div class="card-back">
+                                <div class="detailed-info">
+                                    <div class="card-header" style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid var(--text-accent); padding-bottom: 10px;">
+                                        <div style="color: var(--text-primary); font-size: 1.1em; font-weight: bold; margin-bottom: 5px;">${vuln.title}</div>
+                                        <div style="color: var(--text-accent); font-size: 0.9em; margin-bottom: 5px;">${vuln.cve}</div>
+                                        ${vuln.date ? `<div style="color: var(--text-secondary); font-size: 0.8em;">${vuln.date}</div>` : ''}
+                                    </div>
+                                    ${generateDetailedInfo(vuln)}
+                                </div>
+                            </div>
+                        </div>
+                        ${vuln.cve.startsWith('CVE-') ? `
+                            <div class="badge-left">
+                                <span class="badge" onclick="event.stopPropagation(); window.open('https://cve.mitre.org/cgi-bin/cvename.cgi?name=${vuln.cve}', '_blank')">
+                                    <img src="assets/icons/cvedata.jpg" alt="CVE Data">
+                                </span>
+                            </div>
+                        ` : ''}
+                        ${vuln.cve !== "Genesis Block" ? `
+                            <div class="badge-right">
+                                <span class="badge" onclick="event.stopPropagation(); openBitcoinWiki('${vuln.cve}', ${vuln.year})">
+                                    <img src="assets/icons/bitcoinwiki.jpg" alt="Bitcoin Wiki">
+                                </span>
+                            </div>
+                        ` : ''}
+                    `;
+
+                    // Add click handler for card flipping
+                    vulnItem.addEventListener('click', function(e) {
+                        if (!e.target.closest('.badge')) {
+                            if (!this.classList.contains('flipped')) {
+                                // Open modal
+                                this.classList.add('flipped');
+                                showModal();
+                            }
+                        }
+                    });
+
+                    yearSection.appendChild(vulnItem);
+                });
+
+                grid.appendChild(yearSection);
+            });
+
+            updateStats(filtered);
+        }
+
+        // Function to generate detailed vulnerability information
+        function generateDetailedInfo(vuln) {
+            const detailsMap = {
+                'Genesis Block': {
+                    insemination: "Bitcoin network genesis block creation",
+                    versions: "Bitcoin Protocol v1.0",
+                    pullRequest: "N/A (protocol genesis)",
+                    trigger: "Satoshi Nakamoto, January 3, 2009",
+                    evaluation: "N/A (genesis event)",
+                    remediation: "Bitcoin Core 0.1.0",
+                    authors: "Satoshi Nakamoto",
+                    remediationPR: "Initial codebase release",
+                    impact: "Birth of Bitcoin blockchain",
+                    sources: "Genesis block, Bitcoin whitepaper"
+                }
+                // Add more detailed maps as needed
+            };
+
+            const details = detailsMap[vuln.cve] || {
+                crisis: {
+                    introduction: "Detailed analysis pending - data compilation in progress",
+                    versions: "Version analysis ongoing - requires verification",
+                    pullRequest: "PR investigation ongoing - cross-referencing commits",
+                    discovery: "Discovery context under review - sources validation needed"
+                },
+                resolution: {
+                    fix: "Fix analysis pending - technical review in progress",
+                    versions: "Fixed versions identification ongoing - requires validation", 
+                    authors: "Author identification ongoing - contributor analysis needed",
+                    pullRequest: "Fix PR analysis pending - commit history review required"
+                },
+                impact: "Impact assessment in progress - severity analysis ongoing",
+                sources: "Source compilation ongoing - cross-referencing multiple databases"
+            };
+
+            return `
+                <div class="phase-section">
+                    <div class="info-label">0. INTRODUCTION</div>
+                    <div class="info-content">
+                        <strong>General Context:</strong> This vulnerability is part of the systematic analysis of Bitcoin protocol security issues documented in our indigenous crisis taxonomy framework.
+                    </div>
+                </div>
+
+                <div class="phase-section">
+                    <div class="info-label">1. CRISIS INTRODUCTION PHASE</div>
+                    <div class="info-content">
+                        <strong>1a. Insemination:</strong> ${details.insemination || details.crisis?.introduction || 'Analysis pending'}<br>
+                        <strong>Affected Versions:</strong> ${details.versions || details.crisis?.versions || 'Under review'}<br>
+                        <strong>Related PR/Commit:</strong> ${details.pullRequest || details.crisis?.pullRequest || 'Investigation ongoing'}<br>
+                        <strong>1b. Trigger:</strong> ${details.trigger || details.crisis?.discovery || 'Context under review'}
+                    </div>
+                </div>
+
+                <div class="phase-section">
+                    <div class="info-label">2. CRISIS RESOLUTION PHASE</div>
+                    <div class="info-content">
+                        <strong>2a. Evaluation:</strong> ${details.evaluation || details.resolution?.fix || 'Fix analysis pending'}<br>
+                        <strong>2b. Remediation:</strong> ${details.remediation || details.resolution?.versions || 'Version analysis ongoing'}<br>
+                        <strong>Fix Authors:</strong> ${details.authors || details.resolution?.authors || 'Author identification pending'}<br>
+                        <strong>Resolution PRs:</strong> ${details.remediationPR || details.resolution?.pullRequest || 'PR analysis ongoing'}
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <div class="info-label">3. IMPACT & SEVERITY ASSESSMENT</div>
+                    <div class="info-content">${details.impact || 'Impact assessment in progress'}</div>
+                </div>
+
+                <div class="info-section">
+                    <div class="info-label">4. THIRD-PARTY SOURCES & REFERENCES</div>
+                    <div class="info-content">${details.sources || 'Source compilation ongoing'}</div>
+                </div>
+
+                <div class="info-section" style="border-top: 1px solid var(--text-accent); margin-top: 8px; padding-top: 4px;">
+                    <div class="info-label">5. DATA STATUS</div>
+                    <div class="info-content" style="font-size: 0.7em; opacity: 0.8;">
+                        ${vuln.cve === 'Genesis Block' || ['CVE-2010-5137', 'CVE-2010-5139', 'CVE-2018-17144'].includes(vuln.cve) 
+                            ? 'Verified data - Cross-referenced with multiple sources' 
+                            : 'Preliminary data - Requires additional verification and source validation'}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to open Bitcoin Wiki links
+        function openBitcoinWiki(cve, year) {
+            const wikiMap = {
+                'CVE-2010-5137': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5137',
+                'CVE-2010-5141': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2010-5141',
+                'CVE-2018-17144': 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures#CVE-2018-17144'
+                // Add more CVE mappings as needed
+            };
+
+            const url = wikiMap[cve] || 'https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures';
+            window.open(url, '_blank');
+        }
+
+        function updateStats(filtered) {
+            const criticalCVEs = [
+                'CVE-2010-5141', 'CVE-2010-5139', 'CVE-2011-4447',
+                'CVE-2012-1909', 'CVE-2012-1910', 'CVE-2012-2459', 'CVE-2013-3219',
+                'CVE-2013-3220', 'BIP-0050', 'CVE-2013-4165', 'CVE-2014-0160',
+                'CVE-2015-6031', 'CVE-2018-17144'
+            ];
+
+            const filteredWithoutGenesis = filtered.filter(v => v.type !== 'genesis');
+            const criticalCount = filteredWithoutGenesis.filter(v => 
+                criticalCVEs.includes(v.cve)
+            ).length;
+
+            document.getElementById('total-vulns').textContent = filteredWithoutGenesis.length;
+            document.getElementById('critical-vulns').textContent = criticalCount;
+        }
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.dataset.type;
+                renderVulnerabilities();
+
+                // Destroy existing charts and regenerate with filtered data
+                Chart.getChart('pieChart')?.destroy();
+                Chart.getChart('barChart')?.destroy();
+                generateChartsFiltered();
+            });
+        });
+
+        function generateChartsFiltered() {
+            const filtered = currentFilter === 'all' 
+                ? vulnerabilities.filter(v => v.type !== 'genesis')
+                : vulnerabilities.filter(v => v.type === currentFilter && v.type !== 'genesis');
+
+            generatePieChartFiltered(filtered);
+            generateBarChartFiltered(filtered);
+        }
+
+        function generatePieChartFiltered(data) {
+            const typeCounts = {};
+            const typeLabels = {
+                'dos': 'DOS',
+                'theft': 'Theft',
+                'fake-conf': 'Fake Conf',
+                'network-split': 'Network Split',
+                'exposure': 'Exposure',
+                'inflation': 'Inflation',
+                'unknown': 'Unknown'
+            };
+
+            data.forEach(vuln => {
+                typeCounts[vuln.type] = (typeCounts[vuln.type] || 0) + 1;
+            });
+
+            const ctx = document.getElementById('pieChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: Object.keys(typeCounts).map(type => typeLabels[type] || type),
+                    datasets: [{
+                        data: Object.values(typeCounts),
+                        backgroundColor: [
+                            '#6a89cc',
+                            '#f1c40f',
+                            '#ff3838',
+                            '#81ecec', 
+                            '#ff7675',
+                            '#636e72',
+                            '#74b9ff'
+                        ],
+                        borderColor: '#ffcc66',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            top: 10,
+                            bottom: 10,
+                            left: 10,
+                            right: 10
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#ffcc66',
+                                font: { family: 'VT323', size: 12 },
+                                padding: 8,
+                                boxWidth: 12
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function generateBarChartFiltered(data) {
+            const yearCounts = {};
+            data.forEach(vuln => {
+                yearCounts[vuln.year] = (yearCounts[vuln.year] || 0) + 1;
+            });
+
+            const years = Object.keys(yearCounts).sort();
+            const counts = years.map(year => yearCounts[year]);
+            const maxCount = Math.max(...counts);
+
+            const ctx = document.getElementById('barChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: years,
+                    datasets: [{
+                        label: 'Number of vulnerabilities',
+                        data: counts,
+                        backgroundColor: '#f1c40f',
+                        borderColor: '#ffcc66',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            top: 10,
+                            bottom: 10,
+                            left: 10,
+                            right: 10
+                        }
+                    },
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: maxCount + 1,
+                            ticks: {
+                                color: '#ffcc66',
+                                font: { family: 'VT323', size: 11 },
+                                stepSize: 1
+                            },
+                            grid: { color: 'rgba(255, 204, 102, 0.2)' }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#ffcc66',
+                                font: { family: 'VT323', size: 11 }
+                            },
+                            grid: { color: 'rgba(255, 204, 102, 0.2)' }
+                        }
+                    }
+                }
+            });
+        }
+
+        renderVulnerabilities();
+        generateCharts();
+
+        function generateCharts() {
+            generatePieChart();
+            generateBarChart();
+        }
+
+        function generatePieChart() {
+            const typeCounts = {};
+            const typeLabels = {
+                'dos': 'DOS',
+                'theft': 'Theft',
+                'fake-conf': 'Fake Conf',
+                'network-split': 'Network Split',
+                'exposure': 'Exposure',
+                'inflation': 'Inflation',
+                'unknown': 'Unknown'
+            };
+
+            vulnerabilities.filter(v => v.type !== 'genesis').forEach(vuln => {
+                typeCounts[vuln.type] = (typeCounts[vuln.type] || 0) + 1;
+            });
+
+            const ctx = document.getElementById('pieChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: Object.keys(typeCounts).map(type => typeLabels[type] || type),
+                    datasets: [{
+                        data: Object.values(typeCounts),
+                        backgroundColor: [
+                            '#6a89cc', // dos
+                            '#f1c40f', // theft
+                            '#ff3838', // inflation
+                            '#81ecec', // exposure
+                            '#ff7675', // network-split
+                            '#636e72', // unknown
+                            '#74b9ff'  // fake-conf
+                        ],
+                        borderColor: '#ffcc66',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            top: 10,
+                            bottom: 10,
+                            left: 10,
+                            right: 10
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#ffcc66',
+                                font: {
+                                    family: 'VT323',
+                                    size: 12
+                                },
+                                padding: 8,
+                                boxWidth: 12
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function generateBarChart() {
+            const yearCounts = {};
+            vulnerabilities.filter(v => v.type !== 'genesis').forEach(vuln => {
+                yearCounts[vuln.year] = (yearCounts[vuln.year] || 0) + 1;
+            });
+
+            const years = Object.keys(yearCounts).sort();
+            const counts = years.map(year => yearCounts[year]);
+            const maxCount = Math.max(...counts);
+
+            const ctx = document.getElementById('barChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: years,
+                    datasets: [{
+                        label: 'Number of vulnerabilities',
+                        data: counts,
+                        backgroundColor: '#f1c40f',
+                        borderColor: '#ffcc66',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            top: 10,
+                            bottom: 10,
+                            left: 10,
+                            right: 10
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: maxCount + 1,
+                            ticks: {
+                                color: '#ffcc66',
+                                font: {
+                                    family: 'VT323',
+                                    size: 11
+                                },
+                                stepSize: 1
+                            },
+                            grid: {
+                                color: 'rgba(255, 204, 102, 0.2)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#ffcc66',
+                                font: {
+                                    family: 'VT323',
+                                    size: 11
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(255, 204, 102, 0.2)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Modal management functions
+        function showModal() {
+            const overlay = document.querySelector('.modal-overlay') || createOverlay();
+            const closeButton = document.querySelector('.close-button') || createCloseButton();
+
+            overlay.style.display = 'block';
+            closeButton.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideModal() {
+            const flippedCard = document.querySelector('.vulnerability-item.flipped');
+            const overlay = document.querySelector('.modal-overlay');
+            const closeButton = document.querySelector('.close-button');
+
+            if (flippedCard) flippedCard.classList.remove('flipped');
+            if (overlay) overlay.style.display = 'none';
+            if (closeButton) closeButton.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function createOverlay() {
+            const overlay = document.createElement('div');
+            overlay.className = 'modal-overlay';
+            overlay.addEventListener('click', hideModal);
+            document.body.appendChild(overlay);
+            return overlay;
+        }
+
+        function createCloseButton() {
+            const closeButton = document.createElement('div');
+            closeButton.className = 'close-button';
+            closeButton.innerHTML = '✕';
+            closeButton.addEventListener('click', hideModal);
+            document.body.appendChild(closeButton);
+            return closeButton;
+        }
+
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (body.dataset.theme === 'dark') {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Moon';
+                themeText.textContent = 'Dark';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.dataset.theme = 'dark';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Sun';
+                themeText.textContent = 'Light';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (savedTheme === 'light') {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Moon';
+                themeText.textContent = 'Dark';
+            } else {
+                body.dataset.theme = 'dark';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Sun';
+                themeText.textContent = 'Light';
+            }
+        });
+    </script>
+</body>
+</html>
