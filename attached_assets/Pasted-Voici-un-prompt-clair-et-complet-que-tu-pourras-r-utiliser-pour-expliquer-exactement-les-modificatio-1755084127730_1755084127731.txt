@@ -1,0 +1,70 @@
+Voici un prompt clair et complet que tu pourras réutiliser pour expliquer exactement les modifications à apporter, en incluant les noms et chemins des icônes que tu veux mobiliser.
+
+---
+
+**Prompt explicatif : refonte navigation + structuration pages « Crisis »**
+
+**Objectif**
+Refondre la page `crisis.html` pour en faire un **hub de navigation** clair, léger et responsive, menant vers quatre sous-pages autonomes :
+
+1. `crisis-framework.html` → Matrice et définitions.
+2. `crisis-governance.html` → Processus, acteurs, schémas.
+3. `crisis-timeline.html` → Timeline interactive existante.
+4. `crisis-cases.html` → Études de cas.
+
+**Modifications souhaitées**
+
+* Conserver **l’identité visuelle existante** : police VT323, palette rouge/or/vert, effets pixel art.
+* Sur `crisis.html` : remplacer le contenu actuel par 4 **cartes cliquables** vers les sous-pages.
+
+  * Chaque carte contient :
+
+    * Une icône thématique (voir section **Icônes** ci-dessous)
+    * Un titre clair (ex. « Études de cas », « Gouvernance »…)
+    * Un court descriptif (2 lignes max)
+  * Cartes disposées en grille responsive 2×2 (une colonne sur mobile).
+* Ajout d’une **barre de navigation commune** en haut de page sur toutes les pages :
+
+  * Logo/titre à gauche
+  * Lien « Accueil » (index.html ou site root)
+  * Lien « Crisis hub » (crisis.html)
+* Dans les sous-pages, ajouter un petit **breadcrumb** ou lien de retour vers `crisis.html`.
+* **Timeline** (`crisis-timeline.html`) : conserver l’implémentation existante, mais avec la nouvelle nav en haut.
+* **Responsive** :
+
+  * Sur desktop : grille 2×2 de cartes.
+  * Sur mobile : cartes empilées (1 colonne).
+* **Accessibilité** : toutes les cartes doivent être des `<a>` englobant, focusables au clavier.
+* **SEO** : titre `<title>` et `<meta description>` spécifiques à chaque page.
+
+**Icônes à utiliser** (répertoire : `assets/icons/`)
+
+1. `etudedecas.png` → Pour la carte « Études de cas » (`crisis-cases.html`).
+2. `gouvernance pixelated2.png` → Pour la carte « Gouvernance » (`crisis-governance.html`).
+3. `navigation.png` → Pour la carte « Framework / Matrice » (`crisis-framework.html`).
+4. `timline.png` → Pour la carte « Timeline » (`crisis-timeline.html`).
+
+**Structure finale**
+
+```
+/crisis.html                → Hub (4 cartes cliquables)
+/crisis-framework.html      → Matrice + définitions
+/crisis-governance.html     → Processus + schémas
+/crisis-timeline.html       → Timeline interactive
+/crisis-cases.html          → Études de cas
+/assets/icons/              → répertoire des icônes
+```
+
+**Livrables attendus**
+
+* Code HTML complet pour `crisis.html` (hub) et les 4 sous-pages.
+* Bloc CSS commun (inline ou `style.css`) pour :
+
+  * Grille de cartes responsive
+  * Barre de navigation
+  * Harmonisation des paddings/marges
+* Intégration des icônes aux cartes avec `img src="assets/icons/..."` et attribut `alt` descriptif.
+
+---
+
+Veux-tu que je te prépare maintenant **le code complet des 5 pages** directement conforme à ce prompt ? Ainsi, tu pourrais juste coller et pousser dans ton repo.
