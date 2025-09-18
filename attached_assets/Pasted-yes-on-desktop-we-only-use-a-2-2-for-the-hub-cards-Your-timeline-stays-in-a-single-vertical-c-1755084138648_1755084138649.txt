@@ -1,0 +1,95 @@
+yes—on desktop we only use a 2×2 **for the hub cards**.
+Your **timeline stays in a single vertical column** (one card after another). The clean way is to make one reusable grid and a tiny modifier that forces stacking where you want it.
+
+## Drop-in CSS (add at the end of your CSS)
+
+```css
+/* Cards grid */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr)); /* 2 cols on desktop */
+  gap: 16px;                                      /* tighten/loosen as you wish */
+  width: 100%;
+}
+
+/* Force single column where needed (e.g., timeline page) */
+.cards--stack {
+  grid-template-columns: 1fr !important;          /* always stacked */
+}
+
+/* Mobile: everything stacks */
+@media (max-width: 860px) {
+  .cards { grid-template-columns: 1fr; }
+}
+
+/* Card look (uses your palette) */
+.card {
+  display: block;
+  border: 2px solid var(--text-secondary);
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  padding: 14px;
+  color: var(--text);
+  text-decoration: none;
+}
+.card:hover { border-color: var(--text-accent); }
+.card .card-title { font-size: 1.4rem; color: var(--text-accent); margin: 6px 0 4px; }
+.card .card-desc  { color: var(--text-secondary); line-height: 1.25; }
+
+/* Optional: compact icon */
+.card .icon {
+  width: 40px; height: 40px; object-fit: contain; image-rendering: pixelated;
+  margin-bottom: 6px; display: block;
+}
+```
+
+## Usage
+
+### Hub (`crisis.html`) → **2×2**
+
+```html
+<div class="cards">
+  <a class="card" href="crisis-framework.html">
+    <img class="icon" src="assets/icons/navigation.png" alt="Framework / matrice">
+    <div class="card-title">Framework</div>
+    <div class="card-desc">Matrice & définitions</div>
+  </a>
+
+  <a class="card" href="crisis-governance.html">
+    <img class="icon" src="assets/icons/gouvernance pixelated2.png" alt="Gouvernance">
+    <div class="card-title">Gouvernance</div>
+    <div class="card-desc">Processus & acteurs</div>
+  </a>
+
+  <a class="card" href="crisis-timeline.html">
+    <img class="icon" src="assets/icons/timline.png" alt="Timeline">
+    <div class="card-title">Timeline</div>
+    <div class="card-desc">Vue chronologique interactive</div>
+  </a>
+
+  <a class="card" href="crisis-cases.html">
+    <img class="icon" src="assets/icons/etudedecas.png" alt="Études de cas">
+    <div class="card-title">Études de cas</div>
+    <div class="card-desc">Analyses détaillées</div>
+  </a>
+</div>
+```
+
+### Timeline (`crisis-timeline.html`) → **stacked column**
+
+Wrap your timeline “cards” (ou sections) in the **stack modifier**:
+
+```html
+<div class="cards cards--stack">
+  <!-- chaque item reste une carte pleine largeur -->
+  <article class="card">…</article>
+  <article class="card">…</article>
+  <!-- etc. -->
+</div>
+```
+
+### Cases (`crisis-cases.html`)
+
+Tu choisis : 2×2 si ce sont de petites fiches (utilise `.cards`), ou colonne unique si chaque étude est longue (utilise `.cards cards--stack`).
+
+This gives you exactly what you want: the **hub in 2×2 on desktop**, and **timeline (or any long content) in a single vertical column**, all while keeping your current palette and typography.
