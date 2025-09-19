@@ -16,7 +16,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
-        /* Copy the entire style section from crisis.html and keep it exactly the same */
         .timeline-container {
             position: relative;
             max-width: 1200px;
@@ -24,9 +23,565 @@
             padding: 0 20px;
         }
 
-        /* ... Insert all CSS styles from crisis.html here ... */
-        
-        /* Make sure to keep all the styling rules identical to maintain consistent look */
+        .timeline-arrow {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 12px;
+            background: linear-gradient(to bottom, #f1c40f 0%, #ffcc66 50%, #f1c40f 100%);
+            transform: translateX(-50%);
+            z-index: 1;
+            box-shadow: 0 0 8px rgba(241, 196, 15, 0.5);
+        }
+
+        .timeline-arrow::before {
+            content: '▼';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #f1c40f;
+            font-size: 16px;
+            text-shadow: 0 0 8px #f1c40f;
+        }
+
+        .timeline-arrow::after {
+            content: '▲';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #f1c40f;
+            font-size: 16px;
+            text-shadow: 0 0 8px #f1c40f;
+        }
+
+        .crisis-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .year-section {
+            background-color: var(--button-bg);
+            border: 2px solid var(--button-border);
+            padding: 20px;
+            font-family: 'VT323', monospace;
+            position: relative;
+            display: block;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .year-section::before {
+            display: none;
+        }
+
+        .year-header {
+            font-size: 1.5em;
+            color: var(--text-accent);
+            text-align: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--text-accent);
+            padding-bottom: 5px;
+        }
+
+        .vulnerability-item {
+            background-color: rgba(0,0,0,0.3);
+            border: 1px solid var(--text-secondary);
+            padding: 15px 20px;
+            margin: 0 auto 15px auto;
+            font-size: 1em;
+            position: relative;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            perspective: 1000px;
+            height: 220px;
+            overflow: visible;
+            width: 85%;
+            max-width: 750px;
+            min-width: 300px;
+            box-sizing: border-box;
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .vulnerability-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(51, 255, 51, 0.3);
+        }
+
+        .vulnerability-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+        }
+
+        .vulnerability-item.flipped .vulnerability-card {
+            transform: rotateY(180deg);
+        }
+
+        .vulnerability-item.flipped {
+            z-index: 1000;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1) !important;
+            margin: 0;
+            width: 85vw;
+            max-width: 900px;
+            height: 85vh;
+            max-height: 700px;
+            box-shadow: 0 0 30px rgba(51, 255, 51, 0.3);
+            border: 3px solid var(--text-accent);
+        }
+
+        .vulnerability-item.flipped .badge-left,
+        .vulnerability-item.flipped .badge-right {
+            display: none;
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.98), rgba(40, 20, 20, 0.98));
+            border: 3px solid var(--text-accent);
+            font-size: 0.9em;
+            overflow-y: auto;
+            padding: 25px;
+            box-shadow: inset 0 0 20px rgba(51, 255, 51, 0.2), 0 0 30px rgba(0, 0, 0, 0.9);
+        }
+
+        /* Overlay background */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0,0,0,0.2);
+            z-index: 999;
+            display: none;
+        }
+
+        /* Close button */
+        .close-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: var(--text-accent);
+            font-size: 16px;
+            z-index: 1001;
+            cursor: pointer;
+            background: rgba(0,0,0,0.9);
+            border: 2px solid var(--text-accent);
+            padding: 4px;
+            width: 24px;
+            height: 24px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .close-button:hover {
+            background: rgba(51, 255, 51, 0.2);
+        }
+
+        .detailed-info {
+            width: 100%;
+            text-align: left;
+        }
+
+        .info-section {
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 204, 102, 0.5);
+            padding-bottom: 8px;
+            background: rgba(139, 0, 0, 0.1);
+            padding: 8px;
+            border-radius: 3px;
+        }
+
+        .info-label {
+            color: var(--text-accent);
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 1), 0 0 6px rgba(51, 255, 51, 0.8);
+        }
+
+        .info-content {
+            color: #ffffff;
+            font-size: 0.85em;
+            line-height: 1.4;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 1), 0 0 4px rgba(255, 255, 255, 0.3);
+            font-weight: bold;
+        }
+
+        .phase-section {
+            background: linear-gradient(90deg, rgba(51, 255, 51, 0.15), rgba(51, 255, 51, 0.05));
+            padding: 8px 12px;
+            margin: 8px 0;
+            border-left: 4px solid var(--text-accent);
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .flip-indicator {
+            position: absolute;
+            bottom: 5px;
+            left: 15px;
+            font-size: 0.6em;
+            color: var(--text-accent);
+            opacity: 0.7;
+        }
+
+        .vuln-title {
+            color: var(--text-primary);
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .vuln-cve {
+            color: var(--text-accent);
+            font-size: 0.8em;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .vuln-type {
+            display: inline-block;
+            padding: 2px 6px;
+            border: 1px solid;
+            font-size: 0.7em;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .type-dos { 
+            border-color: #6a89cc; 
+            color: #6a89cc; 
+        }
+        .type-theft { 
+            border-color: #f1c40f; 
+            color: #f1c40f; 
+        }
+        .type-fake-conf { 
+            border-color: #74b9ff; 
+            color: #74b9ff; 
+        }
+        .type-netset { 
+            border-color: #ff7675; 
+            color: #ff7675; 
+        }
+        .type-exposure { 
+            border-color: #81ecec; 
+            color: #81ecec; 
+        }
+        .type-inflation { 
+            border-color: #ff3838; 
+            color: #ff3838; 
+        }
+        .type-genesis {
+            border-color: #f1c40f;
+            color: #f1c40f;
+        }
+        .type-unknown { 
+            border-color: #636e72; 
+            color: #636e72; 
+        }
+        .type-network-split {
+            border-color: #ff7675; 
+            color: #ff7675; 
+        }
+
+        .vuln-description {
+            color: var(--text-primary);
+            font-size: 0.8em;
+            line-height: 1.3;
+            text-align: center;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .badge-left {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .badge-right {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .badge {
+            display: inline-block;
+            pointer-events: auto;
+        }
+
+        .badge img {
+            width: 67px;
+            height: 67px;
+            display: block;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .badge img:hover {
+            opacity: 1;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background-color: var(--button-bg);
+            border: 2px solid var(--button-border);
+            padding: 15px;
+            text-align: center;
+            font-family: 'VT323', monospace;
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            color: var(--text-accent);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: var(--text-primary);
+        }
+
+        .filters {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .filter-btn {
+            background-color: var(--button-bg);
+            color: var(--text-primary);
+            border: 2px solid #000000;
+            box-shadow: inset 0 0 0 2px var(--button-border),
+                        inset 0 0 0 4px var(--button-bg);
+            padding: 8px 12px;
+            margin: 5px;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.7em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background-color: var(--button-hover);
+            box-shadow: inset 0 0 0 2px var(--text-primary),
+                        inset 0 0 0 4px var(--button-hover);
+            transform: translateY(-1px);
+        }
+
+        .filter-btn:hover {
+            background-color: var(--button-hover);
+            box-shadow: inset 0 0 0 2px var(--text-primary),
+                        inset 0 0 0 4px var(--button-hover);
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .avatar-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .avatar-icon {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #ffaa33;
+            background-color: #330000;
+            image-rendering: pixelated;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .charts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .chart-wrapper {
+            background-color: var(--button-bg);
+            border: 2px solid var(--button-border);
+            padding: 20px;
+            font-family: 'VT323', monospace;
+            text-align: center;
+        }
+
+        .chart-wrapper h3 {
+            color: var(--text-accent);
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+
+        .chart-wrapper canvas {
+            max-width: 100%;
+            height: 300px !important;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-arrow {
+                width: 8px;
+                background: linear-gradient(to bottom, #f1c40f 0%, #ffcc66 50%, #f1c40f 100%);
+                box-shadow: 0 0 6px rgba(241, 196, 15, 0.4);
+            }
+
+            .timeline-arrow::before,
+            .timeline-arrow::after {
+                font-size: 12px;
+            }
+
+            .year-section::before {
+                display: none;
+            }
+
+            .timeline-container {
+                margin: 15px auto;
+                padding: 0 10px;
+                max-width: 100%;
+            }
+
+            .year-section {
+                padding: 12px 8px;
+                margin: 0 auto;
+                max-width: 100%;
+            }
+
+            .vulnerability-item {
+                width: 95%;
+                max-width: none;
+                min-width: unset;
+                height: 180px;
+                margin: 0 auto 12px auto;
+                padding: 10px;
+                font-size: 0.9em;
+            }
+
+            .vulnerability-item.flipped {
+                transform: none !important;
+                position: fixed;
+                top: 5vh;
+                left: 5vw;
+                margin: 0;
+                width: 90vw;
+                height: 90vh;
+                z-index: 1000;
+                box-shadow: 0 0 25px rgba(0,0,0,0.9);
+            }
+
+            .crisis-grid {
+                gap: 15px;
+                align-items: center;
+            }
+
+            .stats-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .badge img {
+                width: 42px;
+                height: 42px;
+            }
+
+            .badge-left {
+                left: 4px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .badge-right {
+                right: 4px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .charts-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin: 20px 0;
+            }
+
+            .chart-wrapper {
+                padding: 15px;
+            }
+
+            .chart-wrapper h3 {
+                font-size: 1em;
+            }
+
+            .matrix-grid {
+                display: none !important;
+            }
+            
+            .matrix-grid-mobile {
+                display: flex !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .vulnerability-item {
+                width: 98%;
+                padding: 8px;
+                height: 160px;
+                font-size: 0.85em;
+            }
+
+            .timeline-container {
+                padding: 0 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -55,55 +610,93 @@
             <div class="intro-section" style="background-color: var(--button-bg); border: 2px solid var(--button-border); padding: 15px; margin: 5px 0; font-family: 'VT323', monospace;">
                 <h3 style="color: var(--text-accent); text-align: center; margin-bottom: 15px;">Les crises des cryptomonnaies, du point de vue des acteurs</h3>
                 <p style="color: var(--text-primary); margin-bottom: 15px; text-align: center; font-size: 0.9em;">
-                    L'état de crise révèle ce que les acteurs considèrent comme « normal » et ce qui ne l'est pas : est reconnu un hiatus entre les actions prescrites par la conception (et les concepteurs) et les actes [...]
+                    L'état de crise révèle ce que les acteurs considèrent comme « normal » et ce qui ne l'est pas : est reconnu un hiatus entre les actions prescrites par la conception (et les concepteurs) et les actions réellement effectuées (par les utilisateurs).
                 </p>
 
                 <h4 style="color: var(--text-accent); text-align: center; margin: 20px 0 15px 0; font-size: 1.1em;">« Code is Law » quand « Code is flaw » ?</h4>
                 <p style="color: var(--text-primary); margin-bottom: 15px; text-align: center; font-size: 0.9em;">
-                    L'acception rigoriste du slogan « code is law » vide de tout fondement les concepts mêmes de failles, de vulnérabilités, de bogues, voire d'attaques. Du point de vue qui [...]
+                    L'acception rigoriste du slogan « code is law » vide de tout fondement les concepts mêmes de failles, de vulnérabilités, de bogues, voire d'attaques. Du point de vue qui se veut purement descriptif de ce que le code permet effectivement, tout ce qui arrive est « normal ».
                 </p>
             </div>
 
             <!-- Matrice 2x2 Interactive -->
             <div class="matrix-container" style="background-color: var(--button-bg); border: 2px solid var(--button-border); padding: 20px; margin: 15px 0; font-family: 'VT323', monospace;">
                 <h3 style="color: var(--text-accent); text-align: center; margin-bottom: 20px; font-size: 1.2em;">Deux grandes familles de crises protocolaires</h3>
-                <!-- ... Rest of the matrix content ... -->
-            </div>
-        </section>
+                <p style="color: var(--text-primary); margin-bottom: 20px; text-align: center; font-size: 0.9em;">
+                    Les bitcoiners utilisant / forgeant une terminologie de crise mobilisent par là une normativité supposant un « contrat social » et des dispositifs variés, sans lesquels aucun écart problématique entre le code et les attentes ne pourrait être identifié.
+                </p>
 
-        <!-- Continue with the rest of the sections -->
-        <!-- Make sure to keep all French translations -->
-        <!-- Maintain the exact same structure as crisis.html -->
-        
-        <div class="back-link">
-            <a href="index-fr.html">← Retour à l'accueil</a>
-        </div>
-    </div>
+                <!-- Grille 2x2 avec headers intégrés -->
+                <div class="matrix-grid" style="display: grid; grid-template-columns: 56px 1fr 1fr; grid-template-rows: 40px 1fr 1fr; gap: 6px; width: 100%; max-width: 700px; margin: 0 auto;">
+                    <!-- Empty spacer top-left -->
+                    <div class="rail-spacer" style="grid-row: 1; grid-column: 1;"></div>
 
-    <footer class="footer">
-        <!-- Keep footer content identical but with French translations -->
-        <div class="social-icons">
-            <!-- Same social icons section -->
-        </div>
-        <div class="sitemap-links">
-            <!-- French sitemap links -->
-        </div>
-        <div class="ethereum-badge-centered">
-            <!-- Same ethereum badge section with French tooltip -->
-        </div>
-    </footer>
+                    <!-- Headers horizontaux -->
+                    <div class="header-cell" style="grid-row: 1; grid-column: 2; padding: 6px 8px; line-height: 1.2; overflow-wrap: anywhere; background: rgba(255, 204, 102, 0.2); border: 1px solid var(--text-secondary);">
+                        …ce qui est ATTENDU = considéré comme légitime par le consensus social
+                    </div>
+                    <div class="header-cell" style="grid-row: 1; grid-column: 3; padding: 6px 8px; line-height: 1.2; overflow-wrap: anywhere; background: rgba(255, 204, 102, 0.2); border: 1px solid var(--text-secondary);">
+                        …ce qui est INATTENDU = considéré comme illégitime par le consensus social
+                    </div>
 
-    <script src="script.js"></script>
-    <script>
-        // Keep the vulnerabilities array with French translations
-        const vulnerabilities = [
-            // ... Copy the entire French vulnerabilities array ...
-        ];
+                    <!-- Label vertical gauche ligne 1 -->
+                    <div class="vertical-label" style="grid-row: 2; grid-column: 1; writing-mode: vertical-rl; text-orientation: mixed; padding: 2px 0; font-size: 0.72em; line-height: 1.1; display: flex; align-items: center; justify-content: center;">
+                        Le code PERMET…
+                    </div>
 
-        // Keep all JavaScript functions identical
-        let currentFilter = 'all';
-        
-        // ... Rest of the JavaScript code ...
-    </script>
-</body>
-</html>
+                    <!-- Label vertical gauche ligne 2 -->
+                    <div class="vertical-label" style="grid-row: 3; grid-column: 1; writing-mode: vertical-rl; text-orientation: mixed; padding: 2px 0; font-size: 0.72em; line-height: 1.1; display: flex; align-items: center; justify-content: center;">
+                        Le code NE PERMET PAS…
+                    </div>
+
+                    <!-- Quadrant [a] -->
+                    <div class="quadrant" data-quadrant="a" style="grid-row: 2; grid-column: 2; padding: 8px 10px; min-height: auto; line-height: 1.25; font-size: 0.92em; background: rgba(0, 255, 0, 0.1);">
+                        <div class="quadrant-label" style="font-size: 1em; color: var(--text-accent); font-weight: bold; margin-bottom: 8px;">[a] Situation normale</div>
+                        <div class="quadrant-action" style="font-size: 0.8em; color: var(--text-accent); margin-bottom: 10px; line-height: 1.3;">Action : Statu quo</div>
+                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.3;">Ex. : contrôle de la double dépense, création monétaire suivant l'échéancier prévu, etc.</div>
+                    </div>
+
+                    <!-- Quadrant [b] -->
+                    <div class="quadrant" data-quadrant="b" style="grid-row: 2; grid-column: 3; padding: 8px 10px; min-height: auto; line-height: 1.25; font-size: 0.92em; background: rgba(255, 0, 0, 0.1);">
+                        <div class="quadrant-label" style="font-size: 1em; color: #ff3838; font-weight: bold; margin-bottom: 8px;">[b] Crise « de vulnérabilité »</div>
+                        <div class="quadrant-action" style="font-size: 0.8em; color: #ff3838; margin-bottom: 10px; line-height: 1.3;">Action : Correction de bogue pour retrouver le caractère exécutoire des normes passées</div>
+                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.3;">Ex. : cas CVE 2018 - correction vulnérabilité d'inflation</div>
+                    </div>
+
+                    <!-- Quadrant [c] -->
+                    <div class="quadrant" data-quadrant="c" style="grid-row: 3; grid-column: 2; padding: 8px 10px; min-height: auto; line-height: 1.25; font-size: 0.92em; background: rgba(255, 165, 0, 0.1);">
+                        <div class="quadrant-label" style="font-size: 1em; color: #ffa500; font-weight: bold; margin-bottom: 8px;">[c] Crise « d'évolution »</div>
+                        <div class="quadrant-action" style="font-size: 0.8em; color: #ffa500; margin-bottom: 10px; line-height: 1.3;">Action : Application de nouvelles règles pour s'adapter aux attentes de la communauté</div>
+                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.3;">Ex. : SegWit et Scaling Debate ; The DAO hack</div>
+                    </div>
+
+                    <!-- Quadrant [d] -->
+                    <div class="quadrant" data-quadrant="d" style="grid-row: 3; grid-column: 3; padding: 8px 10px; min-height: auto; line-height: 1.25; font-size: 0.92em; background: rgba(0, 255, 0, 0.1);">
+                        <div class="quadrant-label" style="font-size: 1em; color: var(--text-accent); font-weight: bold; margin-bottom: 8px;">[d] Situation normale</div>
+                        <div class="quadrant-action" style="font-size: 0.8em; color: var(--text-accent); margin-bottom: 10px; line-height: 1.3;">Action : Statu quo</div>
+                        <div class="quadrant-example" style="font-size: 0.8em; color: var(--text-primary); line-height: 1.3;">Ex. : rejet des doubles dépenses, invalidation de toute création monétaire non autorisée, etc.</div>
+                    </div>
+                </div>
+
+                <!-- Grille 2x2 - Version Mobile -->
+                <div class="matrix-grid-mobile" style="display: none; flex-direction: column; gap: 15px;">
+                    <!-- Quadrant [a] Mobile -->
+                    <div class="quadrant-mobile">
+                        <div class="mobile-context">CODE PERMET + ATTENDU</div>
+                        <div class="quadrant-label">[a] Situation normale</div>
+                        <div class="quadrant-action">Action : Statu quo</div>
+                        <div class="quadrant-example">Ex. : contrôle de la double dépense, création monétaire suivant l'échéancier prévu, etc.</div>
+                    </div>
+
+                    <!-- Quadrant [b] Mobile -->
+                    <div class="quadrant-mobile" data-type="vulnerability">
+                        <div class="mobile-context">CODE PERMET + INATTENDU</div>
+                        <div class="quadrant-label">[b] Crise « de vulnérabilité »</div>
+                        <div class="quadrant-action">Action : Correction de bogue pour retrouver le caractère exécutoire des normes passées</div>
+                        <div class="quadrant-example">Ex. : cas CVE 2018 - correction vulnérabilité d'inflation</div>
+                    </div>
+
+                    <!-- Quadrant [c] Mobile -->
+                    <div class="quadrant-mobile" data-type="evolution">
+                        <div class="mobile-context">CODE NE PERMET PAS + ATTENDU</div>
+                        <div class="quadrant-label">[c] Crise « d'évolution »</div
