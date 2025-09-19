@@ -625,26 +625,26 @@
                 </p>
 
                 <!-- Grille 2x2 avec headers intégrés -->
-                <div class="matrix-grid" style="display: grid; grid-template-columns: 75px 1fr 1fr; grid-template-rows: 50px 1fr 1fr; gap: 6px; width: 100%; max-width: 700px; margin: 0 auto;">
+                <div class="matrix-grid" style="display: grid; grid-template-columns: 56px 1fr 1fr; grid-template-rows: 40px 1fr 1fr; gap: 6px; width: 100%; max-width: 700px; margin: 0 auto;">
 
                     <!-- Empty spacer top-left -->
                     <div class="rail-spacer" style="grid-row: 1; grid-column: 1;"></div>
 
                     <!-- Headers horizontaux -->
-                    <div class="header-cell" style="grid-row: 1; grid-column: 2; padding: 5px 6px; line-height: 1.15; overflow-wrap: anywhere; background: rgba(255, 204, 102, 0.2); border: 1px solid var(--text-secondary); color: var(--text-secondary); text-align: center; font-weight: bold; font-size: 0.85em; display: flex; align-items: center; justify-content: center;">
+                    <div class="header-cell" style="grid-row: 1; grid-column: 2; padding: 4px 5px; line-height: 1.1; overflow-wrap: break-word; background: rgba(255, 204, 102, 0.2); border: 1px solid var(--text-secondary); color: var(--text-secondary); text-align: center; font-weight: bold; font-size: 0.75em; display: flex; align-items: center; justify-content: center;">
                         …ce qui est ATTENDU = considéré légitime par consensus social
                     </div>
-                    <div class="header-cell" style="grid-row: 1; grid-column: 3; padding: 5px 6px; line-height: 1.15; overflow-wrap: anywhere; background: rgba(255, 204, 102, 0.2); border: 1px solid var(--text-secondary); color: var(--text-secondary); text-align: center; font-weight: bold; font-size: 0.85em; display: flex; align-items: center; justify-content: center;">
+                    <div class="header-cell" style="grid-row: 1; grid-column: 3; padding: 4px 5px; line-height: 1.1; overflow-wrap: break-word; background: rgba(255, 204, 102, 0.2); border: 1px solid var(--text-secondary); color: var(--text-secondary); text-align: center; font-weight: bold; font-size: 0.75em; display: flex; align-items: center; justify-content: center;">
                         …ce qui est INATTENDU = considéré illégitime par consensus social
                     </div>
 
                     <!-- Label vertical gauche ligne 1 -->
-                    <div class="vertical-label" style="grid-row: 2; grid-column: 1; writing-mode: vertical-rl; text-orientation: mixed; padding: 2px 0; font-size: 0.65em; line-height: 1.1; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-weight: bold; background: rgba(255, 204, 102, 0.1); border: 1px solid var(--text-secondary);">
+                    <div class="vertical-label" style="grid-row: 2; grid-column: 1; writing-mode: vertical-rl; text-orientation: mixed; padding: 2px 0; font-size: 0.7em; line-height: 1.1; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-weight: bold; background: rgba(255, 204, 102, 0.1); border: 1px solid var(--text-secondary);">
                         Le code PERMET…
                     </div>
 
                     <!-- Label vertical gauche ligne 2 -->
-                    <div class="vertical-label" style="grid-row: 3; grid-column: 1; writing-mode: vertical-rl; text-orientation: mixed; padding: 2px 0; font-size: 0.65em; line-height: 1.1; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-weight: bold; background: rgba(255, 204, 102, 0.1); border: 1px solid var(--text-secondary);">
+                    <div class="vertical-label" style="grid-row: 3; grid-column: 1; writing-mode: vertical-rl; text-orientation: mixed; padding: 2px 0; font-size: 0.7em; line-height: 1.1; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-weight: bold; background: rgba(255, 204, 102, 0.1); border: 1px solid var(--text-secondary);">
                         Le code NE PERMET PAS…
                     </div>
 
@@ -844,28 +844,28 @@
     <script src="script.js"></script>
     <script>
         const vulnerabilities = [
-            { year: 2009, month: 1, cve: "Genesis Block", type: "genesis", title: "Bitcoin Protocol Launch", description: "Bitcoin network launch", date: "03/01/2009" },
-            { year: 2010, month: 7, cve: "CVE-2010-5137", type: "dos", title: "OP_LSHIFT crash", description: "Script execution vulnerability causing client termination", date: "28/07/2010" },
-            { year: 2010, month: 7, cve: "CVE-2010-5141", type: "theft", title: "OP_RETURN could be used to spend any output", description: "Critical vulnerability allowing unauthorized spending of any UTXO", date: "28/07/2010" },
-            { year: 2010, month: 7, cve: "CVE-2010-5138", type: "dos", title: "Unlimited SigOp DoS", description: "Resource exhaustion through excessive signature operations", date: "29/07/2010" },
-            { year: 2010, month: 8, cve: "CVE-2010-5139", type: "inflation", title: "Combined output overflow", description: "Integer overflow allowing creation of 184 billion BTC in block 74638", date: "15/08/2010" },
-            { year: 2010, month: 9, cve: "CVE-2010-5140", type: "dos", title: "Never confirming transactions", description: "Network congestion through unconfirmable transaction propagation", date: "29/09/2010" },
-            { year: 2011, month: 11, cve: "CVE-2011-4447", type: "exposure", title: "Wallet non-encryption", description: "Private keys stored unencrypted on disk by default", date: "11/11/2011" },
-            { year: 2012, month: 3, cve: "CVE-2012-1909", type: "network-split", title: "Transaction overwriting", description: "Duplicate transaction hashes could cause blockchain inconsistencies", date: "07/03/2012" },
-            { year: 2012, month: 3, cve: "CVE-2012-1910", type: "unknown", title: "Non-thread safe MingW exceptions", description: "Windows-specific threading vulnerability with undefined behavior", date: "17/03/2012" },
-            { year: 2012, month: 4, cve: "BIP 0016", type: "fake-conf", title: "Softfork: P2SH", description: "Pay-to-Script-Hash implementation creating validation discrepancies", date: "01/04/2012" },
-            { year: 2012, month: 5, cve: "CVE-2012-2459", type: "network-split", title: "Block hash collision (via merkle root)", description: "Merkle tree manipulation allowing duplicate block hashes", date: "14/05/2012" },
-            { year: 2012, month: 6, cve: "CVE-2012-3789", type: "dos", title: "(Lack of) orphan txn resource limits", description: "Memory exhaustion through unlimited orphaned transaction storage", date: "20/06/2012" },
-            { year: 2012, month: 8, cve: "CVE-2012-4682", type: "dos", title: "Memory exhaustion", description: "Uncontrolled memory allocation leading to node crashes", date: "16/09/2012" },
-            { year: 2012, month: 8, cve: "CVE-2012-4683", type: "dos", title: "Targeted DoS by CPU exhaustion using alerts", description: "Alert system abuse for computational resource depletion", date: "23/08/2012" },
-            { year: 2012, month: 8, cve: "CVE-2012-4684", type: "dos", title: "Network-wide DoS using malleable signatures in alerts", description: "Signature malleability in alert messages causing network disruption", date: "24/08/2012" },
-            { year: 2013, month: 1, cve: "CVE-2013-2272", type: "exposure", title: "Remote discovery of node's wallet addresses", description: "Network analysis allowing identification of node wallet addresses", date: "11/01/2013" },
-            { year: 2013, month: 1, cve: "CVE-2013-2273", type: "exposure", title: "Predictable change output", description: "Change address generation patterns revealing transaction relationships", date: "30/01/2013" },
-            { year: 2013, month: 1, cve: "CVE-2013-2292", type: "dos", title: "A transaction that takes at least 3 minutes to verify", description: "Computationally expensive transaction verification causing delays", date: "30/01/2013" },
-            { year: 2013, month: 1, cve: "CVE-2013-2293", type: "dos", title: "Continuous hard disk seek", description: "Storage access patterns causing performance degradation", date: "09/01/2013" },
+            { year: 2009, month: 1, cve: "Bloc Genèse", type: "genesis", title: "Lancement du Protocole Bitcoin", description: "Lancement du réseau Bitcoin", date: "03/01/2009" },
+            { year: 2010, month: 7, cve: "CVE-2010-5137", type: "dos", title: "Crash OP_LSHIFT", description: "Vulnérabilité d'exécution de script causant l'arrêt du client", date: "28/07/2010" },
+            { year: 2010, month: 7, cve: "CVE-2010-5141", type: "theft", title: "OP_RETURN pouvait être utilisé pour dépenser n'importe quelle sortie", description: "Vulnérabilité critique permettant la dépense non autorisée de tout UTXO", date: "28/07/2010" },
+            { year: 2010, month: 7, cve: "CVE-2010-5138", type: "dos", title: "DoS SigOp illimité", description: "Épuisement des ressources par opérations de signature excessives", date: "29/07/2010" },
+            { year: 2010, month: 8, cve: "CVE-2010-5139", type: "inflation", title: "Débordement de sortie combiné", description: "Débordement d'entier permettant la création de 184 milliards de BTC dans le bloc 74638", date: "15/08/2010" },
+            { year: 2010, month: 9, cve: "CVE-2010-5140", type: "dos", title: "Transactions jamais confirmées", description: "Congestion du réseau par propagation de transactions non confirmables", date: "29/09/2010" },
+            { year: 2011, month: 11, cve: "CVE-2011-4447", type: "exposure", title: "Non-chiffrement du portefeuille", description: "Clés privées stockées non chiffrées sur disque par défaut", date: "11/11/2011" },
+            { year: 2012, month: 3, cve: "CVE-2012-1909", type: "network-split", title: "Écrasement de transaction", description: "Les hashs de transaction dupliqués pouvaient causer des incohérences dans la blockchain", date: "07/03/2012" },
+            { year: 2012, month: 3, cve: "CVE-2012-1910", type: "unknown", title: "Exceptions MingW non thread-safe", description: "Vulnérabilité de threading spécifique à Windows avec comportement indéfini", date: "17/03/2012" },
+            { year: 2012, month: 4, cve: "BIP 0016", type: "fake-conf", title: "Softfork : P2SH", description: "Implémentation Pay-to-Script-Hash créant des divergences de validation", date: "01/04/2012" },
+            { year: 2012, month: 5, cve: "CVE-2012-2459", type: "network-split", title: "Collision de hash de bloc (via racine merkle)", description: "Manipulation de l'arbre de Merkle permettant des hashs de bloc dupliqués", date: "14/05/2012" },
+            { year: 2012, month: 6, cve: "CVE-2012-3789", type: "dos", title: "(Absence de) limites de ressources pour les txn orphelines", description: "Épuisement de la mémoire par stockage illimité de transactions orphelines", date: "20/06/2012" },
+            { year: 2012, month: 8, cve: "CVE-2012-4682", type: "dos", title: "Épuisement de la mémoire", description: "Allocation mémoire non contrôlée entraînant des crashs de nœuds", date: "16/09/2012" },
+            { year: 2012, month: 8, cve: "CVE-2012-4683", type: "dos", title: "DoS ciblé par épuisement CPU via alertes", description: "Abus du système d'alertes pour l'épuisement des ressources de calcul", date: "23/08/2012" },
+            { year: 2012, month: 8, cve: "CVE-2012-4684", type: "dos", title: "DoS à l'échelle du réseau via signatures malléables dans les alertes", description: "Malléabilité des signatures dans les messages d'alerte causant une perturbation du réseau", date: "24/08/2012" },
+            { year: 2013, month: 1, cve: "CVE-2013-2272", type: "exposure", title: "Découverte à distance des adresses de portefeuille du nœud", description: "Analyse réseau permettant l'identification des adresses de portefeuille du nœud", date: "11/01/2013" },
+            { year: 2013, month: 1, cve: "CVE-2013-2273", type: "exposure", title: "Sortie de monnaie prévisible", description: "Modèles de génération d'adresses de monnaie révélant les relations entre transactions", date: "30/01/2013" },
+            { year: 2013, month: 1, cve: "CVE-2013-2292", type: "dos", title: "Une transaction prenant au moins 3 minutes à vérifier", description: "Vérification de transaction coûteuse en calcul causant des retards", date: "30/01/2013" },
+            { year: 2013, month: 1, cve: "CVE-2013-2293", type: "dos", title: "Recherche continue sur disque dur", description: "Modèles d'accès au stockage causant une dégradation des performances", date: "09/01/2013" },
             { year: 2013, month: 2, cve: "CVE-2013-4627", type: "dos", title: "Memory exhaustion with excess tx message data", description: "Oversized transaction messages causing memory overflow", date: "08/02/2013" },
-            { year: 2013, month: 3, cve: "CVE-2013-3219", type: "fake-conf", title: "Unenforced block protocol rule", description: "Block validation inconsistencies allowing invalid confirmations", date: "11/03/2013" },
-            { year: 2013, month: 3, cve: "CVE-2013-3220", type: "network-split", title: "Inconsistent BDB lock limit interactions", description: "Database lock limits causing blockchain fork on March 11, 2013", date: "11/03/2013" },
+            { year: 2013, month: 3, cve: "CVE-2013-3219", type: "fake-conf", title: "Règle de protocole de bloc non appliquée", description: "Incohérences de validation de bloc permettant des confirmations invalides", date: "11/03/2013" },
+            { year: 2013, month: 3, cve: "CVE-2013-3220", type: "network-split", title: "Interactions incohérentes des limites de verrouillage BDB", description: "Limites de verrouillage de base de données causant un fork de la blockchain le 11 mars 2013", date: "11/03/2013" },
             { year: 2013, month: 3, cve: "BIP 0034", type: "fake-conf", title: "Softfork: Height in coinbase", description: "Block height inclusion requirement creating validation discrepancies", date: "24/03/2013" },
             { year: 2013, month: 5, cve: "BIP 0050", type: "network-split", title: "Hard fork to remove txid limit protocol rule", description: "Emergency protocol change following March 2013 chain split", date: "15/05/2013" },
             { year: 2013, month: 7, cve: "CVE-2013-4165", type: "theft", title: "Timing leak in RPC authentication", description: "Password timing attack allowing credential discovery", date: "20/07/2013" },
@@ -998,33 +998,33 @@
         // Function to generate detailed vulnerability information
         function generateDetailedInfo(vuln) {
             const detailsMap = {
-                'Genesis Block': {
-                    insemination: "Bitcoin network genesis block creation",
-                    versions: "Bitcoin Protocol v1.0",
-                    pullRequest: "N/A (protocol genesis)",
-                    trigger: "Satoshi Nakamoto, January 3, 2009",
-                    evaluation: "N/A (genesis event)",
+                'Bloc Genèse': {
+                    insemination: "Création du bloc genèse du réseau Bitcoin",
+                    versions: "Protocole Bitcoin v1.0",
+                    pullRequest: "N/A (genèse du protocole)",
+                    trigger: "Satoshi Nakamoto, 3 janvier 2009",
+                    evaluation: "N/A (événement de genèse)",
                     remediation: "Bitcoin Core 0.1.0",
                     authors: "Satoshi Nakamoto",
-                    remediationPR: "Initial codebase release",
-                    impact: "Birth of Bitcoin blockchain",
-                    sources: "Genesis block, Bitcoin whitepaper"
+                    remediationPR: "Version initiale du code",
+                    impact: "Naissance de la blockchain Bitcoin",
+                    sources: "Bloc genèse, livre blanc Bitcoin"
                 },
                 'CVE-2010-5137': {
                     crisis: {
-                        introduction: "OP_LSHIFT operator caused client crash",
-                        versions: "Bitcoin Core 0.3.0 and earlier",
-                        pullRequest: "N/A (early protocol)",
-                        discovery: "Discovered by Satoshi during protocol development"
+                        introduction: "L'opérateur OP_LSHIFT causait un crash du client",
+                        versions: "Bitcoin Core 0.3.0 et antérieur",
+                        pullRequest: "N/A (début du protocole)",
+                        discovery: "Découvert par Satoshi pendant le développement du protocole"
                     },
                     resolution: {
-                        fix: "OP_LSHIFT disabled in script validation",
-                        versions: "Fixed in Bitcoin Core 0.3.1",
+                        fix: "OP_LSHIFT désactivé dans la validation de script",
+                        versions: "Corrigé dans Bitcoin Core 0.3.1",
                         authors: "Satoshi Nakamoto",
-                        pullRequest: "N/A (direct commit)"
+                        pullRequest: "N/A (commit direct)"
                     },
-                    impact: "DoS vector through script execution crash",
-                    sources: "Bitcoin Wiki, Early Bitcoin commits"
+                    impact: "Vecteur DoS par crash d'exécution de script",
+                    sources: "Wiki Bitcoin, premiers commits Bitcoin"
                 },
                 'CVE-2010-5141': {
                     crisis: {
@@ -1198,7 +1198,7 @@
                 <div class="info-section" style="border-top: 1px solid var(--text-accent); margin-top: 8px; padding-top: 4px;">
                     <div class="info-label">5. STATUT DES DONNÉES</div>
                     <div class="info-content" style="font-size: 0.7em; opacity: 0.8;">
-                        ${vuln.cve === 'Genesis Block' || ['CVE-2010-5137', 'CVE-2010-5139', 'CVE-2018-17144'].includes(vuln.cve) 
+                        ${vuln.cve === 'Bloc Genèse' || ['CVE-2010-5137', 'CVE-2010-5139', 'CVE-2018-17144'].includes(vuln.cve) 
                             ? 'Données vérifiées - Recoupées avec plusieurs sources' 
                             : 'Données préliminaires - Nécessite une vérification supplémentaire et une validation des sources'}
                     </div>
